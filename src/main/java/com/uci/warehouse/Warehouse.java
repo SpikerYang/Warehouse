@@ -42,15 +42,21 @@ public class Warehouse {
      * Print route to console
      */
     public void printRoute() {
+        //TODO
+    }
 
+    /**
+     * Read location data from file
+     * @param warehouse
+     */
+    private static void loadLocationData(Warehouse warehouse) {
         //TODO
     }
 
     public static void main(String[] args) {
         // Warehouse initiation
         Warehouse warehouse = new Warehouse();
-        // read location data from file
-        //TODO
+        loadLocationData(warehouse);
 
         // order initiation
         //TODO
