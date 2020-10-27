@@ -31,6 +31,20 @@ public class Warehouse {
         return orders.get(orderId);
     }
 
+    /**
+     * Generate route by TSP Algorithm
+     */
+    public void getRoute() {
+        //TODO
+    }
+
+    /**
+     * Print route to console
+     */
+    public void printRoute() {
+
+        //TODO
+    }
 
     public static void main(String[] args) {
         // Warehouse initiation

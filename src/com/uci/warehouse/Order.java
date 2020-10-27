@@ -43,6 +43,11 @@ public class Order {
         //TODO
     }
 
+    /**
+     * Generate distanceMatrix of order
+     * @param locationMap map storing location of products
+     * @return distanceMatrix
+     */
     public double[][] getDistanceMatrix(Map<Integer, double[]> locationMap) {
         List<Integer> list = new ArrayList<>(products.keySet());
         double[][] m = new double[list.size()][list.size()];
