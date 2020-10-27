@@ -14,6 +14,22 @@ public class Order {
     // key: ProductId, value: Quantity
     private Map<Integer, Integer> products;
 
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public Map<Integer, Integer> getProducts() {
+        return products;
+    }
+
+    public void setProducts(Map<Integer, Integer> products) {
+        this.products = products;
+    }
+
     public Order(int id) {
         this.id = id;
         products = new HashMap<>();
