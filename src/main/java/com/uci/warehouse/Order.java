@@ -14,6 +14,22 @@ public class Order {
     // key: ProductId, value: Quantity
     private Map<Integer, Integer> products;
 
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public Map<Integer, Integer> getProducts() {
+        return products;
+    }
+
+    public void setProducts(Map<Integer, Integer> products) {
+        this.products = products;
+    }
+
     public Order(int id) {
         this.id = id;
         products = new HashMap<>();
@@ -27,6 +43,11 @@ public class Order {
         //TODO
     }
 
+    /**
+     * Generate distanceMatrix of order
+     * @param locationMap map storing location of products
+     * @return distanceMatrix
+     */
     public double[][] getDistanceMatrix(Map<Integer, double[]> locationMap) {
         List<Integer> list = new ArrayList<>(products.keySet());
         double[][] m = new double[list.size()][list.size()];
