@@ -1,23 +1,23 @@
-import java.io.*;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
-
-public class readFile {
-
-    public static void main(String[] args) throws IOException {
-        Scanner input = new Scanner(new File("qvBox-warehouse-data-f20-v01.txt"));
-        Map<Integer,double[]> products = new HashMap<>();
-        input.nextLine();
-        while(input.hasNextLine()){
-            String str = input.nextLine();
-            String[] data = str.split(" ");
-            int key = Integer.getInteger(data[0]);
-            double xx = new Double(data[1]);
-            double yy = new Double(data[2]);
-            double [] location = new double[]{xx,yy};
-            products.put(key,location);
+    public class readFile {
+        public Map<Integer,double[]> readfile(String fileLocation) throws FileNotFoundException {
+            Scanner input = new Scanner(new File(fileLocation));
+            Map<Integer,double[]> productsLocation = new HashMap<>();
+            input.nextLine();
+            while(input.hasNextLine()){
+                String str = input.nextLine();
+                String[] data = str.split("\t");
+                int key = Integer.parseInt(data[0]);
+                double xx = new Double(data[1]);
+                double yy = new Double(data[2]);
+                double [] location = new double[]{xx,yy};
+                productsLocation.put(key,location);
+            }
+            return productsLocation;
         }
-        System.out.println("Finish!");
     }
-}
