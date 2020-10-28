@@ -1,5 +1,7 @@
 package com.uci.warehouse;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -29,6 +31,19 @@ public class Warehouse {
 
     public Order getOrder(int orderId) {
         return orders.get(orderId);
+    }
+
+    public List<Order> getOrderList() {
+        return new ArrayList<>(orders.values());
+    }
+
+    public void updateOrderStatus(int orderId) {
+        if (orders.containsKey(orderId)) try {
+            throw new Exception("Order not existed!");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        orders.get(orderId).setStatus("Completed");
     }
 
     /**
