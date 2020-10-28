@@ -3,11 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="07160531-1e28-4ae8-8286-3296f7adfcb4" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/src/main/java/com/uci/warehouse/Order.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/uci/warehouse/Order.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/uci/warehouse/Warehouse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/uci/warehouse/Warehouse.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/uci/warehouse/Order.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/uci/warehouse/Product.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/uci/warehouse/Test/OrderTest.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/uci/warehouse/Warehouse.class" beforeDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -25,8 +20,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/uci/warehouse/Order.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="211">
-              <caret line="22" column="29" lean-forward="true" selection-start-line="22" selection-start-column="29" selection-end-line="22" selection-end-column="29" />
+            <state relative-caret-position="296">
+              <caret line="65" column="51" lean-forward="true" selection-start-line="65" selection-start-column="51" selection-end-line="65" selection-end-column="51" />
               <folding>
                 <element signature="e#362#363#0" expanded="true" />
                 <element signature="e#391#392#0" expanded="true" />
@@ -80,8 +75,8 @@
         <option value="$PROJECT_DIR$/src/com/uci/warehouse/Test/OrderTest.java" />
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/main/java/com/uci/warehouse/Test/OrderTest.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/uci/warehouse/Order.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/uci/warehouse/Warehouse.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/uci/warehouse/Order.java" />
       </list>
     </option>
   </component>
@@ -188,12 +183,12 @@
       <updated>1603835054395</updated>
       <workItem from="1603835060350" duration="2616000" />
       <workItem from="1603837753868" duration="2968000" />
-      <workItem from="1603906641811" duration="982000" />
+      <workItem from="1603906641811" duration="1686000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="6566000" />
+    <option name="totallyTimeSpent" value="7270000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -283,8 +278,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/uci/warehouse/Order.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="211">
-          <caret line="22" column="29" lean-forward="true" selection-start-line="22" selection-start-column="29" selection-end-line="22" selection-end-column="29" />
+        <state relative-caret-position="296">
+          <caret line="65" column="51" lean-forward="true" selection-start-line="65" selection-start-column="51" selection-end-line="65" selection-end-column="51" />
           <folding>
             <element signature="e#362#363#0" expanded="true" />
             <element signature="e#391#392#0" expanded="true" />

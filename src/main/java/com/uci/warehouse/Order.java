@@ -59,7 +59,9 @@ public class Order {
      */
     public double[][] getDistanceMatrix(Map<Integer, double[]> locationMap) {
         List<Integer> list = new ArrayList<>(products.keySet());
-        double[][] m = new double[list.size()][list.size()];
+        list.add(0, -1);
+        locationMap.put(-1, new double[]{0,0});
+        double[][] m = new double[list.size() + 1][list.size() + 1];
         for (int i = 0; i < list.size(); i++) {
             for (int j = 0; j < list.size(); j++) {
                 if (!locationMap.containsKey(list.get(i)) || !locationMap.containsKey(list.get(j))) try {
