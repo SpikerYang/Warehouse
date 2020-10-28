@@ -28,14 +28,7 @@
     </select>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="07160531-1e28-4ae8-8286-3296f7adfcb4" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/uci/warehouse/TSP_NN.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__junit_junit_4_12_beta_3.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__junit_junit_4_12_beta_3.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_hamcrest_hamcrest_core_1_3.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_hamcrest_hamcrest_core_1_3.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/uci/warehouse/Test/OrderTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/uci/warehouse/Test/OrderTest.class" afterDir="false" />
-    </list>
+    <list default="true" id="07160531-1e28-4ae8-8286-3296f7adfcb4" name="Default Changelist" comment="TSP_NN.java" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -152,8 +145,16 @@
       <updated>1603835054395</updated>
       <workItem from="1603835060350" duration="2616000" />
       <workItem from="1603837753868" duration="1932000" />
-      <workItem from="1603854717028" duration="12558000" />
+      <workItem from="1603854717028" duration="13282000" />
     </task>
+    <task id="LOCAL-00001" summary="TSP_NN.java">
+      <created>1603908674898</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1603908674898</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -181,6 +182,10 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="TSP_NN.java" />
+    <option name="LAST_COMMIT_MESSAGE" value="TSP_NN.java" />
   </component>
   <component name="WindowStateProjectService">
     <state width="1878" height="141" key="GridCell.Tab.0.bottom" timestamp="1603908463683">
@@ -215,6 +220,14 @@
       <screen x="0" y="23" width="1920" height="1057" />
     </state>
     <state width="1878" height="141" key="GridCell.Tab.1.right/0.23.1920.1057@0.23.1920.1057" timestamp="1603908463684" />
+    <state x="560" y="287" key="Vcs.Push.Dialog.v2" timestamp="1603908863837">
+      <screen x="0" y="23" width="1920" height="1057" />
+    </state>
+    <state x="560" y="287" key="Vcs.Push.Dialog.v2/0.23.1920.1057@0.23.1920.1057" timestamp="1603908863837" />
+    <state x="756" y="468" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1603909360167">
+      <screen x="0" y="23" width="1920" height="1057" />
+    </state>
+    <state x="756" y="468" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.23.1920.1057@0.23.1920.1057" timestamp="1603909360167" />
   </component>
   <component name="masterDetails">
     <states>
