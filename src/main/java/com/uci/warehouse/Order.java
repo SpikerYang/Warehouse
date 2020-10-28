@@ -11,8 +11,17 @@ import java.util.Map;
  */
 public class Order {
     private int id;
+    private String status;
     // key: ProductId, value: Quantity
     private Map<Integer, Integer> products;
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
 
     public int getId() {
         return id;
@@ -44,7 +53,7 @@ public class Order {
     }
 
     /**
-     * Generate distanceMatrix of order
+     * Generate distanceMatrix of products
      * @param locationMap map storing location of products
      * @return distanceMatrix
      */
