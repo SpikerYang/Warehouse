@@ -69,8 +69,8 @@ public class Order {
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
-                m[i][j] = Math.pow((locationMap.get(list.get(i))[0] - locationMap.get(list.get(j))[0]), 2)
-                        + Math.pow((locationMap.get(list.get(i))[1] - locationMap.get(list.get(j))[1]), 2);
+                m[i][j] = Math.abs(locationMap.get(list.get(i))[0] - locationMap.get(list.get(j))[0])
+                        + Math.abs(locationMap.get(list.get(i))[1] - locationMap.get(list.get(j))[1]);
             }
         }
         return m;
