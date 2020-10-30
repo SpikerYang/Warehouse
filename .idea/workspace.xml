@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="07160531-1e28-4ae8-8286-3296f7adfcb4" name="Default Changelist" comment="">
-
       <change beforePath="$PROJECT_DIR$/src/main/java/com/uci/warehouse/Order.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/uci/warehouse/Order.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/uci/warehouse/Product.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/uci/warehouse/Product.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/uci/warehouse/Warehouse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/uci/warehouse/Warehouse.java" afterDir="false" />
@@ -45,7 +44,6 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-
         <entry file="file://$PROJECT_DIR$/src/main/java/com/uci/warehouse/readFile.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="225">
@@ -58,7 +56,6 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-
         <entry file="file://$PROJECT_DIR$/src/main/java/com/uci/warehouse/Product.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="135">
@@ -121,7 +118,6 @@
         <option value="$PROJECT_DIR$/src/com/uci/warehouse/Test/OrderTest.java" />
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/main/java/com/uci/warehouse/Test/OrderTest.java" />
-
         <option value="$PROJECT_DIR$/src/main/java/com/uci/warehouse/readFile.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/uci/warehouse/Order.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/uci/warehouse/Product.java" />
@@ -142,20 +138,13 @@
       <select />
     </treeState>
   </component>
-  <component name="ProjectFrameBounds">
-
-    <option name="x" value="210" />
-    <option name="y" value="92" />
-    <option name="width" value="1521" />
-    <option name="height" value="832" />
-  </component>
+  <component name="ProjectId" id="1jcR7MR8W152InopQ1qkeKsL3rY" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -197,7 +186,6 @@
           <select />
         </subPane>
       </pane>
-
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -250,14 +238,12 @@
       <option name="presentableId" value="Default" />
       <updated>1603835054395</updated>
       <workItem from="1603835060350" duration="2616000" />
-
       <workItem from="1603837753868" duration="2968000" />
       <workItem from="1603906641811" duration="3464000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-
     <option name="totallyTimeSpent" value="9048000" />
   </component>
   <component name="TodoView">
@@ -290,7 +276,6 @@
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="8" weight="0.32972974" />
       <window_info anchor="bottom" id="Database Changes" order="9" />
-
       <window_info anchor="bottom" id="Terminal" order="10" visible="true" weight="0.32972974" />
       <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" />
       <window_info anchor="bottom" id="Messages" order="12" weight="0.32972974" />
@@ -313,9 +298,14 @@
     <MESSAGE value="add two functions&#10;add one map&#10;change one function" />
     <option name="LAST_COMMIT_MESSAGE" value="add two functions&#10;add one map&#10;change one function" />
   </component>
+  <component name="WindowStateProjectService">
+    <state x="2312" y="419" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog" timestamp="1604101230123">
+      <screen x="1920" y="-437" width="1080" height="1920" />
+    </state>
+    <state x="2312" y="419" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog/0.0.1920.1080/128.1080.1792.1120/1920.-437.1080.1920@1920.-437.1080.1920" timestamp="1604101230123" />
+  </component>
   <component name="editorHistoryManager">
     <entry file="jar://$MAVEN_REPOSITORY$/org/junit/jupiter/junit-jupiter-api/5.7.0/junit-jupiter-api-5.7.0.jar!/org/junit/jupiter/api/AssertEquals.class" />
-
     <entry file="jar://$MAVEN_REPOSITORY$/junit/junit/4.11/junit-4.11.jar!/org/junit/Assert.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="180">
@@ -366,7 +356,6 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
-
         <state relative-caret-position="447">
           <caret line="68" column="39" lean-forward="true" selection-start-line="68" selection-start-column="39" selection-end-line="68" selection-end-column="39" />
           <folding>
@@ -388,7 +377,6 @@
     </entry>
     <entry file="jar://$MAVEN_REPOSITORY$/junit/junit/4.11/junit-4.11.jar!/org/junit/Assert.class">
       <provider selected="true" editor-type-id="text-editor">
-
         <state relative-caret-position="89">
           <caret line="40" column="5" lean-forward="true" selection-start-line="40" selection-start-column="5" selection-end-line="40" selection-end-column="5" />
           <folding>
