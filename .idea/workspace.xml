@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="AutoImportSettings">
-    <option name="autoReloadType" value="ALL" />
+    <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="BranchesTreeState">
     <expand>
@@ -23,12 +23,14 @@
       <path>
         <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
         <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="BRANCH:jindong-TSP-DP" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="BRANCH:master" type="e8cecc67:BranchNodeDescriptor" />
       </path>
     </select>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="07160531-1e28-4ae8-8286-3296f7adfcb4" name="Default Changelist" comment="TSP_NN.java" />
+    <list default="true" id="07160531-1e28-4ae8-8286-3296f7adfcb4" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -45,40 +47,18 @@
     </option>
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_BRANCH_BY_REPOSITORY">
-      <map>
-        <entry key="$PROJECT_DIR$" value="master" />
-      </map>
-    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="MavenImportPreferences">
-    <option name="generalSettings">
-      <MavenGeneralSettings>
-        <option name="mavenHome" value="$APPLICATION_HOME_DIR$/plugins/maven/lib/maven3" />
-      </MavenGeneralSettings>
-    </option>
-  </component>
-  <component name="ProjectId" id="1jUNSHXDnEKz4E9gUhTXtZzErEg" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
-  <component name="ProjectViewState">
-    <option name="hideEmptyMiddlePackages" value="true" />
-    <option name="showLibraryContents" value="true" />
-  </component>
   <component name="PropertiesComponent">
     <property name="Downloaded.Files.Path.Enabled" value="false" />
     <property name="Repository.Attach.Annotations" value="false" />
     <property name="Repository.Attach.JavaDocs" value="false" />
     <property name="Repository.Attach.Sources" value="false" />
-    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="node.js.detected.package.eslint" value="true" />
-    <property name="node.js.detected.package.tslint" value="true" />
-    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/com/uci/warehouse" />
     <property name="node.js.path.for.package.tslint" value="project" />
-    <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -92,52 +72,6 @@
       <recent name="$PROJECT_DIR$/src/com/uci/warehouse" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.TSP_DP">
-    <configuration name="TSP_DP" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.uci.warehouse.TSP_DP" />
-      <module name="Warehouse" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.uci.warehouse.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="tsp_test" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.uci.warehouse.tsp_test" />
-      <module name="Warehouse" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.uci.warehouse.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
-      <option name="arquillianRunConfiguration">
-        <value>
-          <option name="containerStateName" value="" />
-        </value>
-      </option>
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <recent_temporary>
-      <list>
-        <item itemvalue="Application.TSP_DP" />
-        <item itemvalue="Application.tsp_test" />
-      </list>
-    </recent_temporary>
-  </component>
-  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -150,20 +84,11 @@
       <updated>1603835054395</updated>
       <workItem from="1603835060350" duration="2616000" />
       <workItem from="1603837753868" duration="1932000" />
-      <workItem from="1603854717028" duration="13282000" />
     </task>
-    <task id="LOCAL-00001" summary="TSP_NN.java">
-      <created>1603908674898</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1603908674898</updated>
-    </task>
-    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="3" />
+    <option name="version" value="1" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
@@ -176,7 +101,7 @@
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="jindong-TSP-DP" />
+                        <option value="master" />
                       </list>
                     </value>
                   </entry>
@@ -187,52 +112,13 @@
         </entry>
       </map>
     </option>
-  </component>
-  <component name="VcsManagerConfiguration">
-    <MESSAGE value="TSP_NN.java" />
-    <option name="LAST_COMMIT_MESSAGE" value="TSP_NN.java" />
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state width="1878" height="141" key="GridCell.Tab.0.bottom" timestamp="1603908463683">
+    <state x="756" y="468" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1604022182790">
       <screen x="0" y="23" width="1920" height="1057" />
     </state>
-    <state width="1878" height="141" key="GridCell.Tab.0.bottom/0.23.1920.1057@0.23.1920.1057" timestamp="1603908463683" />
-    <state width="1878" height="141" key="GridCell.Tab.0.center" timestamp="1603908463682">
-      <screen x="0" y="23" width="1920" height="1057" />
-    </state>
-    <state width="1878" height="141" key="GridCell.Tab.0.center/0.23.1920.1057@0.23.1920.1057" timestamp="1603908463682" />
-    <state width="1878" height="141" key="GridCell.Tab.0.left" timestamp="1603908463681">
-      <screen x="0" y="23" width="1920" height="1057" />
-    </state>
-    <state width="1878" height="141" key="GridCell.Tab.0.left/0.23.1920.1057@0.23.1920.1057" timestamp="1603908463681" />
-    <state width="1878" height="141" key="GridCell.Tab.0.right" timestamp="1603908463682">
-      <screen x="0" y="23" width="1920" height="1057" />
-    </state>
-    <state width="1878" height="141" key="GridCell.Tab.0.right/0.23.1920.1057@0.23.1920.1057" timestamp="1603908463682" />
-    <state width="1878" height="141" key="GridCell.Tab.1.bottom" timestamp="1603908463684">
-      <screen x="0" y="23" width="1920" height="1057" />
-    </state>
-    <state width="1878" height="141" key="GridCell.Tab.1.bottom/0.23.1920.1057@0.23.1920.1057" timestamp="1603908463684" />
-    <state width="1878" height="141" key="GridCell.Tab.1.center" timestamp="1603908463683">
-      <screen x="0" y="23" width="1920" height="1057" />
-    </state>
-    <state width="1878" height="141" key="GridCell.Tab.1.center/0.23.1920.1057@0.23.1920.1057" timestamp="1603908463683" />
-    <state width="1878" height="141" key="GridCell.Tab.1.left" timestamp="1603908463683">
-      <screen x="0" y="23" width="1920" height="1057" />
-    </state>
-    <state width="1878" height="141" key="GridCell.Tab.1.left/0.23.1920.1057@0.23.1920.1057" timestamp="1603908463683" />
-    <state width="1878" height="141" key="GridCell.Tab.1.right" timestamp="1603908463684">
-      <screen x="0" y="23" width="1920" height="1057" />
-    </state>
-    <state width="1878" height="141" key="GridCell.Tab.1.right/0.23.1920.1057@0.23.1920.1057" timestamp="1603908463684" />
-    <state x="560" y="287" key="Vcs.Push.Dialog.v2" timestamp="1603908863837">
-      <screen x="0" y="23" width="1920" height="1057" />
-    </state>
-    <state x="560" y="287" key="Vcs.Push.Dialog.v2/0.23.1920.1057@0.23.1920.1057" timestamp="1603908863837" />
-    <state x="756" y="468" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1603909360167">
-      <screen x="0" y="23" width="1920" height="1057" />
-    </state>
-    <state x="756" y="468" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.23.1920.1057@0.23.1920.1057" timestamp="1603909360167" />
+    <state x="756" y="468" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.23.1920.1057@0.23.1920.1057" timestamp="1604022182790" />
   </component>
   <component name="masterDetails">
     <states>
