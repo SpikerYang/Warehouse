@@ -266,7 +266,87 @@ public class Warehouse {
         System.out.print(direction);
     }
 
-//==============================================================================================================================
+
+    public static void printRouteMap(Order order, List<Integer> route){
+        List<Integer> list= order.getOrderList();
+        int[][][] graph = order.getXYDistanceMatrix(productLocationMap);
+        String[][] routeMap = new String[20][40];
+
+        //initialize
+        for(int i=0;i<20;i++){
+            for(int j=0;j<40;j++){
+                routeMap[i][j] = "   ";
+            }
+        }
+
+
+        routeMap[19-(int)getProductLocation(list.get(route.get(0)))[1]][(int)getProductLocation(list.get(route.get(0)))[0]] = String.format("%-3s", "S");
+        for (int i = 1; i < route.size(); i++){
+            int xx=graph [route.get(i-1)][route.get(i)][0];
+            int yy=graph [route.get(i-1)][route.get(i)][1];
+            if(xx>0){
+                for(int j=(int)getProductLocation(list.get(route.get(i-1)))[0]+1; j<(int)getProductLocation(list.get(route.get(i)))[0];j++){
+                    if( routeMap[19-(int)getProductLocation(list.get(route.get(i-1)))[1]][j] == "   ") {
+                        routeMap[19 - (int) getProductLocation(list.get(route.get(i - 1)))[1]][j] = "---";
+                    }
+                }
+                routeMap[19 - (int) getProductLocation(list.get(route.get(i - 1)))[1]][(int)getProductLocation(list.get(route.get(i)))[0]-1] = "-->";
+            }else if (xx<0){
+                for(int j=(int)getProductLocation(list.get(route.get(i-1)))[0]-1; j>(int)getProductLocation(list.get(route.get(i)))[0];j--){
+                    if(routeMap[19-(int)getProductLocation(list.get(route.get(i-1)))[1]][j] == "   ") routeMap[19-(int)getProductLocation(list.get(route.get(i-1)))[1]][j] = "---";
+                }
+                routeMap[19 - (int) getProductLocation(list.get(route.get(i - 1)))[1]][(int)getProductLocation(list.get(route.get(i)))[0]+1] = "<--";
+            }
+            if(yy>0){
+                for(int j=(int)getProductLocation(list.get(route.get(i-1)))[1]; j<(int)getProductLocation(list.get(route.get(i)))[1];j++){
+                    if(routeMap[19-j][(int)getProductLocation(list.get(route.get(i)))[0]] == "   ")routeMap[19-j][(int)getProductLocation(list.get(route.get(i)))[0]] = "|  ";
+                }
+                routeMap[20 - (int)getProductLocation(list.get(route.get(i)))[1]][(int)getProductLocation(list.get(route.get(i)))[0]] = "^  ";
+            }else if(yy<0){
+                for(int j=(int)getProductLocation(list.get(route.get(i-1)))[1]; j>(int)getProductLocation(list.get(route.get(i)))[1];j--){
+                    if(routeMap[19-j][(int)getProductLocation(list.get(route.get(i)))[0]] == "   ")routeMap[19-j][(int)getProductLocation(list.get(route.get(i)))[0]] = "|  ";
+                }
+                routeMap[18 - (int)getProductLocation(list.get(route.get(i)))[1]][(int)getProductLocation(list.get(route.get(i)))[0]] = "V  ";
+            }
+
+            if(route.get(i)==route.get(0)){
+                break;
+            }else{
+                routeMap[19-(int)getProductLocation(list.get(route.get(i)))[1]][(int)getProductLocation(list.get(route.get(i)))[0]] = String.format("%-3s", list.get(route.get(i)));
+            }
+        }
+        System.out.println("The route is show as below:");
+//        for(int i=0;i<20;i++){
+//            for(int j=0;j<40;j++){
+//                System.out.print(routeMap[i][j]);
+//            }
+//            System.out.println(" ");
+//        }
+        for(int i = 0; i<=20;i++){
+            if(i==20){
+                System.out.print("   ");
+                for(int j=0;j<40;j++){
+                    String jid = String.format("%-2s", j);
+                    System.out.print(jid + " ");
+                }
+                System.out.println(" ");
+            }else{
+                String iid = String.format("%-2s", 19-i);
+                System.out.print(iid + " ");
+                for(int j=0;j<40;j++){
+                    if(i==19 && j==0){
+                        System.out.print("S  ");
+                    }else {
+                        System.out.print(routeMap[i][j]);
+                    }
+                }
+                System.out.println(" ");
+            }
+        }
+    }
+
+
+    //==============================================================================================================================
 //                           main
 //
 //==============================================================================================================================
@@ -295,7 +375,7 @@ public class Warehouse {
         //order.addProduct(0,1);
         order.addProduct(1,1);
         order.addProduct(45,1);
-        order.addProduct(74,1);
+        //order.addProduct(74,1);
         order.addProduct(102,1);
 
         // init the graph;
@@ -332,5 +412,7 @@ public class Warehouse {
         route = tsp_dp.getRoute(graph);
         System.out.println(route);
         printRoute(order, route);
+
+        printRouteMap(order,route);
     }
 }

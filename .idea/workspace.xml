@@ -29,10 +29,8 @@
     </select>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="07160531-1e28-4ae8-8286-3296f7adfcb4" name="Default Changelist" comment="add print all item locations">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="07160531-1e28-4ae8-8286-3296f7adfcb4" name="Default Changelist" comment="print shelf map">
       <change beforePath="$PROJECT_DIR$/src/main/java/com/uci/warehouse/Warehouse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/uci/warehouse/Warehouse.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/uci/warehouse/Warehouse.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/uci/warehouse/Warehouse.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -146,7 +144,14 @@
       <option name="project" value="LOCAL" />
       <updated>1604120724959</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="print shelf map">
+      <created>1604123406131</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1604123406132</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -181,7 +186,8 @@
     <MESSAGE value="Update DSP_NN" />
     <MESSAGE value="Format adjustments" />
     <MESSAGE value="add print all item locations" />
-    <option name="LAST_COMMIT_MESSAGE" value="add print all item locations" />
+    <MESSAGE value="print shelf map" />
+    <option name="LAST_COMMIT_MESSAGE" value="print shelf map" />
   </component>
   <component name="WindowStateProjectService">
     <state x="2312" y="419" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog" timestamp="1604101230123">
@@ -236,10 +242,10 @@
       <screen x="0" y="23" width="1920" height="1057" />
     </state>
     <state x="592" y="312" key="MultipleFileMergeDialog/0.23.1920.1057@0.23.1920.1057" timestamp="1604119535331" />
-    <state x="560" y="287" key="Vcs.Push.Dialog.v2" timestamp="1604120733303">
+    <state x="560" y="287" key="Vcs.Push.Dialog.v2" timestamp="1604123410045">
       <screen x="0" y="23" width="1920" height="1057" />
     </state>
-    <state x="560" y="287" key="Vcs.Push.Dialog.v2/0.23.1920.1057@0.23.1920.1057" timestamp="1604120733303" />
+    <state x="560" y="287" key="Vcs.Push.Dialog.v2/0.23.1920.1057@0.23.1920.1057" timestamp="1604123410045" />
   </component>
   <component name="masterDetails">
     <states>
