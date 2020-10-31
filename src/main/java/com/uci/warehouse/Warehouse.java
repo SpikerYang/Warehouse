@@ -263,7 +263,7 @@ public class Warehouse {
 
 //==============================================================================================================================
 //                           main
-// TODO:   To 万倩 你改一下你的代码让最下面那几句跑起来
+//
 //==============================================================================================================================
     public static void main(String[] args) throws FileNotFoundException {
         //read file
@@ -281,6 +281,10 @@ public class Warehouse {
         // print map
 //        warehouse.printMap();
 
+
+
+
+
         //fake a orderID :1
         order = new Order(1);
         //order.addProduct(0,1);
@@ -297,6 +301,15 @@ public class Warehouse {
 //            }
 //            System.out.println(" ");
 //        }
+
+        //print all the items
+        List<Integer> list= order.getOrderList();
+        System.out.print("Item location: ");
+        for(Integer l:list){
+            System.out.print("("+(int)getProductLocation(l)[0]+","+(int)getProductLocation(l)[1]+") ");
+        }
+        System.out.println("\n");
+
 
         // show the route;
         //1. nearest neighbor approach : 2-approximation in O(n^2) time
