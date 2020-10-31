@@ -19,6 +19,7 @@ public class Warehouse {
     private static Map<Integer, Order> orders;
     private static Map<Integer, double[]> productLocationMap;
     private Map<ArrayList<Long>, Integer> shelveMap;
+    private static String[][] routeMap;
 
     private static Order order;
 
@@ -140,8 +141,9 @@ public class Warehouse {
                         System.out.print("S  ");
                     }else if(shelveArray.contains(tmparray)){
                         id = shelveArray.indexOf(tmparray)+1;
-                        String sid = String.format("%-2s", id);
-                        System.out.print(sid + " ");
+//                        String sid = String.format("%-2s", id);
+//                        System.out.print(sid + " ");
+                        System.out.print("__ ");
                     }else{
                         System.out.print("   ");
                     }
@@ -163,12 +165,12 @@ public class Warehouse {
             if(i==20){
                 System.out.print("   ");
                 for(int j=0;j<40;j++){
-                    String jid = String.format("%-2s", j+1);
+                    String jid = String.format("%-2s", j);
                     System.out.print(jid + " ");
                 }
                 System.out.println(" ");
             }else{
-                String iid = String.format("%-2s", 20-i);
+                String iid = String.format("%-2s", 19-i);
                 System.out.print(iid + " ");
                 for(int j=0;j<40;j++){
                     tmparray = new ArrayList<>();
@@ -178,8 +180,9 @@ public class Warehouse {
                         System.out.print("S  ");
                     }else if(shelveMap.containsKey(tmparray)){
                         id = shelveMap.get(tmparray);
-                        String sid = String.format("%-2s", id);
-                        System.out.print(sid + " ");
+//                        String sid = String.format("%-2s", id);
+//                        System.out.print(sid + " ");
+                        System.out.print("__ ");
                     }else{
                         System.out.print("   ");
                     }
@@ -193,6 +196,7 @@ public class Warehouse {
      * get shelve information from product imfor
      */
     public void getShelveMap(){
+        shelveMap = new HashMap<>();
         int id = 1;
         double[] location = new double[2];
         long[] shelveLocation = new long[2];
@@ -211,6 +215,7 @@ public class Warehouse {
             }
         }
     }
+
 //==============================================================================================================================
 //                           print TSP route instruction
 //==============================================================================================================================
@@ -279,8 +284,8 @@ public class Warehouse {
         //TODO
 
         // print map
-//        warehouse.printMap();
-
+        warehouse.getShelveMap();
+        warehouse.printMap();
 
 
 
