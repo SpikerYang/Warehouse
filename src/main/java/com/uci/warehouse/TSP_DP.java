@@ -96,13 +96,14 @@ public class TSP_DP {
         List<Integer> res;
         res = getTour(parent, distance.length);
         printTour(res);
+        System.out.println("distance:" + min);
         return res;
     }
 
     private void printTour(List<Integer> route) {
         StringJoiner joiner = new StringJoiner("->");
         route.forEach(v -> joiner.add(String.valueOf(v)));
-        System.out.println("\nTSP tour");
+        System.out.println("route:");
         System.out.println(joiner.toString());
     }
 
