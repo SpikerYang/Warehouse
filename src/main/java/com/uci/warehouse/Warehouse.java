@@ -243,14 +243,14 @@ public class Warehouse {
             int xx=graph [route.get(i-1)][route.get(i)][0];
             int yy=graph [route.get(i-1)][route.get(i)][1];
             if(xx>0){
-                direction+="\tG0 to east to ("+(int)getProductLocation(list.get(route.get(i)))[0]+","+(int)(getProductLocation(list.get(route.get(i)))[1]-yy)+")\n";
+                direction+="\tGo to east to ("+(int)getProductLocation(list.get(route.get(i)))[0]+","+(int)(getProductLocation(list.get(route.get(i)))[1]-yy)+")\n";
             }else if (xx<0){
-                direction+="\tG0 to west to ("+(int)getProductLocation(list.get(route.get(i)))[0]+","+(int)(getProductLocation(list.get(route.get(i)))[1]-yy)+")\n";
+                direction+="\tGo to west to ("+(int)getProductLocation(list.get(route.get(i)))[0]+","+(int)(getProductLocation(list.get(route.get(i)))[1]-yy)+")\n";
             }
             if(yy>0){
-                direction+="\tG0 to north to ("+(int)getProductLocation(list.get(route.get(i)))[0]+","+(int)getProductLocation(list.get(route.get(i)))[1]+")\n";
+                direction+="\tGo to north to ("+(int)getProductLocation(list.get(route.get(i)))[0]+","+(int)getProductLocation(list.get(route.get(i)))[1]+")\n";
             }else if(yy<0){
-                direction+="\tG0 to south to ("+(int)getProductLocation(list.get(route.get(i)))[0]+","+(int)getProductLocation(list.get(route.get(i)))[1]+")\n";
+                direction+="\tGo to south to ("+(int)getProductLocation(list.get(route.get(i)))[0]+","+(int)getProductLocation(list.get(route.get(i)))[1]+")\n";
             }
             if(route.get(i)==route.get(0)){
                 direction+="Done!";
@@ -300,16 +300,18 @@ public class Warehouse {
 
         // show the route;
         //1. nearest neighbor approach : 2-approximation in O(n^2) time
-//        System.out.print("1. nearest neighbor approach\n\n");
-//        tsp_nn = new TSP_NN(1, graph);
-//        ArrayList route=tsp_nn.nearestNeigh(graph);
-//        //System.out.println(route);
-//        printRoute(order, route);
+        System.out.print("1. nearest neighbor approach\n");
+        tsp_nn = new TSP_NN(1, graph);
+        List<Integer> route=tsp_nn.nearestNeigh(graph);
+        //System.out.println(route);
+        printRoute(order, route);
+        System.out.print("\n\n");
 
         //2. DP approch : optimal route in O(n^2*2^n) time
-        System.out.print("2. DP approach\n\n");
+        System.out.print("2. DP approach\n");
         tsp_dp = new TSP_DP();
-        List<Integer> route = tsp_dp.getRoute(graph);
+        //List<Integer> route = tsp_dp.getRoute(graph);
+        route = tsp_dp.getRoute(graph);
         System.out.println(route);
         printRoute(order, route);
     }

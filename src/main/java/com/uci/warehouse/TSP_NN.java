@@ -7,7 +7,7 @@ public class TSP_NN {
     int orderID;
     private Order order;
 
-    private double[][] graph;
+    private int[][] graph;
     /*={ {0,10,15,20},
             {10,0,35,25},
             {15,35,0,30},
@@ -19,7 +19,7 @@ public class TSP_NN {
     private Set<Integer> unvisited = new HashSet<Integer>();
 
 
-    public TSP_NN(int OrderID,double[][] graph){
+    public TSP_NN(int OrderID,int[][] graph){
         orderID= OrderID;
         order = new Order(orderID);
         this.graph = graph;
@@ -33,7 +33,7 @@ public class TSP_NN {
     }
 
 
-    public ArrayList<Integer> nearestNeigh(double[][] graph){
+    public ArrayList<Integer> nearestNeigh(int[][] graph){
 
         //double[] temp = new double[amountOfItem];
         //String path="0";
