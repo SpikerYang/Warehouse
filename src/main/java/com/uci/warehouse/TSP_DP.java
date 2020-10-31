@@ -2,7 +2,7 @@ package com.uci.warehouse;
 
 import java.util.*;
 
-public class Route {
+public class TSP_DP {
     private static int INFINITY = 100000000;
 
     private static class Index {
@@ -95,7 +95,16 @@ public class Route {
         parent.put(Index.createIndex(0, set), prevVertex);
         List<Integer> res;
         res = getTour(parent, distance.length);
+        printTour(res);
+        System.out.println("distance:" + min);
         return res;
+    }
+
+    private void printTour(List<Integer> route) {
+        StringJoiner joiner = new StringJoiner("-->");
+        route.forEach(v -> joiner.add(String.valueOf(v)));
+        System.out.print("route:");
+        System.out.println(joiner.toString());
     }
 
     private List<Integer> getTour(Map<Index, Integer> parent, int totalVertices) {
