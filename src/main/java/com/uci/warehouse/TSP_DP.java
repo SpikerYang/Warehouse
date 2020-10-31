@@ -95,7 +95,15 @@ public class TSP_DP {
         parent.put(Index.createIndex(0, set), prevVertex);
         List<Integer> res;
         res = getTour(parent, distance.length);
+        printTour(res);
         return res;
+    }
+
+    private void printTour(List<Integer> route) {
+        StringJoiner joiner = new StringJoiner("->");
+        route.forEach(v -> joiner.add(String.valueOf(v)));
+        System.out.println("\nTSP tour");
+        System.out.println(joiner.toString());
     }
 
     private List<Integer> getTour(Map<Index, Integer> parent, int totalVertices) {

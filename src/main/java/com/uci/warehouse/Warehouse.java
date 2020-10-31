@@ -310,9 +310,7 @@ public class Warehouse {
         System.out.print("2. DP approach\n\n");
         tsp_dp = new TSP_DP();
         List<Integer> route = tsp_dp.getRoute(graph);
-        //System.out.println(route);
+        System.out.println(route);
         printRoute(order, route);
     }
-
-
 }
