@@ -7,10 +7,11 @@ public class TSP_NN {
     int orderID;
     private Order order;
 
-    private double[][] graph={ {0,10,15,20},
+    private double[][] graph;
+    /*={ {0,10,15,20},
             {10,0,35,25},
             {15,35,0,30},
-            {20,25,30,0}};;
+            {20,25,30,0}};;*/
     private int amountOfItem;
 
     private ArrayList<Integer> route =new ArrayList<>();
@@ -18,29 +19,30 @@ public class TSP_NN {
     private Set<Integer> unvisited = new HashSet<Integer>();
 
 
-    public TSP_NN(int OrderID){
+    public TSP_NN(int OrderID,double[][] graph){
         orderID= OrderID;
         order = new Order(orderID);
-        //graph = order.getDistanceMatrix(Map);
+        this.graph = graph;
         amountOfItem= graph.length;
        //route = new int[amountOfItem];
         for (int i = 0; i < amountOfItem; i++) {
-            //row[i] = i;
+
             unvisited.add(i);
         }
 
     }
 
 
-    public ArrayList nearestNeigh(){
+    public ArrayList<Integer> nearestNeigh(double[][] graph){
 
-        double[] temp = new double[amountOfItem];
+        //double[] temp = new double[amountOfItem];
+        //String path="0";
         String path="0";
         route.add(0);
-        double s=0;//dis
+        double s=0;//distance
         int i=0;//current node
         int j;//next node
-        //default form 0
+        //default start point is node 0
         while(!unvisited.isEmpty()){
 
             unvisited.remove(i);
@@ -73,8 +75,8 @@ public class TSP_NN {
 
 
     public static void main (String[] args){
-        TSP_NN a = new TSP_NN(4);
-        a.nearestNeigh();
+        //TSP_NN a = new TSP_NN(4);
+        //a.nearestNeigh();
     }
 
 }
