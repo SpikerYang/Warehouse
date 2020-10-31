@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="AutoImportSettings">
-    <option name="autoReloadType" value="SELECTIVE" />
+    <option name="autoReloadType" value="ALL" />
   </component>
   <component name="BranchesTreeState">
     <expand>
@@ -23,17 +23,14 @@
       <path>
         <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
         <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="BRANCH:master" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="BRANCH:Alpha_release" type="e8cecc67:BranchNodeDescriptor" />
       </path>
     </select>
   </component>
   <component name="ChangeListManager">
     <list default="true" id="07160531-1e28-4ae8-8286-3296f7adfcb4" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/uci/warehouse/PrintMap.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/qvBox-warehouse-data-f20-v01.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/uci/warehouse/Order.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/uci/warehouse/Order.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/uci/warehouse/TSP_NN.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/uci/warehouse/TSP_NN.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/uci/warehouse/Route.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/uci/warehouse/TSP_DP.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/uci/warehouse/Warehouse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/uci/warehouse/Warehouse.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -44,7 +41,6 @@
   <component name="DefaultGradleProjectSettings">
     <option name="isMigrated" value="true" />
   </component>
-
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
@@ -52,12 +48,12 @@
       </list>
     </option>
   </component>
-
-  </component>
-  <component name="Git.Pull.Settings">
-    <option name="BRANCH" value="master" />
-  </component>
   <component name="Git.Settings">
+    <option name="PREVIOUS_COMMIT_AUTHORS">
+      <list>
+        <option value="Zhengw" />
+      </list>
+    </option>
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
         <entry key="$PROJECT_DIR$" value="master" />
@@ -65,19 +61,19 @@
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-
-  </component>
+  <component name="ProjectId" id="1jcR7MR8W152InopQ1qkeKsL3rY" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="PropertiesComponent">
     <property name="Downloaded.Files.Path.Enabled" value="false" />
     <property name="Repository.Attach.Annotations" value="false" />
     <property name="Repository.Attach.JavaDocs" value="false" />
     <property name="Repository.Attach.Sources" value="false" />
-
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/src/com/uci/warehouse" />
     <property name="node.js.detected.package.eslint" value="true" />
-
+    <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
     <property name="node.js.path.for.package.tslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
@@ -87,32 +83,14 @@
     <property name="project.structure.last.edited" value="SDKs" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="restartRequiresConfirmation" value="false" />
-    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+    <property name="settings.editor.selected.configurable" value="reference.projectsettings.compiler.javacompiler" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/src" />
-      <recent name="$PROJECT_DIR$" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/com/uci/warehouse" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Warehouse">
-    <configuration name="DrawTest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.uci.warehouse.Test.DrawTest" />
-      <module name="Warehouse" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.uci.warehouse.Test.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
+  <component name="RunManager">
     <configuration name="Warehouse" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.uci.warehouse.Warehouse" />
       <module name="Warehouse" />
@@ -140,11 +118,9 @@
     <recent_temporary>
       <list>
         <item itemvalue="Application.Warehouse" />
-        <item itemvalue="Application.DrawTest" />
       </list>
     </recent_temporary>
   </component>
-  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -156,16 +132,13 @@
       <option name="presentableId" value="Default" />
       <updated>1603835054395</updated>
       <workItem from="1603835060350" duration="2616000" />
-      <workItem from="1603837753868" duration="1932000" />
-      <workItem from="1604044689425" duration="216000" />
-      <workItem from="1604045046890" duration="129000" />
-      <workItem from="1604045340570" duration="7882000" />
+      <workItem from="1603837753868" duration="2968000" />
+      <workItem from="1603906641811" duration="3464000" />
     </task>
     <servers />
   </component>
-
   <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="3" />
+    <option name="version" value="1" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
@@ -178,7 +151,7 @@
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="master" />
+                        <option value="Alpha_release" />
                       </list>
                     </value>
                   </entry>
@@ -191,7 +164,47 @@
     </option>
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
-
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="add two functions&#10;add one map&#10;change one function" />
+    <option name="LAST_COMMIT_MESSAGE" value="add two functions&#10;add one map&#10;change one function" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="2312" y="419" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog" timestamp="1604101230123">
+      <screen x="1920" y="-437" width="1080" height="1920" />
+    </state>
+    <state x="2312" y="419" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog/0.0.1920.1080/128.1080.1792.1120/1920.-437.1080.1920@1920.-437.1080.1920" timestamp="1604101230123" />
+    <state width="1878" height="25" key="GridCell.Tab.0.bottom" timestamp="1604105102421">
+      <screen x="0" y="23" width="1920" height="1057" />
+    </state>
+    <state width="1878" height="25" key="GridCell.Tab.0.bottom/0.23.1920.1057@0.23.1920.1057" timestamp="1604105102421" />
+    <state width="1878" height="25" key="GridCell.Tab.0.center" timestamp="1604105102420">
+      <screen x="0" y="23" width="1920" height="1057" />
+    </state>
+    <state width="1878" height="25" key="GridCell.Tab.0.center/0.23.1920.1057@0.23.1920.1057" timestamp="1604105102420" />
+    <state width="1878" height="25" key="GridCell.Tab.0.left" timestamp="1604105102420">
+      <screen x="0" y="23" width="1920" height="1057" />
+    </state>
+    <state width="1878" height="25" key="GridCell.Tab.0.left/0.23.1920.1057@0.23.1920.1057" timestamp="1604105102420" />
+    <state width="1878" height="25" key="GridCell.Tab.0.right" timestamp="1604105102420">
+      <screen x="0" y="23" width="1920" height="1057" />
+    </state>
+    <state width="1878" height="25" key="GridCell.Tab.0.right/0.23.1920.1057@0.23.1920.1057" timestamp="1604105102420" />
+    <state width="1878" height="352" key="GridCell.Tab.1.bottom" timestamp="1604104296411">
+      <screen x="0" y="23" width="1920" height="1057" />
+    </state>
+    <state width="1878" height="352" key="GridCell.Tab.1.bottom/0.23.1920.1057@0.23.1920.1057" timestamp="1604104296411" />
+    <state width="1878" height="352" key="GridCell.Tab.1.center" timestamp="1604104296410">
+      <screen x="0" y="23" width="1920" height="1057" />
+    </state>
+    <state width="1878" height="352" key="GridCell.Tab.1.center/0.23.1920.1057@0.23.1920.1057" timestamp="1604104296410" />
+    <state width="1878" height="352" key="GridCell.Tab.1.left" timestamp="1604104296410">
+      <screen x="0" y="23" width="1920" height="1057" />
+    </state>
+    <state width="1878" height="352" key="GridCell.Tab.1.left/0.23.1920.1057@0.23.1920.1057" timestamp="1604104296410" />
+    <state width="1878" height="352" key="GridCell.Tab.1.right" timestamp="1604104296411">
+      <screen x="0" y="23" width="1920" height="1057" />
+    </state>
+    <state width="1878" height="352" key="GridCell.Tab.1.right/0.23.1920.1057@0.23.1920.1057" timestamp="1604104296411" />
   </component>
   <component name="masterDetails">
     <states>

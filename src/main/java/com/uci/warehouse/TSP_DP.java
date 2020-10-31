@@ -2,7 +2,7 @@ package com.uci.warehouse;
 
 import java.util.*;
 
-public class Route {
+public class TSP_DP {
     private static int INFINITY = 100000000;
 
     private static class Index {
