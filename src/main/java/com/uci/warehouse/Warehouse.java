@@ -223,7 +223,7 @@ public class Warehouse {
      */
     public static void printRoute(Order order, List<Integer> route){
 
-        double[][][] graph = order.getXYDistanceMatrix(productLocationMap);
+        int[][][] graph = order.getXYDistanceMatrix(productLocationMap);
 //        for(double[][] g:graph){
 //            for(double[] gg:g){
 //                for(double ggg:gg){
@@ -237,20 +237,20 @@ public class Warehouse {
     List<Integer> list= order.getOrderList();
 
 
-        String direction="Start at location ("+getProductLocation(list.get(route.get(0)))[0]+","+getProductLocation(list.get(route.get(0)))[1]+")\n";
+        String direction="Start at location ("+(int)getProductLocation(list.get(route.get(0)))[0]+","+(int)getProductLocation(list.get(route.get(0)))[1]+")\n";
         //     order.getOrderItemLocation(0,map)[0]+","+order.getOrderItemLocation(0,map)[1]+"\n";
         for (int i = 1; i < route.size(); i++){
-            double xx=graph [route.get(i-1)][route.get(i)][0];
-            double yy=graph [route.get(i-1)][route.get(i)][1];
+            int xx=graph [route.get(i-1)][route.get(i)][0];
+            int yy=graph [route.get(i-1)][route.get(i)][1];
             if(xx>0){
-                direction+="\tG0 to east to ("+getProductLocation(list.get(route.get(i)))[0]+","+(getProductLocation(list.get(route.get(i)))[1]-yy)+")\n";
+                direction+="\tG0 to east to ("+(int)getProductLocation(list.get(route.get(i)))[0]+","+(int)(getProductLocation(list.get(route.get(i)))[1]-yy)+")\n";
             }else if (xx<0){
-                direction+="\tG0 to west to ("+getProductLocation(list.get(route.get(i)))[0]+","+(getProductLocation(list.get(route.get(i)))[1]-yy)+")\n";
+                direction+="\tG0 to west to ("+(int)getProductLocation(list.get(route.get(i)))[0]+","+(int)(getProductLocation(list.get(route.get(i)))[1]-yy)+")\n";
             }
             if(yy>0){
-                direction+="\tG0 to north to ("+getProductLocation(list.get(route.get(i)))[0]+","+getProductLocation(list.get(route.get(i)))[1]+")\n";
+                direction+="\tG0 to north to ("+(int)getProductLocation(list.get(route.get(i)))[0]+","+(int)getProductLocation(list.get(route.get(i)))[1]+")\n";
             }else if(yy<0){
-                direction+="\tG0 to south to ("+getProductLocation(list.get(route.get(i)))[0]+","+getProductLocation(list.get(route.get(i)))[1]+")\n";
+                direction+="\tG0 to south to ("+(int)getProductLocation(list.get(route.get(i)))[0]+","+(int)getProductLocation(list.get(route.get(i)))[1]+")\n";
             }
             if(route.get(i)==route.get(0)){
                 direction+="Done!";
@@ -279,7 +279,7 @@ public class Warehouse {
         //TODO
 
         // print map
-        warehouse.printMap();
+//        warehouse.printMap();
 
         //fake a orderID :1
         order = new Order(1);
@@ -307,7 +307,7 @@ public class Warehouse {
 //        printRoute(order, route);
 
         //2. DP approch : optimal route in O(n^2*2^n) time
-        System.out.print("2. DP approch\n\n");
+        System.out.print("2. DP approach\n\n");
         tsp_dp = new TSP_DP();
         List<Integer> route = tsp_dp.getRoute(graph);
         //System.out.println(route);
