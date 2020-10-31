@@ -27,7 +27,7 @@ class OrderTest {
         order.addProduct(45, 3);
         order.addProduct(302, 5);
 
-        double[][] matrix = order.getDistanceMatrix(locationMap);
+        int[][] matrix = order.getDistanceMatrix(locationMap);
         //TODO
     }
 }

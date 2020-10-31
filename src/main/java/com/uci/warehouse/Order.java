@@ -78,11 +78,11 @@ public class Order {
      * @param locationMap map storing location of products
      * @return distanceMatrix
      */
-    public double[][] getDistanceMatrix(Map<Integer, double[]> locationMap) {
+    public int[][] getDistanceMatrix(Map<Integer, double[]> locationMap) {
         List<Integer> list = new ArrayList<>(products.keySet());
         list.add(0, -1);
         locationMap.put(-1, new double[]{0,0});
-        double[][] m = new double[list.size()][list.size()];
+        int[][] m = new int[list.size()][list.size()];
         for (int i = 0; i < list.size(); i++) {
             for (int j = 0; j < list.size(); j++) {
                 if (!locationMap.containsKey(list.get(i)) || !locationMap.containsKey(list.get(j))) try {
@@ -90,8 +90,8 @@ public class Order {
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
-                m[i][j] = Math.abs(locationMap.get(list.get(i))[0] - locationMap.get(list.get(j))[0])
-                        + Math.abs(locationMap.get(list.get(i))[1] - locationMap.get(list.get(j))[1]);
+                m[i][j] = Math.abs((int)locationMap.get(list.get(i))[0] - (int)locationMap.get(list.get(j))[0])
+                        + Math.abs((int)locationMap.get(list.get(i))[1] - (int)locationMap.get(list.get(j))[1]);
             }
         }
         return m;

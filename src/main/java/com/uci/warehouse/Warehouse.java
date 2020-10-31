@@ -91,8 +91,8 @@ public class Warehouse {
     }
 //==============================================================================================================================
 //                           map printing functions
-    TO 王正， 我把变量locationmap 换成productLocationMap
-    现在跑不出来
+    //TODO: 王正， 我把变量locationmap 换成productLocationMap
+    //TODO: 现在跑不出来
 //==============================================================================================================================
     /**
      * Print route to console with map
@@ -263,7 +263,7 @@ public class Warehouse {
 
 //==============================================================================================================================
 //                           main
-    To 万倩 你改一下你的代码让最下面那几句跑起来
+// TODO:   To 万倩 你改一下你的代码让最下面那几句跑起来
 //==============================================================================================================================
     public static void main(String[] args) throws FileNotFoundException {
         //read file
@@ -290,7 +290,7 @@ public class Warehouse {
         order.addProduct(102,1);
 
         // init the graph;
-        double[][] graph = order.getDistanceMatrix(productLocationMap);
+        int[][] graph = order.getDistanceMatrix(productLocationMap);
 //        for(double[] g:graph){
 //            for(double gg:g){
 //                System.out.print(gg+ "     ");
@@ -300,16 +300,16 @@ public class Warehouse {
 
         // show the route;
         //1. nearest neighbor approach : 2-approximation in O(n^2) time
-        System.out.print("1. nearest neighbor approach\n\n");
-        tsp_nn = new TSP_NN(1, graph);
-        ArrayList route=tsp_nn.nearestNeigh(graph);
-        //System.out.println(route);
-        printRoute(order, route);
+//        System.out.print("1. nearest neighbor approach\n\n");
+//        tsp_nn = new TSP_NN(1, graph);
+//        ArrayList route=tsp_nn.nearestNeigh(graph);
+//        //System.out.println(route);
+//        printRoute(order, route);
 
         //2. DP approch : optimal route in O(n^2*2^n) time
-        System.out.print("1. nearest neighbor approach\n\n");
-        tsp_dp = new TSP_DP(1, graph);
-        List<Integer> route=tsp_dp.getRoute(graph);
+        System.out.print("2. DP approch\n\n");
+        tsp_dp = new TSP_DP();
+        List<Integer> route = tsp_dp.getRoute(graph);
         //System.out.println(route);
         printRoute(order, route);
     }
