@@ -101,9 +101,9 @@ public class TSP_DP {
     }
 
     private void printTour(List<Integer> route) {
-        StringJoiner joiner = new StringJoiner("->");
+        StringJoiner joiner = new StringJoiner("-->");
         route.forEach(v -> joiner.add(String.valueOf(v)));
-        System.out.println("route:");
+        System.out.print("route:");
         System.out.println(joiner.toString());
     }
 
