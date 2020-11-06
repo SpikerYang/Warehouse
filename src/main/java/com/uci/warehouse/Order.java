@@ -52,7 +52,6 @@ public class Order {
         //TODO
     }
 
-
     //get location of the ith item in the order
     public double [] getOrderItemLocation(int index, Map<Integer, double[]> map) {
         List<Integer> list = new ArrayList<>(products.keySet());
