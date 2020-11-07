@@ -85,14 +85,14 @@ public class TSP_DP {
         //to avoid ConcurrentModificationException copy set into another set while iterating
         Set<Integer> copySet = new HashSet<>(set);
         for(int k : set) {
-            int cost = distance[k][0] + getCost(copySet, k, minCostDP);
+            int cost = distance[k][distance.length - 1] + getCost(copySet, k, minCostDP);
             if(cost < min) {
                 min = cost;
                 prevVertex = k;
             }
         }
 
-        parent.put(Index.createIndex(0, set), prevVertex);
+        parent.put(Index.createIndex(distance.length - 1, set), prevVertex);
         List<Integer> res;
         res = getTour(parent, distance.length);
         printTour(res);
@@ -112,7 +112,7 @@ public class TSP_DP {
         for(int i=0; i < totalVertices; i++) {
             set.add(i);
         }
-        Integer start = 0;
+        Integer start = totalVertices - 1;
         Deque<Integer> stack = new LinkedList<>();
         while(true) {
             stack.push(start);

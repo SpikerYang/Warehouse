@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.*;
+import java.io.*;
 
 /**
  * @Author spike
@@ -390,6 +391,47 @@ public class Warehouse {
         }
     }
 
+    public static int[][] getStartAndEndLocation() {
+        int[][] res = new int[2][2];
+        try
+        {
+            //get start location
+            InputStreamReader isr=new InputStreamReader(System.in);
+            BufferedReader br=new BufferedReader(isr);
+
+            System.out.println("Where would you want to start?");
+            System.out.println("The x location of the start point is :");
+            String s1=br.readLine();
+
+            System.out.println("The y location of the start point is :：");
+            String s2=br.readLine();
+
+            int sx=Integer.parseInt(s1);
+            int sy=Integer.parseInt(s2);
+
+            res[0][0] = sx;
+            res[0][1] = sy;
+
+            //get end location
+            System.out.println("Where would you want to end?");
+            System.out.println("The x location of the end point is :");
+            String e1=br.readLine();
+
+            System.out.println("The y location of the end point is :：");
+            String e2=br.readLine();
+
+            int ex=Integer.parseInt(e1);
+            int ey=Integer.parseInt(e2);
+
+            res[1][0] = ex;
+            res[1][1] = ey;
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
+        }
+        return res;
+    }
 
     //==============================================================================================================================
 //                           main
@@ -412,9 +454,6 @@ public class Warehouse {
         warehouse.getShelveMap();
         warehouse.printMap();
 
-
-
-
         //fake a orderID :1
         order = new Order(1);
         //order.addProduct(0,1);
@@ -422,6 +461,9 @@ public class Warehouse {
         order.addProduct(45,1);
         //order.addProduct(74,1);
         order.addProduct(102,1);
+
+        int[][] startAndEndLocation = getStartAndEndLocation();
+
 
         // init the graph;
         int[][] graph = order.getDistanceMatrix(productLocationMap);
