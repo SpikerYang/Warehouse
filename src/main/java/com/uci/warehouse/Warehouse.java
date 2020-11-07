@@ -48,6 +48,51 @@ public class Warehouse {
         orders.put(order.getId(), order);
     }
 
+    /**
+     * Create an order from console, first specify the quantity of products, then type in id of each of product seperated by blanks
+     * @return Order
+     */
+    public Order createOrder() {
+        // get the quantity of products in the order
+        System.out.println("type the size of the order: ");
+        Scanner scanner = new Scanner(System.in);
+        int size = scanner.nextInt();
+        int id = orders.size();
+        Order order = new Order(id);
+        System.out.println("type id of product seperated by blanks: ");
+        for (int i = 0; i < size; i++) {
+            int productId = scanner.nextInt();
+            order.addProduct(productId, 1);
+        }
+        return order;
+    }
+
+    /**
+     * Add a list of orders from console, first specify the quantity of orders
+     */
+    public void addOrderList() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("type in the quantity of orders");
+        int size = scanner.nextInt();
+        for (int i = 0; i < size; i++) {
+            addOrder(createOrder());
+        }
+    }
+
+    /**
+     * Print order list to console
+     */
+    public void printOrderList() {
+        for (int id : orders.keySet()) {
+            System.out.println("order " + id + ": ");
+            Map<Integer, Integer> map = orders.get(id).getProducts();
+            for (int pId : map.keySet()) {
+                System.out.print(pId + "," + map.get(pId) + " ");
+            }
+            System.out.print("\n");
+        }
+    }
+    
     public Order getOrder(int orderId) {
         return orders.get(orderId);
     }
