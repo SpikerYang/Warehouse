@@ -7,7 +7,7 @@ public class TSP_NN {
     int orderID;
     private Order order;
 
-    private int[][] graph;
+    private int[][][] graph;
     /*={ {0,10,15,20},
             {10,0,35,25},
             {15,35,0,30},
@@ -19,11 +19,11 @@ public class TSP_NN {
     private Set<Integer> unvisited = new HashSet<Integer>();
 
 
-    public TSP_NN(int OrderID,int[][] graph){
+    public TSP_NN(int OrderID,int[][][] graph){
         orderID= OrderID;
         order = new Order(orderID);
         this.graph = graph;
-        amountOfItem= graph.length;
+        amountOfItem= graph.length-1;
        //route = new int[amountOfItem];
         for (int i = 0; i < amountOfItem; i++) {
 
@@ -33,16 +33,16 @@ public class TSP_NN {
     }
 
 
-    public ArrayList<Integer> nearestNeigh(int[][] graph){
+    public ArrayList<Integer> nearestNeigh(){
 
         //double[] temp = new double[amountOfItem];
         //String path="0";
         String path="0";
         route.add(0);
-        double s=0;//distance
+        int s=0;//distance
         int i=0;//current node
         int j;//next node
-        //default start point is node 0
+        //start point is node 0, end point is node size-1
         while(!unvisited.isEmpty()){
 
             unvisited.remove(i);
@@ -50,7 +50,7 @@ public class TSP_NN {
 
             path+="-->" + j;
             route.add(j);
-            s = s + graph[i][j];
+            s = s + Math.abs(graph[i][j][0])+Math.abs(graph[i][j][1]);
             i = j;
         }
         System.out.println("route:" + path);
@@ -62,11 +62,11 @@ public class TSP_NN {
         double m=Double.MAX_VALUE;
         int n=0;
        if (unvisited.isEmpty()){
-           return 0;
+           return graph.length-1;
         }
        for(int u:unvisited){
-           if(m>=graph[i][u]){
-               m=graph[i][u];
+           if(m>=Math.abs(graph[i][u][0])+Math.abs(graph[i][u][1])){
+               m=Math.abs(graph[i][u][0])+Math.abs(graph[i][u][1]);
                n=u;
            }
        }
@@ -74,9 +74,9 @@ public class TSP_NN {
     }
 
 
-    public static void main (String[] args){
-        //TSP_NN a = new TSP_NN(4);
-        //a.nearestNeigh();
-    }
+//    public static void main (String[] args){
+//        TSP_NN a = new TSP_NN(4);
+//        a.nearestNeigh();
+//    }
 
 }

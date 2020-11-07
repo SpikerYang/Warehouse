@@ -92,7 +92,6 @@ public class Warehouse {
     }
 //==============================================================================================================================
 //                           map printing functions
-
 //==============================================================================================================================
     /**
      * Print route to console with map
@@ -225,25 +224,30 @@ public class Warehouse {
      * @param order which order
      * @param route route list with start and end node
      */
-    public static String printRoute(Order order, List<Integer> route){
+    public static String printRoute(Order order, List<Integer> route, int[]start,int[]end) {
 
-        int[][][] graph = order.getXYDistanceMatrix(productLocationMap);
-        for(int[][] g:graph){
-            for(int[] gg:g){
-                //System.out.print("("+gg[0]+", "+gg[1]+")\t\t");
-                System.out.printf("(%3d， %3d)\t",gg[0],gg[1]);
-            }
-            System.out.println(" ");
-        }
+        int[][][] graph = order.getXYDistanceMatrix(productLocationMap,start,end);
+//        for(double[][] g:graph){
+//            for(double[] gg:g){
+//                for(double ggg:gg){
+//                    System.out.print(ggg+ "     ");
+//                }
+//
+//            }
+//            System.out.println(" ");
+//        }
 
     List<Integer> list= order.getOrderList();
+        list.add(0, -1);
 
-
-        String direction="Start at location ("+(int)getProductLocation(list.get(route.get(0)))[0]+","+(int)getProductLocation(list.get(route.get(0)))[1]+")\n";
+        String direction="Start at location ("+start[0]+","+start[1]+")\n";
         //     order.getOrderItemLocation(0,map)[0]+","+order.getOrderItemLocation(0,map)[1]+"\n";
-        for (int i = 1; i < route.size(); i++){
-            int xx=graph [route.get(i-1)][route.get(i)][0];
-            int yy=graph [route.get(i-1)][route.get(i)][1];
+        for (int i = 1; i < route.size()-1; i++){
+            int xx,yy;
+
+                 xx = graph[route.get(i - 1)][route.get(i)][0];
+                 yy = graph[route.get(i - 1)][route.get(i)][1];
+
             if(xx>0){
                 direction+="\tGo to east to ("+(int)getProductLocation(list.get(route.get(i)))[0]+","+(int)(getProductLocation(list.get(route.get(i)))[1]-yy)+")\n";
             }else if (xx<0){
@@ -254,13 +258,26 @@ public class Warehouse {
             }else if(yy<0){
                 direction+="\tGo to south to ("+(int)getProductLocation(list.get(route.get(i)))[0]+","+(int)getProductLocation(list.get(route.get(i)))[1]+")\n";
             }
-            if(route.get(i)==route.get(0)){
-                direction+="Done!";
-                break;
-            }
             direction+="Pick up product "+ list.get(route.get(i))+"\n";
         }
+        //for the end point
+        int xx=graph [route.get(route.size()-2)][route.get(route.size()-1)][0];
+        int yy=graph [route.get(route.size()-2)][route.get(route.size()-1)][1];
+        if(xx>0){
+            direction+="\tGo to east to ("+end[0]+","+(end[1]-yy)+")\n";
+        }else if (xx<0){
+            direction+="\tGo to west to ("+end[0]+","+(end[1]-yy)+")\n";
+        }
+        if(yy>0){
+            direction+="\tGo to north to ("+end[0]+","+end[1]+")\n";
+        }else if(yy<0){
+            direction+="\tGo to south to ("+end[0]+","+end[1]+")\n";
+        }
+        direction+="Done!\n";
 
+
+
+        System.out.print(direction);
         return direction;
     }
 
@@ -344,7 +361,7 @@ public class Warehouse {
     }
 
 
-//==============================================================================================================================
+    //==============================================================================================================================
 //                           main
 //
 //==============================================================================================================================
@@ -376,11 +393,20 @@ public class Warehouse {
         order.addProduct(74,1);
         order.addProduct(102,1);
 
+//        Scanner console = new Scanner(System.in);
+//        System.out.println("Please enter the start and end location as (1,1),(2,3), no space.");
+//
+        int[] start, end;
+        start=new int[]{0,0};
+        end=new int[]{100,100};
         // init the graph;
-        int[][] graph = order.getDistanceMatrix(productLocationMap);
-        for(int[] g:graph){
-            for(int gg:g){
-                System.out.print(gg+ "     ");
+        int[][] [] graph_se = order.getXYDistanceMatrix(productLocationMap,start,end);
+        int[][] [] graph_default = order.getXYDistanceMatrix(productLocationMap);
+        int[][]graph=order.getDistanceMatrix(productLocationMap);
+
+        for(int[][] g:graph_se){
+            for(int[] gg:g){
+                System.out.print("("+gg[0]+ ","+gg[1]+")");
             }
             System.out.println(" ");
         }
@@ -397,26 +423,26 @@ public class Warehouse {
         // show the route;
         //1. nearest neighbor approach : 2-approximation in O(n^2) time
         System.out.print("1. nearest neighbor approach\n");
-        tsp_nn = new TSP_NN(1, graph);
-        List<Integer> route=tsp_nn.nearestNeigh(graph);
+        tsp_nn = new TSP_NN(1, graph_se);
+        List<Integer> route=tsp_nn.nearestNeigh();
         //System.out.println(route);
-        String direction =printRoute(order, route);
-        System.out.print(direction);
+        String direction =printRoute(order, route,start,end);
+        //System.out.print(direction);
         System.out.print("\n\n");
         //export direction to txt
         exportFile.exportTxt("\n\nOrder:1\n"+direction);
 
 
-        //2. DP approch : optimal route in O(n^2*2^n) time
-        System.out.print("2. DP approach\n");
-        tsp_dp = new TSP_DP();
-        //List<Integer> route = tsp_dp.getRoute(graph);
-        direction =printRoute(order, route);
-        System.out.print(direction);
-        printRoute(order, route);
+//        //2. DP approch : optimal route in O(n^2*2^n) time
+//        System.out.print("2. DP approach\n");
+//        tsp_dp = new TSP_DP();
+//        route = tsp_dp.getRoute(graph);
+        //irection =printRoute(order, route);
+        //System.out.print(direction);
+        //printRoute(order, route);
         //export direction to txt
-        exportFile.exportTxt("\n\nOrder:1\n"+direction);
+        //exportFile.exportTxt("\n\nOrder:1\n"+direction);
 
-        printRouteMap(order,route);
+        //printRouteMap(order,route);
     }
 }
