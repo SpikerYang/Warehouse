@@ -28,17 +28,7 @@
     </select>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9a4ceddb-213a-4e84-b6bd-8f79a747ba5f" name="Default Changelist" comment="prepare to merge">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/uci/warehouse/Warehouse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/uci/warehouse/Warehouse.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/uci/warehouse/Order.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/uci/warehouse/Order.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/uci/warehouse/TSP_DP$Index.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/uci/warehouse/TSP_DP$Index.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/uci/warehouse/TSP_DP.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/uci/warehouse/TSP_DP.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/uci/warehouse/TSP_NN.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/uci/warehouse/TSP_NN.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/uci/warehouse/Warehouse.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/uci/warehouse/Warehouse.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/uci/warehouse/exportFile.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/uci/warehouse/exportFile.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/uci/warehouse/readFile.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/uci/warehouse/readFile.class" afterDir="false" />
-    </list>
+    <list default="true" id="9a4ceddb-213a-4e84-b6bd-8f79a747ba5f" name="Default Changelist" comment="UI adjustments" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -168,7 +158,14 @@
       <option name="project" value="LOCAL" />
       <updated>1604123406132</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="UI adjustments">
+      <created>1604784422420</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1604784422420</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -218,7 +215,8 @@
     <MESSAGE value="Format adjustments" />
     <MESSAGE value="add print all item locations" />
     <MESSAGE value="print shelf map" />
-    <option name="LAST_COMMIT_MESSAGE" value="print shelf map" />
+    <MESSAGE value="UI adjustments" />
+    <option name="LAST_COMMIT_MESSAGE" value="UI adjustments" />
   </component>
   <component name="WindowStateProjectService">
     <state x="2312" y="419" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog" timestamp="1604101230123">
@@ -281,10 +279,14 @@
       <screen x="0" y="23" width="1920" height="1057" />
     </state>
     <state x="592" y="312" key="MultipleFileMergeDialog/0.23.1920.1057@0.23.1920.1057" timestamp="1604119535331" />
-    <state x="560" y="287" key="Vcs.Push.Dialog.v2" timestamp="1604711846846">
+    <state x="560" y="287" key="Vcs.Push.Dialog.v2" timestamp="1604784428277">
       <screen x="0" y="23" width="1920" height="1057" />
     </state>
-    <state x="560" y="287" key="Vcs.Push.Dialog.v2/0.23.1920.1057@0.23.1920.1057" timestamp="1604711846846" />
+    <state x="560" y="287" key="Vcs.Push.Dialog.v2/0.23.1920.1057@0.23.1920.1057" timestamp="1604784428277" />
+    <state x="756" y="468" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1604787665997">
+      <screen x="0" y="23" width="1920" height="1057" />
+    </state>
+    <state x="756" y="468" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.23.1920.1057@0.23.1920.1057" timestamp="1604787665997" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
