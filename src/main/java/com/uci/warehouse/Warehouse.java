@@ -570,11 +570,15 @@ public class Warehouse {
 
             timePeriod = endTime-startTime;
             System.out.println("For approach 2, this order takes time around  "+ timePeriod + "  ms");
-            printRoute(order, route, start, end);
-            printRouteMap(order,route,start,end);
-            System.out.print("\n\n");
+
+            if(route!=null) {
+                printRoute(order, route, start, end);
+                printRouteMap(order, route, start, end);
+
+                System.out.print("\n\n");
             //export direction to txt
-            exportFile.exportTxt("\n\nOrder:1\n"+direction);
+                exportFile.exportTxt("\n\nOrder:1\n"+direction);
+            }
 //
 //        printRouteMap(order,route);
 

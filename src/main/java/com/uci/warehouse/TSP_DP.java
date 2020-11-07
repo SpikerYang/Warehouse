@@ -56,7 +56,8 @@ public class TSP_DP {
             endTime = System.currentTimeMillis();
             if ((endTime-startTime)>60000){
                 //TODO
-                break;
+                System.out.println("Time out!");
+                return null;
             }
             ////////////////////////////////////
 
@@ -65,7 +66,8 @@ public class TSP_DP {
                 endTime = System.currentTimeMillis();
                 if ((endTime-startTime)>60000){
                     //TODO
-                    break;
+                    System.out.println("Time out!");
+                    return null;
                 }
                 ////////////////////////////////////
                 if(set.contains(currentVertex)) {
@@ -81,7 +83,8 @@ public class TSP_DP {
                     endTime = System.currentTimeMillis();
                     if ((endTime-startTime)>60000){
                         //TODO
-                        break;
+                        System.out.println("Time out!");
+                        return null;
                     }
                     ////////////////////////////////////
                     int cost = distance[prevVertex][currentVertex] + getCost(copySet, prevVertex, minCostDP);
