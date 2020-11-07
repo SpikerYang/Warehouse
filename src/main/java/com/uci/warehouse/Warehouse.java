@@ -550,7 +550,7 @@ public class Warehouse {
             long timePeriod = endTime-startTime;
             System.out.println("For approach 1, this order takes time around  "+ timePeriod + "  ms");
             printRouteMap(order,route,start,end);
-            //System.out.print(direction);
+
             System.out.print("\n\n");
             //------------------------------export direction to txt----------------
             exportFile.exportTxt("\n\nOrder:"+i+"\n"+direction);
@@ -564,14 +564,16 @@ public class Warehouse {
             int[][] graphForDP = order.getDistanceMatrixForDP(productLocationMap, start, end);
             route = tsp_dp.getRoute(graphForDP);
 
-            long endTime = System.currentTimeMillis();
-            long timePeriod = endTime-startTime;
-            System.out.println("For approach 2, this order takes time around  "+ timePeriod + "  ms");
+             endTime = System.currentTimeMillis();
+             timePeriod = endTime-startTime;
+
             printRoute(order, route, start, end);
+            System.out.println("For approach 2, this order takes time around  "+ timePeriod + "  ms");
             System.out.print("\n\n");
             //export direction to txt
             exportFile.exportTxt("\n\nOrder:1\n"+direction);
-//
+
+
 //        printRouteMap(order,route);
 
             try {
