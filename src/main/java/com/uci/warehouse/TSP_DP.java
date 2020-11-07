@@ -124,6 +124,7 @@ public class TSP_DP {
         }
         List<Integer> res = new ArrayList<>();
         stack.forEach(v -> res.add(v));
+        res.set(res.size() - 1, res.size() - 1);
         return res;
     }
 
