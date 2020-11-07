@@ -95,7 +95,7 @@ public class TSP_DP {
         parent.put(Index.createIndex(0, set), prevVertex);
         List<Integer> res;
         res = getTour(parent, distance.length);
-        printTour(res);
+  //      printTour(res);
         System.out.println("distance:" + min);
         return res;
     }

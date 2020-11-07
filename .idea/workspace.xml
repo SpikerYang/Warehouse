@@ -28,8 +28,12 @@
     </select>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9a4ceddb-213a-4e84-b6bd-8f79a747ba5f" name="Default Changelist" comment="process orders">
+    <list default="true" id="9a4ceddb-213a-4e84-b6bd-8f79a747ba5f" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/uci/warehouse/Order.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/uci/warehouse/Order.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/uci/warehouse/TSP_DP.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/uci/warehouse/TSP_DP.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/uci/warehouse/Warehouse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/uci/warehouse/Warehouse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/uci/warehouse/Warehouse.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/uci/warehouse/Warehouse.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -64,6 +68,11 @@
   </component>
   <component name="ProjectId" id="1jcR7MR8W152InopQ1qkeKsL3rY" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
   <component name="PropertiesComponent">
     <property name="Downloaded.Files.Path.Enabled" value="false" />
     <property name="Repository.Attach.Annotations" value="false" />
@@ -105,19 +114,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
-      <option name="arquillianRunConfiguration">
-        <value>
-          <option name="containerStateName" value="" />
-        </value>
-      </option>
-      <option name="TEST_OBJECT" value="CLASS" />
-      <properties />
-      <listeners />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="Application.Warehouse" />
@@ -129,7 +125,7 @@
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="07160531-1e28-4ae8-8286-3296f7adfcb4" name="Default Changelist" comment="" />
+      <changelist id="9a4ceddb-213a-4e84-b6bd-8f79a747ba5f" name="Default Changelist" comment="" />
       <created>1603835054395</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
@@ -137,6 +133,7 @@
       <workItem from="1603835060350" duration="2616000" />
       <workItem from="1603837753868" duration="2968000" />
       <workItem from="1603906641811" duration="3464000" />
+      <workItem from="1604733092553" duration="547000" />
     </task>
     <task id="LOCAL-00001" summary="Update DSP_NN">
       <created>1604119504100</created>
@@ -166,14 +163,7 @@
       <option name="project" value="LOCAL" />
       <updated>1604123406132</updated>
     </task>
-    <task id="LOCAL-00005" summary="process orders">
-      <created>1604732707182</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1604732707182</updated>
-    </task>
-    <option name="localTasksCounter" value="6" />
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -196,6 +186,7 @@
                   </entry>
                 </map>
               </option>
+              <option name="COLUMN_ORDER" />
             </State>
           </value>
         </entry>
@@ -215,7 +206,6 @@
         </entry>
       </map>
     </option>
-    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="add two functions&#10;add one map&#10;change one function" />
@@ -223,70 +213,89 @@
     <MESSAGE value="Format adjustments" />
     <MESSAGE value="add print all item locations" />
     <MESSAGE value="print shelf map" />
-    <MESSAGE value="process orders" />
-    <option name="LAST_COMMIT_MESSAGE" value="process orders" />
+    <option name="LAST_COMMIT_MESSAGE" value="print shelf map" />
   </component>
   <component name="WindowStateProjectService">
     <state x="2312" y="419" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog" timestamp="1604101230123">
       <screen x="1920" y="-437" width="1080" height="1920" />
     </state>
     <state x="2312" y="419" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog/0.0.1920.1080/128.1080.1792.1120/1920.-437.1080.1920@1920.-437.1080.1920" timestamp="1604101230123" />
-    <state width="1878" height="612" key="GridCell.Tab.0.bottom" timestamp="1604733425254">
-      <screen x="0" y="23" width="1920" height="1057" />
+    <state width="1878" height="421" key="GridCell.Tab.0.bottom" timestamp="1604733712825">
+      <screen x="1920" y="-56" width="1920" height="1080" />
     </state>
     <state width="1878" height="419" key="GridCell.Tab.0.bottom/0.0.1920.1080/128.1080.1792.1120/1920.-437.1080.1920@0.0.1920.1080" timestamp="1604113403026" />
     <state width="1364" height="156" key="GridCell.Tab.0.bottom/0.23.1920.1057/128.1103.1792.1034/1920.-414.1080.1897@128.1103.1792.1034" timestamp="1604118226270" />
-    <state width="1878" height="612" key="GridCell.Tab.0.bottom/0.23.1920.1057@0.23.1920.1057" timestamp="1604733425254" />
-    <state width="1878" height="612" key="GridCell.Tab.0.center" timestamp="1604733425252">
-      <screen x="0" y="23" width="1920" height="1057" />
+    <state width="1878" height="606" key="GridCell.Tab.0.bottom/0.23.1920.1057@0.23.1920.1057" timestamp="1604732140530" />
+    <state width="1878" height="421" key="GridCell.Tab.0.bottom/1920.-56.1920.1080/0.0.1920.1080/0.1080.1792.1120@1920.-56.1920.1080" timestamp="1604733712825" />
+    <state width="1878" height="421" key="GridCell.Tab.0.center" timestamp="1604733712822">
+      <screen x="1920" y="-56" width="1920" height="1080" />
     </state>
     <state width="1878" height="419" key="GridCell.Tab.0.center/0.0.1920.1080/128.1080.1792.1120/1920.-437.1080.1920@0.0.1920.1080" timestamp="1604113403024" />
     <state width="1364" height="156" key="GridCell.Tab.0.center/0.23.1920.1057/128.1103.1792.1034/1920.-414.1080.1897@128.1103.1792.1034" timestamp="1604118226269" />
-    <state width="1878" height="612" key="GridCell.Tab.0.center/0.23.1920.1057@0.23.1920.1057" timestamp="1604733425252" />
-    <state width="1878" height="612" key="GridCell.Tab.0.left" timestamp="1604733425251">
-      <screen x="0" y="23" width="1920" height="1057" />
+    <state width="1878" height="606" key="GridCell.Tab.0.center/0.23.1920.1057@0.23.1920.1057" timestamp="1604732140529" />
+    <state width="1878" height="421" key="GridCell.Tab.0.center/1920.-56.1920.1080/0.0.1920.1080/0.1080.1792.1120@1920.-56.1920.1080" timestamp="1604733712822" />
+    <state width="1878" height="421" key="GridCell.Tab.0.left" timestamp="1604733712821">
+      <screen x="1920" y="-56" width="1920" height="1080" />
     </state>
     <state width="1878" height="419" key="GridCell.Tab.0.left/0.0.1920.1080/128.1080.1792.1120/1920.-437.1080.1920@0.0.1920.1080" timestamp="1604113403022" />
     <state width="1364" height="156" key="GridCell.Tab.0.left/0.23.1920.1057/128.1103.1792.1034/1920.-414.1080.1897@128.1103.1792.1034" timestamp="1604118226268" />
-    <state width="1878" height="612" key="GridCell.Tab.0.left/0.23.1920.1057@0.23.1920.1057" timestamp="1604733425251" />
-    <state width="1878" height="612" key="GridCell.Tab.0.right" timestamp="1604733425254">
-      <screen x="0" y="23" width="1920" height="1057" />
+    <state width="1878" height="606" key="GridCell.Tab.0.left/0.23.1920.1057@0.23.1920.1057" timestamp="1604732140529" />
+    <state width="1878" height="421" key="GridCell.Tab.0.left/1920.-56.1920.1080/0.0.1920.1080/0.1080.1792.1120@1920.-56.1920.1080" timestamp="1604733712821" />
+    <state width="1878" height="421" key="GridCell.Tab.0.right" timestamp="1604733712823">
+      <screen x="1920" y="-56" width="1920" height="1080" />
     </state>
     <state width="1878" height="419" key="GridCell.Tab.0.right/0.0.1920.1080/128.1080.1792.1120/1920.-437.1080.1920@0.0.1920.1080" timestamp="1604113403025" />
     <state width="1364" height="156" key="GridCell.Tab.0.right/0.23.1920.1057/128.1103.1792.1034/1920.-414.1080.1897@128.1103.1792.1034" timestamp="1604118226270" />
-    <state width="1878" height="612" key="GridCell.Tab.0.right/0.23.1920.1057@0.23.1920.1057" timestamp="1604733425254" />
-    <state width="1878" height="498" key="GridCell.Tab.1.bottom" timestamp="1604730554440">
-      <screen x="0" y="23" width="1920" height="1057" />
+    <state width="1878" height="606" key="GridCell.Tab.0.right/0.23.1920.1057@0.23.1920.1057" timestamp="1604732140530" />
+    <state width="1878" height="421" key="GridCell.Tab.0.right/1920.-56.1920.1080/0.0.1920.1080/0.1080.1792.1120@1920.-56.1920.1080" timestamp="1604733712823" />
+    <state width="1878" height="421" key="GridCell.Tab.1.bottom" timestamp="1604733712829">
+      <screen x="1920" y="-56" width="1920" height="1080" />
     </state>
     <state width="1878" height="375" key="GridCell.Tab.1.bottom/0.0.1920.1080/128.1080.1792.1120/1920.-437.1080.1920@0.0.1920.1080" timestamp="1604113380480" />
     <state width="1878" height="498" key="GridCell.Tab.1.bottom/0.23.1920.1057@0.23.1920.1057" timestamp="1604730554440" />
-    <state width="1878" height="498" key="GridCell.Tab.1.center" timestamp="1604730554440">
-      <screen x="0" y="23" width="1920" height="1057" />
+    <state width="1878" height="421" key="GridCell.Tab.1.bottom/1920.-56.1920.1080/0.0.1920.1080/0.1080.1792.1120@1920.-56.1920.1080" timestamp="1604733712829" />
+    <state width="1878" height="421" key="GridCell.Tab.1.center" timestamp="1604733712827">
+      <screen x="1920" y="-56" width="1920" height="1080" />
     </state>
     <state width="1878" height="375" key="GridCell.Tab.1.center/0.0.1920.1080/128.1080.1792.1120/1920.-437.1080.1920@0.0.1920.1080" timestamp="1604113380479" />
     <state width="1878" height="498" key="GridCell.Tab.1.center/0.23.1920.1057@0.23.1920.1057" timestamp="1604730554440" />
-    <state width="1878" height="498" key="GridCell.Tab.1.left" timestamp="1604730554437">
-      <screen x="0" y="23" width="1920" height="1057" />
+    <state width="1878" height="421" key="GridCell.Tab.1.center/1920.-56.1920.1080/0.0.1920.1080/0.1080.1792.1120@1920.-56.1920.1080" timestamp="1604733712827" />
+    <state width="1878" height="421" key="GridCell.Tab.1.left" timestamp="1604733712826">
+      <screen x="1920" y="-56" width="1920" height="1080" />
     </state>
     <state width="1878" height="375" key="GridCell.Tab.1.left/0.0.1920.1080/128.1080.1792.1120/1920.-437.1080.1920@0.0.1920.1080" timestamp="1604113380478" />
     <state width="1878" height="498" key="GridCell.Tab.1.left/0.23.1920.1057@0.23.1920.1057" timestamp="1604730554437" />
-    <state width="1878" height="498" key="GridCell.Tab.1.right" timestamp="1604730554440">
-      <screen x="0" y="23" width="1920" height="1057" />
+    <state width="1878" height="421" key="GridCell.Tab.1.left/1920.-56.1920.1080/0.0.1920.1080/0.1080.1792.1120@1920.-56.1920.1080" timestamp="1604733712826" />
+    <state width="1878" height="421" key="GridCell.Tab.1.right" timestamp="1604733712828">
+      <screen x="1920" y="-56" width="1920" height="1080" />
     </state>
     <state width="1878" height="375" key="GridCell.Tab.1.right/0.0.1920.1080/128.1080.1792.1120/1920.-437.1080.1920@0.0.1920.1080" timestamp="1604113380479" />
     <state width="1878" height="498" key="GridCell.Tab.1.right/0.23.1920.1057@0.23.1920.1057" timestamp="1604730554440" />
+    <state width="1878" height="421" key="GridCell.Tab.1.right/1920.-56.1920.1080/0.0.1920.1080/0.1080.1792.1120@1920.-56.1920.1080" timestamp="1604733712828" />
     <state x="592" y="312" key="MultipleFileMergeDialog" timestamp="1604119535332">
       <screen x="0" y="23" width="1920" height="1057" />
     </state>
     <state x="592" y="312" key="MultipleFileMergeDialog/0.23.1920.1057@0.23.1920.1057" timestamp="1604119535331" />
-    <state x="560" y="287" key="Vcs.Push.Dialog.v2" timestamp="1604732713523">
+    <state x="560" y="287" key="Vcs.Push.Dialog.v2" timestamp="1604711846846">
       <screen x="0" y="23" width="1920" height="1057" />
     </state>
-    <state x="560" y="287" key="Vcs.Push.Dialog.v2/0.23.1920.1057@0.23.1920.1057" timestamp="1604732713523" />
-    <state x="756" y="468" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1604734135253">
-      <screen x="0" y="23" width="1920" height="1057" />
-    </state>
-    <state x="756" y="468" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.23.1920.1057@0.23.1920.1057" timestamp="1604734135253" />
+    <state x="560" y="287" key="Vcs.Push.Dialog.v2/0.23.1920.1057@0.23.1920.1057" timestamp="1604711846846" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/uci/warehouse/TSP_NN.java</url>
+          <line>52</line>
+          <option name="timeStamp" value="4" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/uci/warehouse/Warehouse.java</url>
+          <line>504</line>
+          <option name="timeStamp" value="5" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
   <component name="masterDetails">
     <states>
