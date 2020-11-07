@@ -574,7 +574,7 @@ public class Warehouse {
             exportFile.exportTxt("\n\nOrder:1\n"+direction);
 
 
-//        printRouteMap(order,route);
+            printRouteMap(order,route,start,end);
 
             try {
                 System.out.println("Please enter the productID to get location");
