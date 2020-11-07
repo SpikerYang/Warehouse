@@ -35,6 +35,8 @@ public class Warehouse {
         productLocationMap = map;
     }
     public Warehouse() {
+        orders = new HashMap<>();
+        productLocationMap = new HashMap<>();
     }
 //==============================================================================================================================
 //                           functions of warehouse
@@ -92,7 +94,7 @@ public class Warehouse {
             System.out.print("\n");
         }
     }
-    
+
     public Order getOrder(int orderId) {
         return orders.get(orderId);
     }
