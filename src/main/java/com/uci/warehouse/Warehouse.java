@@ -1,6 +1,8 @@
 package com.uci.warehouse;
 
+import java.io.BufferedReader;
 import java.io.FileNotFoundException;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -512,6 +514,18 @@ public class Warehouse {
 //
 //        printRouteMap(order,route);
 
+            try {
+                System.out.println("Please enter the productID to get location");
+                InputStreamReader isr = new InputStreamReader(System.in);
+                BufferedReader br = new BufferedReader(isr);
+                String s1 = br.readLine();
+                int id=Integer.parseInt(s1);
+                double[] location = getProductLocation(id);
+                System.out.println("The location is (" + location[0] + "," + location[1] + ")");
+            } catch (Exception e)
+            {
+                e.printStackTrace();
+            }
         }
 
     }
