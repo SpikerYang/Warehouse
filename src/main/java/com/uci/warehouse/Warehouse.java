@@ -539,16 +539,16 @@ public class Warehouse {
 
             //-------------------------1. nearest neighbor approach : 2-approximation in O(n^2) time----------------------------
             System.out.print("1. nearest neighbor approach\n");
-            long startTime = System.currentTimeMillis();
+
             tsp_nn = new TSP_NN(1, graph_se);
             
             
             List<Integer> route=tsp_nn.nearestNeigh();
-
+            long startTime = System.currentTimeMillis();
             String direction =printRoute(order, route,start,end);
+            long endTime = System.currentTimeMillis();
 
             printRouteMap(order,route,start,end);
-            long endTime = System.currentTimeMillis();
             long timePeriod = endTime-startTime;
             System.out.println("For approach 1, this order takes time around  "+ timePeriod + "  ms");
             //System.out.print(direction);
@@ -559,13 +559,15 @@ public class Warehouse {
 
 //        //---------------------------2. DP approach : optimal route in O(n^2*2^n) time-------------------------------
             System.out.print("2. DP approach\n");
-            startTime = System.currentTimeMillis();
+
             
             tsp_dp = new TSP_DP();
             int[][] graphForDP = order.getDistanceMatrixForDP(productLocationMap, start, end);
-            route = tsp_dp.getRoute(graphForDP);
 
+            startTime = System.currentTimeMillis();
+            route = tsp_dp.getRoute(graphForDP);
             endTime = System.currentTimeMillis();
+
             timePeriod = endTime-startTime;
             System.out.println("For approach 2, this order takes time around  "+ timePeriod + "  ms");
             printRoute(order, route, start, end);

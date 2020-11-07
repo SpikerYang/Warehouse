@@ -43,7 +43,8 @@ public class TSP_DP {
     }
 
     public List<Integer> getRoute(int[][] distance) {
-
+        long startTime = System.currentTimeMillis();
+        long endTime;
         //stores intermediate values in map
         Map<Index, Integer> minCostDP = new HashMap<>();
         Map<Index, Integer> parent = new HashMap<>();
@@ -51,7 +52,22 @@ public class TSP_DP {
         List<Set<Integer>> allSets = generateCombination(distance.length - 1);
 
         for(Set<Integer> set : allSets) {
+            ////////////////////////////////////
+            endTime = System.currentTimeMillis();
+            if ((endTime-startTime)>60000){
+                //TODO
+                break;
+            }
+            ////////////////////////////////////
+
             for(int currentVertex = 1; currentVertex < distance.length; currentVertex++) {
+                ////////////////////////////////////
+                endTime = System.currentTimeMillis();
+                if ((endTime-startTime)>60000){
+                    //TODO
+                    break;
+                }
+                ////////////////////////////////////
                 if(set.contains(currentVertex)) {
                     continue;
                 }
@@ -61,6 +77,13 @@ public class TSP_DP {
                 //to avoid ConcurrentModificationException copy set into another set while iterating
                 Set<Integer> copySet = new HashSet<>(set);
                 for(int prevVertex : set) {
+                    ////////////////////////////////////
+                    endTime = System.currentTimeMillis();
+                    if ((endTime-startTime)>60000){
+                        //TODO
+                        break;
+                    }
+                    ////////////////////////////////////
                     int cost = distance[prevVertex][currentVertex] + getCost(copySet, prevVertex, minCostDP);
                     if(cost < minCost) {
                         minCost = cost;
