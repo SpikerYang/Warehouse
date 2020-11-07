@@ -20,7 +20,7 @@ public class Warehouse {
 
     private static Map<Integer, Order> orders;
     private static Map<Integer, double[]> productLocationMap;
-    private Map<ArrayList<Long>, Integer> shelveMap;
+    private static Map<ArrayList<Long>, Integer> shelveMap;
     private static String[][] routeMap;
 
     private static Order order;
@@ -208,6 +208,7 @@ public class Warehouse {
         long[] sloction = new long[2];
         int id;
         ArrayList<Long> tmparray = new ArrayList<>();
+        System.out.println("--------------------The map is show as below:-----------------------");
         for(int i = 0; i<=20;i++){
             if(i==20){
                 System.out.print("   ");
@@ -224,12 +225,12 @@ public class Warehouse {
                     tmparray.add((long)j);
                     tmparray.add((long)i);
                     if(i==19 && j==0){
-                        System.out.print("S  ");
+                        System.out.print("   ");
                     }else if(shelveMap.containsKey(tmparray)){
                         id = shelveMap.get(tmparray);
 //                        String sid = String.format("%-2s", id);
 //                        System.out.print(sid + " ");
-                        System.out.print("__ ");
+                        System.out.print("□  ");
                     }else{
                         System.out.print("   ");
                     }
@@ -332,54 +333,107 @@ public class Warehouse {
     }
 
 
-    public static void printRouteMap(Order order, List<Integer> route){
+    public static String printColor(int code,String content){
+        return String.format("\033[%d;%dm%s\033[0m", code, 2, content);
+    }
+
+
+    public static void printRouteMap(Order order, List<Integer> route, int[] start,int[] end){
         List<Integer> list= order.getOrderList();
-        int[][][] graph = order.getXYDistanceMatrix(productLocationMap);
+        int[][][] graph = order.getXYDistanceMatrix(productLocationMap,start,end);
         String[][] routeMap = new String[20][40];
+        int code = 31;
 
         //initialize
+        ArrayList<Long> tmparray = new ArrayList<>();
         for(int i=0;i<20;i++){
             for(int j=0;j<40;j++){
-                routeMap[i][j] = "   ";
+                tmparray = new ArrayList<>();
+                tmparray.add((long)j);
+                tmparray.add((long)i);
+                if(shelveMap.containsKey(tmparray)){
+                    routeMap[i][j] = "□  ";
+                }else{
+                    routeMap[i][j] = "   ";
+                }
+
             }
         }
 
+        list.add(0, -1);
+
+        routeMap[19-(int)start[1]][(int)start[0]] = "S  ";
 
         routeMap[19-(int)getProductLocation(list.get(route.get(0)))[1]][(int)getProductLocation(list.get(route.get(0)))[0]] = String.format("%-3s", "S");
-        for (int i = 1; i < route.size(); i++){
+        for (int i = 1; i < route.size()-1; i++){
             int xx=graph [route.get(i-1)][route.get(i)][0];
             int yy=graph [route.get(i-1)][route.get(i)][1];
             if(xx>0){
                 for(int j=(int)getProductLocation(list.get(route.get(i-1)))[0]+1; j<(int)getProductLocation(list.get(route.get(i)))[0];j++){
                     if( routeMap[19-(int)getProductLocation(list.get(route.get(i-1)))[1]][j] == "   ") {
-                        routeMap[19 - (int) getProductLocation(list.get(route.get(i - 1)))[1]][j] = "---";
+                        routeMap[19 - (int) getProductLocation(list.get(route.get(i - 1)))[1]][j] = printColor(code,"---");
                     }
                 }
-                routeMap[19 - (int) getProductLocation(list.get(route.get(i - 1)))[1]][(int)getProductLocation(list.get(route.get(i)))[0]-1] = "-->";
+                routeMap[19 - (int) getProductLocation(list.get(route.get(i - 1)))[1]][(int)getProductLocation(list.get(route.get(i)))[0]-1] = printColor(code,"-->");
             }else if (xx<0){
                 for(int j=(int)getProductLocation(list.get(route.get(i-1)))[0]-1; j>(int)getProductLocation(list.get(route.get(i)))[0];j--){
-                    if(routeMap[19-(int)getProductLocation(list.get(route.get(i-1)))[1]][j] == "   ") routeMap[19-(int)getProductLocation(list.get(route.get(i-1)))[1]][j] = "---";
+                    if(routeMap[19-(int)getProductLocation(list.get(route.get(i-1)))[1]][j] == "   ") routeMap[19-(int)getProductLocation(list.get(route.get(i-1)))[1]][j] = printColor(code,"---");
                 }
-                routeMap[19 - (int) getProductLocation(list.get(route.get(i - 1)))[1]][(int)getProductLocation(list.get(route.get(i)))[0]+1] = "<--";
+                routeMap[19 - (int) getProductLocation(list.get(route.get(i - 1)))[1]][(int)getProductLocation(list.get(route.get(i)))[0]+1] = printColor(code,"<--");
             }
             if(yy>0){
                 for(int j=(int)getProductLocation(list.get(route.get(i-1)))[1]; j<(int)getProductLocation(list.get(route.get(i)))[1];j++){
-                    if(routeMap[19-j][(int)getProductLocation(list.get(route.get(i)))[0]] == "   ")routeMap[19-j][(int)getProductLocation(list.get(route.get(i)))[0]] = "|  ";
+                    if(routeMap[19-j][(int)getProductLocation(list.get(route.get(i)))[0]] == "   ")routeMap[19-j][(int)getProductLocation(list.get(route.get(i)))[0]] = printColor(code,"|  ");
                 }
-                routeMap[20 - (int)getProductLocation(list.get(route.get(i)))[1]][(int)getProductLocation(list.get(route.get(i)))[0]] = "^  ";
+                routeMap[20 - (int)getProductLocation(list.get(route.get(i)))[1]][(int)getProductLocation(list.get(route.get(i)))[0]] = printColor(code,"^  ");
             }else if(yy<0){
                 for(int j=(int)getProductLocation(list.get(route.get(i-1)))[1]; j>(int)getProductLocation(list.get(route.get(i)))[1];j--){
-                    if(routeMap[19-j][(int)getProductLocation(list.get(route.get(i)))[0]] == "   ")routeMap[19-j][(int)getProductLocation(list.get(route.get(i)))[0]] = "|  ";
+                    if(routeMap[19-j][(int)getProductLocation(list.get(route.get(i)))[0]] == "   ")routeMap[19-j][(int)getProductLocation(list.get(route.get(i)))[0]] = printColor(code,"|  ");
                 }
-                routeMap[18 - (int)getProductLocation(list.get(route.get(i)))[1]][(int)getProductLocation(list.get(route.get(i)))[0]] = "V  ";
+                routeMap[18 - (int)getProductLocation(list.get(route.get(i)))[1]][(int)getProductLocation(list.get(route.get(i)))[0]] = printColor(code,"V  ");
             }
+            routeMap[19-(int)getProductLocation(list.get(route.get(i)))[1]][(int)getProductLocation(list.get(route.get(i)))[0]] = printColor(code,String.format("%-3s", list.get(route.get(i))));
+            code++;
 
-            if(route.get(i)==route.get(0)){
-                break;
-            }else{
-                routeMap[19-(int)getProductLocation(list.get(route.get(i)))[1]][(int)getProductLocation(list.get(route.get(i)))[0]] = String.format("%-3s", list.get(route.get(i)));
-            }
+//            if(route.get(i)==route.get(0)){
+//                break;
+//            }else{
+//                routeMap[19-(int)getProductLocation(list.get(route.get(i)))[1]][(int)getProductLocation(list.get(route.get(i)))[0]] = String.format("%-3s", list.get(route.get(i)));
+//            }
         }
+
+        int xx=graph [route.get(route.size()-2)][route.get(route.size()-1)][0];
+        int yy=graph [route.get(route.size()-2)][route.get(route.size()-1)][1];
+        if(xx>0){
+            for(int j=(int)getProductLocation(list.get(route.get(route.get(route.size()-2))))[0]+1; j<(int)end[0];j++){
+                if( routeMap[19-(int)getProductLocation(list.get(route.get(route.size()-2)))[1]][j] == "   ") {
+                    routeMap[19 - (int) getProductLocation(list.get(route.get(route.size()-2)))[1]][j] = printColor(code,"---");
+                }
+            }
+            routeMap[19 - (int) getProductLocation(list.get(route.get(route.size()-2)))[1]][(int)end[0]-1] = printColor(code,"-->");
+
+        }else if (xx<0){
+            for(int j=(int)getProductLocation(list.get(route.get(route.size()-2)))[0]-1; j>(int)end[0];j--){
+                if(routeMap[19-(int)getProductLocation(list.get(route.get(route.size()-2)))[1]][j] == "   ") routeMap[19-(int)getProductLocation(list.get(route.get(route.size()-2)))[1]][j] = printColor(code,"---");
+            }
+            routeMap[19 - (int) getProductLocation(list.get(route.get(route.size()-2)))[1]][(int)end[0]+1] = printColor(code,"<--");
+        }
+        if(yy>0){
+            for(int j=(int)getProductLocation(list.get(route.get(route.size()-2)))[1]; j<(int)end[1];j++){
+                if(routeMap[19-j][(int)end[0]] == "   ")routeMap[19-j][(int)end[0]] = printColor(code,"|  ");
+            }
+            routeMap[20 - (int)end[1]][(int)end[0]] = printColor(code,"^  ");
+        }else if(yy<0){
+            for(int j=(int)getProductLocation(list.get(route.get(route.size()-2)))[1]; j>(int)end[1];j--){
+                if(routeMap[19-j][(int)end[0]] == "   ")routeMap[19-j][(int)end[0]] = printColor(code,"|  ");
+            }
+            routeMap[18 - (int)end[1]][(int)end[0]] = printColor(code,"V  ");
+        }
+        routeMap[19-(int)start[1]][(int)start[0]] = "S  ";
+        routeMap[19-(int)end[1]][(int)end[0]] = printColor(code,"E  ");
+
+
+
         System.out.println("The route is show as below:");
 //        for(int i=0;i<20;i++){
 //            for(int j=0;j<40;j++){
@@ -399,17 +453,12 @@ public class Warehouse {
                 String iid = String.format("%-2s", 19-i);
                 System.out.print(iid + " ");
                 for(int j=0;j<40;j++){
-                    if(i==19 && j==0){
-                        System.out.print("S  ");
-                    }else {
-                        System.out.print(routeMap[i][j]);
-                    }
+                    System.out.print(routeMap[i][j]);
                 }
                 System.out.println(" ");
             }
         }
     }
-
 
     //==============================================================================================================================
 //                           main
@@ -430,6 +479,8 @@ public class Warehouse {
         //there is a productLocationMap in Warehouse class
         loadLocationData(warehouse);
         // ------------------------------------ASK user for orders---------------------
+        warehouse.getShelveMap();
+        warehouse.printMap();
         warehouse.addOrderList();
 
         // print map
@@ -495,6 +546,7 @@ public class Warehouse {
             List<Integer> route=tsp_nn.nearestNeigh();
 
             String direction =printRoute(order, route,start,end);
+            printRouteMap(order,route,start,end);
             //System.out.print(direction);
             System.out.print("\n\n");
             //------------------------------export direction to txt----------------
