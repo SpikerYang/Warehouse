@@ -92,8 +92,7 @@ public class Warehouse {
     }
 //==============================================================================================================================
 //                           map printing functions
-    //TODO: 王正， 我把变量locationmap 换成productLocationMap
-    //TODO: 现在跑不出来
+
 //==============================================================================================================================
     /**
      * Print route to console with map
@@ -226,18 +225,16 @@ public class Warehouse {
      * @param order which order
      * @param route route list with start and end node
      */
-    public static void printRoute(Order order, List<Integer> route){
+    public static String printRoute(Order order, List<Integer> route){
 
         int[][][] graph = order.getXYDistanceMatrix(productLocationMap);
-//        for(double[][] g:graph){
-//            for(double[] gg:g){
-//                for(double ggg:gg){
-//                    System.out.print(ggg+ "     ");
-//                }
-//
-//            }
-//            System.out.println(" ");
-//        }
+        for(int[][] g:graph){
+            for(int[] gg:g){
+                //System.out.print("("+gg[0]+", "+gg[1]+")\t\t");
+                System.out.printf("(%3d， %3d)\t",gg[0],gg[1]);
+            }
+            System.out.println(" ");
+        }
 
     List<Integer> list= order.getOrderList();
 
@@ -263,7 +260,8 @@ public class Warehouse {
             }
             direction+="Pick up product "+ list.get(route.get(i))+"\n";
         }
-        System.out.print(direction);
+
+        return direction;
     }
 
 
@@ -346,7 +344,7 @@ public class Warehouse {
     }
 
 
-    //==============================================================================================================================
+//==============================================================================================================================
 //                           main
 //
 //==============================================================================================================================
@@ -375,17 +373,17 @@ public class Warehouse {
         //order.addProduct(0,1);
         order.addProduct(1,1);
         order.addProduct(45,1);
-        //order.addProduct(74,1);
+        order.addProduct(74,1);
         order.addProduct(102,1);
 
         // init the graph;
         int[][] graph = order.getDistanceMatrix(productLocationMap);
-//        for(double[] g:graph){
-//            for(double gg:g){
-//                System.out.print(gg+ "     ");
-//            }
-//            System.out.println(" ");
-//        }
+        for(int[] g:graph){
+            for(int gg:g){
+                System.out.print(gg+ "     ");
+            }
+            System.out.println(" ");
+        }
 
         //print all the items
         List<Integer> list= order.getOrderList();
@@ -402,16 +400,22 @@ public class Warehouse {
         tsp_nn = new TSP_NN(1, graph);
         List<Integer> route=tsp_nn.nearestNeigh(graph);
         //System.out.println(route);
-        printRoute(order, route);
+        String direction =printRoute(order, route);
+        System.out.print(direction);
         System.out.print("\n\n");
+        //export direction to txt
+        exportFile.exportTxt("\n\nOrder:1\n"+direction);
+
 
         //2. DP approch : optimal route in O(n^2*2^n) time
         System.out.print("2. DP approach\n");
         tsp_dp = new TSP_DP();
         //List<Integer> route = tsp_dp.getRoute(graph);
-        route = tsp_dp.getRoute(graph);
-        System.out.println(route);
+        direction =printRoute(order, route);
+        System.out.print(direction);
         printRoute(order, route);
+        //export direction to txt
+        exportFile.exportTxt("\n\nOrder:1\n"+direction);
 
         printRouteMap(order,route);
     }
