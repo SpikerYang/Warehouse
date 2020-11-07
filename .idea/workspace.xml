@@ -28,14 +28,7 @@
     </select>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9a4ceddb-213a-4e84-b6bd-8f79a747ba5f" name="Default Changelist" comment="add TODO in TSP_DP">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/Warehouse_jar/Warehouse.jar" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/Warehouse_jar/Warehouse.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/uci/warehouse/TSP_DP.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/uci/warehouse/TSP_DP.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/uci/warehouse/Warehouse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/uci/warehouse/Warehouse.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/uci/warehouse/TSP_DP.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/uci/warehouse/TSP_DP.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/uci/warehouse/Warehouse.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/uci/warehouse/Warehouse.class" afterDir="false" />
-    </list>
+    <list default="true" id="9a4ceddb-213a-4e84-b6bd-8f79a747ba5f" name="Default Changelist" comment="Time out DP when &gt;60s." />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -179,7 +172,14 @@
       <option name="project" value="LOCAL" />
       <updated>1604789240593</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Time out DP when &gt;60s.">
+      <created>1604790020440</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1604790020440</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -231,7 +231,8 @@
     <MESSAGE value="print shelf map" />
     <MESSAGE value="add printroutemap for DP" />
     <MESSAGE value="add TODO in TSP_DP" />
-    <option name="LAST_COMMIT_MESSAGE" value="add TODO in TSP_DP" />
+    <MESSAGE value="Time out DP when &gt;60s." />
+    <option name="LAST_COMMIT_MESSAGE" value="Time out DP when &gt;60s." />
   </component>
   <component name="WindowStateProjectService">
     <state x="697" y="494" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog" timestamp="1604784880388">
@@ -307,10 +308,10 @@
       <screen x="0" y="23" width="1920" height="1057" />
     </state>
     <state x="592" y="312" key="MultipleFileMergeDialog/0.23.1920.1057@0.23.1920.1057" timestamp="1604119535331" />
-    <state x="560" y="287" key="Vcs.Push.Dialog.v2" timestamp="1604789248429">
+    <state x="560" y="287" key="Vcs.Push.Dialog.v2" timestamp="1604790026102">
       <screen x="0" y="23" width="1920" height="1057" />
     </state>
-    <state x="560" y="287" key="Vcs.Push.Dialog.v2/0.23.1920.1057@0.23.1920.1057" timestamp="1604789248429" />
+    <state x="560" y="287" key="Vcs.Push.Dialog.v2/0.23.1920.1057@0.23.1920.1057" timestamp="1604790026102" />
     <state x="637" y="356" key="com.intellij.ide.util.TipDialog" timestamp="1604784858337">
       <screen x="0" y="23" width="1920" height="1057" />
     </state>

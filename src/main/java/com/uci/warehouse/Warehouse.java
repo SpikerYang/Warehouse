@@ -466,12 +466,19 @@ public class Warehouse {
 //==============================================================================================================================
     public static void main(String[] args) throws FileNotFoundException {
 
+
+
+
+
+
         // ------------------------------Warehouse initiation  and read file--------------------------
         // not necessary for now if we only have one warehouse
         Warehouse warehouse = new Warehouse();
         //read file
-        String filePath = "src/qvBox-warehouse-data-f20-v01.txt";
-        
+        Scanner input = new Scanner(System.in);
+        System.out.println("Please, introduce the path where the text file is stored");
+        String filePath = input.nextLine();
+        //String filePath = "src/qvBox-warehouse-data-f20-v01.txt";
         readfile = new readFile();
         productLocationMap=readfile.readfile(filePath);
 
