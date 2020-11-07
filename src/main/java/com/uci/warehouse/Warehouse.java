@@ -471,7 +471,7 @@ public class Warehouse {
         Warehouse warehouse = new Warehouse();
         //read file
         String filePath = "src/qvBox-warehouse-data-f20-v01.txt";
-        long startTime = System.currentTimeMillis();
+        
         readfile = new readFile();
         productLocationMap=readfile.readfile(filePath);
 
@@ -539,13 +539,16 @@ public class Warehouse {
 
             //-------------------------1. nearest neighbor approach : 2-approximation in O(n^2) time----------------------------
             System.out.print("1. nearest neighbor approach\n");
+            long startTime = System.currentTimeMillis();
             tsp_nn = new TSP_NN(1, graph_se);
-            long endTime = System.currentTimeMillis();
-            long timePeriod = endTime-startTime;
-            System.out.println("This order takes time around  "+ timePeriod + "  ms");
+            
+            
             List<Integer> route=tsp_nn.nearestNeigh();
 
             String direction =printRoute(order, route,start,end);
+            long endTime = System.currentTimeMillis();
+            long timePeriod = endTime-startTime;
+            System.out.println("For approach 1, this order takes time around  "+ timePeriod + "  ms");
             printRouteMap(order,route,start,end);
             //System.out.print(direction);
             System.out.print("\n\n");
@@ -555,10 +558,15 @@ public class Warehouse {
 
 //        //---------------------------2. DP approach : optimal route in O(n^2*2^n) time-------------------------------
             System.out.print("2. DP approach\n");
+            startTime = System.currentTimeMillis();
+            
             tsp_dp = new TSP_DP();
             int[][] graphForDP = order.getDistanceMatrixForDP(productLocationMap, start, end);
             route = tsp_dp.getRoute(graphForDP);
 
+            long endTime = System.currentTimeMillis();
+            long timePeriod = endTime-startTime;
+            System.out.println("For approach 2, this order takes time around  "+ timePeriod + "  ms");
             printRoute(order, route, start, end);
             System.out.print("\n\n");
             //export direction to txt
