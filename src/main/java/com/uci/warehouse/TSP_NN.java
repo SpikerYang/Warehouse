@@ -53,7 +53,7 @@ public class TSP_NN {
             s = s + Math.abs(graph[i][j][0])+Math.abs(graph[i][j][1]);
             i = j;
         }
-        System.out.println("route:" + path);
+        //System.out.println("route:" + path);
         System.out.println("distance:" + s);
         //System.out.println(route);
         return route;
