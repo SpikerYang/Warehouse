@@ -495,20 +495,21 @@ public class Warehouse {
             //System.out.print(direction);
             System.out.print("\n\n");
             //export direction to txt
-            exportFile.exportTxt("\n\nOrder:"+i+"\n"+direction);
+//            exportFile.exportTxt("\n\nOrder:"+i+"\n"+direction);
 
 
-//        //2. DP approch : optimal route in O(n^2*2^n) time
-//        System.out.print("2. DP approach\n");
-//        tsp_dp = new TSP_DP();
-//        route = tsp_dp.getRoute(graph);
-            //irection =printRoute(order, route);
-            //System.out.print(direction);
-            //printRoute(order, route);
-            //export direction to txt
-            //exportFile.exportTxt("\n\nOrder:1\n"+direction);
+//        //2. DP approach : optimal route in O(n^2*2^n) time
+            System.out.print("2. DP approach\n");
+            tsp_dp = new TSP_DP();
+            int[][] graphForDP = order.getDistanceMatrixForDP(productLocationMap, start, end);
+            route = tsp_dp.getRoute(graphForDP);
 
-            //printRouteMap(order,route);
+            printRoute(order, route, start, end);
+            System.out.print("\n\n");
+//        //export direction to txt
+////        exportFile.exportTxt("\n\nOrder:1\n"+direction);
+//
+//        printRouteMap(order,route);
 
         }
 

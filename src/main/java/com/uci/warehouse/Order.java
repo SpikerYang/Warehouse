@@ -132,6 +132,44 @@ public class Order {
     }
 
     /**
+     * Generate distanceMatrix of products in X and Y direction for Dynamic Programming
+     * @param locationMap map storing location of products
+     * @return getXYDistanceMatrix
+     * SiqianWan
+     */
+    public int[][] getDistanceMatrixForDP(Map<Integer, double[]> locationMap,  int[] start, int[] end) {
+        List<Integer> list = new ArrayList<>(products.keySet());
+        //add startpoint at first
+        list.add(0, -1);
+        locationMap.put(-1, new double[]{0,0});
+        int[][] m = new int[list.size()][list.size()];
+        for (int i = 0; i < list.size(); i++) {
+            for (int j = 0; j < list.size(); j++) {
+                if (!locationMap.containsKey(list.get(i)) || !locationMap.containsKey(list.get(j))) try {
+                    throw new Exception("No such Product in locationMap!");
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                m[i][j] = Math.abs((int)locationMap.get(list.get(i))[0] - (int)locationMap.get(list.get(j))[0])
+                        + Math.abs((int)locationMap.get(list.get(i))[1] - (int)locationMap.get(list.get(j))[1]);
+            }
+        }
+
+        //change the first row of distance matrix
+        for(int i = 0; i < list.size(); i++) {
+            m[0][i] = Math.abs((int)locationMap.get(list.get(i))[0] - start[0])
+                    + Math.abs((int)locationMap.get(list.get(i))[1] - start[1]);
+        }
+        //change the first column of distance matrix
+        for (int i = 0; i < list.size(); i++) {
+            m[i][0] = Math.abs((int)locationMap.get(list.get(i))[0] - end[0])
+                    + Math.abs((int)locationMap.get(list.get(i))[1] - end[1]);
+        }
+        m[0][0] = Math.abs(start[0] - end[0]) + Math.abs(start[1] - end[1]);
+        return m;
+    }
+
+    /**
      * Generate distanceMatrix of products in X and Y direction
      * @param locationMap map storing location of products
      * @return getXYDistanceMatrix
