@@ -415,7 +415,7 @@ public class Warehouse {
 //==============================================================================================================================
     public static void main(String[] args) throws FileNotFoundException {
 
-        // Warehouse initiation
+        // ------------------------------Warehouse initiation  and read file--------------------------
         // not necessary for now if we only have one warehouse
         Warehouse warehouse = new Warehouse();
         //read file
@@ -427,7 +427,7 @@ public class Warehouse {
 
         //there is a productLocationMap in Warehouse class
         loadLocationData(warehouse);
-        // order initiation
+        // ------------------------------------ASK user for orders---------------------
         warehouse.addOrderList();
 
         // print map
@@ -444,9 +444,10 @@ public class Warehouse {
 //        order.addProduct(45,1);
 //        order.addProduct(74,1);
 //        order.addProduct(102,1);
+        //--------------------------dynamic start and end----------------------------------
         int[] start=new int[2];
         int[] end=new int[2];
-
+        //
         Scanner scanner = new Scanner(System.in);
         System.out.println("Please enter the START point location seperated by a blank.");
         for(int i = 0; i < 2; i++){
@@ -483,7 +484,7 @@ public class Warehouse {
             System.out.println("\n");
 
 
-            //1. nearest neighbor approach : 2-approximation in O(n^2) time
+            //-------------------------1. nearest neighbor approach : 2-approximation in O(n^2) time----------------------------
             System.out.print("1. nearest neighbor approach\n");
             tsp_nn = new TSP_NN(1, graph_se);
             long endTime = System.currentTimeMillis();
@@ -494,11 +495,11 @@ public class Warehouse {
             String direction =printRoute(order, route,start,end);
             //System.out.print(direction);
             System.out.print("\n\n");
-            //export direction to txt
-//            exportFile.exportTxt("\n\nOrder:"+i+"\n"+direction);
+            //------------------------------export direction to txt----------------
+            exportFile.exportTxt("\n\nOrder:"+i+"\n"+direction);
 
 
-//        //2. DP approach : optimal route in O(n^2*2^n) time
+//        //---------------------------2. DP approach : optimal route in O(n^2*2^n) time-------------------------------
             System.out.print("2. DP approach\n");
             tsp_dp = new TSP_DP();
             int[][] graphForDP = order.getDistanceMatrixForDP(productLocationMap, start, end);
@@ -506,8 +507,8 @@ public class Warehouse {
 
             printRoute(order, route, start, end);
             System.out.print("\n\n");
-//        //export direction to txt
-////        exportFile.exportTxt("\n\nOrder:1\n"+direction);
+            //export direction to txt
+            exportFile.exportTxt("\n\nOrder:1\n"+direction);
 //
 //        printRouteMap(order,route);
 
