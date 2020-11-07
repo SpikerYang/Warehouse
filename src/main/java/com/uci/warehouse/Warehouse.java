@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.*;
-import java.io.*;
 
 /**
  * @Author spike
@@ -47,51 +46,6 @@ public class Warehouse {
             e.printStackTrace();
         }
         orders.put(order.getId(), order);
-    }
-
-    /**
-     * Create an order from console, first specify the quantity of products, then type in id of each of product seperated by blanks
-     * @return Order
-     */
-    public Order createOrder() {
-        // get the quantity of products in the order
-        System.out.println("type the size of the order: ");
-        Scanner scanner = new Scanner(System.in);
-        int size = scanner.nextInt();
-        int id = orders.size();
-        Order order = new Order(id);
-        orders.put(id, order);
-        System.out.println("type id of product seperated by blanks: ");
-        for (int i = 0; i < size; i++) {
-            int productId = scanner.nextInt();
-            order.addProduct(productId, 1);
-        }
-        return order;
-    }
-
-    /**
-     * Add a list of orders from console, first specify the quantity of orders
-     */
-    public void addOrderList() {
-        Scanner scanner = new Scanner(System.in);
-        int size = scanner.nextInt();
-        for (int i = 0; i < size; i++) {
-            addOrder(createOrder());
-        }
-    }
-
-    /**
-     * Print order list to console
-     */
-    public void printOrderList() {
-        for (int id : orders.keySet()) {
-            System.out.println("order " + id + ": ");
-            Map<Integer, Integer> map = orders.get(id).getProducts();
-            for (int pId : map.keySet()) {
-                System.out.print(pId + "," + map.get(pId) + " ");
-            }
-            System.out.print("\n");
-        }
     }
 
     public Order getOrder(int orderId) {
@@ -391,47 +345,6 @@ public class Warehouse {
         }
     }
 
-    public static int[][] getStartAndEndLocation() {
-        int[][] res = new int[2][2];
-        try
-        {
-            //get start location
-            InputStreamReader isr=new InputStreamReader(System.in);
-            BufferedReader br=new BufferedReader(isr);
-
-            System.out.println("Where would you want to start?");
-            System.out.println("The x location of the start point is :");
-            String s1=br.readLine();
-
-            System.out.println("The y location of the start point is :：");
-            String s2=br.readLine();
-
-            int sx=Integer.parseInt(s1);
-            int sy=Integer.parseInt(s2);
-
-            res[0][0] = sx;
-            res[0][1] = sy;
-
-            //get end location
-            System.out.println("Where would you want to end?");
-            System.out.println("The x location of the end point is :");
-            String e1=br.readLine();
-
-            System.out.println("The y location of the end point is :：");
-            String e2=br.readLine();
-
-            int ex=Integer.parseInt(e1);
-            int ey=Integer.parseInt(e2);
-
-            res[1][0] = ex;
-            res[1][1] = ey;
-        }
-        catch (Exception e)
-        {
-            e.printStackTrace();
-        }
-        return res;
-    }
 
     //==============================================================================================================================
 //                           main
@@ -441,6 +354,7 @@ public class Warehouse {
         //read file
         String filePath = "src/qvBox-warehouse-data-f20-v01.txt";
         readfile = new readFile();
+        long startTime = System.currentTimeMillis();
         productLocationMap=readfile.readfile(filePath);
         // Warehouse initiation
         // not necessary for now if we only have one warehouse
@@ -454,6 +368,9 @@ public class Warehouse {
         warehouse.getShelveMap();
         warehouse.printMap();
 
+
+
+
         //fake a orderID :1
         order = new Order(1);
         //order.addProduct(0,1);
@@ -461,9 +378,6 @@ public class Warehouse {
         order.addProduct(45,1);
         //order.addProduct(74,1);
         order.addProduct(102,1);
-
-        int[][] startAndEndLocation = getStartAndEndLocation();
-
 
         // init the graph;
         int[][] graph = order.getDistanceMatrix(productLocationMap);
@@ -492,14 +406,22 @@ public class Warehouse {
         printRoute(order, route);
         System.out.print("\n\n");
 
+        long endTime = System.currentTimeMillis();
+
+        long timePeriod = endTime-startTime;
+        System.out.println("Approach 1 takes time "+ timePeriod + " ms");
+
         //2. DP approch : optimal route in O(n^2*2^n) time
         System.out.print("2. DP approach\n");
+        startTime = System.currentTimeMillis();
         tsp_dp = new TSP_DP();
         //List<Integer> route = tsp_dp.getRoute(graph);
         route = tsp_dp.getRoute(graph);
         System.out.println(route);
+        endTime = System.currentTimeMillis();
+        timePeriod = endTime- startTime;
+        System.out.println("Approach 2 takes time "+ timePeriod + " ms");
         printRoute(order, route);
-
         printRouteMap(order,route);
     }
 }
