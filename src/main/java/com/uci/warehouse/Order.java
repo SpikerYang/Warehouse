@@ -67,9 +67,11 @@ public class Order {
 
     public List<Integer> getOrderList(){
         List<Integer> list = new ArrayList<>(products.keySet());
-        list.add(0, -1);
+        //list.add(0, -1);//not for dynamic startpoint
         return list;
     }
+
+
 
 
 
@@ -99,6 +101,33 @@ public class Order {
 
 
     /**
+     * Overload with dynamic start end points
+     * Generate distanceMatrix of products
+     * @param locationMap map storing location of products
+     * @return distanceMatrix
+     */
+    public int[][] getDistanceMatrix(Map<Integer, double[]> locationMap, int[] start, int[] end) {
+        List<Integer> list = new ArrayList<>(products.keySet());
+        list.add(0, -1);
+        list.add(list.size(),-2);
+        locationMap.put(-1, new double[]{start[0],start[1]});
+        locationMap.put(-2, new double[]{end[0],end[1]});
+        int[][] m = new int[list.size()][list.size()];
+        for (int i = 0; i < list.size(); i++) {
+            for (int j = 0; j < list.size(); j++) {
+                if (!locationMap.containsKey(list.get(i)) || !locationMap.containsKey(list.get(j))) try {
+                    throw new Exception("No such Product in locationMap!");
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                m[i][j] = Math.abs((int)locationMap.get(list.get(i))[0] - (int)locationMap.get(list.get(j))[0])
+                        + Math.abs((int)locationMap.get(list.get(i))[1] - (int)locationMap.get(list.get(j))[1]);
+            }
+        }
+        return m;
+    }
+
+    /**
      * Generate distanceMatrix of products in X and Y direction
      * @param locationMap map storing location of products
      * @return getXYDistanceMatrix
@@ -109,6 +138,28 @@ public class Order {
         //add endpoint at last
         list.add(list.size(),-1);
         locationMap.put(-1, new double[]{0,0});
+        int[][][] m = new int[list.size()][list.size()][2];
+        for (int i = 0; i < list.size(); i++) {
+            for (int j = 0; j < list.size(); j++) {
+                if (!locationMap.containsKey(list.get(i)) || !locationMap.containsKey(list.get(j))) try {
+                    throw new Exception("No such Product in locationMap!");
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                m[i][j][0] = -(int)locationMap.get(list.get(i))[0] + (int)locationMap.get(list.get(j))[0];
+                m[i][j][1] = -(int)locationMap.get(list.get(i))[1] + (int)locationMap.get(list.get(j))[1];
+            }
+        }
+        return m;
+    }
+
+    public int[][][] getXYDistanceMatrix(Map<Integer, double[]> locationMap,int[] start, int[] end) {
+        List<Integer> list = getOrderList();
+        //add endpoint at last
+        list.add(0,-1);
+        list.add(list.size(),-2);
+        locationMap.put(-1, new double[]{start[0],start[1]});
+        locationMap.put(-2, new double[]{end[0],end[1]});
         int[][][] m = new int[list.size()][list.size()][2];
         for (int i = 0; i < list.size(); i++) {
             for (int j = 0; j < list.size(); j++) {

@@ -375,17 +375,18 @@ public class Warehouse {
         //order.addProduct(0,1);
         order.addProduct(1,1);
         order.addProduct(45,1);
-        //order.addProduct(74,1);
+        order.addProduct(74,1);
         order.addProduct(102,1);
 
         // init the graph;
-        int[][] graph = order.getDistanceMatrix(productLocationMap);
+        int[][][] graph = order.getXYDistanceMatrix(productLocationMap, new int[]{0, 0}, new int[]{0, 0});
 //        for(double[] g:graph){
 //            for(double gg:g){
 //                System.out.print(gg+ "     ");
 //            }
 //            System.out.println(" ");
 //        }
+
 
         //print all the items
         List<Integer> list= order.getOrderList();
@@ -400,19 +401,19 @@ public class Warehouse {
         //1. nearest neighbor approach : 2-approximation in O(n^2) time
         System.out.print("1. nearest neighbor approach\n");
         tsp_nn = new TSP_NN(1, graph);
-        List<Integer> route=tsp_nn.nearestNeigh(graph);
+        List<Integer> route=tsp_nn.nearestNeigh();
         //System.out.println(route);
-        printRoute(order, route);
-        System.out.print("\n\n");
+       // printRoute(order, route);
+       // System.out.print("\n\n");
 
-        //2. DP approch : optimal route in O(n^2*2^n) time
-        System.out.print("2. DP approach\n");
-        tsp_dp = new TSP_DP();
-        //List<Integer> route = tsp_dp.getRoute(graph);
-        route = tsp_dp.getRoute(graph);
-        System.out.println(route);
-        printRoute(order, route);
-
-        printRouteMap(order,route);
+//        //2. DP approch : optimal route in O(n^2*2^n) time
+//        System.out.print("2. DP approach\n");
+//        tsp_dp = new TSP_DP();
+//        //List<Integer> route = tsp_dp.getRoute(graph);
+//        route = tsp_dp.getRoute(graph);
+//        System.out.println(route);
+//        printRoute(order, route);
+//
+//        printRouteMap(order,route);
     }
 }
