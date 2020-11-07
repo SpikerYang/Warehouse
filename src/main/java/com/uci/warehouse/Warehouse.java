@@ -210,6 +210,7 @@ public class Warehouse {
             if(!shelveMap.containsKey(tmparray)){
                 shelveMap.put(tmparray,id);
                 id++;
+                
             }
         }
     }
@@ -368,6 +369,7 @@ public class Warehouse {
     public static void main(String[] args) throws FileNotFoundException {
         //read file
         String filePath = "src/qvBox-warehouse-data-f20-v01.txt";
+        long startTime = System.currentTimeMillis();
         readfile = new readFile();
         productLocationMap=readfile.readfile(filePath);
         // Warehouse initiation
@@ -424,6 +426,9 @@ public class Warehouse {
         //1. nearest neighbor approach : 2-approximation in O(n^2) time
         System.out.print("1. nearest neighbor approach\n");
         tsp_nn = new TSP_NN(1, graph_se);
+        long endTime = System.currentTimeMillis();
+        long timePeriod = endTime-startTime;
+        System.out.println("This order takes time around  "+ timePeriod + "  ms");
         List<Integer> route=tsp_nn.nearestNeigh();
         //System.out.println(route);
         String direction =printRoute(order, route,start,end);
