@@ -52,24 +52,7 @@ public class TSP_DP {
         List<Set<Integer>> allSets = generateCombination(distance.length - 1);
 
         for(Set<Integer> set : allSets) {
-            ////////////////////////////////////
-            endTime = System.currentTimeMillis();
-            if ((endTime-startTime)>60000){
-                //TODO
-                System.out.println("Time out!");
-                return null;
-            }
-            ////////////////////////////////////
-
             for(int currentVertex = 1; currentVertex < distance.length; currentVertex++) {
-                ////////////////////////////////////
-                endTime = System.currentTimeMillis();
-                if ((endTime-startTime)>60000){
-                    //TODO
-                    System.out.println("Time out!");
-                    return null;
-                }
-                ////////////////////////////////////
                 if(set.contains(currentVertex)) {
                     continue;
                 }
@@ -79,14 +62,6 @@ public class TSP_DP {
                 //to avoid ConcurrentModificationException copy set into another set while iterating
                 Set<Integer> copySet = new HashSet<>(set);
                 for(int prevVertex : set) {
-                    ////////////////////////////////////
-                    endTime = System.currentTimeMillis();
-                    if ((endTime-startTime)>60000){
-                        //TODO
-                        System.out.println("Time out!");
-                        return null;
-                    }
-                    ////////////////////////////////////
                     int cost = distance[prevVertex][currentVertex] + getCost(copySet, prevVertex, minCostDP);
                     if(cost < minCost) {
                         minCost = cost;
@@ -99,6 +74,14 @@ public class TSP_DP {
                 }
                 minCostDP.put(index, minCost);
                 parent.put(index, minPrevVertex);
+                ////////////////////////////////////
+                endTime = System.currentTimeMillis();
+                if ((endTime-startTime)>60000){
+                    System.out.println("Time out!");
+                    List<Integer> route = getTourWhenTimeOut(parent, currentVertex, set, distance.length);
+                    return route;
+                }
+                ////////////////////////////////////
             }
         }
 
@@ -131,6 +114,35 @@ public class TSP_DP {
         route.forEach(v -> joiner.add(String.valueOf(v)));
         System.out.print("route:");
         System.out.println(joiner.toString());
+    }
+
+    private List<Integer> getTourWhenTimeOut(Map<Index, Integer> parent, int currentVertex, Set<Integer> currentSet, int totalVertices) {
+        //the route already generate
+        Integer start = currentVertex;
+        Deque<Integer> stack = new LinkedList<>();
+        currentSet.add(start);
+        while(true) {
+            stack.push(start);
+            currentSet.remove(start);
+            start = parent.get(Index.createIndex(start, currentSet));
+            if(start == null) {
+                break;
+            }
+        }
+        List<Integer> res = new ArrayList<>();
+        stack.forEach(v -> res.add(v));
+
+        //generate the rest of tour
+        Set<Integer> set = new HashSet<>();
+        res.forEach(v -> set.add(v));
+        for(int vertex = 0; vertex < totalVertices; vertex++) {
+            if(set.contains(vertex)) {
+                continue;
+            }
+            res.add(vertex);
+        }
+        res.add(totalVertices);
+        return res;
     }
 
     private List<Integer> getTour(Map<Index, Integer> parent, int totalVertices) {

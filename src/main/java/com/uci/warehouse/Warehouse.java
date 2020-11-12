@@ -442,8 +442,6 @@ public class Warehouse {
             }
             //------------------2: run DP------------------------------
             else if(algorithm_num == 2){
-                //
-            // Siqian TODO
                 System.out.print("DP approach\n");
 
 //                List<Integer> route=tsp_nn.nearestNeigh();
@@ -461,7 +459,6 @@ public class Warehouse {
                 String direction =printRoute(order, route,start,end);
 
                 if(route!=null) {
-                    printRoute(order, route, start, end);
                     printRouteMap(order, route, start, end);
 
                     System.out.print("\n\n");
