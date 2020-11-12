@@ -475,7 +475,10 @@ public class Warehouse {
         List<Integer> list= order.getOrderList();
         int[][][] graph = order.getXYDistanceMatrix(productLocationMap,start,end);
         String[][] routeMap = new String[20][40];
-        int code = 31;
+
+        int codeAdd = 0;
+        int codebase = 31;
+        int code = codebase + (codeAdd%6);
 
         //initialize
         ArrayList<Long> tmparray = new ArrayList<>();
@@ -526,7 +529,8 @@ public class Warehouse {
                 routeMap[18 - (int)getProductLocation(list.get(route.get(i)))[1]][(int)getProductLocation(list.get(route.get(i)))[0]] = printColor(code,"V  ");
             }
             routeMap[19-(int)getProductLocation(list.get(route.get(i)))[1]][(int)getProductLocation(list.get(route.get(i)))[0]] = printColor(code,String.format("%-3s", list.get(route.get(i))));
-            code++;
+            codeAdd++;
+            code = codebase + (codeAdd%6);
 
 //            if(route.get(i)==route.get(0)){
 //                break;
@@ -673,7 +677,6 @@ public class Warehouse {
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
-
             }
         }
 
