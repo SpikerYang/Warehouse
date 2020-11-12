@@ -133,14 +133,14 @@ public class TSP_DP {
         stack.forEach(v -> res.add(v));
 
         //generate the rest of tour
-        Set<Integer> set = new HashSet<>();
-        res.forEach(v -> set.add(v));
-        for(int vertex = 0; vertex < totalVertices; vertex++) {
-            if(set.contains(vertex)) {
-                continue;
-            }
-            res.add(vertex);
-        }
+//        Set<Integer> set = new HashSet<>();
+//        res.forEach(v -> set.add(v));
+//        for(int vertex = 0; vertex < totalVertices; vertex++) {
+//            if(set.contains(vertex)) {
+//                continue;
+//            }
+//            res.add(vertex);
+//        }
         res.add(totalVertices);
         return res;
     }
