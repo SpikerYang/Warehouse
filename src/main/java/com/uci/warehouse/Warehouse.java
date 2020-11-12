@@ -337,6 +337,125 @@ public class Warehouse {
         return String.format("\033[%d;%dm%s\033[0m", code, 2, content);
     }
 
+    public static void menu_create_order(Warehouse warehouse){
+        warehouse.addOrderList();
+        //--------------------------dynamic start and end----------------------------------//
+        int[] start=new int[2];
+        int[] end=new int[2];
+        //
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Please enter the START point location seperated by a blank.");
+        for(int i = 0; i < 2; i++){
+            start[i]=scanner.nextInt();
+        }
+        System.out.println("Please enter the END point location seperated by a blank.");
+        for(int i = 0; i < 2; i++){
+            end[i]=scanner.nextInt();
+        }
+        System.out.println("Your start and end points are ("+start[0]+","+start[1]+") and ("+end[0]+","+end[1]+")\n");
+
+        System.out.println("Please select the algorithm you want to use to get the route path-----> 1 for NN// 2 for DP");
+        int algorithm_num;
+        algorithm_num = scanner.nextInt();
+        //--------------------------------------- process orders----------------------------------------------------------------
+        for(int i=0;i<orders.size();i++){
+            order=orders.get(0);
+            int[][] [] graph_se = order.getXYDistanceMatrix(productLocationMap,start,end);
+
+            //print all the items
+            List<Integer> list= order.getOrderList();
+            System.out.print("Item location: ");
+            for(Integer l:list){
+                System.out.print("("+(int)getProductLocation(l)[0]+","+(int)getProductLocation(l)[1]+") ");
+            }
+            System.out.println("\n");
+            if(algorithm_num == 1){
+                System.out.print("1. nearest neighbor approach\n");
+
+                tsp_nn = new TSP_NN(1, graph_se);
+
+
+                List<Integer> route=tsp_nn.nearestNeigh();
+                long startTime = System.currentTimeMillis();
+                String direction =printRoute(order, route,start,end);
+                long endTime = System.currentTimeMillis();
+
+                printRouteMap(order,route,start,end);
+                long timePeriod = endTime-startTime;
+                System.out.println("For approach 1, this order takes time around  "+ timePeriod + "  ms");
+                System.out.print("\n\n");
+                //------------------------------export direction to txt----------------
+                exportFile.exportTxt("\n\nOrder:"+i+"\n"+direction);
+                continue;
+            }
+            else if(algorithm_num == 2){
+                System.out.print("2. DP approach\n");
+
+                List<Integer> route=tsp_nn.nearestNeigh();
+                String direction =printRoute(order, route,start,end);
+                tsp_dp = new TSP_DP();
+                int[][] graphForDP = order.getDistanceMatrixForDP(productLocationMap, start, end);
+
+                long startTime = System.currentTimeMillis();
+                long endTime = System.currentTimeMillis();
+
+                long timePeriod = endTime-startTime;
+                System.out.println("For approach 2, this order takes time around  "+ timePeriod + "  ms");
+
+                if(route!=null) {
+                    printRoute(order, route, start, end);
+                    printRouteMap(order, route, start, end);
+
+                    System.out.print("\n\n");
+                    //export direction to txt
+                    exportFile.exportTxt("\n\nOrder:1\n"+direction);
+                }
+                continue;
+            }
+            //-------------------------1. nearest neighbor approach : 2-approximation in O(n^2) time----------------------------
+            System.out.print("1. nearest neighbor approach\n");
+
+            tsp_nn = new TSP_NN(1, graph_se);
+
+
+            List<Integer> route=tsp_nn.nearestNeigh();
+            long startTime = System.currentTimeMillis();
+            String direction =printRoute(order, route,start,end);
+            long endTime = System.currentTimeMillis();
+
+            printRouteMap(order,route,start,end);
+            long timePeriod = endTime-startTime;
+            System.out.println("For approach 1, this order takes time around  "+ timePeriod + "  ms");
+            System.out.print("\n\n");
+            //------------------------------export direction to txt----------------
+            exportFile.exportTxt("\n\nOrder:"+i+"\n"+direction);
+
+
+//        //---------------------------2. DP approach : optimal route in O(n^2*2^n) time-------------------------------
+            System.out.print("2. DP approach\n");
+
+
+            tsp_dp = new TSP_DP();
+            int[][] graphForDP = order.getDistanceMatrixForDP(productLocationMap, start, end);
+
+            startTime = System.currentTimeMillis();
+            route = tsp_dp.getRoute(graphForDP);
+            endTime = System.currentTimeMillis();
+
+            timePeriod = endTime-startTime;
+            System.out.println("For approach 2, this order takes time around  "+ timePeriod + "  ms");
+
+            if(route!=null) {
+                printRoute(order, route, start, end);
+                printRouteMap(order, route, start, end);
+
+                System.out.print("\n\n");
+                //export direction to txt
+                exportFile.exportTxt("\n\nOrder:1\n"+direction);
+            }
+        }
+    }
+
 
     public static void printRouteMap(Order order, List<Integer> route, int[] start,int[] end){
         List<Integer> list= order.getOrderList();
@@ -485,9 +604,71 @@ public class Warehouse {
 
         //there is a productLocationMap in Warehouse class
         loadLocationData(warehouse);
-        // ------------------------------------ASK user for orders---------------------
         warehouse.getShelveMap();
         warehouse.printMap();
+
+        //Provide user w/ a menu option so they can choose to enter another order, load another order, find a product, etc.
+        // ------------------------------------Menu options -------------------------------------
+        //   1.load a current order  2.create a new order   3.find a product;
+
+
+        System.out.println("------------------Welcome to the RNG warehouse application beta v1.0----------------");
+
+        System.out.println("--------------------------Please enter the option number----------------------------");
+        System.out.println("------------1. create a new order");
+        System.out.println("------------2. load a existing order");
+        System.out.println("------------3. query a product");
+        int option_number = input.nextInt();
+
+        if(option_number == 1){
+            //create a new order
+            menu_create_order(warehouse);
+            return;
+        }
+        else if(option_number == 2){
+            //load a existing order
+            System.out.println("Currently, there are " + orders.size() + " existing orders ");
+            try{
+                System.out.println("Enter the index(1 based) of the order that you want to query");
+                int query_order_num = input.nextInt();
+                if(query_order_num>orders.size()){
+                    throw new Exception("Order not existed!");
+                }
+                else{
+                    // print the current order:
+                    Order query_order = orders.get(query_order_num-1);
+                    for(int i:query_order.getProducts().keySet()){
+                        System.out.print(" "+ i + " ");
+                    }
+                    System.out.println("---------------------------");
+                }
+            } catch (Exception e){
+                e.printStackTrace();
+            }
+        }
+        else if(option_number == 3){
+            //query a product
+            try {
+                System.out.println("Please enter the productID to get location");
+                InputStreamReader isr = new InputStreamReader(System.in);
+                BufferedReader br = new BufferedReader(isr);
+                String s1 = br.readLine();
+                int id=Integer.parseInt(s1);
+                double[] location = getProductLocation(id);
+                System.out.println("The location is (" + location[0] + "," + location[1] + ")");
+            } catch (Exception e)
+            {
+                e.printStackTrace();
+            }
+
+        }
+
+
+        // ------------------------------------ASK user for orders---------------------
+//        warehouse.getShelveMap();
+//        warehouse.printMap();
+
+
         warehouse.addOrderList();
 
         // print map
@@ -495,15 +676,6 @@ public class Warehouse {
         //warehouse.printMap();
         //TODO
 
-
-
-        //fake a orderID :1
-//        order = new Order(1);
-//        //order.addProduct(0,1);
-//        order.addProduct(1,1);
-//        order.addProduct(45,1);
-//        order.addProduct(74,1);
-//        order.addProduct(102,1);
         //--------------------------dynamic start and end----------------------------------
         int[] start=new int[2];
         int[] end=new int[2];
@@ -589,18 +761,20 @@ public class Warehouse {
 //
 //        printRouteMap(order,route);
 
-            try {
-                System.out.println("Please enter the productID to get location");
-                InputStreamReader isr = new InputStreamReader(System.in);
-                BufferedReader br = new BufferedReader(isr);
-                String s1 = br.readLine();
-                int id=Integer.parseInt(s1);
-                double[] location = getProductLocation(id);
-                System.out.println("The location is (" + location[0] + "," + location[1] + ")");
-            } catch (Exception e)
-            {
-                e.printStackTrace();
-            }
+
+//            //------------------- query a order ----------------------
+//            try {
+//                System.out.println("Please enter the productID to get location");
+//                InputStreamReader isr = new InputStreamReader(System.in);
+//                BufferedReader br = new BufferedReader(isr);
+//                String s1 = br.readLine();
+//                int id=Integer.parseInt(s1);
+//                double[] location = getProductLocation(id);
+//                System.out.println("The location is (" + location[0] + "," + location[1] + ")");
+//            } catch (Exception e)
+//            {
+//                e.printStackTrace();
+//            }
         }
 
     }
