@@ -459,14 +459,11 @@ public class Warehouse {
             }
         }
     }
-
-    //==============================================================================================================================
+//==============================================================================================================================
 //                           main
 //
 //==============================================================================================================================
     public static void main(String[] args) throws FileNotFoundException {
-
-
 
 
 
@@ -485,6 +482,12 @@ public class Warehouse {
 
         //there is a productLocationMap in Warehouse class
         loadLocationData(warehouse);
+        //---------------------------------------Ask where to export---------------
+        Scanner console = new Scanner(System.in);
+        System.out.println("Please enter the filename.");
+        String filename= console.nextLine();
+        filename+=".txt";
+
         // ------------------------------------ASK user for orders---------------------
         warehouse.getShelveMap();
         warehouse.printMap();
@@ -561,7 +564,7 @@ public class Warehouse {
             //System.out.print(direction);
             System.out.print("\n\n");
             //------------------------------export direction to txt----------------
-            exportFile.exportTxt("\n\nOrder:"+i+"\n"+direction);
+            exportFile.exportTxt(filename,"\n\nOrder:"+i+"\n"+direction);
 
 
 //        //---------------------------2. DP approach : optimal route in O(n^2*2^n) time-------------------------------
@@ -584,7 +587,7 @@ public class Warehouse {
 
                 System.out.print("\n\n");
             //export direction to txt
-                exportFile.exportTxt("\n\nOrder:1\n"+direction);
+                exportFile.exportTxt(filename,"\n\nOrder:1\n"+direction);
             }
 //
 //        printRouteMap(order,route);

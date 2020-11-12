@@ -29,11 +29,8 @@ public class exportFile {
      * export a txt with direction
      * @param direction: string of route instruction
      */
-    public static void exportTxt(String direction) {
-        Scanner console = new Scanner(System.in);
-        System.out.println("Please enter the filename.");
-        filename= console.nextLine();
-        filename+=".txt";
+    public static void exportTxt(String filename, String direction) {
+
         try {
             creatfile(filename);
             FileWriter myWriter = new FileWriter(filename,append);
