@@ -1,8 +1,6 @@
 package com.uci.warehouse;
 
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.InputStreamReader;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -146,6 +144,34 @@ public class Warehouse {
      */
     private static void loadLocationData(Warehouse warehouse) {
         //TODO
+    }
+
+    /**
+     * Load orders data from file
+     */
+    public static void loadOrdersFromFile(String file) {
+        String path;
+        if (file.equals("")) {
+            Scanner scanner = new Scanner(System.in);
+            path = scanner.nextLine();
+            System.out.println("Type in the path of the order file: ");
+        } else path = file;
+        try {
+            BufferedReader in = new BufferedReader(new FileReader(path));
+            StringBuffer sb;
+            while (in.ready()) {
+                sb = (new StringBuffer(in.readLine()));
+                Order order = new Order(orders.size());
+                for (String product : sb.toString().split(",")) {
+                    order.addProduct(Integer.parseInt(product.trim()),1);
+                }
+                orders.put(order.getId(), order);
+            }
+            in.close();
+        } catch (Exception e) {
+            System.out.println("Load orders from file ERROR: ");
+            e.printStackTrace();
+        }
     }
 //==============================================================================================================================
 //                           map printing functions
