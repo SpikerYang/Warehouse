@@ -36,5 +36,6 @@ public class OrderTest {
         Warehouse warehouse = new Warehouse();
         Warehouse.loadOrdersFromFile("src/main/resources/qvBox-warehouse-orders-list-part01.txt");
         warehouse.printOrderList();
+        System.out.println(warehouse.getNextUnfulfilledOrder().getId());
     }
 }

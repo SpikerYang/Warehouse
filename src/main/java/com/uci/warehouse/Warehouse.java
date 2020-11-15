@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.*;
+import java.util.concurrent.atomic.AtomicInteger;
 
 /**
  * @Author spike
@@ -17,6 +18,7 @@ public class Warehouse {
     //==============================================================================================================================
 
     private static Map<Integer, Order> orders;
+    private static AtomicInteger lastFinishedOrder;
     private static Map<Integer, double[]> productLocationMap;
     private static Map<ArrayList<Long>, Integer> shelveMap;
     private static String[][] routeMap;
@@ -41,6 +43,7 @@ public class Warehouse {
     public Warehouse() {
         orders = new HashMap<>();
         productLocationMap = new HashMap<>();
+        lastFinishedOrder = new AtomicInteger(-1);
     }
 
     //==============================================================================================================================
@@ -103,6 +106,17 @@ public class Warehouse {
 
     public Order getOrder(int orderId) {
         return orders.get(orderId);
+    }
+
+    public Order getNextUnfulfilledOrder() {
+        if (lastFinishedOrder.intValue() < orders.size()) {
+            return orders.get(lastFinishedOrder.intValue() + 1);
+        } else try {
+            throw new Exception("no next unfulfilledOrder");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 
     //get list of productID

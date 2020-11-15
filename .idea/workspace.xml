@@ -29,15 +29,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9a4ceddb-213a-4e84-b6bd-8f79a747ba5f" name="Default Changelist" comment="move &quot;inquire of export&quot; to the front">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/uci/warehouse/Test/TestRunner.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/uci/warehouse/qvBox-warehouse-orders-list-part01.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/qvBox-warehouse-orders-list-part01.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/qvBox-warehouse-orders-list-part01.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/Warehouse_jar/Warehouse.jar" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/Warehouse_jar/Warehouse.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/uci/warehouse/Test/OrderTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/uci/warehouse/Test/OrderTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/uci/warehouse/Warehouse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/uci/warehouse/Warehouse.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/uci/warehouse/Test/OrderTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/uci/warehouse/Test/OrderTest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/uci/warehouse/Warehouse.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/uci/warehouse/Warehouse.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -52,7 +44,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/uci/warehouse/Order.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1560">
+            <state relative-caret-position="240">
               <caret line="119" column="19" selection-start-line="119" selection-start-column="19" selection-end-line="119" selection-end-column="19" />
             </state>
           </provider>
@@ -61,8 +53,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/uci/warehouse/Warehouse.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="256">
-              <caret line="153" column="30" lean-forward="true" selection-start-line="153" selection-start-column="30" selection-end-line="153" selection-end-column="30" />
+            <state relative-caret-position="-2717">
+              <caret line="20" column="51" lean-forward="true" selection-start-line="20" selection-start-column="51" selection-end-line="20" selection-end-column="51" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#1309#1310#0" expanded="true" />
@@ -81,8 +73,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/uci/warehouse/Test/OrderTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="375">
-              <caret line="34" column="42" lean-forward="true" selection-start-line="34" selection-start-column="42" selection-end-line="34" selection-end-column="42" />
+            <state relative-caret-position="307">
+              <caret line="35" column="46" lean-forward="true" selection-start-line="35" selection-start-column="46" selection-end-line="35" selection-end-column="46" />
             </state>
           </provider>
         </entry>
@@ -90,8 +82,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/uci/warehouse/Test/TestRunner.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="180">
-              <caret line="12" column="62" lean-forward="true" selection-start-line="12" selection-start-column="62" selection-end-line="12" selection-end-column="62" />
+            <state relative-caret-position="195">
+              <caret line="13" column="54" lean-forward="true" selection-start-line="13" selection-start-column="54" selection-end-line="13" selection-end-column="54" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -137,8 +129,8 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/src/main/java/com/uci/warehouse/Test/TestRunner.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/uci/warehouse/Warehouse.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/uci/warehouse/Test/OrderTest.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/uci/warehouse/Warehouse.java" />
       </list>
     </option>
   </component>
@@ -151,8 +143,8 @@
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="624" />
-    <option name="y" value="112" />
+    <option name="x" value="431" />
+    <option name="y" value="97" />
     <option name="width" value="1521" />
     <option name="height" value="832" />
   </component>
@@ -421,14 +413,18 @@
     <history-entry file="OrderTest_loadOrdersFormFileTest - 2020.11.14 at 20h 38m 18s.xml">
       <configuration name="OrderTest.loadOrdersFormFileTest" configurationId="JUnit" />
     </history-entry>
+    <history-entry file="OrderTest_loadOrdersFormFileTest - 2020.11.14 at 20h 44m 27s.xml">
+      <configuration name="OrderTest.loadOrdersFormFileTest" configurationId="JUnit" />
+    </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="3710000" />
+    <option name="totallyTimeSpent" value="4427000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="624" y="112" width="1521" height="832" extended-state="0" />
+    <frame x="363" y="94" width="1521" height="832" extended-state="0" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25287357" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25287357" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="UI Designer" order="3" />
@@ -442,7 +438,7 @@
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="7" visible="true" weight="0.32972974" />
+      <window_info anchor="bottom" id="Terminal" order="7" visible="true" weight="0.32972974" />
       <window_info anchor="bottom" id="Event Log" order="8" side_tool="true" />
       <window_info anchor="bottom" id="Database Changes" order="9" />
       <window_info anchor="bottom" id="Version Control" order="10" />
@@ -673,25 +669,32 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/uci/warehouse/Test/TestRunner.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="12" column="62" lean-forward="true" selection-start-line="12" selection-start-column="62" selection-end-line="12" selection-end-column="62" />
+        <state relative-caret-position="195">
+          <caret line="13" column="54" lean-forward="true" selection-start-line="13" selection-start-column="54" selection-end-line="13" selection-end-column="54" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/uci/warehouse/Order.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="119" column="19" selection-start-line="119" selection-start-column="19" selection-end-line="119" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/uci/warehouse/Test/OrderTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="375">
-          <caret line="34" column="42" lean-forward="true" selection-start-line="34" selection-start-column="42" selection-end-line="34" selection-end-column="42" />
+        <state relative-caret-position="307">
+          <caret line="35" column="46" lean-forward="true" selection-start-line="35" selection-start-column="46" selection-end-line="35" selection-end-column="46" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/uci/warehouse/Warehouse.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="256">
-          <caret line="153" column="30" lean-forward="true" selection-start-line="153" selection-start-column="30" selection-end-line="153" selection-end-column="30" />
+        <state relative-caret-position="-2717">
+          <caret line="20" column="51" lean-forward="true" selection-start-line="20" selection-start-column="51" selection-end-line="20" selection-end-column="51" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#1309#1310#0" expanded="true" />
