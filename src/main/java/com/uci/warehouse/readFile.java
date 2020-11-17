@@ -22,4 +22,21 @@ import java.util.Scanner;
             }
             return productsLocation;
         }
+
+        public Map<Integer,int[]> readfiletoInt(String fileLocation) throws FileNotFoundException {
+            Scanner input = new Scanner(new File(fileLocation));
+            Map<Integer,int[]> productsLocation = new HashMap<>();
+            input.nextLine();
+            while(input.hasNextLine()){
+                String str = input.nextLine();
+                String[] data = str.split("\t");
+                int key = Integer.parseInt(data[0]);
+                double xx = new Double(data[1]);
+                double yy = new Double(data[2]);
+                int [] location = new int[]{(int) xx,(int)yy};
+                productsLocation.put(key,location);
+            }
+            return productsLocation;
+        }
+
     }

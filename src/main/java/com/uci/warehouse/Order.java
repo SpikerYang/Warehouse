@@ -135,7 +135,7 @@ public class Order {
      * Generate distanceMatrix of products in X and Y direction for Dynamic Programming
      * @param locationMap map storing location of products
      * @return getXYDistanceMatrix
-     * SiqianWan
+     * @author SiqianWan
      */
     public int[][] getDistanceMatrixForDP(Map<Integer, double[]> locationMap,  int[] start, int[] end) {
         List<Integer> list = new ArrayList<>(products.keySet());

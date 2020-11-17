@@ -1,5 +1,8 @@
 package com.uci.warehouse;
 
+import com.sun.tools.javac.util.Pair;
+import org.junit.Test;
+
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.InputStreamReader;
@@ -20,7 +23,7 @@ public class Warehouse {
 
     private static Map<Integer, Order> orders;
     private static Map<Integer, double[]> productLocationMap;
-    private static Map<ArrayList<Long>, Integer> shelveMap;
+    private static Map<ArrayList<Integer>, Integer> shelveMap;
     private static String[][] routeMap;
     private static int[] start=new int[2];
     private static int[] end=new int[2];
@@ -48,6 +51,7 @@ public class Warehouse {
     //==============================================================================================================================
 //                           functions of warehouse
 //==============================================================================================================================
+   
     public void addOrder(Order order) {
         if (orders.containsKey(order.getId())) try {
             throw new Exception("Order existed!");
@@ -129,6 +133,11 @@ public class Warehouse {
      */
     //change to static
     public static double[] getProductLocation(int productId) {
+        if (!productLocationMap.containsKey(productId) || !productLocationMap.containsKey(productId)) try {
+            throw new Exception("No such Product!");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         return productLocationMap.get(productId);
     }
 
@@ -147,6 +156,21 @@ public class Warehouse {
     private static void loadLocationData(Warehouse warehouse) {
         //TODO
     }
+
+    public static Map<ArrayList<Integer>, Integer> getshelf() throws FileNotFoundException {
+        String filePath = "src/qvBox-warehouse-data-f20-v01.txt";
+        readfile = new readFile();
+        productLocationMap=readfile.readfile(filePath);
+
+
+        //there is a productLocationMap in Warehouse class
+        Warehouse warehouse=new Warehouse();
+        warehouse.getShelveMap();
+
+
+
+        return shelveMap;
+    }
 //==============================================================================================================================
 //                           map printing functions
 //==============================================================================================================================
@@ -156,19 +180,19 @@ public class Warehouse {
      */
     public void printRoute(ArrayList<Integer> arrayList) {
         Iterator<Integer> iterator = arrayList.iterator();
-        ArrayList<ArrayList<Long>> shelveArray = new ArrayList<>();
+        ArrayList<ArrayList<Integer>> shelveArray = new ArrayList<>();
         int productId;
         double[] location = new double[2];
-        long[] shelveLocation = new long[2];
+        int[] shelveLocation = new int[2];
         int sheleveId;
         int count = 1;
-        ArrayList<Long> tmparray = new ArrayList<>();
+        ArrayList<Integer> tmparray = new ArrayList<>();
         while (iterator.hasNext()) {
             productId = iterator.next();
             location = productLocationMap.get(productId);
             tmparray = new ArrayList<>();
-            tmparray.add((long) location[0]);
-            tmparray.add((long) location[1]);
+            tmparray.add((int) location[0]);
+            tmparray.add((int) location[1]);
             shelveArray.add(tmparray);
             sheleveId = shelveMap.get(tmparray);
             System.out.println(count + "th product is in No." + sheleveId + " shelve<" + tmparray.get(0)
@@ -176,7 +200,7 @@ public class Warehouse {
             count++;
         }
         System.out.println("The map is show as below:");
-        long[] sloction = new long[2];
+        int[] sloction = new int[2];
         int id;
         for (int i = 0; i <= 20; i++) {
             if (i == 20) {
@@ -191,8 +215,8 @@ public class Warehouse {
                 System.out.print(iid + " ");
                 for (int j = 0; j < 40; j++) {
                     tmparray = new ArrayList<>();
-                    tmparray.add((long) j);
-                    tmparray.add((long) i);
+                    tmparray.add((int) j);
+                    tmparray.add((int) i);
                     if (i == 19 && j == 0) {
                         System.out.print("S  ");
                     } else if (shelveArray.contains(tmparray)) {
@@ -214,9 +238,9 @@ public class Warehouse {
      * the map is size 40*20
      */
     public void printMap() {
-        long[] sloction = new long[2];
+        int[] sloction = new int[2];
         int id;
-        ArrayList<Long> tmparray = new ArrayList<>();
+        ArrayList<Integer> tmparray = new ArrayList<>();
         System.out.println("--------------------The map is show as below:-----------------------");
         for (int i = 0; i <= 20; i++) {
             if (i == 20) {
@@ -231,8 +255,8 @@ public class Warehouse {
                 System.out.print(iid + " ");
                 for (int j = 0; j < 40; j++) {
                     tmparray = new ArrayList<>();
-                    tmparray.add((long) j);
-                    tmparray.add((long) i);
+                    tmparray.add((int) j);
+                    tmparray.add((int) i);
                     if (i == 19 && j == 0) {
                         System.out.print("   ");
                     } else if (shelveMap.containsKey(tmparray)) {
@@ -257,16 +281,16 @@ public class Warehouse {
         shelveMap = new HashMap<>();
         int id = 1;
         double[] location = new double[2];
-        long[] shelveLocation = new long[2];
+        int[] shelveLocation = new int[2];
         Iterator<Integer> iterator = productLocationMap.keySet().iterator();
-        ArrayList<Long> tmparray = new ArrayList<>();
+        ArrayList<Integer> tmparray = new ArrayList<>();
         while (iterator.hasNext()) {
             location = productLocationMap.get(iterator.next());
             tmparray = new ArrayList<>();
-            tmparray.add((long) location[0]);
-            tmparray.add((long) location[1]);
-//            shelveLocation[0] = (long)location[0];
-//            shelveLocation[1] = (long)location[1];
+            tmparray.add((int) location[0]);
+            tmparray.add((int) location[1]);
+//            shelveLocation[0] = (int)location[0];
+//            shelveLocation[1] = (int)location[1];
             if (!shelveMap.containsKey(tmparray)) {
                 shelveMap.put(tmparray, id);
                 id++;
@@ -354,12 +378,12 @@ public class Warehouse {
         int code = 31;
 
         //initialize
-        ArrayList<Long> tmparray = new ArrayList<>();
+        ArrayList<Integer> tmparray = new ArrayList<>();
         for(int i=0;i<20;i++){
             for(int j=0;j<40;j++){
                 tmparray = new ArrayList<>();
-                tmparray.add((long)j);
-                tmparray.add((long)i);
+                tmparray.add((int)j);
+                tmparray.add((int)i);
                 if(shelveMap.containsKey(tmparray)){
                     routeMap[i][j] = "□  ";
                 }else{
@@ -480,20 +504,7 @@ public class Warehouse {
         filename+=".txt";
         warehouse.addOrderList();
 
-        //--------------------------dynamic start and end----------------------------------//
-        int[] start=new int[2];
-        int[] end=new int[2];
-        //
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("Please enter the START point location seperated by a blank.");
-        for(int i = 0; i < 2; i++){
-            start[i]=scanner.nextInt();
-        }
-        System.out.println("Please enter the END point location seperated by a blank.");
-        for(int i = 0; i < 2; i++){
-            end[i]=scanner.nextInt();
-        }
-        System.out.println("Your start and end points are ("+start[0]+","+start[1]+") and ("+end[0]+","+end[1]+")\n");
+        getStartEnd();
 
         for(int i=0;i<orders.size();i++){
             processOrder(i,filename,start,end);
@@ -619,6 +630,9 @@ public class Warehouse {
         warehouse.getShelveMap();
         warehouse.printMap();
 
+
+
+
         // ------------------------------------ASK user for orders---------------------
 
 
@@ -742,12 +756,12 @@ public class Warehouse {
 //
 //
 //            List<Integer> route=tsp_nn.nearestNeigh();
-//            long startTime = System.currentTimeMillis();
+//            int startTime = System.currentTimeMillis();
 //            String direction =printRoute(order, route,start,end);
-//            long endTime = System.currentTimeMillis();
+//            int endTime = System.currentTimeMillis();
 //
 //            printRouteMap(order,route,start,end);
-//            long timePeriod = endTime-startTime;
+//            int timePeriod = endTime-startTime;
 //            System.out.println("For approach 1, this order takes time around  "+ timePeriod + "  ms");
 //            //System.out.print(direction);
 //            System.out.print("\n\n");
