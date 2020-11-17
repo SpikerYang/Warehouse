@@ -189,7 +189,7 @@ public class RouteBFS {
         }
     }
 
-    public static Pair[][] routeDistanceMatrix(Order order, Map<Integer, double[]> map, int[] start, int[] end) throws FileNotFoundException {
+    public static Pair<ArrayList<Integer>,Integer>[][] routeDistanceMatrix(Order order, Map<Integer, double[]> map, int[] start, int[] end) throws FileNotFoundException {
         RouteBFS routbfs =new RouteBFS(order);
         routbfs.getshelf();
         List<Integer> list = new ArrayList<>(order.getProducts().keySet());
@@ -198,7 +198,7 @@ public class RouteBFS {
         map.put(-1, new double[]{start[0],start[1]});
         map.put(-2, new double[]{end[0],end[1]});
         Pair[][] m = new Pair[list.size()][list.size()];
-        Pair<ArrayList<Integer>,Integer> entry;
+        //Pair<ArrayList<Integer>,Integer> entry;
         for (int i = 0; i <list.size(); i++){
             m[i][i]=new Pair(null, 0);
             for(int j = i+1; j < list.size(); j++){

@@ -7,7 +7,7 @@ public class TSP_NN {
     int orderID;
     private Order order;
 
-    private int[][][] graph;
+    private int[][] graph;
     /*={ {0,10,15,20},
             {10,0,35,25},
             {15,35,0,30},
@@ -19,7 +19,7 @@ public class TSP_NN {
     private Set<Integer> unvisited = new HashSet<Integer>();
 
 
-    public TSP_NN(int OrderID,int[][][] graph){
+    public TSP_NN(int OrderID,int[][] graph){
         orderID= OrderID;
         order = new Order(orderID);
         this.graph = graph;
@@ -50,7 +50,7 @@ public class TSP_NN {
 
             path+="-->" + j;
             route.add(j);
-            s = s + Math.abs(graph[i][j][0])+Math.abs(graph[i][j][1]);
+            s = s + graph[i][j];
             i = j;
         }
         //System.out.println("route:" + path);
@@ -65,8 +65,8 @@ public class TSP_NN {
            return graph.length-1;
         }
        for(int u:unvisited){
-           if(m>=Math.abs(graph[i][u][0])+Math.abs(graph[i][u][1])){
-               m=Math.abs(graph[i][u][0])+Math.abs(graph[i][u][1]);
+           if(m>=graph[i][u]){
+               m=graph[i][u];
                n=u;
            }
        }

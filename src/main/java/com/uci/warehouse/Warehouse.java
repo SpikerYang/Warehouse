@@ -538,7 +538,7 @@ public class Warehouse {
 //                                      Core calls: Creat orders, process order
 //==============================================================================================================================
 
-    public static void menu_create_order(Warehouse warehouse){
+    public static void menu_create_order(Warehouse warehouse) throws FileNotFoundException {
         //---------------------------------------Ask where to export---------------
         Scanner console = new Scanner(System.in);
         System.out.println("Please enter the filename to export.");
@@ -575,7 +575,7 @@ public class Warehouse {
      * @param start dynamic start
      * @param end   dynamic end
      */
-    public static void processOrder(int OrderID,String filename, int[]start, int[] end){
+    public static void processOrder(int OrderID,String filename, int[]start, int[] end) throws FileNotFoundException {
 
         //--------------------------------------- process orders----------------------------------------------------------------
 
@@ -599,8 +599,19 @@ public class Warehouse {
         //------------------1: run NN------------------------------
         if(algorithm_num == 1){
 
+            //Test
+
+            Pair[][] matrix=RouteBFS.routeDistanceMatrix(order,productLocationMap,new int[]{0,0},new int[]{0,0});
+            int[][] graph = new int[matrix.length][matrix.length];
+            for(int i = 0; i < matrix.length; i++){
+                for(int j = 0;j<matrix.length;j++){
+                    graph[i][j]= (int) matrix[i][j].snd;
+                }
+            }
+
+
                 System.out.print("Nearest neighbor approach\n");
-                int[][] [] graph = order.getXYDistanceMatrix(productLocationMap,start,end);
+                //int[][] [] graph = order.getXYDistanceMatrix(productLocationMap,start,end);
                 tsp_nn = new TSP_NN(1, graph);
                 List<Integer> route=tsp_nn.nearestNeigh();
                 long startTime = System.currentTimeMillis();
@@ -610,6 +621,11 @@ public class Warehouse {
                 printRouteMap(order,route,start,end);
                 long timePeriod = endTime-startTime;
                 System.out.println("\nFor approach 1, this order takes time around  "+ timePeriod + "  ms\n");
+                //TODO @Jindong
+
+
+
+
 
                 //------------------------------export direction to txt----------------
                 exportFile.exportTxt(filename,""+direction);
