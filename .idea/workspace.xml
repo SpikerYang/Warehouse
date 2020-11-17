@@ -33,17 +33,7 @@
     </select>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9a4ceddb-213a-4e84-b6bd-8f79a747ba5f" name="Default Changelist" comment="beta v1.1">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/uci/warehouse/RouteBFS.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/uci/warehouse/Test/RoutBfsTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/Warehouse_jar/Warehouse.jar" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/Warehouse_jar/Warehouse.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/uci/warehouse/Order.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/uci/warehouse/Order.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/uci/warehouse/Warehouse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/uci/warehouse/Warehouse.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/uci/warehouse/readFile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/uci/warehouse/readFile.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/uci/warehouse/Warehouse.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/uci/warehouse/Warehouse.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/uci/warehouse/readFile.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/uci/warehouse/readFile.class" afterDir="false" />
-    </list>
+    <list default="true" id="9a4ceddb-213a-4e84-b6bd-8f79a747ba5f" name="Default Changelist" comment="RouteBFS.java" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -220,7 +210,7 @@
       <workItem from="1605148637020" duration="780000" />
       <workItem from="1605162842137" duration="1081000" />
       <workItem from="1605224782531" duration="15228000" />
-      <workItem from="1605512253272" duration="18449000" />
+      <workItem from="1605512253272" duration="18940000" />
     </task>
     <task id="LOCAL-00001" summary="Update DSP_NN">
       <created>1604119504100</created>
@@ -285,7 +275,14 @@
       <option name="project" value="LOCAL" />
       <updated>1605165700124</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="RouteBFS.java">
+      <created>1605582827439</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1605582827439</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -340,7 +337,8 @@
     <MESSAGE value="Time out DP when &gt;60s." />
     <MESSAGE value="move &quot;inquire of export&quot; to the front" />
     <MESSAGE value="beta v1.1" />
-    <option name="LAST_COMMIT_MESSAGE" value="beta v1.1" />
+    <MESSAGE value="RouteBFS.java" />
+    <option name="LAST_COMMIT_MESSAGE" value="RouteBFS.java" />
   </component>
   <component name="WindowStateProjectService">
     <state x="424" y="213" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1605144705748">
@@ -470,9 +468,10 @@
     </state>
     <state x="637" y="356" key="com.intellij.ide.util.TipDialog/0.23.1920.1057/128.1103.1792.1026/1920.-414.1080.1897@0.23.1920.1057" timestamp="1604784552641" />
     <state x="637" y="356" key="com.intellij.ide.util.TipDialog/0.23.1920.1057/128.1103.1792.1030/1920.-414.1080.1897@0.23.1920.1057" timestamp="1604784858337" />
-    <state x="756" y="468" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1605142350365">
-      <screen x="0" y="23" width="1920" height="1057" />
+    <state x="756" y="455" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1605583284680">
+      <screen x="0" y="0" width="1920" height="1080" />
     </state>
+    <state x="756" y="455" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1920.1080@0.0.1920.1080" timestamp="1605583284680" />
     <state x="756" y="468" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.23.1920.1057@0.23.1920.1057" timestamp="1605142350365" />
   </component>
   <component name="XDebuggerManager">
@@ -482,6 +481,11 @@
           <url>file://$PROJECT_DIR$/src/main/java/com/uci/warehouse/TSP_NN.java</url>
           <line>52</line>
           <option name="timeStamp" value="4" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/uci/warehouse/Warehouse.java</url>
+          <line>560</line>
+          <option name="timeStamp" value="32" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
