@@ -1,5 +1,6 @@
 package com.uci.warehouse;
 
+import java.io.*;
 import com.sun.tools.javac.util.Pair;
 import org.junit.Test;
 
@@ -10,6 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.*;
+import java.util.concurrent.atomic.AtomicInteger;
 
 /**
  * @Author spike
@@ -22,6 +24,7 @@ public class Warehouse {
     //==============================================================================================================================
 
     private static Map<Integer, Order> orders;
+    private static AtomicInteger lastFinishedOrder;
     private static Map<Integer, double[]> productLocationMap;
     private static Map<ArrayList<Integer>, Integer> shelveMap;
     private static String[][] routeMap;
@@ -46,12 +49,12 @@ public class Warehouse {
     public Warehouse() {
         orders = new HashMap<>();
         productLocationMap = new HashMap<>();
+        lastFinishedOrder = new AtomicInteger(-1);
     }
 
     //==============================================================================================================================
 //                           functions of warehouse
 //==============================================================================================================================
-   
     public void addOrder(Order order) {
         if (orders.containsKey(order.getId())) try {
             throw new Exception("Order existed!");
@@ -109,6 +112,17 @@ public class Warehouse {
 
     public Order getOrder(int orderId) {
         return orders.get(orderId);
+    }
+
+    public Order getNextUnfulfilledOrder() {
+        if (lastFinishedOrder.intValue() < orders.size()) {
+            return orders.get(lastFinishedOrder.intValue() + 1);
+        } else try {
+            throw new Exception("no next unfulfilledOrder");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 
     //get list of productID
@@ -170,6 +184,34 @@ public class Warehouse {
 
 
         return shelveMap;
+    }
+
+    /**
+     * Load orders data from file
+     */
+    public static void loadOrdersFromFile(String file) {
+        String path;
+        if (file.equals("")) {
+            Scanner scanner = new Scanner(System.in);
+            path = scanner.nextLine();
+            System.out.println("Type in the path of the order file: ");
+        } else path = file;
+        try {
+            BufferedReader in = new BufferedReader(new FileReader(path));
+            StringBuffer sb;
+            while (in.ready()) {
+                sb = (new StringBuffer(in.readLine()));
+                Order order = new Order(orders.size());
+                for (String product : sb.toString().split(",")) {
+                    order.addProduct(Integer.parseInt(product.trim()),1);
+                }
+                orders.put(order.getId(), order);
+            }
+            in.close();
+        } catch (Exception e) {
+            System.out.println("Load orders from file ERROR: ");
+            e.printStackTrace();
+        }
     }
 //==============================================================================================================================
 //                           map printing functions
@@ -629,9 +671,6 @@ public class Warehouse {
         loadLocationData(warehouse);
         warehouse.getShelveMap();
         warehouse.printMap();
-
-
-
 
         // ------------------------------------ASK user for orders---------------------
 
