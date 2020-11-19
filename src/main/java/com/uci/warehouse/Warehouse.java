@@ -298,7 +298,7 @@ public class Warehouse {
                 for (int j = 0; j < 40; j++) {
                     tmparray = new ArrayList<>();
                     tmparray.add((int) j);
-                    tmparray.add((int) i);
+                    tmparray.add((int) 19-i);
                     if (i == 19 && j == 0) {
                         System.out.print("   ");
                     } else if (shelveMap.containsKey(tmparray)) {
@@ -425,7 +425,7 @@ public class Warehouse {
             for(int j=0;j<40;j++){
                 tmparray = new ArrayList<>();
                 tmparray.add((int)j);
-                tmparray.add((int)i);
+                tmparray.add((int)19-i);
                 if(shelveMap.containsKey(tmparray)){
                     routeMap[i][j] = "□  ";
                 }else{
