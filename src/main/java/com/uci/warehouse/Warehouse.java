@@ -435,30 +435,30 @@ public class Warehouse {
                 xx=to[0]-from[0];
                 yy=to[1]-from[1];
 
-                if(yy==0){
-                    if(verticalMove!=0){
-                        direction+="\tGo to "+(verticalMove==1?"north":"south")+"to ("+from[0]+","+from[1]+")\n";
-                    }
-                    direction+="\tGo to "+(xx>0?"east":"west")+" to ("+to[0]+","+from[1]+")\n";
-                    if(i==route.size()-1){
-                        direction+="Done!\n";
-                    }else{
-                        direction+="Pick up product "+ list.get(route.get(i))+"\n";
-                    }
-                    break;
-                }
+
                 if(xx==0){
                     verticalMove=yy>0?1:-1;
                     continue;
                 }
                 if(verticalMove!=0){
-                    direction+="\tGo to "+(verticalMove==1?"north":"south")+"to ("+from[0]+","+from[1]+")\n";
-                    verticalMove=0;
+                    direction+="\tGo to "+(verticalMove==1?"north":"south")+" to ("+from[0]+","+from[1]+")\n";
                 }
                 direction+="\tGo to "+(xx>0?"east":"west")+" to ("+to[0]+","+from[1]+")\n";
-                verticalMove=yy>0?1:-1;
-
+                //verticalMove=yy>0?1:-1;
+                if(yy>0) verticalMove=1;
+                else if (yy<0) verticalMove=-1;
+                else verticalMove=0;
             }
+            to = subRoute.get(subRoute.size()-1);
+                if(verticalMove!=0){
+                    direction+="\tGo to "+(verticalMove==1?"north":"south")+" to ("+to[0]+","+to[1]+")\n";
+                }
+                if(i==route.size()-1){
+                    direction+="Done!\n";
+                }else{
+                    direction+="Pick up product "+ list.get(route.get(i))+"\n";
+                }
+
 
         }
         //System.out.print(direction);

@@ -1,7 +1,5 @@
 package com.uci.warehouse;
 
-
-
 import com.sun.tools.javac.util.Pair;
 
 //import javax.xml.soap.Node;
@@ -12,7 +10,7 @@ import java.util.*;
 import java.util.Map;
 
 public class RouteBFS {
-    public static Object itemNode;
+
     private Order order;
     private int orderID;
     private int distance;
@@ -73,6 +71,7 @@ public class RouteBFS {
         Map<ArrayList<Integer>, itemNode>  thislayer= new HashMap<>();
         Map<ArrayList<Integer>, itemNode> nextlayer= new HashMap<>();
         itemNode end=new itemNode(node2,Integer.MAX_VALUE,null);
+        //boolean isinbetween= isInBetween(node2);
 
         nextlayer.put(node1,new itemNode(node1,0,null));
         for(int i= 0; i <=Math.abs(dyy);i++){
@@ -84,8 +83,9 @@ public class RouteBFS {
             for(itemNode node:thislayer.values()){
                 //thislayer.remove(node.location);
 
-                if(i==Math.abs(dyy)){
-                    int finalDistance = Math.abs(node2.get(0)-node.location.get(0));
+                //node2 is in between
+                if(node2.get(1)%2==0 && i==Math.abs(dyy)-1){
+                    int finalDistance = Math.abs(node2.get(0)-node.location.get(0))+1;
                     if(node.distance+finalDistance<end.distance){
                         end.distance=node.distance+finalDistance;
                         end.previous=node;
@@ -93,6 +93,16 @@ public class RouteBFS {
                     continue;
                 }
 
+
+                if(i==Math.abs(dyy)){
+
+                    int finalDistance = Math.abs(node2.get(0)-node.location.get(0));
+                    if(node.distance+finalDistance<end.distance){
+                        end.distance=node.distance+finalDistance;
+                        end.previous=node;
+                    }
+                    continue;
+                }
 
                 if(!isShelf(node.location,isGoUp)){
                     next=findVertical(node,isGoUp);
@@ -136,6 +146,20 @@ public class RouteBFS {
             n=n.previous;
         }
 
+    }
+
+    private boolean isInBetween(itemNode node) {
+        ArrayList<Integer> location = new ArrayList<>();
+        location.addAll(node.location);
+        while (location.get(0)>0) {
+            if(isShelf(location))return true ;
+            location.set(0, location.get(0) - 1);
+        }
+        while (location.get(0)<40) {
+            if(isShelf(location))return true ;
+            location.set(0, location.get(0) + 1);
+        }
+        return false;
     }
 
     private itemNode findLeft(itemNode node, boolean isGoUp) {
