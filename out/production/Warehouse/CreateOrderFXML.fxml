@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.collections.*?>
+
+
+
+<AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.java.com.uci.warehouse.Controller.CreateOrderController">
+   <children>
+      <Pane layoutX="178.0" layoutY="7.0" prefHeight="552.0" prefWidth="439.0">
+         <children>
+            <Text layoutY="20.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Please enter the filename to export:" />
+            <TextField fx:id="new_order_filename" layoutY="40.0" prefHeight="27.0" prefWidth="285.0" />
+            <Text layoutY="102.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Type the size of the order:" />
+             <TextField fx:id="new_order_size" layoutY="119.0" prefHeight="27.0" prefWidth="285.0" />
+             <Text layoutY="184.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Type id of product seperated by blanks: " />
+            <TextField fx:id="new_order_products" layoutY="201.0" prefHeight="27.0" prefWidth="285.0" />
+            <Text layoutY="268.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Please enter the START point location seperated by a blank:" />
+             <TextField fx:id="new_order_start_point" layoutY="285.0" prefHeight="27.0" prefWidth="285.0" />
+            <Text layoutY="354.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Please enter the END point location seperated by a blank:" />
+             <TextField fx:id="new_order_end_point" layoutY="371.0" prefHeight="27.0" prefWidth="285.0" />
+            <ChoiceBox layoutY="448.0" prefWidth="150.0"  value="NN">
+                <items>
+                    <FXCollections fx:factory="observableArrayList">
+                        <String fx:value="NN"/>
+                        <String fx:value="DP"/>
+                    </FXCollections>
+                </items>
+            </ChoiceBox>
+            <Text layoutY="439.0" strokeType="OUTSIDE" strokeWidth="0.0" text="lease select the algorithm you want to use to get the route path:" />
+            <Button fx:id="create_new_order_button" onAction="#createNewOrderButtonClick" layoutX="323.0" layoutY="505.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="74.0" text="Finish" />
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>
