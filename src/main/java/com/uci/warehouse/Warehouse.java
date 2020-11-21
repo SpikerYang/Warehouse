@@ -2,7 +2,7 @@ package com.uci.warehouse;
 
 import java.io.*;
 import com.sun.tools.javac.util.Pair;
-import org.junit.Test;
+
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
@@ -37,7 +37,7 @@ public class Warehouse {
     private static readFile readfile;
 
     private static TSP_NN tsp_nn;// nearest neighbor approach : 2-approximation in O(n^2) time
-    private static TSP_DP tsp_dp;// DP approch : optimal route in O(n^2*2^n) time
+    private static TSP_DP tsp_dp;// DP approach : optimal route in O(n^2*2^n) time
 
     /**
      * @param map
@@ -409,6 +409,61 @@ public class Warehouse {
         return direction;
     }
 
+    /**
+     * print route instruction avoiding shelf
+     * @param matrix pair (ArrayList<int[]>,int)
+     * @param route
+     * @param start
+     * @param end
+     * @return
+     */
+    public static String printRoute(Pair[][] matrix, List<Integer> route, int[] start, int[] end) {
+        List<Integer> list= order.getOrderList();
+        list.add(0, -1);
+        //list.add(route.size(),-2);
+        List<int[]> subRoute;
+        String direction="Start at location ("+start[0]+","+start[1]+")\n";
+        for (int i = 1; i < route.size(); i++){
+            subRoute= (List<int[]>) matrix[i-1][i].fst;
+            int xx,yy;
+            int[] from, to;
+            int verticalMove=0;//verticalMove: 0 no vertical move, 1 go north, -1 go south.
+            //from=subRoute.get(0);
+            for(int j=1; j<subRoute.size(); j++){
+                from=subRoute.get(j-1);
+                to=subRoute.get(j);
+                xx=to[0]-from[0];
+                yy=to[1]-from[1];
+
+                if(yy==0){
+                    if(verticalMove!=0){
+                        direction+="\tGo to "+(verticalMove==1?"north":"south")+"to ("+from[0]+","+from[1]+")\n";
+                    }
+                    direction+="\tGo to "+(xx>0?"east":"west")+" to ("+to[0]+","+from[1]+")\n";
+                    if(i==route.size()-1){
+                        direction+="Done!\n";
+                    }else{
+                        direction+="Pick up product "+ list.get(route.get(i))+"\n";
+                    }
+                    break;
+                }
+                if(xx==0){
+                    verticalMove=yy>0?1:-1;
+                    continue;
+                }
+                if(verticalMove!=0){
+                    direction+="\tGo to "+(verticalMove==1?"north":"south")+"to ("+from[0]+","+from[1]+")\n";
+                    verticalMove=0;
+                }
+                direction+="\tGo to "+(xx>0?"east":"west")+" to ("+to[0]+","+from[1]+")\n";
+                verticalMove=yy>0?1:-1;
+
+            }
+
+        }
+        //System.out.print(direction);
+        return direction;
+    }
 
     public static String printColor(int code,String content){
         return String.format("\033[%d;%dm%s\033[0m", code, 2, content);
@@ -590,7 +645,7 @@ public class Warehouse {
             System.out.print("("+(int)getProductLocation(l)[0]+","+(int)getProductLocation(l)[1]+") ");
         }
 
-//--------------------------------------- ask which algorithm----------------------------------------------------------------
+//--------------------------------------- Ask algorithm----------------------------------------------------------------
         Scanner scanner = new Scanner(System.in);
         System.out.println("\nPlease select the algorithm you want to use to get the route path-----> 1 for NN. 2 for DP");
         int algorithm_num;
@@ -599,9 +654,10 @@ public class Warehouse {
         //------------------1: run NN------------------------------
         if(algorithm_num == 1){
 
-            //Test
+            //start time measure
+            long startTime = System.currentTimeMillis();
 
-            Pair[][] matrix=RouteBFS.routeDistanceMatrix(order,productLocationMap,new int[]{0,0},new int[]{0,0});
+            Pair[][] matrix=RouteBFS.routeDistanceMatrix(order,productLocationMap,start,end);
             int[][] graph = new int[matrix.length][matrix.length];
             for(int i = 0; i < matrix.length; i++){
                 for(int j = 0;j<matrix.length;j++){
@@ -610,25 +666,24 @@ public class Warehouse {
             }
 
 
-                System.out.print("Nearest neighbor approach\n");
-                //int[][] [] graph = order.getXYDistanceMatrix(productLocationMap,start,end);
-                tsp_nn = new TSP_NN(1, graph);
-                List<Integer> route=tsp_nn.nearestNeigh();
-                long startTime = System.currentTimeMillis();
-                String direction =printRoute(order, route,start,end);
-                long endTime = System.currentTimeMillis();
+            System.out.print("Nearest neighbor approach\n");
+            //int[][] [] graph = order.getXYDistanceMatrix(productLocationMap,start,end);
+            tsp_nn = new TSP_NN(1, graph);
 
-                printRouteMap(order,route,start,end);
-                long timePeriod = endTime-startTime;
-                System.out.println("\nFor approach 1, this order takes time around  "+ timePeriod + "  ms\n");
-                //TODO @Jindong
+            List<Integer> route=tsp_nn.nearestNeigh();
 
-
-
-
-
-                //------------------------------export direction to txt----------------
-                exportFile.exportTxt(filename,""+direction);
+            //String direction =printRoute(order, route,start,end);
+            String direction;
+            direction = printRoute(matrix,route,start,end);
+            //end time measure
+            long endTime = System.currentTimeMillis();
+            System.out.print(direction);
+            printRouteMap(order,route,start,end);
+            long timePeriod = endTime-startTime;
+            System.out.println("\nFor approach 1, this order takes time around  "+ timePeriod + "  ms\n");
+            //TODO @Jindong
+            //------------------------------export direction to txt----------------
+            exportFile.exportTxt(filename,""+direction);
 
             }
             //------------------2: run DP------------------------------

@@ -20,7 +20,7 @@ public class RoutBfsTest {
 
     @Test
     public void testisShelf() throws FileNotFoundException {
-        n.getshelf();
+        //n.getshelf();
         ArrayList<Integer> shelf = new ArrayList<>();
         shelf.add(2);
         shelf.add(0);

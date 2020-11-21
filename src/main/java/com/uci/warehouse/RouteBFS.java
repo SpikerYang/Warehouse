@@ -4,9 +4,12 @@ package com.uci.warehouse;
 
 import com.sun.tools.javac.util.Pair;
 
-import javax.xml.soap.Node;
+//import javax.xml.soap.Node;
+
+
 import java.io.FileNotFoundException;
 import java.util.*;
+import java.util.Map;
 
 public class RouteBFS {
     public static Object itemNode;
@@ -20,7 +23,7 @@ public class RouteBFS {
 
 
     public RouteBFS(Order order){
-
+        this.order=order;
     }
 
     public boolean isShelf(ArrayList<Integer> location){
@@ -128,8 +131,8 @@ public class RouteBFS {
 //        reversRoute.add(new int[]{end.location.get(0),end.location.get(0)});
         itemNode n=end;
         while(n!=null){
-            route.add(new int[]{n.location.get(0),n.location.get(1)});
-            reversRoute.add(0,new int[]{n.location.get(0),n.location.get(1)});
+            reversRoute.add(new int[]{n.location.get(0),n.location.get(1)});
+            route.add(0,new int[]{n.location.get(0),n.location.get(1)});
             n=n.previous;
         }
 
@@ -176,10 +179,7 @@ public class RouteBFS {
         return new itemNode(node,0,isGoUp?1:-1);
     }
 
-    public void getshelf() throws FileNotFoundException {
-        String filePath = "src/qvBox-warehouse-data-f20-v01.txt";
-        readFile readfile = new readFile();
-        Map<Integer, double[]> productLocationMap=readfile.readfile(filePath);
+    public void getshelf(Map<Integer, double[]> productLocationMap){
         shelves = new HashSet<>();
         for(double[] item:productLocationMap.values()){
             ArrayList<Integer> shelf = new ArrayList<>();
@@ -189,14 +189,14 @@ public class RouteBFS {
         }
     }
 
-    public static Pair<ArrayList<Integer>,Integer>[][] routeDistanceMatrix(Order order, Map<Integer, double[]> map, int[] start, int[] end) throws FileNotFoundException {
+    public static Pair<ArrayList<int[]>,Integer>[][] routeDistanceMatrix(Order order, Map<Integer, double[]> map, int[] start, int[] end) throws FileNotFoundException {
         RouteBFS routbfs =new RouteBFS(order);
-        routbfs.getshelf();
+        routbfs.getshelf(map);
         List<Integer> list = new ArrayList<>(order.getProducts().keySet());
         list.add(0, -1);
         list.add(list.size(),-2);
-        map.put(-1, new double[]{start[0],start[1]});
-        map.put(-2, new double[]{end[0],end[1]});
+        map.put(-1, new double[]{start[0],start[1]-1});//start and end are true location. -1 because will be +1 in the for loop
+        map.put(-2, new double[]{end[0],end[1]-1});
         Pair[][] m = new Pair[list.size()][list.size()];
         //Pair<ArrayList<Integer>,Integer> entry;
         for (int i = 0; i <list.size(); i++){
@@ -206,11 +206,11 @@ public class RouteBFS {
                 double[] location =map.get(list.get(i));
                 ArrayList<Integer> loc1= new ArrayList<>();
                 loc1.add((int)location[0]);
-                loc1.add((int)location[1]);
+                loc1.add((int)location[1]+1);//get item from north
                 location=map.get(list.get(j));
                 ArrayList<Integer> loc2= new ArrayList<>();
                 loc2.add((int)location[0]);
-                loc2.add((int)location[1]);
+                loc2.add((int)location[1]+1);//get item from north
                 itemNode n=routbfs.BFS(loc1,loc2);
                 m[i][j]=new Pair(routbfs.route,n.distance);
                 m[j][i]=new Pair(routbfs.reversRoute,n.distance);
