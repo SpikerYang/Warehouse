@@ -115,8 +115,9 @@ public class Warehouse {
     }
 
     public Order getNextUnfulfilledOrder() {
-        if (lastFinishedOrder.intValue() < orders.size()) {
-            return orders.get(lastFinishedOrder.intValue() + 1);
+        if (lastFinishedOrder.intValue() < orders.size() - 1) {
+            lastFinishedOrder.set(lastFinishedOrder.intValue() + 1);
+            return orders.get(lastFinishedOrder.intValue());
         } else try {
             throw new Exception("no next unfulfilledOrder");
         } catch (Exception e) {
@@ -147,7 +148,7 @@ public class Warehouse {
      */
     //change to static
     public static double[] getProductLocation(int productId) {
-        if (!productLocationMap.containsKey(productId) || !productLocationMap.containsKey(productId)) try {
+        if (!productLocationMap.containsKey(productId)) try {
             throw new Exception("No such Product!");
         } catch (Exception e) {
             e.printStackTrace();
@@ -189,29 +190,24 @@ public class Warehouse {
     /**
      * Load orders data from file
      */
-    public static void loadOrdersFromFile(String file) {
+    public static void loadOrdersFromFile(String file) throws IOException {
         String path;
-        if (file.equals("")) {
+        if (file.length() == 0) {
+            System.out.println("Type in the path of the order file: ");
             Scanner scanner = new Scanner(System.in);
             path = scanner.nextLine();
-            System.out.println("Type in the path of the order file: ");
         } else path = file;
-        try {
-            BufferedReader in = new BufferedReader(new FileReader(path));
-            StringBuffer sb;
-            while (in.ready()) {
-                sb = (new StringBuffer(in.readLine()));
-                Order order = new Order(orders.size());
-                for (String product : sb.toString().split(",")) {
-                    order.addProduct(Integer.parseInt(product.trim()),1);
-                }
-                orders.put(order.getId(), order);
+        BufferedReader in = new BufferedReader(new FileReader(path));
+        StringBuffer sb;
+        while (in.ready()) {
+            sb = (new StringBuffer(in.readLine()));
+            Order order = new Order(orders.size());
+            for (String product : sb.toString().split(",")) {
+                order.addProduct(Integer.parseInt(product.trim()),1);
             }
-            in.close();
-        } catch (Exception e) {
-            System.out.println("Load orders from file ERROR: ");
-            e.printStackTrace();
+            orders.put(order.getId(), order);
         }
+        in.close();
     }
 //==============================================================================================================================
 //                           map printing functions
@@ -717,6 +713,32 @@ public class Warehouse {
         }
     }
 
+    public static void loadLocationFromFile() throws FileNotFoundException {
+        Scanner input = new Scanner(System.in);
+        System.out.println("Please, introduce the path where the text file is stored");
+        String filePath = input.nextLine();
+
+        readfile = new readFile();
+        productLocationMap=readfile.readfile(filePath);
+    }
+
+    public static void loadLocationFromFileAndRetry() {
+        try {
+            loadLocationFromFile();
+        } catch (Exception e) {
+            System.out.println("Load file Error!");
+            loadLocationFromFileAndRetry();
+        }
+    }
+
+    public static void loadOrdersFromFileAndRetry(String file) {
+        try {
+            Warehouse.loadOrdersFromFile(file);
+        } catch (Exception e) {
+            System.out.println("Load file Error!");
+            loadOrdersFromFileAndRetry(file);
+        }
+    }
 
 //==============================================================================================================================
 //                           main
@@ -729,14 +751,14 @@ public class Warehouse {
         // ------------------------------Warehouse initiation  and read file--------------------------
         // not necessary for now if we only have one warehouse
         Warehouse warehouse = new Warehouse();
-        //read file
-        Scanner input = new Scanner(System.in);
-        System.out.println("Please, introduce the path where the text file is stored");
-        String filePath = input.nextLine();
-        //String filePath = "src/qvBox-warehouse-data-f20-v01.txt";
-        readfile = new readFile();
-        productLocationMap=readfile.readfile(filePath);
 
+        loadOrdersFromFileAndRetry("");
+        warehouse.printOrderList();
+
+        Scanner input = new Scanner(System.in);
+        //read file
+
+        loadLocationFromFileAndRetry();
 
         //there is a productLocationMap in Warehouse class
         loadLocationData(warehouse);

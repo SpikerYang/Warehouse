@@ -34,8 +34,10 @@ public class OrderTest {
     @Test
     public void loadOrdersFormFileTest() {
         Warehouse warehouse = new Warehouse();
-        Warehouse.loadOrdersFromFile("src/main/resources/qvBox-warehouse-orders-list-part01.txt");
+        Warehouse.loadOrdersFromFileAndRetry("src/main/resources/qvBox-warehouse-orders-list-part01.txt");
         warehouse.printOrderList();
-        System.out.println(warehouse.getNextUnfulfilledOrder().getId());
+        for (int i = 0; i < 5; i++) {
+            System.out.println(warehouse.getNextUnfulfilledOrder().getId());
+        }
     }
 }
