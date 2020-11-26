@@ -28,54 +28,11 @@
     </select>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9a4ceddb-213a-4e84-b6bd-8f79a747ba5f" name="Default Changelist" comment="support all start and end positions">
-      <change afterPath="$PROJECT_DIR$/.idea/artifacts/Warehouse.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Java_EE_6_Java_EE_6.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Library.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/javaFX_11.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/javaFX_15.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="9a4ceddb-213a-4e84-b6bd-8f79a747ba5f" name="Default Changelist" comment="GUI alone with JavaFX lib">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/uci/warehouse/Controller/LoadFile.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/uci/warehouse/Resources/LoadFile.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/qvBox-warehouse-orders-list-part01.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Warehouse.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Warehouse.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/Warehouse_jar/Warehouse.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Warehouse/META-INF/Warehouse.kotlin_module" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Warehouse/main/java/com/uci/warehouse/Config/StaticResourcesConfig.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Warehouse/main/java/com/uci/warehouse/Config/StaticResourcesConfig.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Warehouse/main/java/com/uci/warehouse/Controller/CreateOrderController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Warehouse/main/java/com/uci/warehouse/Controller/CreateOrderController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Warehouse/main/java/com/uci/warehouse/Controller/LoginController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Warehouse/main/java/com/uci/warehouse/Controller/LoginController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Warehouse/main/java/com/uci/warehouse/Controller/MapController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Warehouse/main/java/com/uci/warehouse/Controller/MapController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Warehouse/main/java/com/uci/warehouse/Controller/OrderController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Warehouse/main/java/com/uci/warehouse/Controller/OrderController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Warehouse/main/java/com/uci/warehouse/Controller/OrderListController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Warehouse/main/java/com/uci/warehouse/Controller/OrderListController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Warehouse/main/java/com/uci/warehouse/GUI/ViewCenter.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Warehouse/main/java/com/uci/warehouse/GUI/ViewCenter.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Warehouse/main/java/com/uci/warehouse/Model/Map.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Warehouse/main/java/com/uci/warehouse/Model/Map.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Warehouse/main/java/com/uci/warehouse/Model/Route.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Warehouse/main/java/com/uci/warehouse/Model/Route.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Warehouse/main/java/com/uci/warehouse/Model/Warehouse.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Warehouse/main/java/com/uci/warehouse/Model/Warehouse.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/uci/warehouse/Order.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/uci/warehouse/PrintMap.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/uci/warehouse/Product.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/uci/warehouse/RouteBFS.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/uci/warehouse/TSP_DP.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/uci/warehouse/TSP_NN.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/uci/warehouse/Test/OrderTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/uci/warehouse/Test/RoutBfsTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/uci/warehouse/Test/TestRunner.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/uci/warehouse/Warehouse.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/uci/warehouse/exportFile.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/uci/warehouse/readFile.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/uci/warehouse/Order.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/uci/warehouse/PrintMap.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/uci/warehouse/Product.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/uci/warehouse/TSP_DP$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/uci/warehouse/TSP_DP$Index.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/uci/warehouse/TSP_DP$SetSizeComparator.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/uci/warehouse/TSP_DP.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/uci/warehouse/TSP_NN.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/uci/warehouse/Test/OrderTest.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/uci/warehouse/Test/TestRunner.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/uci/warehouse/Warehouse.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/uci/warehouse/exportFile.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/uci/warehouse/readFile.class" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -144,18 +101,18 @@
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.29425287" />
     <property name="restartRequiresConfirmation" value="false" />
-    <property name="settings.editor.selected.configurable" value="reference.projectsettings.compiler.javacompiler" />
+    <property name="settings.editor.selected.configurable" value="preferences.JavaFX" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/lib" />
       <recent name="$PROJECT_DIR$/src/main/resources" />
       <recent name="$PROJECT_DIR$/src/main/java/com/uci/warehouse" />
       <recent name="$PROJECT_DIR$/src/main/java/com/uci/warehouse/Test" />
       <recent name="$PROJECT_DIR$/src/main" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/src" />
     </key>
   </component>
   <component name="RunManager" selected="Application.ViewCenter">
@@ -264,6 +221,11 @@
       <workItem from="1605672399191" duration="2694000" />
       <workItem from="1606094808017" duration="768000" />
       <workItem from="1606095674939" duration="356000" />
+      <workItem from="1606332640369" duration="647000" />
+      <workItem from="1606336658367" duration="1996000" />
+      <workItem from="1606356018055" duration="510000" />
+      <workItem from="1606356600075" duration="113000" />
+      <workItem from="1606356741718" duration="2671000" />
     </task>
     <task id="LOCAL-00001" summary="Update DSP_NN">
       <created>1604119504100</created>
@@ -321,7 +283,14 @@
       <option name="project" value="LOCAL" />
       <updated>1605142203491</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="GUI alone with JavaFX lib">
+      <created>1606332735986</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1606332735986</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -375,7 +344,8 @@
     <MESSAGE value="add TODO in TSP_DP" />
     <MESSAGE value="Time out DP when &gt;60s." />
     <MESSAGE value="move &quot;inquire of export&quot; to the front" />
-    <option name="LAST_COMMIT_MESSAGE" value="move &quot;inquire of export&quot; to the front" />
+    <MESSAGE value="GUI alone with JavaFX lib" />
+    <option name="LAST_COMMIT_MESSAGE" value="GUI alone with JavaFX lib" />
   </component>
   <component name="WindowStateProjectService">
     <state x="424" y="215" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1606095760952">
@@ -485,16 +455,17 @@
       <screen x="0" y="23" width="1920" height="1057" />
     </state>
     <state x="592" y="312" key="MultipleFileMergeDialog/0.23.1920.1057@0.23.1920.1057" timestamp="1605142584089" />
-    <state x="360" y="218" width="1372" height="843" key="SettingsEditor" timestamp="1606095455153">
+    <state x="360" y="218" width="1372" height="843" key="SettingsEditor" timestamp="1606356785100">
       <screen x="0" y="25" width="1920" height="1055" />
     </state>
     <state x="360" y="198" width="1372" height="843" key="SettingsEditor/0.0.1920.1080@0.0.1920.1080" timestamp="1606094016631" />
     <state x="461" y="190" key="SettingsEditor/0.23.1920.1057@0.23.1920.1057" timestamp="1605141696978" />
-    <state x="360" y="218" key="SettingsEditor/0.25.1920.1055@0.25.1920.1055" timestamp="1606095455153" />
-    <state x="560" y="287" key="Vcs.Push.Dialog.v2" timestamp="1605142244369">
-      <screen x="0" y="23" width="1920" height="1057" />
+    <state x="360" y="218" key="SettingsEditor/0.25.1920.1055@0.25.1920.1055" timestamp="1606356785100" />
+    <state x="560" y="289" key="Vcs.Push.Dialog.v2" timestamp="1606332760647">
+      <screen x="0" y="25" width="1920" height="1055" />
     </state>
     <state x="560" y="287" key="Vcs.Push.Dialog.v2/0.23.1920.1057@0.23.1920.1057" timestamp="1605142244369" />
+    <state x="560" y="289" key="Vcs.Push.Dialog.v2/0.25.1920.1055@0.25.1920.1055" timestamp="1606332760647" />
     <state x="751" y="322" key="chooseDestDirectoryDialog" timestamp="1606093093197">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
@@ -512,6 +483,10 @@
       <screen x="0" y="23" width="1920" height="1057" />
     </state>
     <state x="756" y="468" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.23.1920.1057@0.23.1920.1057" timestamp="1605142350365" />
+    <state x="399" y="422" width="1419" height="1036" key="dock-window-1" timestamp="1606357568243">
+      <screen x="0" y="25" width="1920" height="1055" />
+    </state>
+    <state x="399" y="422" width="1419" height="1036" key="dock-window-1/0.25.1920.1055@0.25.1920.1055" timestamp="1606357568243" />
     <state x="0" y="196" key="git4idea.branch.GitSmartOperationDialog" timestamp="1606094921955">
       <screen x="0" y="25" width="1920" height="1055" />
     </state>
