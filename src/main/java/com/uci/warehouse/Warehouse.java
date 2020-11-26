@@ -1,6 +1,7 @@
 package com.uci.warehouse;
 
 import java.io.*;
+
 import com.sun.tools.javac.util.Pair;
 
 
@@ -23,15 +24,14 @@ public class Warehouse {
     //parameters might not be static if there are multiply warehouse or map
     //==============================================================================================================================
 
-    private static Map<Integer, Order> orders;
+    private static Map<Integer, Order> orders;//<orderID, Order>
     private static AtomicInteger lastFinishedOrder;
     private static Map<Integer, double[]> productLocationMap;
     private static Map<ArrayList<Integer>, Integer> shelveMap;
     private static String[][] routeMap;
-    private static int[] start=new int[2];
-    private static int[] end=new int[2];
+    private static int[] start = new int[2];
+    private static int[] end = new int[2];
     private static String filename;
-
     private static Order order;
 
     private static readFile readfile;
@@ -76,7 +76,7 @@ public class Warehouse {
         int size = scanner.nextInt();
         int id = orders.size();
         Order order = new Order(id);
-        System.out.println("Type id of product seperated by blanks: ");
+        System.out.println("Type id of product separated by blanks: ");
         for (int i = 0; i < size; i++) {
             int productId = scanner.nextInt();
             order.addProduct(productId, 1);
@@ -131,8 +131,8 @@ public class Warehouse {
         return new ArrayList<>(orders.values());
     }
 
-    public void updateOrderStatus(int orderId) {
-        if (orders.containsKey(orderId)) try {
+    public static void updateOrderStatus(int orderId) {
+        if (!orders.containsKey(orderId)) try {
             throw new Exception("Order not existed!");
         } catch (Exception e) {
             e.printStackTrace();
@@ -175,13 +175,12 @@ public class Warehouse {
     public static Map<ArrayList<Integer>, Integer> getshelf() throws FileNotFoundException {
         String filePath = "src/qvBox-warehouse-data-f20-v01.txt";
         readfile = new readFile();
-        productLocationMap=readfile.readfile(filePath);
+        productLocationMap = readfile.readfile(filePath);
 
 
         //there is a productLocationMap in Warehouse class
-        Warehouse warehouse=new Warehouse();
+        Warehouse warehouse = new Warehouse();
         warehouse.getShelveMap();
-
 
 
         return shelveMap;
@@ -203,7 +202,7 @@ public class Warehouse {
             sb = (new StringBuffer(in.readLine()));
             Order order = new Order(orders.size());
             for (String product : sb.toString().split(",")) {
-                order.addProduct(Integer.parseInt(product.trim()),1);
+                order.addProduct(Integer.parseInt(product.trim()), 1);
             }
             orders.put(order.getId(), order);
         }
@@ -294,7 +293,7 @@ public class Warehouse {
                 for (int j = 0; j < 40; j++) {
                     tmparray = new ArrayList<>();
                     tmparray.add((int) j);
-                    tmparray.add((int) 19-i);
+                    tmparray.add((int) 19 - i);
                     if (i == 19 && j == 0) {
                         System.out.print("   ");
                     } else if (shelveMap.containsKey(tmparray)) {
@@ -345,12 +344,13 @@ public class Warehouse {
 
     /**
      * print route instruction
+     *
      * @param order which order
      * @param route route list with start and end node
      */
-    public static String printRoute(Order order, List<Integer> route, int[]start,int[]end) {
+    public static String printRoute(Order order, List<Integer> route, int[] start, int[] end) {
 
-        int[][][] graph = order.getXYDistanceMatrix(productLocationMap,start,end);
+        int[][][] graph = order.getXYDistanceMatrix(productLocationMap, start, end);
 //        for(double[][] g:graph){
 //            for(double[] gg:g){
 //                for(double ggg:gg){
@@ -361,44 +361,43 @@ public class Warehouse {
 //            System.out.println(" ");
 //        }
 
-    List<Integer> list= order.getOrderList();
+        List<Integer> list = order.getOrderList();
         list.add(0, -1);
 
-        String direction="Start at location ("+start[0]+","+start[1]+")\n";
+        String direction = "Start at location (" + start[0] + "," + start[1] + ")\n";
         //     order.getOrderItemLocation(0,map)[0]+","+order.getOrderItemLocation(0,map)[1]+"\n";
-        for (int i = 1; i < route.size()-1; i++){
-            int xx,yy;
+        for (int i = 1; i < route.size() - 1; i++) {
+            int xx, yy;
 
-                 xx = graph[route.get(i - 1)][route.get(i)][0];
-                 yy = graph[route.get(i - 1)][route.get(i)][1];
+            xx = graph[route.get(i - 1)][route.get(i)][0];
+            yy = graph[route.get(i - 1)][route.get(i)][1];
 
-            if(xx>0){
-                direction+="\tGo to east to ("+(int)getProductLocation(list.get(route.get(i)))[0]+","+(int)(getProductLocation(list.get(route.get(i)))[1]-yy)+")\n";
-            }else if (xx<0){
-                direction+="\tGo to west to ("+(int)getProductLocation(list.get(route.get(i)))[0]+","+(int)(getProductLocation(list.get(route.get(i)))[1]-yy)+")\n";
+            if (xx > 0) {
+                direction += "\tGo to east to (" + (int) getProductLocation(list.get(route.get(i)))[0] + "," + (int) (getProductLocation(list.get(route.get(i)))[1] - yy) + ")\n";
+            } else if (xx < 0) {
+                direction += "\tGo to west to (" + (int) getProductLocation(list.get(route.get(i)))[0] + "," + (int) (getProductLocation(list.get(route.get(i)))[1] - yy) + ")\n";
             }
-            if(yy>0){
-                direction+="\tGo to north to ("+(int)getProductLocation(list.get(route.get(i)))[0]+","+(int)getProductLocation(list.get(route.get(i)))[1]+")\n";
-            }else if(yy<0){
-                direction+="\tGo to south to ("+(int)getProductLocation(list.get(route.get(i)))[0]+","+(int)getProductLocation(list.get(route.get(i)))[1]+")\n";
+            if (yy > 0) {
+                direction += "\tGo to north to (" + (int) getProductLocation(list.get(route.get(i)))[0] + "," + (int) getProductLocation(list.get(route.get(i)))[1] + ")\n";
+            } else if (yy < 0) {
+                direction += "\tGo to south to (" + (int) getProductLocation(list.get(route.get(i)))[0] + "," + (int) getProductLocation(list.get(route.get(i)))[1] + ")\n";
             }
-            direction+="Pick up product "+ list.get(route.get(i))+"\n";
+            direction += "Pick up product " + list.get(route.get(i)) + "\n";
         }
         //for the end point
-        int xx=graph [route.get(route.size()-2)][route.get(route.size()-1)][0];
-        int yy=graph [route.get(route.size()-2)][route.get(route.size()-1)][1];
-        if(xx>0){
-            direction+="\tGo to east to ("+end[0]+","+(end[1]-yy)+")\n";
-        }else if (xx<0){
-            direction+="\tGo to west to ("+end[0]+","+(end[1]-yy)+")\n";
+        int xx = graph[route.get(route.size() - 2)][route.get(route.size() - 1)][0];
+        int yy = graph[route.get(route.size() - 2)][route.get(route.size() - 1)][1];
+        if (xx > 0) {
+            direction += "\tGo to east to (" + end[0] + "," + (end[1] - yy) + ")\n";
+        } else if (xx < 0) {
+            direction += "\tGo to west to (" + end[0] + "," + (end[1] - yy) + ")\n";
         }
-        if(yy>0){
-            direction+="\tGo to north to ("+end[0]+","+end[1]+")\n";
-        }else if(yy<0){
-            direction+="\tGo to south to ("+end[0]+","+end[1]+")\n";
+        if (yy > 0) {
+            direction += "\tGo to north to (" + end[0] + "," + end[1] + ")\n";
+        } else if (yy < 0) {
+            direction += "\tGo to south to (" + end[0] + "," + end[1] + ")\n";
         }
-        direction+="Done!\n";
-
+        direction += "Done!\n";
 
 
         System.out.print(direction);
@@ -407,6 +406,7 @@ public class Warehouse {
 
     /**
      * print route instruction avoiding shelf
+     *
      * @param matrix pair (ArrayList<int[]>,int)
      * @param route
      * @param start
@@ -414,46 +414,46 @@ public class Warehouse {
      * @return
      */
     public static String printRoute(Pair[][] matrix, List<Integer> route, int[] start, int[] end) {
-        List<Integer> list= order.getOrderList();
+        List<Integer> list = order.getOrderList();
         list.add(0, -1);
         //list.add(route.size(),-2);
         List<int[]> subRoute;
-        String direction="Start at location ("+start[0]+","+start[1]+")\n";
-        for (int i = 1; i < route.size(); i++){
-            subRoute= (List<int[]>) matrix[i-1][i].fst;
-            int xx,yy;
+        String direction = "Start at location (" + start[0] + "," + start[1] + ")\n";
+        for (int i = 1; i < route.size(); i++) {
+            subRoute = (List<int[]>) matrix[i - 1][i].fst;
+            int xx, yy;
             int[] from, to;
-            int verticalMove=0;//verticalMove: 0 no vertical move, 1 go north, -1 go south.
+            int verticalMove = 0;//verticalMove: 0 no vertical move, 1 go north, -1 go south.
             //from=subRoute.get(0);
-            for(int j=1; j<subRoute.size(); j++){
-                from=subRoute.get(j-1);
-                to=subRoute.get(j);
-                xx=to[0]-from[0];
-                yy=to[1]-from[1];
+            for (int j = 1; j < subRoute.size(); j++) {
+                from = subRoute.get(j - 1);
+                to = subRoute.get(j);
+                xx = to[0] - from[0];
+                yy = to[1] - from[1];
 
 
-                if(xx==0){
-                    verticalMove=yy>0?1:-1;
+                if (xx == 0) {
+                    verticalMove = yy > 0 ? 1 : -1;
                     continue;
                 }
-                if(verticalMove!=0){
-                    direction+="\tGo to "+(verticalMove==1?"north":"south")+" to ("+from[0]+","+from[1]+")\n";
+                if (verticalMove != 0) {
+                    direction += "\tGo to " + (verticalMove == 1 ? "north" : "south") + " to (" + from[0] + "," + from[1] + ")\n";
                 }
-                direction+="\tGo to "+(xx>0?"east":"west")+" to ("+to[0]+","+from[1]+")\n";
+                direction += "\tGo to " + (xx > 0 ? "east" : "west") + " to (" + to[0] + "," + from[1] + ")\n";
                 //verticalMove=yy>0?1:-1;
-                if(yy>0) verticalMove=1;
-                else if (yy<0) verticalMove=-1;
-                else verticalMove=0;
+                if (yy > 0) verticalMove = 1;
+                else if (yy < 0) verticalMove = -1;
+                else verticalMove = 0;
             }
-            to = subRoute.get(subRoute.size()-1);
-                if(verticalMove!=0){
-                    direction+="\tGo to "+(verticalMove==1?"north":"south")+" to ("+to[0]+","+to[1]+")\n";
-                }
-                if(i==route.size()-1){
-                    direction+="Done!\n";
-                }else{
-                    direction+="Pick up product "+ list.get(route.get(i))+"\n";
-                }
+            to = subRoute.get(subRoute.size() - 1);
+            if (verticalMove != 0) {
+                direction += "\tGo to " + (verticalMove == 1 ? "north" : "south") + " to (" + to[0] + "," + to[1] + ")\n";
+            }
+            if (i == route.size() - 1) {
+                direction += "Done!\n";
+            } else {
+                direction += "Pick up product " + list.get(route.get(i)) + "\n";
+            }
 
 
         }
@@ -461,25 +461,26 @@ public class Warehouse {
         return direction;
     }
 
-    public static String printColor(int code,String content){
+    public static String printColor(int code, String content) {
         return String.format("\033[%d;%dm%s\033[0m", code, 2, content);
     }
-    public static void printRouteMap(Order order, List<Integer> route, int[] start,int[] end){
-        List<Integer> list= order.getOrderList();
-        int[][][] graph = order.getXYDistanceMatrix(productLocationMap,start,end);
+
+    public static void printRouteMap(Order order, List<Integer> route, int[] start, int[] end) {
+        List<Integer> list = order.getOrderList();
+        int[][][] graph = order.getXYDistanceMatrix(productLocationMap, start, end);
         String[][] routeMap = new String[20][40];
         int code = 31;
 
         //initialize
         ArrayList<Integer> tmparray = new ArrayList<>();
-        for(int i=0;i<20;i++){
-            for(int j=0;j<40;j++){
+        for (int i = 0; i < 20; i++) {
+            for (int j = 0; j < 40; j++) {
                 tmparray = new ArrayList<>();
-                tmparray.add((int)j);
-                tmparray.add((int)19-i);
-                if(shelveMap.containsKey(tmparray)){
+                tmparray.add((int) j);
+                tmparray.add((int) 19 - i);
+                if (shelveMap.containsKey(tmparray)) {
                     routeMap[i][j] = "□  ";
-                }else{
+                } else {
                     routeMap[i][j] = "   ";
                 }
 
@@ -488,37 +489,40 @@ public class Warehouse {
 
         list.add(0, -1);
 
-        routeMap[19-(int)start[1]][(int)start[0]] = "S  ";
+        routeMap[19 - (int) start[1]][(int) start[0]] = "S  ";
 
-        routeMap[19-(int)getProductLocation(list.get(route.get(0)))[1]][(int)getProductLocation(list.get(route.get(0)))[0]] = String.format("%-3s", "S");
-        for (int i = 1; i < route.size()-1; i++){
-            int xx=graph [route.get(i-1)][route.get(i)][0];
-            int yy=graph [route.get(i-1)][route.get(i)][1];
-            if(xx>0){
-                for(int j=(int)getProductLocation(list.get(route.get(i-1)))[0]+1; j<(int)getProductLocation(list.get(route.get(i)))[0];j++){
-                    if( routeMap[19-(int)getProductLocation(list.get(route.get(i-1)))[1]][j] == "   ") {
-                        routeMap[19 - (int) getProductLocation(list.get(route.get(i - 1)))[1]][j] = printColor(code,"---");
+        routeMap[19 - (int) getProductLocation(list.get(route.get(0)))[1]][(int) getProductLocation(list.get(route.get(0)))[0]] = String.format("%-3s", "S");
+        for (int i = 1; i < route.size() - 1; i++) {
+            int xx = graph[route.get(i - 1)][route.get(i)][0];
+            int yy = graph[route.get(i - 1)][route.get(i)][1];
+            if (xx > 0) {
+                for (int j = (int) getProductLocation(list.get(route.get(i - 1)))[0] + 1; j < (int) getProductLocation(list.get(route.get(i)))[0]; j++) {
+                    if (routeMap[19 - (int) getProductLocation(list.get(route.get(i - 1)))[1]][j] == "   ") {
+                        routeMap[19 - (int) getProductLocation(list.get(route.get(i - 1)))[1]][j] = printColor(code, "---");
                     }
                 }
-                routeMap[19 - (int) getProductLocation(list.get(route.get(i - 1)))[1]][(int)getProductLocation(list.get(route.get(i)))[0]-1] = printColor(code,"-->");
-            }else if (xx<0){
-                for(int j=(int)getProductLocation(list.get(route.get(i-1)))[0]-1; j>(int)getProductLocation(list.get(route.get(i)))[0];j--){
-                    if(routeMap[19-(int)getProductLocation(list.get(route.get(i-1)))[1]][j] == "   ") routeMap[19-(int)getProductLocation(list.get(route.get(i-1)))[1]][j] = printColor(code,"---");
+                routeMap[19 - (int) getProductLocation(list.get(route.get(i - 1)))[1]][(int) getProductLocation(list.get(route.get(i)))[0] - 1] = printColor(code, "-->");
+            } else if (xx < 0) {
+                for (int j = (int) getProductLocation(list.get(route.get(i - 1)))[0] - 1; j > (int) getProductLocation(list.get(route.get(i)))[0]; j--) {
+                    if (routeMap[19 - (int) getProductLocation(list.get(route.get(i - 1)))[1]][j] == "   ")
+                        routeMap[19 - (int) getProductLocation(list.get(route.get(i - 1)))[1]][j] = printColor(code, "---");
                 }
-                routeMap[19 - (int) getProductLocation(list.get(route.get(i - 1)))[1]][(int)getProductLocation(list.get(route.get(i)))[0]+1] = printColor(code,"<--");
+                routeMap[19 - (int) getProductLocation(list.get(route.get(i - 1)))[1]][(int) getProductLocation(list.get(route.get(i)))[0] + 1] = printColor(code, "<--");
             }
-            if(yy>0){
-                for(int j=(int)getProductLocation(list.get(route.get(i-1)))[1]; j<(int)getProductLocation(list.get(route.get(i)))[1];j++){
-                    if(routeMap[19-j][(int)getProductLocation(list.get(route.get(i)))[0]] == "   ")routeMap[19-j][(int)getProductLocation(list.get(route.get(i)))[0]] = printColor(code,"|  ");
+            if (yy > 0) {
+                for (int j = (int) getProductLocation(list.get(route.get(i - 1)))[1]; j < (int) getProductLocation(list.get(route.get(i)))[1]; j++) {
+                    if (routeMap[19 - j][(int) getProductLocation(list.get(route.get(i)))[0]] == "   ")
+                        routeMap[19 - j][(int) getProductLocation(list.get(route.get(i)))[0]] = printColor(code, "|  ");
                 }
-                routeMap[20 - (int)getProductLocation(list.get(route.get(i)))[1]][(int)getProductLocation(list.get(route.get(i)))[0]] = printColor(code,"^  ");
-            }else if(yy<0){
-                for(int j=(int)getProductLocation(list.get(route.get(i-1)))[1]; j>(int)getProductLocation(list.get(route.get(i)))[1];j--){
-                    if(routeMap[19-j][(int)getProductLocation(list.get(route.get(i)))[0]] == "   ")routeMap[19-j][(int)getProductLocation(list.get(route.get(i)))[0]] = printColor(code,"|  ");
+                routeMap[20 - (int) getProductLocation(list.get(route.get(i)))[1]][(int) getProductLocation(list.get(route.get(i)))[0]] = printColor(code, "^  ");
+            } else if (yy < 0) {
+                for (int j = (int) getProductLocation(list.get(route.get(i - 1)))[1]; j > (int) getProductLocation(list.get(route.get(i)))[1]; j--) {
+                    if (routeMap[19 - j][(int) getProductLocation(list.get(route.get(i)))[0]] == "   ")
+                        routeMap[19 - j][(int) getProductLocation(list.get(route.get(i)))[0]] = printColor(code, "|  ");
                 }
-                routeMap[18 - (int)getProductLocation(list.get(route.get(i)))[1]][(int)getProductLocation(list.get(route.get(i)))[0]] = printColor(code,"V  ");
+                routeMap[18 - (int) getProductLocation(list.get(route.get(i)))[1]][(int) getProductLocation(list.get(route.get(i)))[0]] = printColor(code, "V  ");
             }
-            routeMap[19-(int)getProductLocation(list.get(route.get(i)))[1]][(int)getProductLocation(list.get(route.get(i)))[0]] = printColor(code,String.format("%-3s", list.get(route.get(i))));
+            routeMap[19 - (int) getProductLocation(list.get(route.get(i)))[1]][(int) getProductLocation(list.get(route.get(i)))[0]] = printColor(code, String.format("%-3s", list.get(route.get(i))));
             code++;
 
 //            if(route.get(i)==route.get(0)){
@@ -528,36 +532,36 @@ public class Warehouse {
 //            }
         }
 
-        int xx=graph [route.get(route.size()-2)][route.get(route.size()-1)][0];
-        int yy=graph [route.get(route.size()-2)][route.get(route.size()-1)][1];
-        if(xx>0){
-            for(int j=(int)getProductLocation(list.get(route.get(route.get(route.size()-2))))[0]+1; j<(int)end[0];j++){
-                if( routeMap[19-(int)getProductLocation(list.get(route.get(route.size()-2)))[1]][j] == "   ") {
-                    routeMap[19 - (int) getProductLocation(list.get(route.get(route.size()-2)))[1]][j] = printColor(code,"---");
+        int xx = graph[route.get(route.size() - 2)][route.get(route.size() - 1)][0];
+        int yy = graph[route.get(route.size() - 2)][route.get(route.size() - 1)][1];
+        if (xx > 0) {
+            for (int j = (int) getProductLocation(list.get(route.get(route.get(route.size() - 2))))[0] + 1; j < (int) end[0]; j++) {
+                if (routeMap[19 - (int) getProductLocation(list.get(route.get(route.size() - 2)))[1]][j] == "   ") {
+                    routeMap[19 - (int) getProductLocation(list.get(route.get(route.size() - 2)))[1]][j] = printColor(code, "---");
                 }
             }
-            routeMap[19 - (int) getProductLocation(list.get(route.get(route.size()-2)))[1]][(int)end[0]-1] = printColor(code,"-->");
+            routeMap[19 - (int) getProductLocation(list.get(route.get(route.size() - 2)))[1]][(int) end[0] - 1] = printColor(code, "-->");
 
-        }else if (xx<0){
-            for(int j=(int)getProductLocation(list.get(route.get(route.size()-2)))[0]-1; j>(int)end[0];j--){
-                if(routeMap[19-(int)getProductLocation(list.get(route.get(route.size()-2)))[1]][j] == "   ") routeMap[19-(int)getProductLocation(list.get(route.get(route.size()-2)))[1]][j] = printColor(code,"---");
+        } else if (xx < 0) {
+            for (int j = (int) getProductLocation(list.get(route.get(route.size() - 2)))[0] - 1; j > (int) end[0]; j--) {
+                if (routeMap[19 - (int) getProductLocation(list.get(route.get(route.size() - 2)))[1]][j] == "   ")
+                    routeMap[19 - (int) getProductLocation(list.get(route.get(route.size() - 2)))[1]][j] = printColor(code, "---");
             }
-            routeMap[19 - (int) getProductLocation(list.get(route.get(route.size()-2)))[1]][(int)end[0]+1] = printColor(code,"<--");
+            routeMap[19 - (int) getProductLocation(list.get(route.get(route.size() - 2)))[1]][(int) end[0] + 1] = printColor(code, "<--");
         }
-        if(yy>0){
-            for(int j=(int)getProductLocation(list.get(route.get(route.size()-2)))[1]; j<(int)end[1];j++){
-                if(routeMap[19-j][(int)end[0]] == "   ")routeMap[19-j][(int)end[0]] = printColor(code,"|  ");
+        if (yy > 0) {
+            for (int j = (int) getProductLocation(list.get(route.get(route.size() - 2)))[1]; j < (int) end[1]; j++) {
+                if (routeMap[19 - j][(int) end[0]] == "   ") routeMap[19 - j][(int) end[0]] = printColor(code, "|  ");
             }
-            routeMap[20 - (int)end[1]][(int)end[0]] = printColor(code,"^  ");
-        }else if(yy<0){
-            for(int j=(int)getProductLocation(list.get(route.get(route.size()-2)))[1]; j>(int)end[1];j--){
-                if(routeMap[19-j][(int)end[0]] == "   ")routeMap[19-j][(int)end[0]] = printColor(code,"|  ");
+            routeMap[20 - (int) end[1]][(int) end[0]] = printColor(code, "^  ");
+        } else if (yy < 0) {
+            for (int j = (int) getProductLocation(list.get(route.get(route.size() - 2)))[1]; j > (int) end[1]; j--) {
+                if (routeMap[19 - j][(int) end[0]] == "   ") routeMap[19 - j][(int) end[0]] = printColor(code, "|  ");
             }
-            routeMap[18 - (int)end[1]][(int)end[0]] = printColor(code,"V  ");
+            routeMap[18 - (int) end[1]][(int) end[0]] = printColor(code, "V  ");
         }
-        routeMap[19-(int)start[1]][(int)start[0]] = "S  ";
-        routeMap[19-(int)end[1]][(int)end[0]] = printColor(code,"E  ");
-
+        routeMap[19 - (int) start[1]][(int) start[0]] = "S  ";
+        routeMap[19 - (int) end[1]][(int) end[0]] = printColor(code, "E  ");
 
 
         System.out.println("The route is show as below:");
@@ -567,18 +571,18 @@ public class Warehouse {
 //            }
 //            System.out.println(" ");
 //        }
-        for(int i = 0; i<=20;i++){
-            if(i==20){
+        for (int i = 0; i <= 20; i++) {
+            if (i == 20) {
                 System.out.print("   ");
-                for(int j=0;j<40;j++){
+                for (int j = 0; j < 40; j++) {
                     String jid = String.format("%-2s", j);
                     System.out.print(jid + " ");
                 }
                 System.out.println(" ");
-            }else{
-                String iid = String.format("%-2s", 19-i);
+            } else {
+                String iid = String.format("%-2s", 19 - i);
                 System.out.print(iid + " ");
-                for(int j=0;j<40;j++){
+                for (int j = 0; j < 40; j++) {
                     System.out.print(routeMap[i][j]);
                 }
                 System.out.println(" ");
@@ -590,124 +594,145 @@ public class Warehouse {
 //==============================================================================================================================
 
     public static void menu_create_order(Warehouse warehouse) throws FileNotFoundException {
-        //---------------------------------------Ask where to export---------------
-        Scanner console = new Scanner(System.in);
-        System.out.println("Please enter the filename to export.");
-        filename= console.nextLine();
-        filename+=".txt";
+
+        int i = orders.size();
         warehouse.addOrderList();
 
-        getStartEnd();
-
-        for(int i=0;i<orders.size();i++){
-            processOrder(i,filename,start,end);
-        }
-
-    }
-
-    public static void getStartEnd(){
-        //--------------------------dynamic start and end----------------------------------//
-
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("Please enter the START point location seperated by a blank.");
-        for(int i = 0; i < 2; i++){
-            start[i]=scanner.nextInt();
-        }
-        System.out.println("Please enter the END point location seperated by a blank.");
-        for(int i = 0; i < 2; i++){
-            end[i]=scanner.nextInt();
-        }
-        System.out.println("Your start and end points are ("+start[0]+","+start[1]+") and ("+end[0]+","+end[1]+")\n");
-
-    }
-    /**
-     * process given order
-     * @param filename export file
-     * @param start dynamic start
-     * @param end   dynamic end
-     */
-    public static void processOrder(int OrderID,String filename, int[]start, int[] end) throws FileNotFoundException {
-
-        //--------------------------------------- process orders----------------------------------------------------------------
-
-        order=orders.get(OrderID);
-
-        System.out.println("\n");
-        System.out.print("-------------Order # "+OrderID+"-------------\n");
-        //print all the items
-        List<Integer> list= order.getOrderList();
-        System.out.print("Item location: ");
-        for(Integer l:list){
-            System.out.print("("+(int)getProductLocation(l)[0]+","+(int)getProductLocation(l)[1]+") ");
-        }
-
-//--------------------------------------- Ask algorithm----------------------------------------------------------------
+        //getStartEnd();
+        //-------------which algorithm------------
         Scanner scanner = new Scanner(System.in);
         System.out.println("\nPlease select the algorithm you want to use to get the route path-----> 1 for NN. 2 for DP");
         int algorithm_num;
         algorithm_num = scanner.nextInt();
 
+        //------------get instruction and directions for these new order-----------------
+        for (; i < orders.size(); i++) {
+            processOrder(i, filename, start, end, algorithm_num);
+        }
+
+    }
+
+    public static void getStartEnd() {
+        //--------------------------dynamic start and end----------------------------------//
+
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Please enter the START point location seperated by a blank.");
+        for (int i = 0; i < 2; i++) {
+            start[i] = scanner.nextInt();
+        }
+        System.out.println("Please enter the END point location seperated by a blank.");
+        for (int i = 0; i < 2; i++) {
+            end[i] = scanner.nextInt();
+        }
+        System.out.println("Your start and end points are (" + start[0] + "," + start[1] + ") and (" + end[0] + "," + end[1] + ")\n");
+
+    }
+
+    /**
+     * process given order
+     *
+     * @param filename export file
+     * @param start    dynamic start
+     * @param end      dynamic end
+     */
+    public static void processOrder(int OrderID, String filename, int[] start, int[] end, int algorithm_num) throws FileNotFoundException {
+
+        //--------------------------------------- process orders----------------------------------------------------------------
+
+        order = orders.get(OrderID);
+
+        System.out.println("\n");
+        System.out.print("-------------Order # " + OrderID+1 + "-------------\n");
+        //print all the items
+        List<Integer> list = order.getOrderList();
+        System.out.print("Item location: ");
+        for (Integer l : list) {
+            System.out.print("(" + (int) getProductLocation(l)[0] + "," + (int) getProductLocation(l)[1] + ") ");
+        }
+        if(algorithm_num==0) {
+            //- Ask algorithm--
+            Scanner scanner = new Scanner(System.in);
+            System.out.println("\nPlease select the algorithm you want to use to get the route path-----> 1 for NN. 2 for DP");
+            algorithm_num = scanner.nextInt();
+        }
         //------------------1: run NN------------------------------
-        if(algorithm_num == 1){
+        if (algorithm_num == 1) {
 
             //start time measure
             long startTime = System.currentTimeMillis();
 
-            Pair[][] matrix=RouteBFS.routeDistanceMatrix(order,productLocationMap,start,end);
+            Pair[][] matrix = RouteBFS.routeDistanceMatrix(order, productLocationMap, start, end);
             int[][] graph = new int[matrix.length][matrix.length];
-            for(int i = 0; i < matrix.length; i++){
-                for(int j = 0;j<matrix.length;j++){
-                    graph[i][j]= (int) matrix[i][j].snd;
+            for (int i = 0; i < matrix.length; i++) {
+                for (int j = 0; j < matrix.length; j++) {
+                    graph[i][j] = (int) matrix[i][j].snd;
                 }
             }
 
 
             System.out.print("Nearest neighbor approach\n");
             //int[][] [] graph = order.getXYDistanceMatrix(productLocationMap,start,end);
-            tsp_nn = new TSP_NN(1, graph);
+            tsp_nn = new TSP_NN(OrderID, graph);
 
-            List<Integer> route=tsp_nn.nearestNeigh();
+            List<Integer> route = tsp_nn.nearestNeigh();
 
             //String direction =printRoute(order, route,start,end);
             String direction;
-            direction = printRoute(matrix,route,start,end);
+            direction = printRoute(matrix, route, start, end);
             //end time measure
             long endTime = System.currentTimeMillis();
             System.out.print(direction);
-            printRouteMap(order,route,start,end);
-            long timePeriod = endTime-startTime;
-            System.out.println("\nFor approach 1, this order takes time around  "+ timePeriod + "  ms\n");
-            //TODO @Jindong
-            //------------------------------export direction to txt----------------
-            exportFile.exportTxt(filename,""+direction);
+            printRouteMap(order, route, start, end);
+            long timePeriod = endTime - startTime;
+            System.out.println("\nFor approach 1, this order takes time around  " + timePeriod + "  ms\n");
 
+            //-----------whether finished?------------
+            Scanner input = new Scanner(System.in);
+            System.out.println("Finish picking up all the items of this order? y/n");
+            String finsh = input.nextLine();
+
+            if (finsh.equals("y")) {
+                updateOrderStatus(OrderID);
+                //------------------------------export direction to txt----------------
+                exportFile.exportTxt(filename, "" + direction);
             }
-            //------------------2: run DP------------------------------
-            else if(algorithm_num == 2){
-                System.out.print("DP approach\n");
+
+
+        }
+        //------------------2: run DP------------------------------
+        else if (algorithm_num == 2) {
+            System.out.print("DP approach\n");
 
 //                List<Integer> route=tsp_nn.nearestNeigh();
 //                String direction =printRoute(order, route,start,end);
-                tsp_dp = new TSP_DP();
-                int[][] graphForDP = order.getDistanceMatrixForDP(productLocationMap, start, end);
+            tsp_dp = new TSP_DP();
+            int[][] graphForDP = order.getDistanceMatrixForDP(productLocationMap, start, end);
 
-                long startTime = System.currentTimeMillis();
-                List<Integer>route = tsp_dp.getRoute(graphForDP);
-                long endTime = System.currentTimeMillis();
+            long startTime = System.currentTimeMillis();
+            List<Integer> route = tsp_dp.getRoute(graphForDP);
+            long endTime = System.currentTimeMillis();
 
-                long timePeriod = endTime-startTime;
-                System.out.println("For approach 2, this order takes time around  "+ timePeriod + "  ms");
+            long timePeriod = endTime - startTime;
+            System.out.println("For approach 2, this order takes time around  " + timePeriod + "  ms");
 
-                String direction =printRoute(order, route,start,end);
+            String direction = printRoute(order, route, start, end);
 
-                if(route!=null) {
-                    printRouteMap(order, route, start, end);
+            if (route != null) {
+                printRouteMap(order, route, start, end);
 
-                    System.out.print("\n\n");
-                    //export direction to txt
-                    exportFile.exportTxt(filename,""+direction);
+                System.out.print("\n\n");
+
+                //-----------whether finished?------------
+                Scanner input = new Scanner(System.in);
+                System.out.println("Finish picking up all the items of this order? y/n");
+                String finsh = input.nextLine();
+
+                if (finsh.equals("y")) {
+                    updateOrderStatus(OrderID);
+                    //------------------------------export direction to txt----------------
+                    exportFile.exportTxt(filename, "" + direction);
                 }
-
+            }
 
 
         }
@@ -719,7 +744,7 @@ public class Warehouse {
         String filePath = input.nextLine();
 
         readfile = new readFile();
-        productLocationMap=readfile.readfile(filePath);
+        productLocationMap = readfile.readfile(filePath);
     }
 
     public static void loadLocationFromFileAndRetry() {
@@ -740,12 +765,11 @@ public class Warehouse {
         }
     }
 
-//==============================================================================================================================
+    //==============================================================================================================================
 //                           main
 //
 //==============================================================================================================================
     public static void main(String[] args) throws FileNotFoundException {
-
 
 
         // ------------------------------Warehouse initiation  and read file--------------------------
@@ -753,7 +777,7 @@ public class Warehouse {
         Warehouse warehouse = new Warehouse();
 
         loadOrdersFromFileAndRetry("");
-        warehouse.printOrderList();
+        //warehouse.printOrderList();
 
         Scanner input = new Scanner(System.in);
         //read file
@@ -765,13 +789,22 @@ public class Warehouse {
         warehouse.getShelveMap();
         warehouse.printMap();
 
+        //---------------------------------------Ask where to export---------------
+        Scanner console = new Scanner(System.in);
+        System.out.println("Please enter the filename to export.");
+        filename = console.nextLine();
+        filename += ".txt";
+        //---------------------------------------Ask start & end---------------
+        getStartEnd();
+
+
         // ------------------------------------ASK user for orders---------------------
 
 
         //Provide user w/ a menu option so they can choose to enter another order, load another order, find a product, etc.
         // ------------------------------------Menu options -------------------------------------
         //   1.load a current order  2.create a new order   3.find a product;
-        while(true) {
+        while (true) {
 
             System.out.println("\n\n----------------------Welcome to the EasyWarehouse beta v1.0------------------------");
 
@@ -801,8 +834,8 @@ public class Warehouse {
                         for (int i : query_order.getProducts().keySet()) {
                             System.out.println(i + " ");
                         }
-                        processOrder(query_order_num-1,filename,start,end);
-                       // System.out.println("---------------------------");
+                        processOrder(query_order_num - 1, filename, start, end,0);
+                        // System.out.println("---------------------------");
                     }
                 } catch (Exception e) {
                     e.printStackTrace();
@@ -822,125 +855,5 @@ public class Warehouse {
                 }
             }
         }
-
-//        //---------------------------------------Ask where to export---------------
-//        Scanner console = new Scanner(System.in);
-//        System.out.println("Please enter the filename.");
-//        String filename= console.nextLine();
-//        filename+=".txt";
-//
-//        // ------------------------------------ASK user for orders---------------------
-////        warehouse.getShelveMap();
-////        warehouse.printMap();
-//
-//
-//        warehouse.addOrderList();
-//
-//        // print map
-//        //warehouse.getShelveMap();
-//        //warehouse.printMap();
-//        //TODO
-//
-//        //--------------------------dynamic start and end----------------------------------
-//        int[] start=new int[2];
-//        int[] end=new int[2];
-//        //
-//        Scanner scanner = new Scanner(System.in);
-//        System.out.println("Please enter the START point location seperated by a blank.");
-//        for(int i = 0; i < 2; i++){
-//            start[i]=scanner.nextInt();
-//        }
-//        System.out.println("Please enter the END point location seperated by a blank.");
-//        for(int i = 0; i < 2; i++){
-//            end[i]=scanner.nextInt();
-//        }
-//        System.out.println("Your start and end points are ("+start[0]+","+start[1]+") and ("+end[0]+","+end[1]+")\n");
-//
-//        //--------------------------------------- process orders----------------------------------------------------------------
-//        for(int i=0;i<orders.size();i++){
-//
-//            // init the graph;
-//            order=orders.get(0);
-//            int[][] [] graph_se = order.getXYDistanceMatrix(productLocationMap,start,end);
-//            //int[][] [] graph_default = order.getXYDistanceMatrix(productLocationMap);
-//            //int[][]graph=order.getDistanceMatrix(productLocationMap);
-//
-////        for(int[][] g:graph_se){
-////            for(int[] gg:g){
-////                System.out.print("("+gg[0]+ ","+gg[1]+")");
-////            }
-////            System.out.println(" ");
-////        }
-//
-//            //print all the items
-//            List<Integer> list= order.getOrderList();
-//            System.out.print("Item location: ");
-//            for(Integer l:list){
-//                System.out.print("("+(int)getProductLocation(l)[0]+","+(int)getProductLocation(l)[1]+") ");
-//            }
-//            System.out.println("\n");
-//
-//
-//            //-------------------------1. nearest neighbor approach : 2-approximation in O(n^2) time----------------------------
-//            System.out.print("1. nearest neighbor approach\n");
-//
-//            tsp_nn = new TSP_NN(1, graph_se);
-//
-//
-//            List<Integer> route=tsp_nn.nearestNeigh();
-//            int startTime = System.currentTimeMillis();
-//            String direction =printRoute(order, route,start,end);
-//            int endTime = System.currentTimeMillis();
-//
-//            printRouteMap(order,route,start,end);
-//            int timePeriod = endTime-startTime;
-//            System.out.println("For approach 1, this order takes time around  "+ timePeriod + "  ms");
-//            //System.out.print(direction);
-//            System.out.print("\n\n");
-//            //------------------------------export direction to txt----------------
-//            exportFile.exportTxt(filename,"\n\nOrder:"+i+"\n"+direction);
-//
-//
-////        //---------------------------2. DP approach : optimal route in O(n^2*2^n) time-------------------------------
-//            System.out.print("2. DP approach\n");
-//
-//
-//            tsp_dp = new TSP_DP();
-//            int[][] graphForDP = order.getDistanceMatrixForDP(productLocationMap, start, end);
-//
-//            startTime = System.currentTimeMillis();
-//            route = tsp_dp.getRoute(graphForDP);
-//            endTime = System.currentTimeMillis();
-//
-//            timePeriod = endTime-startTime;
-//            System.out.println("For approach 2, this order takes time around  "+ timePeriod + "  ms");
-//
-//            if(route!=null) {
-//                printRoute(order, route, start, end);
-//                printRouteMap(order, route, start, end);
-//
-//                System.out.print("\n\n");
-//            //export direction to txt
-//                exportFile.exportTxt(filename,"\n\nOrder:1\n"+direction);
-//            }
-////
-////        printRouteMap(order,route);
-//
-//
-////            //------------------- query a order ----------------------
-////            try {
-////                System.out.println("Please enter the productID to get location");
-////                InputStreamReader isr = new InputStreamReader(System.in);
-////                BufferedReader br = new BufferedReader(isr);
-////                String s1 = br.readLine();
-////                int id=Integer.parseInt(s1);
-////                double[] location = getProductLocation(id);
-////                System.out.println("The location is (" + location[0] + "," + location[1] + ")");
-////            } catch (Exception e)
-////            {
-////                e.printStackTrace();
-////            }
-//        }
-//
     }
 }
