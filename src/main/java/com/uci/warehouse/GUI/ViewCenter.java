@@ -14,7 +14,19 @@ import java.io.InputStream;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+//TODO This is the flow!!!!
+// Filename is included.
+// Controller class and fxml are all created. Created one if you think is necessary
+// Please finish your parts. See "To do" in each controller.
+    /*
+                                                            |---locate a product  --->LocateProduct(show product on map)
+    Login--> LoadFile(set default when no input)---> Menu --|---create new orders --->CreateOrder (ask questions)              ---->Map
+                                                            |___load an order     --->OrderList (show unfulfilled order list)  ---->Map
+     */
+
+
 public class ViewCenter extends Application {
+    //TODO @qirui
     private static final Logger logger = Logger.getLogger(ViewCenter.class.getName());
     private Stage stage;
 
@@ -36,6 +48,14 @@ public class ViewCenter extends Application {
         }
     }
 
+    public void gotoMenu() {
+        try {
+            MenuController menu = (MenuController) replaceSceneContent(StaticResourcesConfig.Menu_VIEW_PATH);
+            menu.setApp(this);
+        } catch (Exception ex) {
+            logger.log(Level.SEVERE, null, ex);
+        }
+    }
     public void gotoOrder(){
         try {
             OrderController orderController = (OrderController) replaceSceneContent(StaticResourcesConfig.ORDER_VIEW_PATH);

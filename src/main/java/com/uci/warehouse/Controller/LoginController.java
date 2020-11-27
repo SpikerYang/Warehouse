@@ -26,6 +26,7 @@ public class LoginController implements Initializable{
 
 
     public void loginButtonClick(){
+
         logger.log(Level.INFO, "the username is：" + login_username.getText());
         logger.log(Level.INFO, "the password is ：" + login_password.getText());
         if("user".equalsIgnoreCase(login_username.getText())
