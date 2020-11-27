@@ -164,6 +164,14 @@ public class Warehouse {
         return notCompletedOrders;
     }
 
+    public static void updateOrderStatus(int orderId) {
+        if (!orders.containsKey(orderId)) try {
+            throw new Exception("Order not existed!");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        orders.get(orderId).setStatus("Completed");
+    }
 
     /**
      * Get location of specific product by id
