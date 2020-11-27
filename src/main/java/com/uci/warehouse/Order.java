@@ -12,6 +12,8 @@ import java.util.Map;
 public class Order {
     private int id;
     private String status;
+    public static final String ORDER_UNCOMPLETED = "Uncompleted";
+    public static final String ORDER_COMPLETED = "Completed";
     // key: ProductId, value: Quantity
     private Map<Integer, Integer> products;
 
@@ -42,6 +44,7 @@ public class Order {
     public Order(int id) {
         this.id = id;
         products = new HashMap<>();
+        status = ORDER_UNCOMPLETED;
     }
 
     public void addProduct(int productId, int quantity) {
