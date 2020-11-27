@@ -456,6 +456,9 @@ public class TSP_GA {
     }
 
     public List<Integer> solve() {
+
+        long startTime = System.currentTimeMillis();
+        long endTime;
         int i;
         int k;
 
@@ -478,6 +481,13 @@ public class TSP_GA {
 //        }
 
         for (t = 0; t < MAX_GEN; t++) {
+            ////////////////////////////////////
+            endTime = System.currentTimeMillis();
+            if ((endTime-startTime)>60000){
+                System.out.println("Time out!");
+                break;
+            }
+            ////////////////////////////////////
             //evolution1();
             evolution();
             // 将新种群newGroup复制到旧种群oldGroup中，准备下一代进化
@@ -505,8 +515,6 @@ public class TSP_GA {
 
 //        System.out.println("最佳长度出现代数：");
 //        System.out.println(bestT);
-        System.out.println("最佳长度");
-        System.out.println(bestLength);
 //        System.out.println("最佳路径：");
         List<Integer> tour = new ArrayList<>();;
         tour.add(0);
@@ -518,6 +526,8 @@ public class TSP_GA {
 //        for (i = 0; i < tour.length; i++) {
 //            System.out.print(tour[i] + ",");
 //        }
+
+        System.out.println("distance:" + bestLength);
         return tour;
     }
 }
