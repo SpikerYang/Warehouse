@@ -456,7 +456,15 @@ public class TSP_GA {
     }
 
     public List<Integer> solve() {
-
+        if (cityNum == 1) {
+            int length = distance[0][1] + distance[1][2];
+            System.out.println("distance: " + length);
+            return new ArrayList<Integer>() {{
+                add(0);
+                add(1);
+                add(2);
+            }};
+        }
         long startTime = System.currentTimeMillis();
         long endTime;
         int i;
@@ -530,4 +538,5 @@ public class TSP_GA {
         System.out.println("distance:" + bestLength);
         return tour;
     }
+
 }
