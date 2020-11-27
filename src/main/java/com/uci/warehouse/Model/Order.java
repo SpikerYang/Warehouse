@@ -55,6 +55,21 @@ public class Order {
         //TODO
     }
 
+    public void beCompleted() {
+        if (status.equals(Order.ORDER_COMPLETED)) {
+            handleReCompleteOrderError();
+        } else {
+            status = Order.ORDER_COMPLETED;
+        }
+    }
+
+    private void handleReCompleteOrderError() {
+        try {
+            throw new Exception("You have completed this order!");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 
     //get location of the ith item in the order
     public double [] getOrderItemLocation(int index, Map<Integer, double[]> map) {

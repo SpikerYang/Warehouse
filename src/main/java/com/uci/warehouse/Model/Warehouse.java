@@ -25,7 +25,7 @@ public class Warehouse {
     //==============================================================================================================================
 
     private static Map<Integer, Order> orders;//<orderID, Order>
-    private static AtomicInteger lastFinishedOrder;
+    private static AtomicInteger nextNotCompletedOrder;
     private static Map<Integer, double[]> productLocationMap;
     private static Map<ArrayList<Integer>, Integer> shelveMap;
     private static String[][] routeMap;
@@ -50,7 +50,7 @@ public class Warehouse {
     public Warehouse() {
         orders = new HashMap<>();
         productLocationMap = new HashMap<>();
-        lastFinishedOrder = new AtomicInteger(-1);
+        nextNotCompletedOrder = new AtomicInteger(0);
     }
 
     //==============================================================================================================================
@@ -112,24 +112,57 @@ public class Warehouse {
     }
 
     public Order getOrder(int orderId) {
+        if (!orders.containsKey(orderId)) {
+            handleOrderNotExistError();
+        }
         return orders.get(orderId);
     }
 
-    public Order getNextUnfulfilledOrder() {
-        if (lastFinishedOrder.intValue() < orders.size() - 1) {
-            lastFinishedOrder.set(lastFinishedOrder.intValue() + 1);
-            return orders.get(lastFinishedOrder.intValue());
-        } else try {
-            throw new Exception("no next unfulfilledOrder");
+    private void handleOrderNotExistError() {
+        try {
+            throw new Exception("No such Order!");
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return null;
+    }
+
+    public void completeOrder(int orderId) {
+        Order order = getOrder(orderId);
+        order.beCompleted();
+    }
+
+    public Order getNextNotCompletedOrder() {
+        if (nextNotCompletedOrder.intValue() < orders.size()) {
+            if (checkIfOrderIsNotComplete(nextNotCompletedOrder.intValue())) {
+                return orders.get(nextNotCompletedOrder.intValue());
+            } else {
+                nextNotCompletedOrder.set(nextNotCompletedOrder.intValue() + 1);
+                return getNextNotCompletedOrder();
+            }
+        } else {
+            handleOrderNotExistError();
+            return null;
+        }
+    }
+
+    private boolean checkIfOrderIsNotComplete(int orderId) {
+        Order order = getOrder(orderId);
+        return order.getStatus().equals(Order.ORDER_UNCOMPLETED);
     }
 
     //get list of productID
     public List<Order> getOrderList() {
         return new ArrayList<>(orders.values());
+    }
+
+    public List<Order> getNotCompletedOrderList() {
+        List<Order> notCompletedOrders = new ArrayList<>();
+        for (Order order : orders.values()) {
+            if (checkIfOrderIsNotComplete(order.getId())) {
+                notCompletedOrders.add(order);
+            }
+        }
+        return notCompletedOrders;
     }
 
     public static void updateOrderStatus(int orderId) {
