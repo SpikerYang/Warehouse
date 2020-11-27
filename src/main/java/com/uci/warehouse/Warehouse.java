@@ -848,18 +848,17 @@ public class Warehouse {
             System.out.println("------------3. Find a product");
             int option_number = input.nextInt();
 
+            int query_order_num = 0;
             if (option_number == 1) {
                 //create order list(map structure) and process all of them
                 menu_create_order(warehouse);
-
-
                 continue;
             } else if (option_number == 2) {
                 //load a existing order
                 System.out.println("Currently, there are " + orders.size() + " existing orders ");
                 try {
                     System.out.println("Enter the index(1 based) of the order that you want to query");
-                    int query_order_num = input.nextInt();
+                    query_order_num = input.nextInt();
                     if (query_order_num > orders.size()) {
                         throw new Exception("Order not existed!");
                     } else {
@@ -868,13 +867,36 @@ public class Warehouse {
                         for (int i : query_order.getProducts().keySet()) {
                             System.out.println(i + " ");
                         }
-                        processOrder(query_order_num - 1, filename, start, end,0);
+                        processOrder(query_order_num , filename, start, end,0);
                         // System.out.println("---------------------------");
                     }
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
-            } else if (option_number == 3) {
+
+                //------------------------------------when finish a order display the neighbour or pick up a specific one---------------------
+
+                boolean backToMainMenu = false;
+                while(!backToMainMenu) {
+                    System.out.println("---------------Do you want to pick up a specific order(y/n)?-------------");
+                    input = new Scanner(System.in);
+                    String nextOrPick = input.nextLine();
+                    if (nextOrPick.equals("n")) {
+                        // pick up the next order by default;
+                        query_order_num++;
+                        processOrder(query_order_num, filename, start, end, 0);
+                    } else if (nextOrPick.equals("y")) {
+                        System.out.println("Please enter the order you want to pick");
+                        query_order_num = input.nextInt();
+                        processOrder(query_order_num, filename, start, end, 0);
+                    }
+                    System.out.println("Do you want to go back to the main menu(y/n)?");
+                    String back_to_main = input.nextLine();
+                    if (back_to_main.equals("y")) {
+                       backToMainMenu = true;
+                    }
+                }
+            }  else if (option_number == 3) {
                 //query a product
                 try {
                     System.out.println("Please enter the productID to get location");
