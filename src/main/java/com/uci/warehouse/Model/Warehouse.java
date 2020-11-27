@@ -150,7 +150,6 @@ public class Warehouse {
         return order.getStatus().equals(Order.ORDER_UNCOMPLETED);
     }
 
-    //get list of productID
     public List<Order> getOrderList() {
         return new ArrayList<>(orders.values());
     }
@@ -165,14 +164,6 @@ public class Warehouse {
         return notCompletedOrders;
     }
 
-    public static void updateOrderStatus(int orderId) {
-        if (!orders.containsKey(orderId)) try {
-            throw new Exception("Order not existed!");
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        orders.get(orderId).setStatus("Completed");
-    }
 
     /**
      * Get location of specific product by id
