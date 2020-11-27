@@ -19,9 +19,9 @@ import java.util.logging.Logger;
 // Controller class and fxml are all created. Created one if you think is necessary
 // Please finish your parts. See "To do" in each controller.
     /*
-                                                            |---locate a product  --->LocateProduct(show product on map)
-    Login--> LoadFile(set default when no input)---> Menu --|---create new orders --->CreateOrder (ask questions)              ---->Map
-                                                            |___load an order     --->OrderList (show unfulfilled order list)  ---->Map
+                                                            |---locate a product  --- (show product on map in Menu)
+    Login--> LoadFile(set default when no input)---> Menu --|---create new orders --->CreateOrder (ask questions)              ---->Map(ask start and end and algorithm)
+                                                            |___load an order     --->OrderList (show unfulfilled order list)  ---->Map(ask start and end and algorithm)
      */
 
 
@@ -58,8 +58,8 @@ public class ViewCenter extends Application {
     }
     public void gotoOrder(){
         try {
-            OrderController orderController = (OrderController) replaceSceneContent(StaticResourcesConfig.ORDER_VIEW_PATH);
-            orderController.setApp(this);
+            MenuController menuController = (MenuController) replaceSceneContent(StaticResourcesConfig.ORDER_VIEW_PATH);
+            menuController.setApp(this);
         }catch (Exception ex){
             logger.log(Level.SEVERE, null, ex);
         }

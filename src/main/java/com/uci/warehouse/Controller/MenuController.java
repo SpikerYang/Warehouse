@@ -1,38 +1,49 @@
 package main.java.com.uci.warehouse.Controller;
 
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import main.java.com.uci.warehouse.GUI.ViewCenter;
 
+import java.net.URL;
+import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class MenuController {
-    //TODO @Siqian
+public class MenuController implements Initializable{
+    //TODO @zheng
+
     private static final Logger logger = Logger.getLogger(MenuController.class.getName());
     private ViewCenter viewCenter;
 
+    @FXML
+    private Button creat_new_order_button;
 
     @FXML
-    private Button LocatProduct_Button;
-    @FXML
-    private Button CreateNewOrder_Button;
-    @FXML
-    private Button LoadOrder_Button;
+    private TextField login_username;
 
-    public void LocatProduct_Button_Clilk(){
-        logger.log(Level.INFO, "Locate a product. Go to Product on Map");
+    @FXML
+    private TextField login_password;
 
-    }
-    public void CreateNewOrder_Button_Clilk(){
-        logger.log(Level.INFO, "Create New order/s. Go to CreateOrder");
+
+    public void createNewOrderButtonClick(){
+        logger.log(Level.INFO, "User create a new order. Go to page createNewOrder.");
         viewCenter.gotoCreateOrder();
     }
-    public void LoadOrder_Button_Clilk(){
-        logger.log(Level.INFO, "Load unfulfilled order. Go to LoadOrder");
+
+    public void oirderListButtonClick(){
+        logger.log(Level.INFO, "User try to get the order list. Go to order list createNewOrder.");
+        viewCenter.gotoOrderList();
     }
 
-    public void setApp(ViewCenter viewCenter) {
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+
+    }
+
+    public void setApp(ViewCenter viewCenter){
+        this.viewCenter = viewCenter;
     }
 }

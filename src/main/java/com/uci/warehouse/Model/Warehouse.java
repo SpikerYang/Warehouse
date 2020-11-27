@@ -38,6 +38,7 @@ public class Warehouse {
 
     private static TSP_NN tsp_nn;// nearest neighbor approach : 2-approximation in O(n^2) time
     private static TSP_DP tsp_dp;// DP approach : optimal route in O(n^2*2^n) time
+    private static TSP_GA tsp_ga;// GA approach
 
     /**
      * @param map
@@ -601,7 +602,7 @@ public class Warehouse {
         //getStartEnd();
         //-------------which algorithm------------
         Scanner scanner = new Scanner(System.in);
-        System.out.println("\nPlease select the algorithm you want to use to get the route path-----> 1 for NN. 2 for DP");
+        System.out.println("\nPlease select the algorithm you want to use to get the route path-----> 1 for NN. 2 for DP. 3 for GA.");
         int algorithm_num;
         algorithm_num = scanner.nextInt();
 
@@ -652,7 +653,7 @@ public class Warehouse {
         if(algorithm_num==0) {
             //- Ask algorithm--
             Scanner scanner = new Scanner(System.in);
-            System.out.println("\nPlease select the algorithm you want to use to get the route path-----> 1 for NN. 2 for DP");
+            System.out.println("\nPlease select the algorithm you want to use to get the route path-----> 1 for NN. 2 for DP. 3 for GA.");
             algorithm_num = scanner.nextInt();
         }
         //------------------1: run NN------------------------------
@@ -736,6 +737,39 @@ public class Warehouse {
 
 
         }
+        //------------------2: run GA------------------------------
+        else if (algorithm_num == 3) {
+            System.out.print("GA approach\n");
+            int[][] graphforGA = order.getDistanceMatrix(productLocationMap, start, end);
+            tsp_ga = new TSP_GA(30, graphforGA.length - 2, 1000, 0.8f, 0.9f);
+            tsp_ga.init(graphforGA);
+
+            long startTime = System.currentTimeMillis();
+            List<Integer> route = tsp_ga.solve();
+            long endTime = System.currentTimeMillis();
+
+            long timePeriod = endTime - startTime;
+            System.out.println("For approach 3, this order takes time around  " + timePeriod + "  ms");
+
+            String direction = printRoute(order, route, start, end);
+
+            if (route != null) {
+                printRouteMap(order, route, start, end);
+
+                System.out.print("\n\n");
+
+                //-----------whether finished?------------
+                Scanner input = new Scanner(System.in);
+                System.out.println("Finish picking up all the items of this order? y/n");
+                String finsh = input.nextLine();
+
+                if (finsh.equals("y")) {
+                    updateOrderStatus(OrderID);
+                    //------------------------------export direction to txt----------------
+                    exportFile.exportTxt(filename, "" + direction);
+                }
+            }
+        }
     }
 
     public static void loadLocationFromFile() throws FileNotFoundException {
@@ -814,18 +848,17 @@ public class Warehouse {
             System.out.println("------------3. Find a product");
             int option_number = input.nextInt();
 
+            int query_order_num = 0;
             if (option_number == 1) {
                 //create order list(map structure) and process all of them
                 menu_create_order(warehouse);
-
-
                 continue;
             } else if (option_number == 2) {
                 //load a existing order
                 System.out.println("Currently, there are " + orders.size() + " existing orders ");
                 try {
                     System.out.println("Enter the index(1 based) of the order that you want to query");
-                    int query_order_num = input.nextInt();
+                    query_order_num = input.nextInt();
                     if (query_order_num > orders.size()) {
                         throw new Exception("Order not existed!");
                     } else {
@@ -834,13 +867,36 @@ public class Warehouse {
                         for (int i : query_order.getProducts().keySet()) {
                             System.out.println(i + " ");
                         }
-                        processOrder(query_order_num - 1, filename, start, end,0);
+                        processOrder(query_order_num , filename, start, end,0);
                         // System.out.println("---------------------------");
                     }
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
-            } else if (option_number == 3) {
+
+                //------------------------------------when finish a order display the neighbour or pick up a specific one---------------------
+
+                boolean backToMainMenu = false;
+                while(!backToMainMenu) {
+                    System.out.println("---------------Do you want to pick up a specific order(y/n)?-------------");
+                    input = new Scanner(System.in);
+                    String nextOrPick = input.nextLine();
+                    if (nextOrPick.equals("n")) {
+                        // pick up the next order by default;
+                        query_order_num++;
+                        processOrder(query_order_num, filename, start, end, 0);
+                    } else if (nextOrPick.equals("y")) {
+                        System.out.println("Please enter the order you want to pick");
+                        query_order_num = input.nextInt();
+                        processOrder(query_order_num, filename, start, end, 0);
+                    }
+                    System.out.println("Do you want to go back to the main menu(y/n)?");
+                    String back_to_main = input.nextLine();
+                    if (back_to_main.equals("y")) {
+                       backToMainMenu = true;
+                    }
+                }
+            }  else if (option_number == 3) {
                 //query a product
                 try {
                     System.out.println("Please enter the productID to get location");
