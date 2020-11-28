@@ -33,7 +33,7 @@ public class Warehouse {
     private static String[][] routeMap;
     private static int[] start = new int[2];
     private static int[] end = new int[2];
-    private static String filename;
+    public static String filename;
     private static Order order;
 
     private static readFile readfile;
