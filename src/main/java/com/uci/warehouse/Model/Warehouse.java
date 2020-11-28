@@ -806,21 +806,16 @@ public class Warehouse {
         }
     }
 
-    public static void loadLocationFromFile() throws FileNotFoundException {
-        Scanner input = new Scanner(System.in);
-        System.out.println("Please, introduce the path where the text file is stored");
-        String filePath = input.nextLine();
-
-        readfile = new readFile();
-        productLocationMap = readfile.readfile(filePath);
+    public static void loadLocationFromFile(String file) throws FileNotFoundException {
+        productLocationMap = readfile.readfile(file);
     }
 
-    public static void loadLocationFromFileAndRetry() {
+    public static void loadLocationFromFileAndRetry(String file) {
         try {
-            loadLocationFromFile();
+            loadLocationFromFile(file);
         } catch (Exception e) {
             System.out.println("Load file Error!");
-            loadLocationFromFileAndRetry();
+            loadLocationFromFileAndRetry(file);
         }
     }
 
@@ -850,7 +845,7 @@ public class Warehouse {
         Scanner input = new Scanner(System.in);
         //read file
 
-        loadLocationFromFileAndRetry();
+//        loadLocationFromFileAndRetry();
 
         //there is a productLocationMap in Warehouse class
         loadLocationData(warehouse);
