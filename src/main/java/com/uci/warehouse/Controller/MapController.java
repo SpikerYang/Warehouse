@@ -15,6 +15,7 @@ import java.net.URL;
 import java.util.List;
 import java.util.Map;
 import java.util.ResourceBundle;
+import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -26,33 +27,20 @@ public class MapController implements Initializable{
     private static final Logger logger = Logger.getLogger(MapController.class.getName());
     private ViewCenter viewCenter;
 
-    @FXML
-    private TextField startpoint, endpoint;
-    @FXML
-    private TextArea instruction;
-    @FXML
-    private ChoiceBox algorithm;
+    @FXML private TextField startpoint, endpoint;
+    @FXML private TextArea instruction;
+    @FXML private ChoiceBox algorithm;
+    @FXML private TextField runtime_TF;
 
     private int OrderID;
     private Order order;
     private Map<Integer, double[]> map;
-    private int[] start, end;
+    private int[] start=new int[2],end=new int[2];
     private int runtime;
     private Pair[][] matrix;
     private int[][] graph;
 
-    private void processOrder(){
-        order =LoadFileController.getOrders().get(OrderID);
-        List<Integer> list = order.getOrderList();
 
-        matrix = RouteBFS.routeDistanceMatrix(order, map, start, end);
-        graph = new int[matrix.length][matrix.length];
-        for (int i = 0; i < matrix.length; i++) {
-            for (int j = 0; j < matrix.length; j++) {
-                graph[i][j] = (int) matrix[i][j].getValue();
-            }
-        }
-    }
 
     private String  NN(){
         long startTime = System.currentTimeMillis();
@@ -121,27 +109,57 @@ public class MapController implements Initializable{
 
 
     public void RouteButtonClick(){
+        preprocess();
         logger.log(Level.INFO, "Route and show on map");
         String s = startpoint.getText();
-        //start[0]=s.
-
-
-        //showMap();
-        //printInstructions();
+        String e = endpoint.getText();
+        Scanner scanner = new Scanner(s);
+        start[0]=scanner.nextInt();
+        start[1]=scanner.nextInt();
+        scanner = new Scanner(e);
+        end[0]=scanner.nextInt();
+        end[1]=scanner.nextInt();
+        switch (algorithm.getItems().toString()){
+            case "NN":
+                NN();
+                break;
+            case "DP":
+                //DP();
+                break;
+            case "DA":
+                DA();
+                break;
+            default:
+                logger.log(Level.INFO, "Algorithm is not selected.");
+                return;
+        }
     }
+    private void preprocess(){
+        order =Warehouse.getOrder(OrderID);
+        //List<Integer> list = order.getOrderList();
+        map = Warehouse.getproductLocationMap();
+        matrix = RouteBFS.routeDistanceMatrix(order, map, start, end);
+        graph = new int[matrix.length][matrix.length];
+        for (int i = 0; i < matrix.length; i++) {
+            for (int j = 0; j < matrix.length; j++) {
+                graph[i][j] = (int) matrix[i][j].getValue();
+            }
+        }
+    }
+
     public void completeButtonClick(){
-        logger.log(Level.INFO, "Order complete. Update order status");
-        //updatestatus(orderID);
+        logger.log(Level.INFO, "Order complete. Update order status. OrderID:"+OrderID);
+        updateOrderStatus(OrderID);
     }
-    public void printInstructions(){}
 
     public void returnButtonClick(){
         logger.log(Level.INFO, "Go to Order page from Map page.");
-        viewCenter.gotoOrder();
+        viewCenter.gotoMenu();
     }
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-
+        algorithm.getItems().addAll("NN","DP","DA");
+        //instruction.appendText(startpoint.getText());
     }
 
     public void setApp(ViewCenter viewCenter, int OrderID){

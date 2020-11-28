@@ -66,7 +66,9 @@ public class Warehouse {
         }
         orders.put(order.getId(), order);
     }
-
+    public static Map<Integer, double[]> getproductLocationMap(){
+        return productLocationMap;
+}
     /**
      * Create an order from console, first specify the quantity of products, then type in id of each of product seperated by blanks
      *
@@ -113,14 +115,14 @@ public class Warehouse {
         }
     }
 
-    public Order getOrder(int orderId) {
+    public static Order getOrder(int orderId) {
         if (!orders.containsKey(orderId)) {
             handleOrderNotExistError();
         }
         return orders.get(orderId);
     }
 
-    private void handleOrderNotExistError() {
+    private static void handleOrderNotExistError() {
         try {
             throw new Exception("No such Order!");
         } catch (Exception e) {
