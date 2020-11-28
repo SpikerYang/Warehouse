@@ -1,5 +1,6 @@
 package main.java.com.uci.warehouse.Model;
 
+import java.io.IOException;
 import java.util.*;
 import java.util.Map;
 
@@ -50,10 +51,11 @@ public class TSP_DP {
         java.util.Map<Index, Integer> minCostDP = new HashMap<>();
         java.util.Map<Index, Integer> parent = new HashMap<>();
 
-        List<Set<Integer>> allSets = generateCombination(distance.length - 1);
+        //改成-2
+        List<Set<Integer>> allSets = generateCombination(distance.length - 2);
 
         for(Set<Integer> set : allSets) {
-            for(int currentVertex = 1; currentVertex < distance.length; currentVertex++) {
+            for(int currentVertex = 1; currentVertex < distance.length - 1; currentVertex++) {
                 if(set.contains(currentVertex)) {
                     continue;
                 }
@@ -87,7 +89,8 @@ public class TSP_DP {
         }
 
         Set<Integer> set = new HashSet<>();
-        for(int i=1; i < distance.length; i++) {
+        //改成length - 1
+        for(int i=1; i < distance.length - 1; i++) {
             set.add(i);
         }
         int min = Integer.MAX_VALUE;
@@ -95,17 +98,21 @@ public class TSP_DP {
         //to avoid ConcurrentModificationException copy set into another set while iterating
         Set<Integer> copySet = new HashSet<>(set);
         for(int k : set) {
-            int cost = distance[k][0] + getCost(copySet, k, minCostDP);
+            //distance[k][0]改成distance[k][终点]
+            int cost = distance[k][distance.length - 1] + getCost(copySet, k, minCostDP);
             if(cost < min) {
                 min = cost;
                 prevVertex = k;
             }
         }
 
-        parent.put(Index.createIndex(0, set), prevVertex);
+        //createindex(0,set)改成create(终点，set) eg.(4,[1,2,3])
+        parent.put(Index.createIndex(distance.length - 1, set), prevVertex);
         List<Integer> res;
         res = getTour(parent, distance.length);
-  //      printTour(res);
+        //      printTour(res);
+
+        //不用变了，返回min
         System.out.println("distance:" + min);
         return res;
     }
@@ -142,16 +149,18 @@ public class TSP_DP {
 //            }
 //            res.add(vertex);
 //        }
-        res.add(totalVertices);
+        res.add(totalVertices - 1);
         return res;
     }
 
     private List<Integer> getTour(java.util.Map<Index, Integer> parent, int totalVertices) {
         Set<Integer> set = new HashSet<>();
-        for(int i=0; i < totalVertices; i++) {
+        for(int i=1; i < totalVertices; i++) {
             set.add(i);
         }
-        Integer start = 0;
+
+        //start一开始应设置成终点， 如3个城市，设置成4
+        Integer start = totalVertices - 1;
         Deque<Integer> stack = new LinkedList<>();
         while(true) {
             stack.push(start);
@@ -163,7 +172,8 @@ public class TSP_DP {
         }
         List<Integer> res = new ArrayList<>();
         stack.forEach(v -> res.add(v));
-        res.set(res.size() - 1, res.size() - 1);
+        //删掉这一行，不用赋值了
+//        res.set(res.size() - 1, res.size() - 1);
         return res;
     }
 

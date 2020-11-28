@@ -882,73 +882,84 @@ public class Warehouse {
         }
         //------------------2: run DP------------------------------
         else if (algorithm_num == 2) {
-            System.out.print("DP approach\n");
-
-//                List<Integer> route=tsp_nn.nearestNeigh();
-//                String direction =printRoute(order, route,start,end);
-            tsp_dp = new TSP_DP();
-            int[][] graphForDP = order.getDistanceMatrixForDP(productLocationMap, start, end);
 
             long startTime = System.currentTimeMillis();
-            List<Integer> route = tsp_dp.getRoute(graphForDP);
-            long endTime = System.currentTimeMillis();
 
-            long timePeriod = endTime - startTime;
-            System.out.println("For approach 2, this order takes time around  " + timePeriod + "  ms");
-
-            String direction = printRoute(order, route, start, end);
-
-            if (route != null) {
-                printRouteMap(order, route, start, end);
-
-                System.out.print("\n\n");
-
-                //-----------whether finished?------------
-                Scanner input = new Scanner(System.in);
-                System.out.println("Finish picking up all the items of this order? y/n");
-                String finsh = input.nextLine();
-
-                if (finsh.equals("y")) {
-                    updateOrderStatus(OrderID);
-                    //------------------------------export direction to txt----------------
-                    exportFile.exportTxt(filename, "" + direction);
+            Pair[][] matrix = RouteBFS.routeDistanceMatrix(order, productLocationMap, start, end);
+            int[][] graph = new int[matrix.length][matrix.length];
+            for (int i = 0; i < matrix.length; i++) {
+                for (int j = 0; j < matrix.length; j++) {
+                    graph[i][j] = (int) matrix[i][j].getValue();
                 }
+            }
+
+            System.out.print("DP approach\n");
+            tsp_dp = new TSP_DP();
+
+            List<Integer> route = tsp_dp.getRoute(graph);
+
+            String direction;
+            direction = printRoute(matrix, route, start, end);
+            //end time measure
+            long endTime = System.currentTimeMillis();
+            System.out.print(direction);
+            printRouteMap(matrix, route, start, end);
+            long timePeriod = endTime - startTime;
+            System.out.println("\nFor approach 2, this order takes time around  " + timePeriod + "  ms\n");
+
+            //-----------whether finished?------------
+            Scanner input = new Scanner(System.in);
+            System.out.println("Finish picking up all the items of this order? y/n");
+            String finsh = input.nextLine();
+
+            if (finsh.equals("y")) {
+                updateOrderStatus(OrderID);
+                //------------------------------export direction to txt----------------
+                exportFile.exportTxt(filename, "" + direction);
             }
 
 
         }
         //------------------3: run GA------------------------------
         else if (algorithm_num == 3) {
-            System.out.print("GA approach\n");
-            int[][] graphforGA = order.getDistanceMatrix(productLocationMap, start, end);
-            tsp_ga = new TSP_GA(30, graphforGA.length - 2, 1000, 0.8f, 0.9f);
-            tsp_ga.init(graphforGA);
-
+            //start time measure
             long startTime = System.currentTimeMillis();
-            List<Integer> route = tsp_ga.solve();
-            long endTime = System.currentTimeMillis();
 
-            long timePeriod = endTime - startTime;
-            System.out.println("For approach 3, this order takes time around  " + timePeriod + "  ms");
-
-            String direction = printRoute(order, route, start, end);
-
-            if (route != null) {
-                printRouteMap(order, route, start, end);
-
-                System.out.print("\n\n");
-
-                //-----------whether finished?------------
-                Scanner input = new Scanner(System.in);
-                System.out.println("Finish picking up all the items of this order? y/n");
-                String finsh = input.nextLine();
-
-                if (finsh.equals("y")) {
-                    updateOrderStatus(OrderID);
-                    //------------------------------export direction to txt----------------
-                    exportFile.exportTxt(filename, "" + direction);
+            Pair[][] matrix = RouteBFS.routeDistanceMatrix(order, productLocationMap, start, end);
+            int[][] graph = new int[matrix.length][matrix.length];
+            for (int i = 0; i < matrix.length; i++) {
+                for (int j = 0; j < matrix.length; j++) {
+                    graph[i][j] = (int) matrix[i][j].getValue();
                 }
             }
+
+            System.out.print("GA approach\n");
+            tsp_ga = new TSP_GA(30, graph.length - 2, 1000, 0.8f, 0.9f);
+            tsp_ga.init(graph);
+
+            List<Integer> route = tsp_ga.solve();
+
+            String direction;
+            direction = printRoute(matrix, route, start, end);
+            //end time measure
+            long endTime = System.currentTimeMillis();
+            System.out.print(direction);
+            printRouteMap(matrix, route, start, end);
+            long timePeriod = endTime - startTime;
+            System.out.println("\nFor approach 1, this order takes time around  " + timePeriod + "  ms\n");
+
+            //-----------whether finished?------------
+            Scanner input = new Scanner(System.in);
+            System.out.println("Finish picking up all the items of this order? y/n");
+            String finsh = input.nextLine();
+
+            if (finsh.equals("y")) {
+                updateOrderStatus(OrderID);
+                //------------------------------export direction to txt----------------
+                exportFile.exportTxt(filename, "" + direction);
+            }
+
+
         }
     }
 
@@ -987,7 +998,7 @@ public class Warehouse {
         Warehouse warehouse = new Warehouse();
 
         try {
-            loadOrdersFromFile("Warehouse/src/main/resources/qvBox-warehouse-orders-list-part01.txt");
+            loadOrdersFromFile("src/main/resources/qvBox-warehouse-orders-list-part01.txt");
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -996,7 +1007,7 @@ public class Warehouse {
         Scanner input = new Scanner(System.in);
         //read file
 
-        loadLocationFromFile("Warehouse/src/main/resources/qvBox-warehouse-data-f20-v01.txt");
+        loadLocationFromFile("src/main/resources/qvBox-warehouse-data-f20-v01.txt");
 
         //there is a productLocationMap in Warehouse class
         loadLocationData(warehouse);

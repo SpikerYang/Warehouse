@@ -6,7 +6,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.java.com.uci.warehouse.Controller.OrderListController">
+<AnchorPane prefHeight="420.0" prefWidth="620.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.java.com.uci.warehouse.Controller.OrderListController">
    <children>
       <ListView layoutX="79.0" layoutY="28.0" prefHeight="344.0" prefWidth="348.0" />
       <Button layoutX="445.0" layoutY="346.0" mnemonicParsing="false" onAction="#finishButtonClick" text="Route the order" />
