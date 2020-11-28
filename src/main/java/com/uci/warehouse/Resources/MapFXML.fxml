@@ -111,18 +111,25 @@
       <Button fx:id="map_return_button" layoutX="633.0" layoutY="535.0" mnemonicParsing="false" onAction="#returnButtonClick" prefHeight="27.0" prefWidth="126.0" text="Return" />
       <VBox alignment="CENTER" layoutX="32.0" layoutY="433.0" prefHeight="142.0" prefWidth="273.0">
          <children>
-            <HBox alignment="CENTER" prefHeight="49.0" prefWidth="237.0" spacing="15.0">
+            <HBox alignment="CENTER_LEFT" prefHeight="49.0" prefWidth="237.0" spacing="15.0">
                <children>
                   <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Start" />
-                  <TextField fx:id="startpoint" prefHeight="27.0" prefWidth="60.0" promptText="0 0" />
+                  <TextField fx:id="startpoint" prefHeight="27.0" prefWidth="60.0" promptText="0 0" text="0 0" />
                   <Text strokeType="OUTSIDE" strokeWidth="0.0" text="End" />
-                  <TextField fx:id="endpoint" alignment="TOP_LEFT" prefHeight="27.0" prefWidth="60.0" promptText="33 0" />
+                  <TextField fx:id="endpoint" alignment="TOP_LEFT" prefHeight="27.0" prefWidth="60.0" promptText="33 0" text="33 0" />
                </children>
             </HBox>
-            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="15.0">
+            <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="15.0">
                <children>
                   <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Algorithm" />
                   <ChoiceBox fx:id="algorithm" prefWidth="150.0" />
+               </children>
+            </HBox>
+            <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Runtime      " />
+                  <TextField fx:id="runtime_TF" alignment="CENTER" prefHeight="27.0" prefWidth="104.0" promptText="60" text="60" />
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="s" />
                </children>
             </HBox>
             <Button mnemonicParsing="false" onAction="#RouteButtonClick" prefHeight="27.0" prefWidth="219.0" style="-fx-background-color: #fc9d03#fc9d03;" text="Route" />
