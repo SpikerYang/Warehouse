@@ -12,10 +12,8 @@ import main.java.com.uci.warehouse.GUI.ViewCenter;
 import main.java.com.uci.warehouse.Model.*;
 
 import java.net.URL;
-import java.util.List;
+import java.util.*;
 import java.util.Map;
-import java.util.ResourceBundle;
-import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -39,7 +37,9 @@ public class MapController implements Initializable{
     private int runtime;
     private Pair[][] matrix;
     private int[][] graph;
-
+    private boolean routed=false;
+    private String direction;
+    private Set<ArrayList<Integer>> shelves;
 
 
     private String  NN(){
@@ -48,7 +48,6 @@ public class MapController implements Initializable{
 
         TSP_NN tsp_nn = new TSP_NN(OrderID, graph);
         List<Integer> route = tsp_nn.nearestNeigh();
-        String direction;
         direction = printRoute(matrix, route, start, end);
 
         //end time measure
@@ -57,7 +56,7 @@ public class MapController implements Initializable{
         logger.log(Level.INFO,"NN Runtime:"+timePeriod+ "  ms");
 
         showMap(matrix, route, start, end);;
-
+        instruction.clear();
         instruction.appendText("NN approach\n"+direction);
         return direction;
     }
@@ -78,10 +77,10 @@ public class MapController implements Initializable{
         long timePeriod = endTime - startTime;
         logger.log(Level.INFO,"DP Runtime:"+timePeriod+ "  ms");
 
-        String direction =printRoute(matrix, route, start, end);
+         direction =printRoute(matrix, route, start, end);
 
         showMap(order, route, start, end);
-
+        instruction.clear();
         instruction.appendText("DP approach\n"+direction);
         return direction;
     }
@@ -99,7 +98,8 @@ public class MapController implements Initializable{
         logger.log(Level.INFO,"DA Runtime:"+timePeriod+ "  ms");
 
         showMap(matrix, route, start, end);
-        String direction = printRoute(matrix, route, start, end);
+        direction = printRoute(matrix, route, start, end);
+        instruction.clear();
         instruction.appendText("DA approach\n"+direction);
         return direction;
     }
@@ -108,17 +108,35 @@ public class MapController implements Initializable{
     }
 
 
+    private boolean isIllegalPosition(int[] p){
+
+        if(p[0]<0||p[0]>39||p[1]<0||p[1]>19) return false;
+        ArrayList<Integer> location = new ArrayList<>();
+        location.add(p[0]);
+        location.add(p[1]);
+        if(shelves.contains(p)) return false;
+        return true;
+    }
+    public void getshelf(Map<Integer, double[]> productLocationMap){
+        shelves = new HashSet<>();
+        for(double[] item:productLocationMap.values()){
+            ArrayList<Integer> shelf = new ArrayList<>();
+            shelf.add((int)item[0]);
+            shelf.add((int)item[1]);
+            shelves.add(shelf);
+        }
+    }
+
     public void RouteButtonClick(){
         preprocess();
+        getshelf(map);
+        if(!isIllegalPosition(start)||!isIllegalPosition(end)||runtime<=0){
+            instruction.clear();
+            instruction.appendText("ERROR! Illegeal input");
+            return;
+        }
         logger.log(Level.INFO, "Route and show on map");
-        String s = startpoint.getText();
-        String e = endpoint.getText();
-        Scanner scanner = new Scanner(s);
-        start[0]=scanner.nextInt();
-        start[1]=scanner.nextInt();
-        scanner = new Scanner(e);
-        end[0]=scanner.nextInt();
-        end[1]=scanner.nextInt();
+
         switch (algorithm.getItems().toString()){
             case "NN":
                 NN();
@@ -133,8 +151,19 @@ public class MapController implements Initializable{
                 logger.log(Level.INFO, "Algorithm is not selected.");
                 return;
         }
+        routed=true;
     }
     private void preprocess(){
+        //---------get
+        String s = startpoint.getText();
+        String e = endpoint.getText();
+        Scanner scanner = new Scanner(s);
+        start[0]=scanner.nextInt();
+        start[1]=scanner.nextInt();
+        scanner = new Scanner(e);
+        end[0]=scanner.nextInt();
+        end[1]=scanner.nextInt();
+
         order =Warehouse.getOrder(OrderID);
         //List<Integer> list = order.getOrderList();
         map = Warehouse.getproductLocationMap();
@@ -148,8 +177,12 @@ public class MapController implements Initializable{
     }
 
     public void completeButtonClick(){
-        logger.log(Level.INFO, "Order complete. Update order status. OrderID:"+OrderID);
-        updateOrderStatus(OrderID);
+        if(routed){
+            logger.log(Level.INFO, "Order complete. Update order status. OrderID:"+OrderID);
+            updateOrderStatus(OrderID);
+            exportFile.exportTxt(Warehouse.getfilename(), "" + direction);
+            viewCenter.gotoMap();
+        }
     }
 
     public void returnButtonClick(){

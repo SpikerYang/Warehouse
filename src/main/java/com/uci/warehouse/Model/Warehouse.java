@@ -66,6 +66,12 @@ public class Warehouse {
         }
         orders.put(order.getId(), order);
     }
+
+    public static String getfilename(){
+        return filename;
+    }
+
+
     public static Map<Integer, double[]> getproductLocationMap(){
         return productLocationMap;
 }
