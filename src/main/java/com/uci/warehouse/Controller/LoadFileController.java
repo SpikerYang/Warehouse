@@ -2,10 +2,13 @@ package main.java.com.uci.warehouse.Controller;
 
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import main.java.com.uci.warehouse.GUI.ViewCenter;
 import main.java.com.uci.warehouse.Model.Order;
+import main.java.com.uci.warehouse.Model.Warehouse;
+import main.java.com.uci.warehouse.Util.MyAlert;
 
 import java.io.IOException;
 import java.net.URL;
@@ -37,19 +40,26 @@ public class LoadFileController implements Initializable {
 
 
     public void loadFileButtonClick(){
-        logger.log(Level.INFO, "LoadFile. Go to Menu");
+        boolean getError = false;
         try {
             String orderFileAddr =  OrderFileName.getText(), locFileAddr = locationFileName.getText();
             logger.log(Level.INFO, "order file addr: " + orderFileAddr);
             logger.log(Level.INFO, "location file addr: " + locFileAddr);
-            loadOrdersFromFile(orderFileAddr);
-            loadLocationFromFile(locFileAddr);
-        } catch (IOException e) {
+            Warehouse.loadOrdersFromFile(orderFileAddr);
+            Warehouse.loadLocationFromFile(locFileAddr);
+        } catch (Exception e) {
+            e.printStackTrace();
             logger.log(Level.INFO, "LoadFile Error");
+            getError = true;
         }
-//        loadLocationFromFileAndRetry();
-        logger.log(Level.INFO, "LoadFile Finished");
-        viewCenter.gotoMap();
+
+        if (!getError) {
+            logger.log(Level.INFO, "LoadFile Finished");
+            logger.log(Level.INFO, "Current quantity of orders: " + Warehouse.getQuantityOfAllOrders());
+            viewCenter.gotoMenu();
+        } else {
+            MyAlert.sendErrorAlert("Load File Failed!", "Please try again.");
+        }
     }
 
     public void setApp(ViewCenter viewCenter){
