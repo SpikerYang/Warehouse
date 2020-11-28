@@ -4,7 +4,9 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import main.java.com.uci.warehouse.GUI.ViewCenter;
+import main.java.com.uci.warehouse.Model.Order;
 
+import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -15,6 +17,8 @@ public class LoadFileController {
     private static final Logger logger = Logger.getLogger(LoadFileController.class.getName());
     private ViewCenter viewCenter;
 
+    private static Map<Integer, Order> orders;
+
 
     @FXML
     private Button LoadFIle_Button;
@@ -22,6 +26,11 @@ public class LoadFileController {
     private TextField OrderFileName;
     @FXML
     private TextField loctionFileName;
+
+    public static Map<Integer, Order> getOrders(){
+        return orders;
+    }
+
 
     public void LoadFIle_ButtonClick(){
         logger.log(Level.INFO, "LoadFile. Go to Menu");

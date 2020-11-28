@@ -1,9 +1,13 @@
 package main.java.com.uci.warehouse.Model;
 
-import com.sun.tools.javac.util.Pair;
+
 
 //import javax.xml.soap.Node;
 
+
+
+
+import javafx.util.Pair;
 
 import java.io.FileNotFoundException;
 import java.util.*;
@@ -213,7 +217,7 @@ public class RouteBFS {
         }
     }
 
-    public static Pair<ArrayList<int[]>,Integer>[][] routeDistanceMatrix(Order order, Map<Integer, double[]> map, int[] start, int[] end) throws FileNotFoundException {
+    public static Pair<ArrayList<int[]>,Integer>[][] routeDistanceMatrix(Order order, Map<Integer, double[]> map, int[] start, int[] end)  {
         RouteBFS routbfs =new RouteBFS(order);
         routbfs.getshelf(map);
         List<Integer> list = new ArrayList<>(order.getProducts().keySet());

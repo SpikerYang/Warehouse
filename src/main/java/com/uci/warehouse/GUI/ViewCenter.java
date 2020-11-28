@@ -9,8 +9,10 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import main.java.com.uci.warehouse.Controller.*;
 import main.java.com.uci.warehouse.Config.StaticResourcesConfig;
+import main.java.com.uci.warehouse.Model.Order;
 
 import java.io.InputStream;
+import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -29,6 +31,8 @@ public class ViewCenter extends Application {
     //TODO @qirui
     private static final Logger logger = Logger.getLogger(ViewCenter.class.getName());
     private Stage stage;
+
+
 
 
     @Override
@@ -89,7 +93,7 @@ public class ViewCenter extends Application {
     public void gotoMap(){
         try {
             MapController mapController = (MapController) replaceSceneContent(StaticResourcesConfig.MAP_VIEW_PATH);
-            mapController.setApp(this);
+            mapController.setApp(this, 1);//TODO ID
         }catch (Exception ex){
             logger.log(Level.SEVERE, null, ex);
         }

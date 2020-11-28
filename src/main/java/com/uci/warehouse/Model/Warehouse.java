@@ -1,8 +1,10 @@
 package main.java.com.uci.warehouse.Model;
 
+import javafx.util.Pair;
+
 import java.io.*;
 
-import com.sun.tools.javac.util.Pair;
+//import com.sun.tools.javac.util.Pair;
 
 
 import java.io.BufferedReader;
@@ -453,7 +455,7 @@ public class Warehouse {
         List<int[]> subRoute;
         String direction = "Start at location (" + start[0] + "," + start[1] + ")\n";
         for (int i = 1; i < route.size(); i++) {
-            subRoute = (List<int[]>) matrix[i - 1][i].fst;
+            subRoute = (List<int[]>) matrix[i - 1][i].getKey();
             int xx, yy;
             int[] from, to;
             int verticalMove = 0;//verticalMove: 0 no vertical move, 1 go north, -1 go south.
@@ -698,7 +700,7 @@ public class Warehouse {
             int[][] graph = new int[matrix.length][matrix.length];
             for (int i = 0; i < matrix.length; i++) {
                 for (int j = 0; j < matrix.length; j++) {
-                    graph[i][j] = (int) matrix[i][j].snd;
+                    graph[i][j] = (int) matrix[i][j].getValue();
                 }
             }
 
@@ -769,7 +771,7 @@ public class Warehouse {
 
 
         }
-        //------------------2: run GA------------------------------
+        //------------------3: run GA------------------------------
         else if (algorithm_num == 3) {
             System.out.print("GA approach\n");
             int[][] graphforGA = order.getDistanceMatrix(productLocationMap, start, end);
