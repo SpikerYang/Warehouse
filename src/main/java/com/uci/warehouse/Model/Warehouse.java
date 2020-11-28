@@ -26,9 +26,9 @@ public class Warehouse {
     //parameters might not be static if there are multiply warehouse or map
     //==============================================================================================================================
 
-    private static Map<Integer, Order> orders;//<orderID, Order>
-    private static AtomicInteger nextNotCompletedOrder;
-    private static Map<Integer, double[]> productLocationMap;
+    private static Map<Integer, Order> orders = new HashMap<>();//<orderID, Order>
+    private static AtomicInteger nextNotCompletedOrder = new AtomicInteger(0);
+    private static Map<Integer, double[]> productLocationMap = new HashMap<>();
     private static Map<ArrayList<Integer>, Integer> shelveMap;
     private static String[][] routeMap;
     private static int[] start = new int[2];
@@ -50,9 +50,6 @@ public class Warehouse {
     }
 
     public Warehouse() {
-        orders = new HashMap<>();
-        productLocationMap = new HashMap<>();
-        nextNotCompletedOrder = new AtomicInteger(0);
     }
 
     //==============================================================================================================================
@@ -120,6 +117,10 @@ public class Warehouse {
             handleOrderNotExistError();
         }
         return orders.get(orderId);
+    }
+
+    public static int getQuantityOfAllOrders() {
+        return orders.size();
     }
 
     private static void handleOrderNotExistError() {

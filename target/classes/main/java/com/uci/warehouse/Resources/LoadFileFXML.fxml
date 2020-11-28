@@ -8,10 +8,10 @@
 
 <AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.java.com.uci.warehouse.Controller.LoadFileController">
    <children>
-      <TextField fx:id="OrderFileName" layoutX="220.0" layoutY="138.0" prefHeight="27.0" prefWidth="263.0" text="qvBox-warehouse-orders-list-part01.txt" />
-      <TextField fx:id="locationFileName" layoutX="224.0" layoutY="187.0" prefHeight="26.0" prefWidth="269.0" text="qvBox-warehouse-data-f20-v01.txt" />
-      <Text layoutX="135.0" layoutY="205.0" strokeType="OUTSIDE" strokeWidth="0.0" text=" Order file" wrappingWidth="77.30468368530273" />
-      <Text layoutX="135.0" layoutY="157.0" strokeType="OUTSIDE" strokeWidth="0.0" text=" Location file" wrappingWidth="77.30468368530273" />
+      <TextField fx:id="OrderFileName" layoutX="220.0" layoutY="138.0" prefHeight="27.0" prefWidth="263.0" text="src/main/resources/qvBox-warehouse-orders-list-part01.txt" />
+      <TextField fx:id="locationFileName" layoutX="224.0" layoutY="187.0" prefHeight="26.0" prefWidth="269.0" text="src/main/resources/qvBox-warehouse-data-f20-v01.txt" />
+      <Text layoutX="135.0" layoutY="205.0" strokeType="OUTSIDE" strokeWidth="0.0" text=" Location file" wrappingWidth="77.30468368530273" />
+      <Text layoutX="135.0" layoutY="157.0" strokeType="OUTSIDE" strokeWidth="0.0" text=" Order file" wrappingWidth="77.30468368530273" />
       <Button fx:id="LoadFIle_Button" layoutX="313.0" layoutY="287.0" onAction="#loadFileButtonClick" mnemonicParsing="false" text="ok" />
    </children>
 </AnchorPane>
