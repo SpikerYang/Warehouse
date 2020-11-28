@@ -807,6 +807,7 @@ public class Warehouse {
     }
 
     public static void loadLocationFromFile(String file) throws FileNotFoundException {
+        readfile = new readFile();
         productLocationMap = readfile.readfile(file);
     }
 
@@ -839,13 +840,17 @@ public class Warehouse {
         // not necessary for now if we only have one warehouse
         Warehouse warehouse = new Warehouse();
 
-        loadOrdersFromFileAndRetry("");
+        try {
+            loadOrdersFromFile("src/main/resources/qvBox-warehouse-orders-list-part01.txt");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         //warehouse.printOrderList();
 
         Scanner input = new Scanner(System.in);
         //read file
 
-//        loadLocationFromFileAndRetry();
+        loadLocationFromFile("src/main/resources/qvBox-warehouse-data-f20-v01.txt");
 
         //there is a productLocationMap in Warehouse class
         loadLocationData(warehouse);
