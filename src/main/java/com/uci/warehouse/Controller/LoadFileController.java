@@ -24,9 +24,6 @@ public class LoadFileController implements Initializable {
     private static final Logger logger = Logger.getLogger(LoadFileController.class.getName());
     private ViewCenter viewCenter;
 
-    private static Map<Integer, Order> orders;
-
-
     @FXML
     private Button LoadFIle_Button;
     @FXML
@@ -36,9 +33,6 @@ public class LoadFileController implements Initializable {
     @FXML
     private TextField outputFileName;
 
-    public static Map<Integer, Order> getOrders(){
-        return orders;
-    }
 
     public void loadFileButtonClick(){
         boolean getError = false;
