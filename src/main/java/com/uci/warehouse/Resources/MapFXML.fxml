@@ -13,9 +13,9 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane fx:id="login" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.java.com.uci.warehouse.Controller.MapController">
+<AnchorPane fx:id="login" prefHeight="620.0" prefWidth="820.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.java.com.uci.warehouse.Controller.MapController">
     <children>
-      <GridPane gridLinesVisible="true" layoutX="21.0" layoutY="12.0" prefHeight="400.0" prefWidth="800.0">
+      <GridPane gridLinesVisible="false" layoutX="0.0" layoutY="0.0" prefHeight="420.0" prefWidth="820.0" style="-fx-column-halignment: center">
         <columnConstraints>
           <ColumnConstraints hgrow="SOMETIMES" maxWidth="94.0" minWidth="2.0" prefWidth="50.0" />
             <ColumnConstraints hgrow="SOMETIMES" maxWidth="94.0" minWidth="2.0" prefWidth="50.0" />
@@ -58,7 +58,6 @@
             <ColumnConstraints hgrow="SOMETIMES" maxWidth="152.0" minWidth="2.0" prefWidth="50.0" />
             <ColumnConstraints hgrow="SOMETIMES" maxWidth="94.0" minWidth="2.0" prefWidth="50.0" />
             <ColumnConstraints hgrow="SOMETIMES" maxWidth="173.0" minWidth="2.0" prefWidth="50.0" />
-            <ColumnConstraints hgrow="SOMETIMES" maxWidth="152.0" minWidth="2.0" prefWidth="50.0" />
 
         </columnConstraints>
         <rowConstraints>
@@ -85,27 +84,27 @@
             <RowConstraints minHeight="2.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="19" GridPane.columnIndex="0" GridPane.rowIndex="0" />
-             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="18" GridPane.columnIndex="0" GridPane.rowIndex="1" />
-             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="17" GridPane.columnIndex="0" GridPane.rowIndex="2" />
-             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="16" GridPane.columnIndex="0" GridPane.rowIndex="3" />
-             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="15" GridPane.columnIndex="0" GridPane.rowIndex="4" />
-             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="14" GridPane.columnIndex="0" GridPane.rowIndex="5" />
-             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="13" GridPane.columnIndex="0" GridPane.rowIndex="6" />
-             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="12" GridPane.columnIndex="0" GridPane.rowIndex="7" />
-             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="11" GridPane.columnIndex="0" GridPane.rowIndex="8" />
-             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="10" GridPane.columnIndex="0" GridPane.rowIndex="9" />
-             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="9" GridPane.columnIndex="0" GridPane.rowIndex="10" />
-             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="8" GridPane.columnIndex="0" GridPane.rowIndex="11" />
-             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="7" GridPane.columnIndex="0" GridPane.rowIndex="12" />
-             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="6" GridPane.columnIndex="0" GridPane.rowIndex="13" />
-             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="5" GridPane.columnIndex="0" GridPane.rowIndex="14" />
-             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="4" GridPane.columnIndex="0" GridPane.rowIndex="15" />
-             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="3" GridPane.columnIndex="0" GridPane.rowIndex="16" />
-             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="2" GridPane.columnIndex="0" GridPane.rowIndex="17" />
-             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="1" GridPane.columnIndex="0" GridPane.rowIndex="18" />
-             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="0" GridPane.columnIndex="0" GridPane.rowIndex="19" />
-             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="#" GridPane.columnIndex="0" GridPane.rowIndex="20" />
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="19" GridPane.columnIndex="0" GridPane.rowIndex="0" GridPane.halignment="CENTER"/>
+             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="18" GridPane.columnIndex="0" GridPane.rowIndex="1" GridPane.halignment="CENTER"/>
+             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="17" GridPane.columnIndex="0" GridPane.rowIndex="2" GridPane.halignment="CENTER"/>
+             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="16" GridPane.columnIndex="0" GridPane.rowIndex="3" GridPane.halignment="CENTER"/>
+             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="15" GridPane.columnIndex="0" GridPane.rowIndex="4" GridPane.halignment="CENTER"/>
+             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="14" GridPane.columnIndex="0" GridPane.rowIndex="5" GridPane.halignment="CENTER"/>
+             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="13" GridPane.columnIndex="0" GridPane.rowIndex="6" GridPane.halignment="CENTER"/>
+             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="12" GridPane.columnIndex="0" GridPane.rowIndex="7" GridPane.halignment="CENTER"/>
+             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="11" GridPane.columnIndex="0" GridPane.rowIndex="8" GridPane.halignment="CENTER"/>
+             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="10" GridPane.columnIndex="0" GridPane.rowIndex="9" GridPane.halignment="CENTER"/>
+             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="9" GridPane.columnIndex="0" GridPane.rowIndex="10" GridPane.halignment="CENTER"/>
+             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="8" GridPane.columnIndex="0" GridPane.rowIndex="11" GridPane.halignment="CENTER"/>
+             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="7" GridPane.columnIndex="0" GridPane.rowIndex="12" GridPane.halignment="CENTER"/>
+             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="6" GridPane.columnIndex="0" GridPane.rowIndex="13" GridPane.halignment="CENTER"/>
+             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="5" GridPane.columnIndex="0" GridPane.rowIndex="14" GridPane.halignment="CENTER"/>
+             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="4" GridPane.columnIndex="0" GridPane.rowIndex="15" GridPane.halignment="CENTER"/>
+             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="3" GridPane.columnIndex="0" GridPane.rowIndex="16" GridPane.halignment="CENTER"/>
+             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="2" GridPane.columnIndex="0" GridPane.rowIndex="17" GridPane.halignment="CENTER"/>
+             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="1" GridPane.columnIndex="0" GridPane.rowIndex="18" GridPane.halignment="CENTER"/>
+             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="0" GridPane.columnIndex="0" GridPane.rowIndex="19" GridPane.halignment="CENTER"/>
+             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="#" GridPane.columnIndex="0" GridPane.rowIndex="20" GridPane.halignment="CENTER"/>
          </children>
       </GridPane>
       <Button fx:id="map_return_button" layoutX="633.0" layoutY="535.0" mnemonicParsing="false" onAction="#returnButtonClick" prefHeight="27.0" prefWidth="126.0" text="Return" />
