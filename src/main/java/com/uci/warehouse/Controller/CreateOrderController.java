@@ -34,7 +34,8 @@ public class CreateOrderController implements Initializable {
     public void createNewOrderButtonClick(){
         if(true) {
             logger.log(Level.INFO, "Create new order successful！ Go to Map page");
-            viewCenter.gotoMap();
+            //TODO
+            // viewCenter.gotoMap();
         } else {
             logger.log(Level.WARNING, "something wrong.");
         }

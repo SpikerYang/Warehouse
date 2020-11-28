@@ -16,6 +16,7 @@ import java.util.*;
 import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import main.java.com.uci.warehouse.Util.MyAlert;
 
 import static java.lang.Integer.parseInt;
 import static main.java.com.uci.warehouse.Model.Warehouse.*;
@@ -167,7 +168,7 @@ public class MapController implements Initializable {
             runtime = parseInt(runtime_TF.getText());
         } catch (NumberFormatException e) {
             //viewCenter.gotoMap();
-            instruction.appendText("Illegal input ");
+            MyAlert.sendErrorAlert("Illegal Input","Illegal runing time");
 
         }
         try {
@@ -181,15 +182,14 @@ public class MapController implements Initializable {
             end[1] = scanner.nextInt();
         } catch (Exception e) {
             //viewCenter.gotoMap();
-            instruction.appendText("Illegal input ");
+            MyAlert.sendErrorAlert("Illegal Input","Illegal Start or End location");
+
         }
 
         getshelf(map);
         if (!isIllegalPosition(start) || !isIllegalPosition(end) || runtime <= 0) {
             instruction.clear();
-            viewCenter.gotoMap();
-            instruction.appendText("ERROR! Illegeal input");
-
+            MyAlert.sendErrorAlert("Illegal Input","Start or End location out of range");
         }
 
         order = Warehouse.getOrder(OrderID);
@@ -209,7 +209,7 @@ public class MapController implements Initializable {
             logger.log(Level.INFO, "Order complete. Update order status. OrderID:" + OrderID);
             updateOrderStatus(OrderID);
             exportFile.exportTxt(Warehouse.getfilename(), "" + direction);
-            viewCenter.gotoMap();
+            viewCenter.gotoCreateOrder();
         }
     }
 

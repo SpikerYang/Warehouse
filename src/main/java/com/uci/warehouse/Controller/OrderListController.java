@@ -16,7 +16,7 @@ public class OrderListController implements Initializable {
     public void finishButtonClick(){
         if(true) {
             logger.log(Level.INFO, "User choose a order！ Go to Map page");
-            viewCenter.gotoMap();
+            viewCenter.gotoMenu();
         } else {
             logger.log(Level.WARNING, "something wrong.");
         }
