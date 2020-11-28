@@ -63,9 +63,7 @@ public class Warehouse {
         }
         orders.put(order.getId(), order);
     }
-    public static Map<Integer, double[]> getproductLocationMap(){
-        return productLocationMap;
-}
+
     /**
      * Create an order from console, first specify the quantity of products, then type in id of each of product seperated by blanks
      *
@@ -112,7 +110,7 @@ public class Warehouse {
         }
     }
 
-    public static Order getOrder(int orderId) {
+    public Order getOrder(int orderId) {
         if (!orders.containsKey(orderId)) {
             handleOrderNotExistError();
         }
@@ -124,6 +122,7 @@ public class Warehouse {
     }
 
     private static void handleOrderNotExistError() {
+
         try {
             throw new Exception("No such Order!");
         } catch (Exception e) {
@@ -627,6 +626,141 @@ public class Warehouse {
             }
         }
     }
+
+    public static void printRouteMap(Pair[][] matrix, List<Integer> route, int[] start, int[] end){
+        List<Integer> list= order.getOrderList();
+        list.add(0, -1);
+        //list.add(route.size(),-2);
+        List<int[]> subRoute;
+        String[][] routeMap = new String[20][40];
+        int code = 31;
+
+        //initialize
+        ArrayList<Integer> tmparray = new ArrayList<>();
+        for(int i=0;i<20;i++){
+            for(int j=0;j<40;j++){
+                tmparray = new ArrayList<>();
+                tmparray.add((int)j);
+                tmparray.add((int)19-i);
+                if(shelveMap.containsKey(tmparray)){
+                    routeMap[i][j] = "□  ";
+                }else{
+                    routeMap[i][j] = "   ";
+                }
+
+            }
+        }
+        int[] lastfrom = new int[2];
+        routeMap[19-start[1]][start[0]] = "S  ";
+        lastfrom[0] = start[0];
+        lastfrom[1] = start[1];
+        for (int i = 1; i < route.size(); i++){
+            subRoute = (List<int[]>) matrix[i - 1][i].getKey();
+            int xx,yy;
+            int[] from, to;
+            int verticalMove=0;//verticalMove: 0 no vertical move, 1 go north, -1 go south.
+            //from=subRoute.get(0);
+            for(int k=1; k<subRoute.size(); k++){
+                from=subRoute.get(k-1);
+                to=subRoute.get(k);
+                xx=to[0]-from[0];
+                yy=to[1]-from[1];
+                if(xx==0){
+                    verticalMove=yy>0?1:-1;
+                    continue;
+                }
+                if(verticalMove!=0){
+                    if(verticalMove==1){
+                        for(int j=lastfrom[1]; j<from[1];j++){
+                            if(routeMap[19-j][from[0]] == "   ") routeMap[19-j][from[0]] = printColor(code,"|  ");
+                        }
+                        routeMap[19 - from[1]][from[0]] = printColor(code,"^  ");
+
+                    }else{
+                        for(int j=lastfrom[1]; j>from[1];j--){
+                            if(routeMap[19-j][from[0]] == "   ") routeMap[19-j][from[0]] = printColor(code,"|  ");
+                        }
+                        routeMap[19 - from[1]][from[0]] = printColor(code,"V  ");
+                    }
+                }
+                if(xx>0){
+                    for(int j=from[0]; j<to[0];j++){
+                        if( routeMap[19-from[1]][j] == "   ") {
+                            routeMap[19-from[1]][j] = printColor(code,"---");
+                        }
+                    }
+                    routeMap[19 - from[1]][to[0]] = printColor(code,">  ");
+                }else{
+                    for(int j=from[0]; j>to[0];j--){
+                        if(routeMap[19-from[1]][j] == "   ") routeMap[19-from[1]][j] = printColor(code,"---");
+                    }
+                    routeMap[19 - from[1]][to[0]] = printColor(code,"<--");
+                }
+                lastfrom[0] = to[0];
+                lastfrom[1] = to[1];
+//                direction+="\tGo to "+(xx>0?"east":"west")+" to ("+to[0]+","+from[1]+")\n";
+                //verticalMove=yy>0?1:-1;
+                if(yy>0) verticalMove=1;
+                else if (yy<0) verticalMove=-1;
+                else verticalMove=0;
+            }
+            to = subRoute.get(subRoute.size()-1);
+            if(verticalMove!=0){
+                if(verticalMove==1){
+                    for(int j=lastfrom[1]; j<to[1];j++){
+                        if(routeMap[19-j][to[0]] == "   ") routeMap[19-j][to[0]] = printColor(code,"|  ");
+                    }
+                    routeMap[19 - to[1]][to[0]] = printColor(code,"^  ");
+
+                }else{
+                    for(int j=lastfrom[1]; j>to[1];j--){
+                        if(routeMap[19-j][to[0]] == "   ") routeMap[19-j][to[0]] = printColor(code,"|  ");
+                    }
+                    routeMap[19 - to[1]][to[0]] = printColor(code,"V  ");
+                }
+            }
+
+//            if(verticalMove!=0){
+//                direction+="\tGo to "+(verticalMove==1?"north":"south")+" to ("+to[0]+","+to[1]+")\n";
+//            }
+            if(i==route.size()-1){
+                routeMap[19-to[1]][to[0]] = printColor(code,"E  ");
+            }else{
+//                direction+="Pick up product "+ list.get(route.get(i))+"\n";
+                routeMap[19-to[1]][to[0]]  = printColor(code,"V  ");
+                routeMap[20-to[1]][to[0]] =printColor(code,String.format("%-3s", list.get(route.get(i))).substring(3,6));
+                code++;
+            }
+        }
+
+        System.out.println("The route is show as below:");
+//        for(int i=0;i<20;i++){
+//            for(int j=0;j<40;j++){
+//                System.out.print(routeMap[i][j]);
+//            }
+//            System.out.println(" ");
+//        }
+        for(int i = 0; i<=20;i++){
+            if(i==20){
+                System.out.print("   ");
+                for(int j=0;j<40;j++){
+                    String jid = String.format("%-2s", j);
+                    System.out.print(jid + " ");
+                }
+                System.out.println(" ");
+            }else{
+                String iid = String.format("%-2s", 19-i);
+                System.out.print(iid + " ");
+                for(int j=0;j<40;j++){
+                    System.out.print(routeMap[i][j]);
+                }
+                System.out.println(" ");
+            }
+        }
+
+
+    }
+
 //==============================================================================================================================
 //                                      Core calls: Creat orders, process order
 //==============================================================================================================================
@@ -720,7 +854,7 @@ public class Warehouse {
             //end time measure
             long endTime = System.currentTimeMillis();
             System.out.print(direction);
-            printRouteMap(order, route, start, end);
+            printRouteMap(matrix, route, start, end);
             long timePeriod = endTime - startTime;
             System.out.println("\nFor approach 1, this order takes time around  " + timePeriod + "  ms\n");
 
@@ -810,7 +944,6 @@ public class Warehouse {
     }
 
     public static void loadLocationFromFile(String file) throws FileNotFoundException {
-        readfile = new readFile();
         productLocationMap = readfile.readfile(file);
     }
 
