@@ -849,7 +849,7 @@ public class Warehouse {
         Warehouse warehouse = new Warehouse();
 
         try {
-            loadOrdersFromFile("src/main/resources/qvBox-warehouse-orders-list-part01.txt");
+            loadOrdersFromFile("Warehouse/src/main/resources/qvBox-warehouse-orders-list-part01.txt");
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -858,7 +858,7 @@ public class Warehouse {
         Scanner input = new Scanner(System.in);
         //read file
 
-        loadLocationFromFile("src/main/resources/qvBox-warehouse-data-f20-v01.txt");
+        loadLocationFromFile("Warehouse/src/main/resources/qvBox-warehouse-data-f20-v01.txt");
 
         //there is a productLocationMap in Warehouse class
         loadLocationData(warehouse);

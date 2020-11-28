@@ -17,32 +17,37 @@ import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import static java.lang.Integer.parseInt;
 import static main.java.com.uci.warehouse.Model.Warehouse.*;
 
-public class MapController implements Initializable{
+public class MapController implements Initializable {
     //TODO @Jindong @Zheng
 
     private static final Logger logger = Logger.getLogger(MapController.class.getName());
     private ViewCenter viewCenter;
 
-    @FXML private TextField startpoint, endpoint;
-    @FXML private TextArea instruction;
-    @FXML private ChoiceBox algorithm;
-    @FXML private TextField runtime_TF;
+    @FXML
+    private TextField startpoint, endpoint;
+    @FXML
+    private TextArea instruction;
+    @FXML
+    private ChoiceBox algorithm;
+    @FXML
+    private TextField runtime_TF;
 
     private int OrderID;
     private Order order;
     private Map<Integer, double[]> map;
-    private int[] start=new int[2],end=new int[2];
+    private int[] start = new int[2], end = new int[2];
     private int runtime;
     private Pair[][] matrix;
     private int[][] graph;
-    private boolean routed=false;
+    private boolean routed = false;
     private String direction;
     private Set<ArrayList<Integer>> shelves;
 
 
-    private String  NN(){
+    private String NN() {
         long startTime = System.currentTimeMillis();
 
 
@@ -53,11 +58,12 @@ public class MapController implements Initializable{
         //end time measure
         long endTime = System.currentTimeMillis();
         long timePeriod = endTime - startTime;
-        logger.log(Level.INFO,"NN Runtime:"+timePeriod+ "  ms");
+        logger.log(Level.INFO, "NN Runtime:" + timePeriod + "  ms");
 
-        showMap(matrix, route, start, end);;
+        showMap(matrix, route, start, end);
+        ;
         instruction.clear();
-        instruction.appendText("NN approach\n"+direction);
+        instruction.appendText("NN approach\n" + direction);
         return direction;
     }
 
@@ -86,7 +92,7 @@ public class MapController implements Initializable{
     }
  */
 
-    private String DA(){
+    private String DA() {
         long startTime = System.currentTimeMillis();
         //int[][] graphforGA = order.getDistanceMatrix(map, start, end);
         TSP_GA tsp_ga = new TSP_GA(30, graph.length - 2, 1000, 0.8f, 0.9f);
@@ -95,12 +101,12 @@ public class MapController implements Initializable{
 
         long endTime = System.currentTimeMillis();
         long timePeriod = endTime - startTime;
-        logger.log(Level.INFO,"DA Runtime:"+timePeriod+ "  ms");
+        logger.log(Level.INFO, "DA Runtime:" + timePeriod + "  ms");
 
         showMap(matrix, route, start, end);
         direction = printRoute(matrix, route, start, end);
         instruction.clear();
-        instruction.appendText("DA approach\n"+direction);
+        instruction.appendText("DA approach\n" + direction);
         return direction;
     }
 
@@ -108,36 +114,37 @@ public class MapController implements Initializable{
     }
 
 
-    private boolean isIllegalPosition(int[] p){
+    private boolean isIllegalPosition(int[] p) {
 
-        if(p[0]<0||p[0]>39||p[1]<0||p[1]>19) return false;
+        if (p[0] < 0 || p[0] > 39 || p[1] < 0 || p[1] > 19) return false;
         ArrayList<Integer> location = new ArrayList<>();
         location.add(p[0]);
         location.add(p[1]);
-        if(shelves.contains(p)) return false;
+        if (shelves.contains(p)) return false;
         return true;
     }
-    public void getshelf(Map<Integer, double[]> productLocationMap){
+
+    public void getshelf(Map<Integer, double[]> productLocationMap) {
         shelves = new HashSet<>();
-        for(double[] item:productLocationMap.values()){
+        for (double[] item : productLocationMap.values()) {
             ArrayList<Integer> shelf = new ArrayList<>();
-            shelf.add((int)item[0]);
-            shelf.add((int)item[1]);
+            shelf.add((int) item[0]);
+            shelf.add((int) item[1]);
             shelves.add(shelf);
         }
     }
 
-    public void RouteButtonClick(){
+    public void RouteButtonClick() {
         preprocess();
         getshelf(map);
-        if(!isIllegalPosition(start)||!isIllegalPosition(end)||runtime<=0){
+        if (!isIllegalPosition(start) || !isIllegalPosition(end) || runtime <= 0) {
             instruction.clear();
             instruction.appendText("ERROR! Illegeal input");
             return;
         }
         logger.log(Level.INFO, "Route and show on map");
 
-        switch (algorithm.getItems().toString()){
+        switch (algorithm.getItems().toString()) {
             case "NN":
                 NN();
                 break;
@@ -151,20 +158,41 @@ public class MapController implements Initializable{
                 logger.log(Level.INFO, "Algorithm is not selected.");
                 return;
         }
-        routed=true;
+        routed = true;
     }
-    private void preprocess(){
-        //---------get
-        String s = startpoint.getText();
-        String e = endpoint.getText();
-        Scanner scanner = new Scanner(s);
-        start[0]=scanner.nextInt();
-        start[1]=scanner.nextInt();
-        scanner = new Scanner(e);
-        end[0]=scanner.nextInt();
-        end[1]=scanner.nextInt();
 
-        order =Warehouse.getOrder(OrderID);
+    private void preprocess() {
+        //---------getText--------------
+        try {
+            runtime = parseInt(runtime_TF.getText());
+        } catch (NumberFormatException e) {
+            //viewCenter.gotoMap();
+            instruction.appendText("Illegal input ");
+
+        }
+        try {
+            String s = startpoint.getText();
+            String e = endpoint.getText();
+            Scanner scanner = new Scanner(s);
+            start[0] = scanner.nextInt();
+            start[1] = scanner.nextInt();
+            scanner = new Scanner(e);
+            end[0] = scanner.nextInt();
+            end[1] = scanner.nextInt();
+        } catch (Exception e) {
+            //viewCenter.gotoMap();
+            instruction.appendText("Illegal input ");
+        }
+
+        getshelf(map);
+        if (!isIllegalPosition(start) || !isIllegalPosition(end) || runtime <= 0) {
+            instruction.clear();
+            viewCenter.gotoMap();
+            instruction.appendText("ERROR! Illegeal input");
+
+        }
+
+        order = Warehouse.getOrder(OrderID);
         //List<Integer> list = order.getOrderList();
         map = Warehouse.getproductLocationMap();
         matrix = RouteBFS.routeDistanceMatrix(order, map, start, end);
@@ -176,27 +204,28 @@ public class MapController implements Initializable{
         }
     }
 
-    public void completeButtonClick(){
-        if(routed){
-            logger.log(Level.INFO, "Order complete. Update order status. OrderID:"+OrderID);
+    public void completeButtonClick() {
+        if (routed) {
+            logger.log(Level.INFO, "Order complete. Update order status. OrderID:" + OrderID);
             updateOrderStatus(OrderID);
             exportFile.exportTxt(Warehouse.getfilename(), "" + direction);
             viewCenter.gotoMap();
         }
     }
 
-    public void returnButtonClick(){
+    public void returnButtonClick() {
         logger.log(Level.INFO, "Go to Order page from Map page.");
         viewCenter.gotoMenu();
     }
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        algorithm.getItems().addAll("NN","DP","DA");
+        algorithm.getItems().addAll("NN", "DP", "DA");
         //instruction.appendText(startpoint.getText());
     }
 
-    public void setApp(ViewCenter viewCenter, int OrderID){
+    public void setApp(ViewCenter viewCenter, int OrderID) {
         this.viewCenter = viewCenter;
-        this.OrderID=OrderID;
+        this.OrderID = OrderID;
     }
 }
