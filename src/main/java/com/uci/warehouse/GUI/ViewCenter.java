@@ -52,6 +52,14 @@ public class ViewCenter extends Application {
         }
     }
 
+    public void gotoLoadFile() {
+        try {
+            LoadFileController loadFileController = (LoadFileController) replaceSceneContent(StaticResourcesConfig.LOAD_FILE_PATH);
+            loadFileController.setApp(this);
+        } catch (Exception ex) {
+            logger.log(Level.SEVERE, null, ex);
+        }
+    }
     public void gotoMenu() {
         try {
             MenuController menu = (MenuController) replaceSceneContent(StaticResourcesConfig.Menu_VIEW_PATH);

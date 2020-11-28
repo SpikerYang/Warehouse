@@ -32,7 +32,7 @@ public class LoginController implements Initializable{
         if("user".equalsIgnoreCase(login_username.getText())
                 && "123".equalsIgnoreCase(login_password.getText())) {
             logger.log(Level.INFO, "Log in successful！ Go to Order page");
-            viewCenter.gotoOrder();
+            viewCenter.gotoLoadFile();
         } else {
             logger.log(Level.WARNING, "The username or the password is wrong！");
         }
