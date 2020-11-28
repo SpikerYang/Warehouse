@@ -519,8 +519,8 @@
       <item itemvalue="Application.ViewCenter" />
       <item itemvalue="Application.TestRunner" />
       <item itemvalue="Application.Warehouse" />
-      <item itemvalue="JUnit.OrderTest.loadOrdersFormFileTest" />
       <item itemvalue="Application.Warehouse (1)" />
+      <item itemvalue="JUnit.OrderTest.loadOrdersFormFileTest" />
     </list>
     <recent_temporary>
       <list>
