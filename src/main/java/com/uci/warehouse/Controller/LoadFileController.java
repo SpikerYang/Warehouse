@@ -24,19 +24,14 @@ public class LoadFileController implements Initializable {
     private static final Logger logger = Logger.getLogger(LoadFileController.class.getName());
     private ViewCenter viewCenter;
 
-    private static Map<Integer, Order> orders;
-
-
     @FXML
     private Button LoadFIle_Button;
     @FXML
     private TextField OrderFileName;
     @FXML
     private TextField locationFileName;
-
-    public static Map<Integer, Order> getOrders(){
-        return orders;
-    }
+    @FXML
+    private TextField outputFileName;
 
 
     public void loadFileButtonClick(){
@@ -45,8 +40,10 @@ public class LoadFileController implements Initializable {
             String orderFileAddr =  OrderFileName.getText(), locFileAddr = locationFileName.getText();
             logger.log(Level.INFO, "order file addr: " + orderFileAddr);
             logger.log(Level.INFO, "location file addr: " + locFileAddr);
+            logger.log(Level.INFO, "output file name: " + outputFileName.getText() + ".txt");
             Warehouse.loadOrdersFromFile(orderFileAddr);
             Warehouse.loadLocationFromFile(locFileAddr);
+            Warehouse.filename = outputFileName.getText() + ".txt";
         } catch (Exception e) {
             e.printStackTrace();
             logger.log(Level.INFO, "LoadFile Error");
