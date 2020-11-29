@@ -169,7 +169,7 @@ public class Warehouse {
         }
     }
 
-    private boolean checkIfOrderIsNotComplete(int orderId) {
+    private static boolean checkIfOrderIsNotComplete(int orderId) {
         Order order = getOrder(orderId);
         return order.getStatus().equals(Order.ORDER_UNCOMPLETED);
     }
@@ -178,7 +178,7 @@ public class Warehouse {
         return new ArrayList<>(orders.values());
     }
 
-    public List<Order> getNotCompletedOrderList() {
+    public static List<Order> getNotCompletedOrderList() {
         List<Order> notCompletedOrders = new ArrayList<>();
         for (Order order : orders.values()) {
             if (checkIfOrderIsNotComplete(order.getId())) {
@@ -1012,7 +1012,7 @@ public class Warehouse {
         Warehouse warehouse = new Warehouse();
 
         try {
-            loadOrdersFromFile("Warehouse/src/main/resources/qvBox-warehouse-orders-list-part01.txt");
+            loadOrdersFromFile("src/main/resources/qvBox-warehouse-orders-list-part01.txt");
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -1021,7 +1021,7 @@ public class Warehouse {
         Scanner input = new Scanner(System.in);
         //read file
 
-        loadLocationFromFile("Warehouse/src/main/resources/qvBox-warehouse-data-f20-v01.txt");
+        loadLocationFromFile("src/main/resources/qvBox-warehouse-data-f20-v01.txt");
 
         //there is a productLocationMap in Warehouse class
         loadLocationData(warehouse);
