@@ -98,10 +98,10 @@ public class ViewCenter extends Application {
 
     }
 
-    public void gotoMap(int OrderID){
+    public void gotoMap(){
         try {
             MapController mapController = (MapController) replaceSceneContent(StaticResourcesConfig.MAP_VIEW_PATH);
-            mapController.setApp(this, OrderID);//TODO ID
+            mapController.setApp(this);//TODO ID
         }catch (Exception ex){
             logger.log(Level.SEVERE, null, ex);
         }

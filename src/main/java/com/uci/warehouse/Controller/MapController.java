@@ -163,6 +163,8 @@ public class MapController implements Initializable {
     }
 
     private void preprocess() {
+
+        OrderID=getQuantityOfAllOrders();
         //---------getText--------------
         try {
             runtime = parseInt(runtime_TF.getText());
@@ -224,8 +226,8 @@ public class MapController implements Initializable {
         //instruction.appendText(startpoint.getText());
     }
 
-    public void setApp(ViewCenter viewCenter, int OrderID) {
+    public void setApp(ViewCenter viewCenter) {
         this.viewCenter = viewCenter;
-        this.OrderID = OrderID;
+        //this.OrderID = OrderID;
     }
 }
