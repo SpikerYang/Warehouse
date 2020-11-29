@@ -33,7 +33,7 @@ public class Warehouse {
     private static String[][] routeMap;
     private static int[] start = new int[2];
     private static int[] end = new int[2];
-    public static String filename;
+    private static String filename;
     private static Order order;
 
     private static readFile readfile;
@@ -50,9 +50,6 @@ public class Warehouse {
     }
 
     public Warehouse() {
-        orders = new HashMap<>();
-        productLocationMap = new HashMap<>();
-        nextNotCompletedOrder = new AtomicInteger(0);
     }
 
     //==============================================================================================================================
@@ -66,12 +63,6 @@ public class Warehouse {
         }
         orders.put(order.getId(), order);
     }
-
-    public static String getfilename(){
-        return filename;
-    }
-
-
     public static Map<Integer, double[]> getproductLocationMap(){
         return productLocationMap;
 }
@@ -107,6 +98,15 @@ public class Warehouse {
         }
     }
 
+    public static void addOrderFromGUI(int size, List<Integer> IDs){
+        int id = orders.size();
+        Order order = new Order(id);
+        System.out.println("Type id of product separated by blanks: ");
+        for (int i : IDs) {
+            order.addProduct(i, 1);
+        }
+    }
+
     /**
      * Print order list to console
      */
@@ -127,6 +127,7 @@ public class Warehouse {
         }
         return orders.get(orderId);
     }
+
     public static int getQuantityOfAllOrders() {
         return orders.size();
     }
@@ -635,141 +636,6 @@ public class Warehouse {
             }
         }
     }
-
-    public static void printRouteMap(Pair[][] matrix, List<Integer> route, int[] start, int[] end){
-        List<Integer> list= order.getOrderList();
-        list.add(0, -1);
-        //list.add(route.size(),-2);
-        List<int[]> subRoute;
-        String[][] routeMap = new String[20][40];
-        int code = 31;
-
-        //initialize
-        ArrayList<Integer> tmparray = new ArrayList<>();
-        for(int i=0;i<20;i++){
-            for(int j=0;j<40;j++){
-                tmparray = new ArrayList<>();
-                tmparray.add((int)j);
-                tmparray.add((int)19-i);
-                if(shelveMap.containsKey(tmparray)){
-                    routeMap[i][j] = "□  ";
-                }else{
-                    routeMap[i][j] = "   ";
-                }
-
-            }
-        }
-        int[] lastfrom = new int[2];
-        routeMap[19-start[1]][start[0]] = "S  ";
-        lastfrom[0] = start[0];
-        lastfrom[1] = start[1];
-        for (int i = 1; i < route.size(); i++){
-            subRoute = (List<int[]>) matrix[i - 1][i].getKey();
-            int xx,yy;
-            int[] from, to;
-            int verticalMove=0;//verticalMove: 0 no vertical move, 1 go north, -1 go south.
-            //from=subRoute.get(0);
-            for(int k=1; k<subRoute.size(); k++){
-                from=subRoute.get(k-1);
-                to=subRoute.get(k);
-                xx=to[0]-from[0];
-                yy=to[1]-from[1];
-                if(xx==0){
-                    verticalMove=yy>0?1:-1;
-                    continue;
-                }
-                if(verticalMove!=0){
-                    if(verticalMove==1){
-                        for(int j=lastfrom[1]; j<from[1];j++){
-                            if(routeMap[19-j][from[0]] == "   ") routeMap[19-j][from[0]] = printColor(code,"|  ");
-                        }
-                        routeMap[19 - from[1]][from[0]] = printColor(code,"^  ");
-
-                    }else{
-                        for(int j=lastfrom[1]; j>from[1];j--){
-                            if(routeMap[19-j][from[0]] == "   ") routeMap[19-j][from[0]] = printColor(code,"|  ");
-                        }
-                        routeMap[19 - from[1]][from[0]] = printColor(code,"V  ");
-                    }
-                }
-                if(xx>0){
-                    for(int j=from[0]; j<to[0];j++){
-                        if( routeMap[19-from[1]][j] == "   ") {
-                            routeMap[19-from[1]][j] = printColor(code,"---");
-                        }
-                    }
-                    routeMap[19 - from[1]][to[0]] = printColor(code,">  ");
-                }else{
-                    for(int j=from[0]; j>to[0];j--){
-                        if(routeMap[19-from[1]][j] == "   ") routeMap[19-from[1]][j] = printColor(code,"---");
-                    }
-                    routeMap[19 - from[1]][to[0]] = printColor(code,"<--");
-                }
-                lastfrom[0] = to[0];
-                lastfrom[1] = to[1];
-//                direction+="\tGo to "+(xx>0?"east":"west")+" to ("+to[0]+","+from[1]+")\n";
-                //verticalMove=yy>0?1:-1;
-                if(yy>0) verticalMove=1;
-                else if (yy<0) verticalMove=-1;
-                else verticalMove=0;
-            }
-            to = subRoute.get(subRoute.size()-1);
-            if(verticalMove!=0){
-                if(verticalMove==1){
-                    for(int j=lastfrom[1]; j<to[1];j++){
-                        if(routeMap[19-j][to[0]] == "   ") routeMap[19-j][to[0]] = printColor(code,"|  ");
-                    }
-                    routeMap[19 - to[1]][to[0]] = printColor(code,"^  ");
-
-                }else{
-                    for(int j=lastfrom[1]; j>to[1];j--){
-                        if(routeMap[19-j][to[0]] == "   ") routeMap[19-j][to[0]] = printColor(code,"|  ");
-                    }
-                    routeMap[19 - to[1]][to[0]] = printColor(code,"V  ");
-                }
-            }
-
-//            if(verticalMove!=0){
-//                direction+="\tGo to "+(verticalMove==1?"north":"south")+" to ("+to[0]+","+to[1]+")\n";
-//            }
-            if(i==route.size()-1){
-                routeMap[19-to[1]][to[0]] = printColor(code,"E  ");
-            }else{
-//                direction+="Pick up product "+ list.get(route.get(i))+"\n";
-                routeMap[19-to[1]][to[0]]  = printColor(code,"V  ");
-                routeMap[20-to[1]][to[0]] =printColor(code,String.format("%-3s", list.get(route.get(i))).substring(3,6));
-                code++;
-            }
-        }
-
-        System.out.println("The route is show as below:");
-//        for(int i=0;i<20;i++){
-//            for(int j=0;j<40;j++){
-//                System.out.print(routeMap[i][j]);
-//            }
-//            System.out.println(" ");
-//        }
-        for(int i = 0; i<=20;i++){
-            if(i==20){
-                System.out.print("   ");
-                for(int j=0;j<40;j++){
-                    String jid = String.format("%-2s", j);
-                    System.out.print(jid + " ");
-                }
-                System.out.println(" ");
-            }else{
-                String iid = String.format("%-2s", 19-i);
-                System.out.print(iid + " ");
-                for(int j=0;j<40;j++){
-                    System.out.print(routeMap[i][j]);
-                }
-                System.out.println(" ");
-            }
-        }
-
-
-    }
-
 //==============================================================================================================================
 //                                      Core calls: Creat orders, process order
 //==============================================================================================================================
@@ -863,7 +729,7 @@ public class Warehouse {
             //end time measure
             long endTime = System.currentTimeMillis();
             System.out.print(direction);
-            printRouteMap(matrix, route, start, end);
+            printRouteMap(order, route, start, end);
             long timePeriod = endTime - startTime;
             System.out.println("\nFor approach 1, this order takes time around  " + timePeriod + "  ms\n");
 
@@ -882,84 +748,73 @@ public class Warehouse {
         }
         //------------------2: run DP------------------------------
         else if (algorithm_num == 2) {
+            System.out.print("DP approach\n");
+
+//                List<Integer> route=tsp_nn.nearestNeigh();
+//                String direction =printRoute(order, route,start,end);
+            tsp_dp = new TSP_DP();
+            int[][] graphForDP = order.getDistanceMatrixForDP(productLocationMap, start, end);
 
             long startTime = System.currentTimeMillis();
-
-            Pair[][] matrix = RouteBFS.routeDistanceMatrix(order, productLocationMap, start, end);
-            int[][] graph = new int[matrix.length][matrix.length];
-            for (int i = 0; i < matrix.length; i++) {
-                for (int j = 0; j < matrix.length; j++) {
-                    graph[i][j] = (int) matrix[i][j].getValue();
-                }
-            }
-
-            System.out.print("DP approach\n");
-            tsp_dp = new TSP_DP();
-
-            List<Integer> route = tsp_dp.getRoute(graph);
-
-            String direction;
-            direction = printRoute(matrix, route, start, end);
-            //end time measure
+            List<Integer> route = tsp_dp.getRoute(graphForDP);
             long endTime = System.currentTimeMillis();
-            System.out.print(direction);
-            printRouteMap(matrix, route, start, end);
+
             long timePeriod = endTime - startTime;
-            System.out.println("\nFor approach 2, this order takes time around  " + timePeriod + "  ms\n");
+            System.out.println("For approach 2, this order takes time around  " + timePeriod + "  ms");
 
-            //-----------whether finished?------------
-            Scanner input = new Scanner(System.in);
-            System.out.println("Finish picking up all the items of this order? y/n");
-            String finsh = input.nextLine();
+            String direction = printRoute(order, route, start, end);
 
-            if (finsh.equals("y")) {
-                updateOrderStatus(OrderID);
-                //------------------------------export direction to txt----------------
-                exportFile.exportTxt(filename, "" + direction);
+            if (route != null) {
+                printRouteMap(order, route, start, end);
+
+                System.out.print("\n\n");
+
+                //-----------whether finished?------------
+                Scanner input = new Scanner(System.in);
+                System.out.println("Finish picking up all the items of this order? y/n");
+                String finsh = input.nextLine();
+
+                if (finsh.equals("y")) {
+                    updateOrderStatus(OrderID);
+                    //------------------------------export direction to txt----------------
+                    exportFile.exportTxt(filename, "" + direction);
+                }
             }
 
 
         }
         //------------------3: run GA------------------------------
         else if (algorithm_num == 3) {
-            //start time measure
-            long startTime = System.currentTimeMillis();
+            System.out.print("GA approach\n");
+            int[][] graphforGA = order.getDistanceMatrix(productLocationMap, start, end);
+            tsp_ga = new TSP_GA(30, graphforGA.length - 2, 1000, 0.8f, 0.9f);
+            tsp_ga.init(graphforGA);
 
-            Pair[][] matrix = RouteBFS.routeDistanceMatrix(order, productLocationMap, start, end);
-            int[][] graph = new int[matrix.length][matrix.length];
-            for (int i = 0; i < matrix.length; i++) {
-                for (int j = 0; j < matrix.length; j++) {
-                    graph[i][j] = (int) matrix[i][j].getValue();
+            long startTime = System.currentTimeMillis();
+            List<Integer> route = tsp_ga.solve();
+            long endTime = System.currentTimeMillis();
+
+            long timePeriod = endTime - startTime;
+            System.out.println("For approach 3, this order takes time around  " + timePeriod + "  ms");
+
+            String direction = printRoute(order, route, start, end);
+
+            if (route != null) {
+                printRouteMap(order, route, start, end);
+
+                System.out.print("\n\n");
+
+                //-----------whether finished?------------
+                Scanner input = new Scanner(System.in);
+                System.out.println("Finish picking up all the items of this order? y/n");
+                String finsh = input.nextLine();
+
+                if (finsh.equals("y")) {
+                    updateOrderStatus(OrderID);
+                    //------------------------------export direction to txt----------------
+                    exportFile.exportTxt(filename, "" + direction);
                 }
             }
-
-            System.out.print("GA approach\n");
-            tsp_ga = new TSP_GA(30, graph.length - 2, 1000, 0.8f, 0.9f);
-            tsp_ga.init(graph);
-
-            List<Integer> route = tsp_ga.solve();
-
-            String direction;
-            direction = printRoute(matrix, route, start, end);
-            //end time measure
-            long endTime = System.currentTimeMillis();
-            System.out.print(direction);
-            printRouteMap(matrix, route, start, end);
-            long timePeriod = endTime - startTime;
-            System.out.println("\nFor approach 1, this order takes time around  " + timePeriod + "  ms\n");
-
-            //-----------whether finished?------------
-            Scanner input = new Scanner(System.in);
-            System.out.println("Finish picking up all the items of this order? y/n");
-            String finsh = input.nextLine();
-
-            if (finsh.equals("y")) {
-                updateOrderStatus(OrderID);
-                //------------------------------export direction to txt----------------
-                exportFile.exportTxt(filename, "" + direction);
-            }
-
-
         }
     }
 
@@ -984,6 +839,10 @@ public class Warehouse {
             System.out.println("Load file Error!");
             loadOrdersFromFileAndRetry(file);
         }
+    }
+
+    public static void createNewOrders(int size, List<Integer> product_ID){
+
     }
 
     //==============================================================================================================================
