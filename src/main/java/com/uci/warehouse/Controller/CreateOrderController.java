@@ -18,20 +18,12 @@ public class CreateOrderController implements Initializable {
     private static final Logger logger = Logger.getLogger(MapController.class.getName());
     private ViewCenter viewCenter;
 
-    @FXML
-    private TextField new_order_filename;
 
     @FXML
     private TextField new_order_size;
 
     @FXML
     private TextField new_order_products;
-
-    @FXML
-    private TextField new_order_start_point;
-
-    @FXML
-    private TextField new_order_end_point;
 
 
     public void createNewOrderButtonClick(){

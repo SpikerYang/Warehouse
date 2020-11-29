@@ -49,9 +49,9 @@ public class LoginController implements Initializable{
     public void initialize(URL location, ResourceBundle resources) {
         //line = new Line();
 //Setting the Properties of the Line
-        Circle kreis1;
-        kreis1 = new Circle(200, 200, 10, Color.BLACK);
-        login.getChildren().add(kreis1);
+//        Circle kreis1;
+//        kreis1 = new Circle(200, 200, 10, Color.BLACK);
+//        login.getChildren().add(kreis1);
     }
 
     public void setApp(ViewCenter viewCenter){

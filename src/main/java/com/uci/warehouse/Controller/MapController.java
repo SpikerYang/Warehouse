@@ -103,7 +103,7 @@ public class MapController implements Initializable {
         long endTime = System.currentTimeMillis();
         long timePeriod = endTime - startTime;
         logger.log(Level.INFO, "DA Runtime:" + timePeriod + "  ms");
-
+        route.add(route.size());
         showMap(matrix, route, start, end);
         direction = printRoute(matrix, route, start, end,order);
         instruction.clear();

@@ -709,19 +709,19 @@ public class Warehouse {
             System.out.println("\nPlease select the algorithm you want to use to get the route path-----> 1 for NN. 2 for DP. 3 for GA.");
             algorithm_num = scanner.nextInt();
         }
+        Pair[][] matrix = RouteBFS.routeDistanceMatrix(order, productLocationMap, start, end);
+        int[][] graph = new int[matrix.length][matrix.length];
+        for (int i = 0; i < matrix.length; i++) {
+            for (int j = 0; j < matrix.length; j++) {
+                graph[i][j] = (int) matrix[i][j].getValue();
+            }
+        }
         //------------------1: run NN------------------------------
         if (algorithm_num == 1) {
 
             //start time measure
             long startTime = System.currentTimeMillis();
 
-            Pair[][] matrix = RouteBFS.routeDistanceMatrix(order, productLocationMap, start, end);
-            int[][] graph = new int[matrix.length][matrix.length];
-            for (int i = 0; i < matrix.length; i++) {
-                for (int j = 0; j < matrix.length; j++) {
-                    graph[i][j] = (int) matrix[i][j].getValue();
-                }
-            }
 
 
             System.out.print("Nearest neighbor approach\n");
@@ -769,8 +769,10 @@ public class Warehouse {
             long timePeriod = endTime - startTime;
             System.out.println("For approach 2, this order takes time around  " + timePeriod + "  ms");
 
-            String direction = printRoute(order, route, start, end);
-
+            //String direction = printRoute(order, route, start, end);
+            route.add(route.size());
+            String direction = printRoute(matrix, route, start, end,order);
+            System.out.print(direction);
             if (route != null) {
                 printRouteMap(order, route, start, end);
 
@@ -804,8 +806,10 @@ public class Warehouse {
             long timePeriod = endTime - startTime;
             System.out.println("For approach 3, this order takes time around  " + timePeriod + "  ms");
 
-            String direction = printRoute(order, route, start, end);
-
+            //String direction = printRoute(order, route, start, end);
+            route.add(route.size());
+            String direction = printRoute(matrix, route, start, end,order);
+            System.out.print(direction);
             if (route != null) {
                 printRouteMap(order, route, start, end);
 
@@ -864,7 +868,7 @@ public class Warehouse {
         Warehouse warehouse = new Warehouse();
 
         try {
-            loadOrdersFromFile("src/main/resources/qvBox-warehouse-orders-list-part01.txt");
+            loadOrdersFromFile("Warehouse/src/main/resources/qvBox-warehouse-orders-list-part01.txt");
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -873,7 +877,7 @@ public class Warehouse {
         Scanner input = new Scanner(System.in);
         //read file
 
-        loadLocationFromFile("src/main/resources/qvBox-warehouse-data-f20-v01.txt");
+        loadLocationFromFile("Warehouse/src/main/resources/qvBox-warehouse-data-f20-v01.txt");
 
         //there is a productLocationMap in Warehouse class
         loadLocationData(warehouse);
