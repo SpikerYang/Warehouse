@@ -128,7 +128,7 @@ public class ViewCenter extends Application {
             stage.setScene(scene);
             stage.sizeToScene();
         } catch (Exception e) {
-            logger.log(Level.SEVERE, "页面加载异常！");
+            logger.log(Level.SEVERE, "Page load Error");
         } finally {
             in.close();
         }

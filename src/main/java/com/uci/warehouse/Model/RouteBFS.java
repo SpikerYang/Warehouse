@@ -40,28 +40,7 @@ public class RouteBFS {
         return shelves.contains(shelf);
     }
 
-//    public void DFS(int[] node1,int[] node2){
-//        route.add(node1);
-//
-//
-//        nodes.put(node1,new int[]{})
-//        int dyy=node2[1]-node1[1];
-//        boolean isGoUp=dyy>0;
-//        if(dyy==0){
-//            distance=Math.abs(node1[0]-node2[0]);
-//            route.add(node2);
-//            return;
-//        }
-//        if(findVertical(isGoUp)==true){
-//            DFS(new int[]{node1[0],node1[1]+1},node2);
-//        }else {
-//            DFS(findLeft(isGoUp),node2);
-//            DFS(findRight(isGoUp),node2);
-//
-//        }
-//
-//
-//    }
+
     public itemNode BFS(ArrayList<Integer> node1,ArrayList<Integer> node2)  {
 
         //route.add(node1);
@@ -179,6 +158,7 @@ public class RouteBFS {
             }
         }
         return new itemNode(node,xx,isGoUp?1:-1);
+        //return new itemNode(node,xx,0);
 
     }
     private itemNode findRight(itemNode node, boolean isGoUp)  {
@@ -193,7 +173,7 @@ public class RouteBFS {
             }
         }
         return new itemNode(node,xx,isGoUp?1:-1);
-
+        //return new itemNode(node,xx,0);
     }
     private itemNode findVertical(itemNode node, boolean isGoUp){
         ArrayList<Integer> location=new ArrayList<>();

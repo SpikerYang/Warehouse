@@ -477,7 +477,8 @@ public class Warehouse {
         List<int[]> subRoute;
         String direction = "Start at location (" + start[0] + "," + start[1] + ")\n";
         for (int i = 1; i < route.size(); i++) {
-            subRoute = (List<int[]>) matrix[i - 1][i].getKey();
+
+            subRoute = (List<int[]>) matrix[route.get(i-1)][route.get(i)].getKey();
             int xx, yy;
             int[] from, to;
             int verticalMove = 0;//verticalMove: 0 no vertical move, 1 go north, -1 go south.
@@ -675,7 +676,7 @@ public class Warehouse {
         lastfrom[0] = start[0];
         lastfrom[1] = start[1];
         for (int i = 1; i < route.size(); i++){
-            subRoute = (List<int[]>) matrix[i - 1][i].getKey();
+            subRoute = (List<int[]>) matrix[route.get(i-1)][route.get(i)].getKey();
             int xx,yy;
             int[] from, to;
             int verticalMove=0;//verticalMove: 0 no vertical move, 1 go north, -1 go south.
@@ -1012,7 +1013,7 @@ public class Warehouse {
         Warehouse warehouse = new Warehouse();
 
         try {
-            loadOrdersFromFile("src/main/resources/qvBox-warehouse-orders-list-part01.txt");
+            loadOrdersFromFile("Warehouse/src/main/resources/qvBox-warehouse-orders-list-part01.txt");
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -1021,7 +1022,7 @@ public class Warehouse {
         Scanner input = new Scanner(System.in);
         //read file
 
-        loadLocationFromFile("src/main/resources/qvBox-warehouse-data-f20-v01.txt");
+        loadLocationFromFile("Warehouse/src/main/resources/qvBox-warehouse-data-f20-v01.txt");
 
         //there is a productLocationMap in Warehouse class
         loadLocationData(warehouse);
