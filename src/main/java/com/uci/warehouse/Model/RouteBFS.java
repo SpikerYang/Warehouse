@@ -157,7 +157,8 @@ public class RouteBFS {
                 return null;
             }
         }
-        return new itemNode(node,xx,isGoUp?1:-1);
+        itemNode v=new itemNode(node,xx,0);
+        return new itemNode(v,0,isGoUp?1:-1);
         //return new itemNode(node,xx,0);
 
     }
@@ -172,7 +173,8 @@ public class RouteBFS {
                 return null;
             }
         }
-        return new itemNode(node,xx,isGoUp?1:-1);
+        itemNode v=new itemNode(node,xx,0);
+        return new itemNode(v,0,isGoUp?1:-1);
         //return new itemNode(node,xx,0);
     }
     private itemNode findVertical(itemNode node, boolean isGoUp){
