@@ -26,14 +26,14 @@ public class Warehouse {
     //parameters might not be static if there are multiply warehouse or map
     //==============================================================================================================================
 
-    private static Map<Integer, Order> orders = new HashMap<>();//<orderID, Order>
+    public static Map<Integer, Order> orders = new HashMap<>();//<orderID, Order>
     private static AtomicInteger nextNotCompletedOrder = new AtomicInteger(0);
     private static Map<Integer, double[]> productLocationMap = new HashMap<>();
     private static Map<ArrayList<Integer>, Integer> shelveMap;
     private static String[][] routeMap;
     private static int[] start = new int[2];
     private static int[] end = new int[2];
-    private static String filename;
+    public static String filename;
     private static Order order;
 
     private static readFile readfile;
