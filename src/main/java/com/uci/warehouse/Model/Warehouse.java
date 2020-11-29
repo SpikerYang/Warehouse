@@ -111,6 +111,7 @@ public class Warehouse {
         for (int i : IDs) {
             order.addProduct(i, 1);
         }
+        orders.put(id, order);
     }
 
     /**
@@ -466,7 +467,7 @@ public class Warehouse {
      * @param end
      * @return
      */
-    public static String printRoute(Pair[][] matrix, List<Integer> route, int[] start, int[] end) {
+    public static String printRoute(Pair[][] matrix, List<Integer> route, int[] start, int[] end,Order order) {
         List<Integer> list = order.getOrderList();
         list.add(0, -1);
         //list.add(route.size(),-2);
@@ -731,7 +732,7 @@ public class Warehouse {
 
             //String direction =printRoute(order, route,start,end);
             String direction;
-            direction = printRoute(matrix, route, start, end);
+            direction = printRoute(matrix, route, start, end,order);
             //end time measure
             long endTime = System.currentTimeMillis();
             System.out.print(direction);

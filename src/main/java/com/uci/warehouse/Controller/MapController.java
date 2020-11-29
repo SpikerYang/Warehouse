@@ -54,7 +54,7 @@ public class MapController implements Initializable {
 
         TSP_NN tsp_nn = new TSP_NN(OrderID, graph);
         List<Integer> route = tsp_nn.nearestNeigh();
-        direction = printRoute(matrix, route, start, end);
+        direction = printRoute(matrix, route, start, end,order);
 
         //end time measure
         long endTime = System.currentTimeMillis();
@@ -105,7 +105,7 @@ public class MapController implements Initializable {
         logger.log(Level.INFO, "DA Runtime:" + timePeriod + "  ms");
 
         showMap(matrix, route, start, end);
-        direction = printRoute(matrix, route, start, end);
+        direction = printRoute(matrix, route, start, end,order);
         instruction.clear();
         instruction.appendText("DA approach\n" + direction);
         return direction;
@@ -137,6 +137,7 @@ public class MapController implements Initializable {
 
     public void RouteButtonClick() {
         preprocess();
+
         getshelf(map);
         if (!isIllegalPosition(start) || !isIllegalPosition(end) || runtime <= 0) {
             instruction.clear();
@@ -144,8 +145,8 @@ public class MapController implements Initializable {
             return;
         }
         logger.log(Level.INFO, "Route and show on map");
-
-        switch (algorithm.getItems().toString()) {
+        logger.log(Level.INFO, "algorithm is "+algorithm.getItems().toString());
+        switch (algorithm.getValue().toString()) {
             case "NN":
                 NN();
                 break;
@@ -163,8 +164,10 @@ public class MapController implements Initializable {
     }
 
     private void preprocess() {
-
-        OrderID=getQuantityOfAllOrders();
+        map = Warehouse.getproductLocationMap();
+        logger.log(Level.INFO, "get map");
+        OrderID=getQuantityOfAllOrders()-1;
+        logger.log(Level.INFO, "get orderID:"+OrderID);
         //---------getText--------------
         try {
             runtime = parseInt(runtime_TF.getText());
@@ -195,8 +198,9 @@ public class MapController implements Initializable {
         }
 
         order = Warehouse.getOrder(OrderID);
+        logger.log(Level.INFO, "get order from orders in Warehouse.java  "+order);
         //List<Integer> list = order.getOrderList();
-        map = Warehouse.getproductLocationMap();
+        //map = Warehouse.getproductLocationMap();
         matrix = RouteBFS.routeDistanceMatrix(order, map, start, end);
         graph = new int[matrix.length][matrix.length];
         for (int i = 0; i < matrix.length; i++) {
