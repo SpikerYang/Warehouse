@@ -4,6 +4,10 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Circle;
+import javafx.scene.shape.Line;
 import main.java.com.uci.warehouse.GUI.ViewCenter;
 
 import java.net.URL;
@@ -24,6 +28,8 @@ public class LoginController implements Initializable{
     @FXML
     private TextField login_password;
 
+    @FXML private AnchorPane login;
+
 
     public void loginButtonClick(){
 
@@ -41,7 +47,11 @@ public class LoginController implements Initializable{
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-
+        //line = new Line();
+//Setting the Properties of the Line
+        Circle kreis1;
+        kreis1 = new Circle(200, 200, 10, Color.BLACK);
+        login.getChildren().add(kreis1);
     }
 
     public void setApp(ViewCenter viewCenter){
