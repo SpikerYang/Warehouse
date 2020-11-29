@@ -3,9 +3,12 @@ package main.java.com.uci.warehouse.Controller;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TextField;
+import main.java.com.uci.warehouse.Model.Warehouse;
 import main.java.com.uci.warehouse.GUI.ViewCenter;
 
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -32,10 +35,24 @@ public class CreateOrderController implements Initializable {
 
 
     public void createNewOrderButtonClick(){
-        if(true) {
+
+        boolean input_correct = true;
+        String oder_size = new_order_size.getText();
+        String products_id = new_order_products.getText();
+        if(products_id==null)
+            input_correct =false;
+        //
+        if(input_correct) {
             logger.log(Level.INFO, "Create new order successful！ Go to Map page");
-            //TODO
-            // viewCenter.gotoMap();
+            String[] IDs = products_id.split(" ");
+            List<Integer> product_IDs = new ArrayList<>();
+            for(String id:IDs){
+                product_IDs.add(Integer.valueOf(id));
+                logger.log(Level.INFO, "Add new item to order, its id is: "+ id);
+            }
+            int size = Integer.valueOf(oder_size);
+            Warehouse.addOrderFromGUI(size,product_IDs);
+            viewCenter.gotoMap();
         } else {
             logger.log(Level.WARNING, "something wrong.");
         }
