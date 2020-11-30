@@ -49,6 +49,11 @@ public class CreateOrderController implements Initializable {
             logger.log(Level.WARNING, "something wrong.");
         }
     }
+    
+    public void backToMainMenuButtonClick(ActionEvent actionEvent) {
+        viewCenter.gotoMenu();
+    }
+    
     public void setApp(ViewCenter viewCenter){
         this.viewCenter = viewCenter;
     }
