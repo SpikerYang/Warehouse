@@ -498,7 +498,14 @@ public class Warehouse {
                 yy = to[1] - from[1];
 
                 if (xx == 0) {
-                    verticalMove = yy > 0 ? 1 : -1;
+                    //verticalMove = yy > 0 ? 1 : -1;
+                    if(yy>0){
+                        verticalMove=1;
+                    }else if(yy<0){
+                        verticalMove=-1;
+                    }else{
+                        verticalMove=0;
+                    }
                     continue;
                 }
                 if (verticalMove != 0) {
