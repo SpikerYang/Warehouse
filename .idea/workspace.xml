@@ -28,12 +28,7 @@
     </select>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5d926e73-d81c-4cf9-a248-6b6a68f00192" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/Warehouse_jar/Warehouse.jar" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/Warehouse_jar/Warehouse.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/uci/warehouse/Model/TSP_DP.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/uci/warehouse/Model/TSP_DP.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/uci/warehouse/Model/Warehouse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/uci/warehouse/Model/Warehouse.java" afterDir="false" />
-    </list>
+    <list default="true" id="5d926e73-d81c-4cf9-a248-6b6a68f00192" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -49,6 +44,20 @@
       </list>
     </option>
   </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>getShelveMap</find>
+      <find>menu</find>
+      <find>menuPane</find>
+      <find>print</find>
+      <find>printRoute</find>
+      <find>2</find>
+      <find>30</find>
+      <find>0</find>
+      <find>32</find>
+      <find>color</find>
+    </findStrings>
+  </component>
   <component name="Git.Merge.Settings">
     <option name="BRANCH" value="Alpha_release" />
   </component>
@@ -58,7 +67,7 @@
         <option value="Zhengw" />
       </list>
     </option>
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$USER_HOME$" />
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
         <entry key="$PROJECT_DIR$" value="master" />
@@ -72,6 +81,12 @@
         <option name="mavenHome" value="$APPLICATION_HOME_DIR$/plugins/maven/lib/maven3" />
       </MavenGeneralSettings>
     </option>
+  </component>
+  <component name="ProjectFrameBounds">
+    <option name="x" value="-1" />
+    <option name="y" value="23" />
+    <option name="width" value="1440" />
+    <option name="height" value="878" />
   </component>
   <component name="ProjectId" id="1jcR7MR8W152InopQ1qkeKsL3rY" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -88,7 +103,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/lib" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -101,21 +116,21 @@
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.29425287" />
     <property name="restartRequiresConfirmation" value="false" />
-    <property name="settings.editor.selected.configurable" value="preferences.JavaFX" />
+    <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/src" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/main/java/com/uci/warehouse" />
       <recent name="$PROJECT_DIR$/lib" />
       <recent name="$PROJECT_DIR$/src/main/resources" />
-      <recent name="$PROJECT_DIR$/src/main/java/com/uci/warehouse" />
       <recent name="$PROJECT_DIR$/src/main/java/com/uci/warehouse/Test" />
       <recent name="$PROJECT_DIR$/src/main" />
     </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src" />
+    </key>
   </component>
-  <component name="RunManager" selected="Application.Warehouse (1)">
+  <component name="RunManager" selected="Application.ViewCenter">
     <configuration name="TestRunner" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.uci.warehouse.Test.TestRunner" />
       <module name="Warehouse" />
@@ -132,7 +147,7 @@
     <configuration name="ViewCenter" type="Application" factoryName="Application" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="main.java.com.uci.warehouse.GUI.ViewCenter" />
       <module name="Warehouse" />
-      <option name="VM_PARAMETERS" value="--module-path $PROJECT_DIR$/lib --add-modules javafx.controls,javafx.fxml" />
+      <option name="VM_PARAMETERS" value="--module-path $PROJECT_DIR$/javafx-sdk-15.0.1/lib --add-modules javafx.controls,javafx.fxml" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="main.java.com.uci.warehouse.GUI.*" />
@@ -165,6 +180,19 @@
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="CLASS" />
+      <properties />
+      <listeners />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -217,7 +245,7 @@
       </list>
     </recent_temporary>
   </component>
-  <component name="SpellCheckerSettings" BundledDictionaries="0" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" Dictionaries="0" CorrectionsLimit="5" DefaultDictionary="application-level" UseSingleDictionary="true" />
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -246,6 +274,8 @@
       <workItem from="1606356600075" duration="113000" />
       <workItem from="1606356741718" duration="2671000" />
       <workItem from="1606595327853" duration="1601000" />
+      <workItem from="1606660948503" duration="10328000" />
+      <workItem from="1606694296750" duration="276000" />
     </task>
     <task id="LOCAL-00001" summary="Update DSP_NN">
       <created>1604119504100</created>
@@ -314,7 +344,7 @@
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="1" />
+    <option name="version" value="3" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
@@ -333,7 +363,6 @@
                   </entry>
                 </map>
               </option>
-              <option name="COLUMN_ORDER" />
             </State>
           </value>
         </entry>
@@ -353,6 +382,7 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="add two functions&#10;add one map&#10;change one function" />
@@ -390,6 +420,10 @@
       <screen x="0" y="23" width="1920" height="1057" />
     </state>
     <state x="812" y="196" key="EnvironmentVariablesDialog/0.23.1920.1057@0.23.1920.1057" timestamp="1605144687964" />
+    <state x="763" y="473" key="Github.CreateGistDialog" timestamp="1606694467574">
+      <screen x="0" y="25" width="1920" height="1055" />
+    </state>
+    <state x="763" y="473" key="Github.CreateGistDialog/0.25.1920.1055@0.25.1920.1055" timestamp="1606694467574" />
     <state width="1878" height="280" key="GridCell.Tab.0.bottom" timestamp="1606631461150">
       <screen x="0" y="23" width="1920" height="1057" />
     </state>
@@ -487,12 +521,12 @@
       <screen x="0" y="23" width="1920" height="1057" />
     </state>
     <state x="592" y="312" key="MultipleFileMergeDialog/0.23.1920.1057@0.23.1920.1057" timestamp="1605142584089" />
-    <state x="360" y="218" width="1372" height="843" key="SettingsEditor" timestamp="1606356785100">
+    <state x="360" y="218" width="1372" height="843" key="SettingsEditor" timestamp="1606694438069">
       <screen x="0" y="25" width="1920" height="1055" />
     </state>
     <state x="360" y="198" width="1372" height="843" key="SettingsEditor/0.0.1920.1080@0.0.1920.1080" timestamp="1606094016631" />
     <state x="461" y="190" key="SettingsEditor/0.23.1920.1057@0.23.1920.1057" timestamp="1605141696978" />
-    <state x="360" y="218" key="SettingsEditor/0.25.1920.1055@0.25.1920.1055" timestamp="1606356785100" />
+    <state x="360" y="218" key="SettingsEditor/0.25.1920.1055@0.25.1920.1055" timestamp="1606694438069" />
     <state x="560" y="289" key="Vcs.Push.Dialog.v2" timestamp="1606332760647">
       <screen x="0" y="25" width="1920" height="1055" />
     </state>
@@ -532,12 +566,12 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/uci/warehouse/Model/Warehouse.java</url>
-          <line>898</line>
+          <line>906</line>
           <option name="timeStamp" value="1" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/uci/warehouse/Model/Warehouse.java</url>
-          <line>939</line>
+          <line>947</line>
           <option name="timeStamp" value="2" />
         </line-breakpoint>
       </breakpoints>

@@ -2,8 +2,8 @@ package main.java.com.uci.warehouse.Config;
 
 public final class StaticResourcesConfig {
 
-    public final static int STAGE_WIDTH = 800;
-    public final static int STAGE_HEIGHT = 600;
+    public final static int STAGE_WIDTH = 860;
+    public final static int STAGE_HEIGHT = 700;
 
     public final static String LOGIN_VIEW_PATH = "/main/java/com/uci/warehouse/Resources/LoginFXML.fxml";
     public final static String ORDER_VIEW_PATH = "/main/java/com/uci/warehouse/Resources/MenuFXML.fxml";

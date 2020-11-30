@@ -3,16 +3,23 @@ package main.java.com.uci.warehouse.Controller;
 
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.Pane;
 import javafx.util.Pair;
+import main.java.com.uci.warehouse.Draw.DrawMap;
 import main.java.com.uci.warehouse.GUI.ViewCenter;
 import main.java.com.uci.warehouse.Model.*;
+import javafx.scene.canvas.Canvas;
 
+
+import java.awt.*;
 import java.net.URL;
 import java.util.*;
+import java.util.List;
 import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -35,6 +42,10 @@ public class MapController implements Initializable {
     private ChoiceBox algorithm;
     @FXML
     private TextField runtime_TF;
+    @FXML
+    private Pane routePane;
+    @FXML
+    private Canvas routeCanvas;
 
     private int OrderID;
     private Order order;
@@ -46,6 +57,8 @@ public class MapController implements Initializable {
     private boolean routed = false;
     private String direction;
     private Set<ArrayList<Integer>> shelves;
+    private DrawMap drawMap = new DrawMap();
+
 
 
     private String NN() {
@@ -112,6 +125,103 @@ public class MapController implements Initializable {
     }
 
     private void showMap(Pair[][] matrix, List<Integer> route, int[] start, int[] end) {
+
+        List<Integer> list= order.getOrderList();
+        list.add(0, -1);
+        List<int[]> subRoute;
+        String[][] routeMap = new String[20][40];
+        int color = 0;
+
+        GraphicsContext gc = routeCanvas.getGraphicsContext2D();
+        Canvas canvas = new Canvas( 820,460);
+        gc.clearRect(0, 0, canvas.getWidth(), canvas.getHeight());
+
+
+        int[] lastfrom = new int[2];
+        drawMap.drawText(start[0],start[1],color,"S",gc);
+//        routeMap[19-start[1]][start[0]] = "S  ";
+        lastfrom[0] = start[0];
+        lastfrom[1] = start[1];
+        for (int i = 1; i < route.size(); i++){
+            subRoute = (List<int[]>) matrix[i - 1][i].getKey();
+            int xx,yy;
+            int[] from, to;
+            int verticalMove=0;//verticalMove: 0 no vertical move, 1 go north, -1 go south.
+            for(int k=1; k<subRoute.size(); k++){
+                from=subRoute.get(k-1);
+                to=subRoute.get(k);
+                xx=to[0]-from[0];
+                yy=to[1]-from[1];
+                if(xx==0){
+                    verticalMove=yy>0?1:-1;
+                    continue;
+                }
+                if(verticalMove!=0){
+                    if(verticalMove==1){
+                        drawMap.drawRoute(lastfrom[0],lastfrom[1]-1,from[0],from[1],0,color,gc);
+//                        drawMap.printIndLine(lastfrom[0],lastfrom[1]-1,from[0],from[1]);
+//                        for(int j=lastfrom[1]; j<from[1];j++){
+//                            if(routeMap[19-j][from[0]] == "   ") routeMap[19-j][from[0]] = printColor(code,"|  ");
+//                        }
+//                        routeMap[19 - from[1]][from[0]] = printColor(code,"^  ");
+                    }else{
+                        drawMap.drawRoute(lastfrom[0],lastfrom[1]+1,from[0],from[1],1,color,gc);
+//                        drawMap.printIndLine(lastfrom[0],lastfrom[1]+1,from[0],from[1]);
+
+//                        for(int j=lastfrom[1]; j>from[1];j--){
+//                            if(routeMap[19-j][from[0]] == "   ") routeMap[19-j][from[0]] = printColor(code,"|  ");
+//                        }
+//                        routeMap[19 - from[1]][from[0]] = printColor(code,"V  ");
+                    }
+                }
+                if(xx>0){
+                    drawMap.drawRoute(from[0],from[1],to[0],from[1],2,color,gc);
+//                    drawMap.printIndLine(from[0],from[1],to[0],from[1]);
+//                    for(int j=from[0]; j<to[0];j++){
+//                        if( routeMap[19-from[1]][j] == "   ") {
+//                            routeMap[19-from[1]][j] = printColor(code,"---");
+//                        }
+//                    }
+//                    routeMap[19 - from[1]][to[0]] = printColor(code,">  ");
+                }else{
+                    drawMap.drawRoute(from[0],from[1],to[0],from[1],3,color,gc);
+//                    drawMap.printIndLine(from[0],from[1],to[0],from[1]);
+//                    for(int j=from[0]; j>to[0];j--){
+//                        if(routeMap[19-from[1]][j] == "   ") routeMap[19-from[1]][j] = printColor(code,"---");
+//                    }
+//                    routeMap[19 - from[1]][to[0]] = printColor(code,"<--");
+                }
+                lastfrom[0] = to[0];
+                lastfrom[1] = to[1];
+//                direction+="\tGo to "+(xx>0?"east":"west")+" to ("+to[0]+","+from[1]+")\n";
+                //verticalMove=yy>0?1:-1;
+                if(yy>0) verticalMove=1;
+                else if (yy<0) verticalMove=-1;
+                else verticalMove=0;
+            }
+            to = subRoute.get(subRoute.size()-1);
+            if(verticalMove!=0){
+                if(verticalMove==1){
+                    drawMap.drawRoute(lastfrom[0],lastfrom[1]-1,to[0],to[1],0,color,gc);
+//                    drawMap.printIndLine(lastfrom[0],lastfrom[1],to[0],to[1]);
+                }else{
+                    drawMap.drawRoute(lastfrom[0],lastfrom[1]+1,to[0],to[1],1,color,gc);
+//                    drawMap.printIndLine(lastfrom[0],lastfrom[1],to[0],to[1]);
+                }
+            }
+            if(i==route.size()-1){
+                drawMap.drawText(to[0],to[1],color,"E",gc);
+//                routeMap[19-to[1]][to[0]] = printColor(code,"E  ");
+            }else{
+//                direction+="Pick up product "+ list.get(route.get(i))+"\n";
+                drawMap.drawRoute(to[0],to[1],to[0],to[1]-1,1,color,gc);
+//                routeMap[19-to[1]][to[0]]  = printColor(code,"V  ");
+//                routeMap[20-to[1]][to[0]] =printColor(code,String.format("%-3s", list.get(route.get(i))));
+                color++;
+            }
+        }
+
+
     }
 
 
@@ -227,6 +337,20 @@ public class MapController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         algorithm.getItems().addAll("NN", "DP", "DA");
+        for(int i=0;i<22;i++){
+            routePane.getChildren().addAll(drawMap.drawCoordinate(0,i+1,String.valueOf(i)));
+        }
+        for(int i=0;i<40;i++){
+            routePane.getChildren().addAll(drawMap.drawCoordinate(i+1,0,String.valueOf(i)));
+        }
+
+
+        Map<ArrayList<Integer>, Integer> shelveMap;
+        shelveMap = Warehouse.returnShelveMap();
+        for (ArrayList<Integer> tmplist: shelveMap.keySet()) {
+            routePane.getChildren().addAll(drawMap.drawShelve(tmplist.get(0)+1,tmplist.get(1)+1));
+        }
+
         //instruction.appendText(startpoint.getText());
     }
 
