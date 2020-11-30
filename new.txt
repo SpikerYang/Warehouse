@@ -1,0 +1,847 @@
+Start at location (0,0)
+	Go to east to (2,0)
+Pick up product 1
+	Go to east to (10,0)
+	Go to north to (10,8)
+Pick up product 74
+	Go to north to (10,14)
+Pick up product 45
+	Go to east to (12,14)
+	Go to south to (12,0)
+Done!
+Start at location (0,0)
+	Go to east to (2,0)
+Pick up product 1
+	Go to east to (10,0)
+	Go to north to (10,8)
+Pick up product 74
+	Go to north to (10,14)
+Pick up product 45
+	Go to west to (0,14)
+	Go to south to (0,0)
+Done!
+Start at location (0,0)
+	Go to east to (2,0)
+Pick up product 1
+	Go to east to (10,0)
+	Go to north to (10,8)
+Pick up product 74
+	Go to north to (10,14)
+Pick up product 45
+	Go to east to (15,14)
+	Go to south to (15,0)
+Done!
+Start at location (0,0)
+	Go to east to (2,0)
+Pick up product 1
+	Go to east to (10,0)
+	Go to north to (10,8)
+Pick up product 74
+	Go to north to (10,14)
+Pick up product 45
+	Go to west to (0,14)
+	Go to south to (0,0)
+Done!
+Start at location (0,0)
+	Go to east to (2,0)
+Pick up product 1
+	Go to east to (10,0)
+	Go to north to (10,8)
+Pick up product 74
+	Go to north to (10,14)
+Pick up product 45
+	Go to east to (15,14)
+	Go to south to (15,0)
+Done!
+Start at location (0,0)
+	Go to south to (0,1)
+Pick up product 1
+	Go to south to (3,9)
+Pick up product 74
+	Go to north to (13,15)
+Pick up product 45
+	Go to north to (5,0)
+Done!
+Start at location (0,0)
+	Go to north to (0,15)
+	Go to east to (10,15)
+Pick up product 340367
+	Go to east to (13,15)
+	Go to south to (13,7)
+	Go to west to (10,7)
+Pick up product 661741
+	Go to south to (10,7)
+Pick up product 286457
+	Go to east to (12,7)
+Pick up product 108335
+	Go to east to (13,7)
+	Go to north to (13,11)
+	Go to east to (20,11)
+Pick up product 391825
+	Go to east to (22,11)
+	Go to south to (22,1)
+	Go to east to (33,1)
+Done!
+Start at location (0,0)
+	Go to north to (0,11)
+	Go to east to (14,11)
+Pick up product 364695
+	Go to west to (13,11)
+	Go to south to (13,7)
+	Go to west to (9,7)
+	Go to south to (9,5)
+	Go to west to (8,5)
+Pick up product 365285
+	Go to west to (7,5)
+	Go to north to (7,7)
+	Go to west to (5,7)
+	Go to north to (5,17)
+	Go to east to (6,17)
+Pick up product 219130
+	Go to east to (13,17)
+	Go to south to (13,7)
+	Go to east to (22,7)
+	Go to south to (22,1)
+	Go to east to (33,1)
+Done!
+Start at location (0,0)
+	Go to north to (0,5)
+	Go to east to (16,5)
+Pick up product 422465
+	Go to east to (22,5)
+	Go to north to (22,15)
+	Go to west to (18,15)
+Pick up product 98888
+	Go to west to (14,15)
+Pick up product 379019
+	Go to east to (15,15)
+	Go to south to (15,13)
+	Go to east to (17,13)
+	Go to south to (17,11)
+	Go to east to (22,11)
+	Go to south to (22,1)
+	Go to east to (33,1)
+Done!
+Start at location (0,0)
+	Go to north to (0,13)
+	Go to east to (10,13)
+Pick up product 287261
+	Go to south to (10,13)
+Pick up product 380489
+	Go to south to (10,13)
+Pick up product 352109
+	Go to west to (5,13)
+	Go to south to (5,9)
+	Go to east to (8,9)
+Pick up product 386850
+	Go to east to (13,9)
+	Go to north to (13,11)
+	Go to west to (11,11)
+Pick up product 397889
+	Go to east to (13,11)
+	Go to south to (13,7)
+	Go to east to (22,7)
+	Go to south to (22,1)
+	Go to east to (33,1)
+Done!
+Start at location (0,0)
+	Go to north to (0,9)
+	Go to east to (8,9)
+Pick up product 254489
+	Go to south to (8,9)
+Pick up product 287261
+	Go to west to (5,9)
+	Go to north to (5,11)
+	Go to east to (10,11)
+Pick up product 342706
+	Go to west to (5,11)
+	Go to south to (5,9)
+	Go to east to (8,9)
+Pick up product 111873
+	Go to west to (5,9)
+	Go to north to (5,11)
+	Go to east to (10,11)
+Pick up product 258540
+	Go to west to (5,11)
+	Go to south to (5,9)
+	Go to east to (7,9)
+Pick up product 286457
+	Go to east to (9,9)
+	Go to south to (9,7)
+	Go to east to (12,7)
+Pick up product 281610
+	Go to east to (13,7)
+	Go to north to (13,11)
+	Go to west to (10,11)
+Pick up product 76283
+	Go to east to (11,11)
+	Go to north to (11,13)
+	Go to west to (10,13)
+Pick up product 366109
+	Go to east to (11,13)
+	Go to south to (11,11)
+	Go to east to (13,11)
+	Go to south to (13,7)
+	Go to west to (10,7)
+Pick up product 198029
+	Go to east to (22,7)
+	Go to south to (22,1)
+	Go to east to (33,1)
+Done!
+Start at location (0,0)
+	Go to north to (0,11)
+	Go to east to (20,11)
+Pick up product 284905
+	Go to west to (15,11)
+Pick up product 381992
+	Go to south to (15,11)
+Pick up product 383599
+	Go to west to (13,11)
+	Go to north to (13,15)
+	Go to west to (10,15)
+Pick up product 89769
+	Go to east to (13,15)
+	Go to south to (13,7)
+	Go to east to (22,7)
+	Go to south to (22,1)
+	Go to east to (33,1)
+Done!
+Start at location (0,0)
+	Go to north to (0,11)
+	Go to east to (10,11)
+Pick up product 327710
+	Go to east to (11,11)
+	Go to north to (11,13)
+	Go to west to (8,13)
+Pick up product 191515
+	Go to east to (9,13)
+	Go to north to (9,15)
+	Go to east to (13,15)
+	Go to north to (13,17)
+	Go to west to (10,17)
+Pick up product 140817
+	Go to east to (13,17)
+	Go to south to (13,11)
+	Go to west to (10,11)
+Pick up product 284251
+	Go to south to (10,11)
+Pick up product 226774
+	Go to east to (12,11)
+Pick up product 780493
+	Go to east to (13,11)
+	Go to south to (13,7)
+	Go to east to (22,7)
+	Go to south to (22,1)
+	Go to east to (33,1)
+Done!
+Start at location (0,0)
+	Go to north to (0,5)
+	Go to east to (14,5)
+Pick up product 660999
+	Go to west to (9,5)
+	Go to north to (9,9)
+	Go to east to (13,9)
+	Go to north to (13,13)
+	Go to west to (10,13)
+Pick up product 661002
+	Go to west to (8,13)
+Pick up product 128827
+	Go to east to (10,13)
+Pick up product 123462
+	Go to south to (10,13)
+Pick up product 119063
+	Go to east to (13,13)
+	Go to north to (13,17)
+	Go to west to (8,17)
+Pick up product 16643
+	Go to east to (13,17)
+	Go to south to (13,11)
+	Go to east to (18,11)
+Pick up product 188598
+	Go to east to (22,11)
+	Go to south to (22,5)
+	Go to west to (14,5)
+Pick up product 323836
+	Go to east to (15,5)
+	Go to south to (15,1)
+	Go to east to (33,1)
+Done!
+Start at location (0,0)
+	Go to north to (0,1)
+	Go to east to (2,1)
+Pick up product 1
+	Go to north to (2,3)
+	Go to east to (3,3)
+	Go to north to (3,7)
+	Go to east to (10,7)
+Pick up product 208660
+	Go to south to (10,7)
+Pick up product 372539
+	Go to east to (13,7)
+	Go to north to (13,11)
+	Go to west to (12,11)
+Pick up product 188856
+	Go to west to (11,11)
+	Go to north to (11,13)
+	Go to west to (9,13)
+	Go to north to (9,15)
+	Go to west to (6,15)
+Pick up product 396879
+	Go to south to (6,15)
+Pick up product 391680
+	Go to south to (6,15)
+Pick up product 427230
+	Go to east to (9,15)
+	Go to south to (9,13)
+	Go to east to (11,13)
+	Go to south to (11,11)
+	Go to east to (13,11)
+	Go to south to (13,9)
+	Go to east to (14,9)
+Pick up product 736830
+	Go to south to (14,9)
+Pick up product 736831
+	Go to south to (14,9)
+Pick up product 68048
+	Go to west to (13,9)
+	Go to south to (13,7)
+	Go to west to (8,7)
+Pick up product 479020
+	Go to east to (9,7)
+	Go to north to (9,9)
+	Go to east to (10,9)
+Pick up product 105912
+	Go to west to (5,9)
+	Go to north to (5,15)
+	Go to east to (6,15)
+Pick up product 103313
+	Go to west to (5,15)
+	Go to south to (5,7)
+	Go to east to (10,7)
+Pick up product 332555
+	Go to south to (10,7)
+Pick up product 227534
+	Go to east to (22,7)
+	Go to south to (22,1)
+	Go to east to (33,1)
+Done!
+Start at location (0,0)
+	Go to north to (0,1)
+	Go to east to (2,1)
+Pick up product 1
+	Go to north to (2,3)
+	Go to east to (3,3)
+	Go to north to (3,7)
+	Go to east to (6,7)
+Pick up product 10438
+	Go to east to (7,7)
+	Go to south to (7,5)
+	Go to east to (16,5)
+Pick up product 208660
+	Go to east to (22,5)
+	Go to north to (22,15)
+	Go to west to (20,15)
+Pick up product 372539
+	Go to west to (19,15)
+	Go to south to (19,11)
+	Go to west to (13,11)
+	Go to south to (13,7)
+	Go to west to (10,7)
+Pick up product 188856
+	Go to east to (13,7)
+	Go to north to (13,11)
+	Go to west to (12,11)
+Pick up product 396879
+	Go to west to (11,11)
+	Go to north to (11,13)
+	Go to west to (9,13)
+	Go to north to (9,15)
+	Go to west to (6,15)
+Pick up product 16880
+	Go to south to (6,15)
+Pick up product 20373
+	Go to west to (5,15)
+	Go to south to (5,9)
+	Go to east to (8,9)
+Pick up product 736830
+	Go to west to (5,9)
+	Go to north to (5,15)
+	Go to east to (6,15)
+Pick up product 736831
+	Go to east to (8,15)
+Pick up product 68048
+	Go to east to (9,15)
+	Go to south to (9,13)
+	Go to east to (11,13)
+	Go to south to (11,11)
+	Go to east to (13,11)
+	Go to south to (13,9)
+	Go to east to (14,9)
+Pick up product 633
+	Go to south to (14,9)
+Pick up product 479020
+	Go to south to (14,9)
+Pick up product 5329
+	Go to west to (11,9)
+Pick up product 105912
+	Go to west to (9,9)
+	Go to south to (9,7)
+	Go to west to (8,7)
+Pick up product 103313
+	Go to east to (9,7)
+	Go to north to (9,9)
+	Go to east to (16,9)
+Pick up product 332555
+	Go to west to (13,9)
+	Go to north to (13,15)
+	Go to west to (6,15)
+Pick up product 227534
+	Go to west to (5,15)
+	Go to south to (5,7)
+	Go to east to (10,7)
+Pick up product 3401
+	Go to south to (10,7)
+Pick up product 1321
+	Go to east to (22,7)
+	Go to south to (22,1)
+	Go to east to (33,1)
+Done!
+Start at location (0,0)
+	Go to north to (0,1)
+	Go to east to (22,1)
+Pick up product 112167
+	Go to north to (22,5)
+	Go to west to (8,5)
+Pick up product 102601
+	Go to east to (9,5)
+	Go to south to (9,3)
+	Go to east to (14,3)
+Pick up product 222340
+	Go to south to (14,3)
+Pick up product 1117760
+	Go to east to (15,3)
+	Go to south to (15,1)
+	Go to east to (33,1)
+Done!
+Start at location (0,0)
+	Go to north to (0,9)
+	Go to east to (8,9)
+Pick up product 391857
+	Go to east to (13,9)
+	Go to north to (13,11)
+	Go to west to (12,11)
+Pick up product 287261
+	Go to west to (11,11)
+	Go to north to (11,13)
+	Go to west to (10,13)
+Pick up product 111873
+	Go to east to (11,13)
+	Go to south to (11,11)
+	Go to east to (13,11)
+	Go to south to (13,7)
+	Go to west to (9,7)
+	Go to south to (9,5)
+	Go to east to (16,5)
+Pick up product 393069
+	Go to west to (9,5)
+	Go to north to (9,9)
+	Go to west to (5,9)
+	Go to north to (5,13)
+	Go to east to (8,13)
+Pick up product 306104
+	Go to west to (5,13)
+	Go to south to (5,7)
+	Go to east to (10,7)
+Pick up product 106685
+	Go to west to (9,7)
+	Go to south to (9,5)
+	Go to east to (20,5)
+Pick up product 103926
+	Go to east to (22,5)
+	Go to north to (22,11)
+	Go to west to (16,11)
+Pick up product 260033
+	Go to west to (13,11)
+	Go to north to (13,13)
+	Go to west to (12,13)
+Pick up product 354111
+	Go to west to (8,13)
+Pick up product 193618
+	Go to south to (8,13)
+Pick up product 16643
+	Go to west to (5,13)
+	Go to south to (5,5)
+	Go to west to (1,5)
+Pick up product 226774
+	Go to north to (1,13)
+	Go to east to (8,13)
+Pick up product 154454
+	Go to east to (11,13)
+	Go to south to (11,11)
+	Go to east to (12,11)
+Pick up product 392017
+	Go to east to (13,11)
+	Go to south to (13,7)
+	Go to east to (22,7)
+	Go to south to (22,1)
+	Go to west to (18,1)
+Pick up product 195946
+	Go to west to (17,1)
+	Go to north to (17,3)
+	Go to west to (15,3)
+	Go to north to (15,5)
+	Go to west to (9,5)
+	Go to north to (9,9)
+	Go to west to (5,9)
+	Go to north to (5,15)
+	Go to east to (8,15)
+Pick up product 245818
+	Go to west to (5,15)
+	Go to south to (5,9)
+	Go to east to (8,9)
+Pick up product 180958
+	Go to west to (5,9)
+	Go to north to (5,11)
+	Go to east to (10,11)
+Pick up product 397673
+	Go to east to (12,11)
+Pick up product 272457
+	Go to east to (14,11)
+Pick up product 176484
+	Go to west to (13,11)
+	Go to north to (13,17)
+	Go to west to (10,17)
+Pick up product 1400578
+	Go to east to (13,17)
+	Go to south to (13,7)
+	Go to east to (22,7)
+	Go to south to (22,1)
+	Go to east to (33,1)
+Done!
+Start at location (0,0)
+	Go to north to (0,11)
+	Go to east to (14,11)
+Pick up product 354453
+	Go to west to (13,11)
+	Go to south to (13,7)
+	Go to east to (20,7)
+Pick up product 19494
+	Go to west to (17,7)
+	Go to north to (17,9)
+	Go to west to (10,9)
+Pick up product 72830
+	Go to west to (8,9)
+Pick up product 207762
+	Go to east to (14,9)
+Pick up product 616588
+	Go to west to (13,9)
+	Go to north to (13,11)
+	Go to east to (14,11)
+Pick up product 17032
+	Go to west to (13,11)
+	Go to north to (13,13)
+	Go to west to (6,13)
+Pick up product 156523
+	Go to west to (5,13)
+	Go to south to (5,9)
+	Go to east to (6,9)
+Pick up product 304902
+	Go to east to (10,9)
+Pick up product 129049
+	Go to west to (5,9)
+	Go to north to (5,11)
+	Go to east to (8,11)
+Pick up product 1590703
+	Go to west to (6,11)
+Pick up product 204756
+	Go to east to (9,11)
+Pick up product 1145658
+	Go to east to (13,11)
+	Go to south to (13,9)
+	Go to west to (10,9)
+Pick up product 1588573
+	Go to east to (13,9)
+	Go to south to (13,7)
+	Go to east to (22,7)
+	Go to south to (22,1)
+	Go to east to (33,1)
+Done!
+Start at location (0,0)
+	Go to north to (0,15)
+	Go to east to (10,15)
+Pick up product 255229
+	Go to south to (10,15)
+Pick up product 104076
+	Go to east to (12,15)
+Pick up product 311368
+	Go to east to (18,15)
+Pick up product 286438
+	Go to west to (10,15)
+Pick up product 396806
+	Go to south to (10,15)
+Pick up product 147629
+	Go to south to (10,15)
+Pick up product 208299
+	Go to east to (12,15)
+Pick up product 48409
+	Go to east to (13,15)
+	Go to south to (13,7)
+	Go to east to (22,7)
+	Go to south to (22,1)
+	Go to east to (33,1)
+Done!
+Start at location (0,0)
+	Go to north to (0,5)
+	Go to east to (10,5)
+Pick up product 356984
+	Go to south to (10,5)
+Pick up product 376926
+	Go to south to (10,5)
+Pick up product 360031
+	Go to east to (11,5)
+	Go to south to (11,1)
+	Go to east to (33,1)
+Done!
+Start at location (0,0)
+	Go to north to (0,7)
+	Go to east to (10,7)
+Pick up product 1621158
+	Go to south to (10,7)
+Pick up product 1629090
+	Go to south to (10,7)
+Pick up product 1622191
+	Go to south to (10,7)
+Pick up product 1621964
+	Go to south to (10,7)
+Pick up product 1945580
+	Go to south to (10,7)
+Pick up product 1626710
+	Go to south to (10,7)
+Pick up product 1624694
+	Go to south to (10,7)
+Pick up product 1622038
+	Go to south to (10,7)
+Pick up product 1626709
+	Go to south to (10,7)
+Pick up product 2625541
+	Go to south to (10,7)
+Pick up product 1621045
+	Go to south to (10,7)
+Pick up product 1628756
+	Go to south to (10,7)
+Pick up product 1622196
+	Go to south to (10,7)
+Pick up product 2253198
+	Go to south to (10,7)
+Pick up product 1651829
+	Go to south to (10,7)
+Pick up product 1622195
+	Go to south to (10,7)
+Pick up product 2625537
+	Go to south to (10,7)
+Pick up product 1626718
+	Go to south to (10,7)
+Pick up product 1623864
+	Go to east to (22,7)
+	Go to south to (22,1)
+	Go to east to (33,1)
+Done!
+Start at location (0,0)
+	Go to north to (0,7)
+	Go to east to (8,7)
+Pick up product 1138
+	Go to east to (9,7)
+	Go to south to (9,5)
+	Go to east to (16,5)
+Pick up product 762640
+	Go to west to (9,5)
+	Go to north to (9,9)
+	Go to west to (5,9)
+	Go to north to (5,15)
+	Go to east to (6,15)
+Pick up product 298112
+	Go to east to (9,15)
+	Go to south to (9,13)
+	Go to east to (10,13)
+Pick up product 8659
+	Go to east to (11,13)
+	Go to south to (11,11)
+	Go to east to (13,11)
+	Go to south to (13,9)
+	Go to west to (12,9)
+Pick up product 1329222
+	Go to east to (13,9)
+	Go to south to (13,7)
+	Go to east to (22,7)
+	Go to south to (22,1)
+	Go to east to (33,1)
+Done!
+Start at location (0,0)
+	Go to north to (0,5)
+	Go to east to (18,5)
+Pick up product 391231
+	Go to east to (22,5)
+	Go to north to (22,13)
+	Go to west to (10,13)
+Pick up product 392028
+	Go to east to (11,13)
+	Go to south to (11,11)
+	Go to east to (12,11)
+Pick up product 373389
+	Go to west to (11,11)
+Pick up product 379184
+	Go to east to (13,11)
+	Go to south to (13,7)
+	Go to east to (22,7)
+	Go to south to (22,1)
+	Go to east to (33,1)
+Done!
+Start at location (0,0)
+	Go to north to (0,15)
+	Go to east to (10,15)
+Pick up product 340367
+	Go to east to (13,15)
+	Go to south to (13,7)
+	Go to west to (10,7)
+Pick up product 661741
+	Go to south to (10,7)
+Pick up product 286457
+	Go to east to (12,7)
+Pick up product 108335
+	Go to east to (13,7)
+	Go to north to (13,11)
+	Go to east to (20,11)
+Pick up product 391825
+	Go to west to (13,11)
+	Go to south to (13,7)
+	Go to west to (9,7)
+	Go to south to (9,1)
+	Go to west to (0,1)
+	Go to south to (0,0)
+Done!
+Start at location (0,0)
+	Go to north to (0,11)
+	Go to east to (14,11)
+Pick up product 364695
+	Go to west to (13,11)
+	Go to south to (13,7)
+	Go to west to (9,7)
+	Go to south to (9,5)
+	Go to west to (8,5)
+Pick up product 365285
+	Go to west to (7,5)
+	Go to north to (7,7)
+	Go to west to (5,7)
+	Go to north to (5,17)
+	Go to east to (6,17)
+Pick up product 219130
+	Go to west to (5,17)
+	Go to south to (5,1)
+	Go to west to (0,1)
+	Go to south to (0,0)
+Done!
+Start at location (0,0)
+	Go to north to (0,1)
+	Go to east to (2,1)
+Pick up product 1
+	Go to east to (33,1)
+	Go to south to (33,0)
+Done!
+Start at location (0,0)
+	Go to north to (0,1)
+	Go to east to (2,1)
+Pick up product 1
+	Go to north to (2,3)
+	Go to east to (3,3)
+	Go to north to (3,9)
+	Go to east to (10,9)
+Pick up product 74
+	Go to east to (13,9)
+	Go to north to (13,15)
+	Go to west to (10,15)
+Pick up product 45
+	Go to east to (13,15)
+	Go to south to (13,7)
+	Go to east to (22,7)
+	Go to south to (22,1)
+	Go to east to (33,1)
+	Go to south to (33,0)
+Done!
+Start at location (0,0)
+	Go to north to (0,15)
+	Go to east to (6,15)
+Pick up product 361101
+	Go to east to (18,15)
+Pick up product 392819
+	Go to west to (17,15)
+	Go to south to (17,11)
+	Go to west to (13,11)
+	Go to south to (13,7)
+	Go to west to (6,7)
+Pick up product 8659
+	Go to west to (5,7)
+	Go to south to (5,5)
+	Go to west to (2,5)
+Pick up product 262522
+	Go to north to (2,11)
+	Go to east to (14,11)
+Pick up product 157585
+	Go to east to (17,11)
+	Go to north to (17,15)
+	Go to east to (18,15)
+Pick up product 201055
+	Go to east to (19,15)
+	Go to south to (19,11)
+	Go to east to (22,11)
+	Go to south to (22,1)
+	Go to east to (33,1)
+	Go to south to (33,0)
+Done!
+Start at location (0,0)
+	Go to north to (0,15)
+	Go to east to (10,15)
+Pick up product 340367
+	Go to east to (13,15)
+	Go to south to (13,7)
+	Go to west to (10,7)
+Pick up product 661741
+	Go to south to (10,7)
+Pick up product 286457
+	Go to east to (12,7)
+Pick up product 108335
+	Go to east to (13,7)
+	Go to north to (13,11)
+	Go to east to (20,11)
+Pick up product 391825
+	Go to east to (22,11)
+	Go to south to (22,1)
+	Go to east to (33,1)
+	Go to south to (33,0)
+Done!
+Start at location (0,0)
+	Go to north to (0,1)
+	Go to east to (2,1)
+Pick up product 1
+	Go to east to (33,1)
+	Go to south to (33,0)
+Done!
+Start at location (0,0)
+	Go to north to (0,1)
+	Go to east to (2,1)
+Pick up product 1
+	Go to north to (2,3)
+	Go to east to (3,3)
+	Go to north to (3,9)
+	Go to east to (10,9)
+Pick up product 74
+	Go to east to (13,9)
+	Go to north to (13,15)
+	Go to west to (10,15)
+Pick up product 45
+	Go to east to (13,15)
+	Go to south to (13,7)
+	Go to east to (22,7)
+	Go to south to (22,1)
+	Go to east to (33,1)
+	Go to south to (33,0)
+Done!
