@@ -87,7 +87,7 @@ public class MapController implements Initializable {
         long startTime = System.currentTimeMillis();
         TSP_DP tsp_dp = new TSP_DP();
 
-        List<Integer> route = tsp_dp.getRoute(graph);
+        List<Integer> route = tsp_dp.getRoute(graph, 60000);
 
         String direction;
         direction = printRoute(matrix, route, start, end,order);
@@ -110,7 +110,7 @@ public class MapController implements Initializable {
         //int[][] graphforGA = order.getDistanceMatrix(map, start, end);
         TSP_GA tsp_ga = new TSP_GA(30, graph.length - 2, 1000, 0.8f, 0.9f);
         tsp_ga.init(graph);
-        List<Integer> route = tsp_ga.solve();
+        List<Integer> route = tsp_ga.solve(60000);
 
         long endTime = System.currentTimeMillis();
         long timePeriod = endTime - startTime;

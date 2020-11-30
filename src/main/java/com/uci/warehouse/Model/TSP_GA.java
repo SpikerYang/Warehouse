@@ -455,7 +455,7 @@ public class TSP_GA {
          */
     }
 
-    public List<Integer> solve() {
+    public List<Integer> solve(int timeOut) {
         if (cityNum == 1) {
             int length = distance[0][1] + distance[1][2];
             System.out.println("distance: " + length);
@@ -491,7 +491,7 @@ public class TSP_GA {
         for (t = 0; t < MAX_GEN; t++) {
             ////////////////////////////////////
             endTime = System.currentTimeMillis();
-            if ((endTime-startTime)>60000){
+            if ((endTime-startTime)>timeOut){
                 System.out.println("Time out!");
                 break;
             }

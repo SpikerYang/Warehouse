@@ -917,7 +917,8 @@ public class Warehouse {
             System.out.print("DP approach\n");
             tsp_dp = new TSP_DP();
 
-            List<Integer> route = tsp_dp.getRoute(graph);
+            int timeOut = 60000;
+            List<Integer> route = tsp_dp.getRoute(graph, timeOut);
 
             String direction;
             direction = printRoute(matrix, route, start, end,order);
@@ -957,7 +958,8 @@ public class Warehouse {
             tsp_ga = new TSP_GA(30, graph.length - 2, 1000, 0.8f, 0.9f);
             tsp_ga.init(graph);
 
-            List<Integer> route = tsp_ga.solve();
+            int timeOut = 60000;
+            List<Integer> route = tsp_ga.solve(timeOut);
 
             String direction;
             direction = printRoute(matrix, route, start, end,order);
@@ -1039,7 +1041,7 @@ public class Warehouse {
         Warehouse warehouse = new Warehouse();
 
         try {
-            loadOrdersFromFile("Warehouse/src/main/resources/qvBox-warehouse-orders-list-part01.txt");
+            loadOrdersFromFile("src/main/resources/qvBox-warehouse-orders-list-part01.txt");
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -1048,7 +1050,7 @@ public class Warehouse {
         Scanner input = new Scanner(System.in);
         //read file
 
-        loadLocationFromFile("Warehouse/src/main/resources/qvBox-warehouse-data-f20-v01.txt");
+        loadLocationFromFile("src/main/resources/qvBox-warehouse-data-f20-v01.txt");
 
         //there is a productLocationMap in Warehouse class
         loadLocationData(warehouse);

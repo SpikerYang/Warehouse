@@ -44,7 +44,7 @@ public class TSP_DP {
         }
     }
 
-    public List<Integer> getRoute(int[][] distance) {
+    public List<Integer> getRoute(int[][] distance, int timeOut) {
         long startTime = System.currentTimeMillis();
         long endTime;
         //stores intermediate values in map
@@ -79,7 +79,7 @@ public class TSP_DP {
                 parent.put(index, minPrevVertex);
                 ////////////////////////////////////
                 endTime = System.currentTimeMillis();
-                if ((endTime-startTime)>60000){
+                if ((endTime-startTime)>timeOut){
                     System.out.println("Time out!");
                     List<Integer> route = getTourWhenTimeOut(parent, currentVertex, set, distance.length);
                     return route;
