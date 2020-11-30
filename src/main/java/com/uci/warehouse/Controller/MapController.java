@@ -75,38 +75,37 @@ public class MapController implements Initializable {
         logger.log(Level.INFO, "NN Runtime:" + timePeriod + "  ms");
 
         showMap(matrix, route, start, end);
-        ;
+
         instruction.clear();
         instruction.appendText("NN approach\n" + direction);
         return direction;
     }
 
-/*
+
     private String DP(){
-        //TODO @Siqian
-           Do not support avoiding shelves
-
-
-        TSP_DP tsp_dp = new TSP_DP();
-        //int[][] graphForDP = order.getDistanceMatrixForDP(map, start, end, runtime);
 
         long startTime = System.currentTimeMillis();
-        List<Integer> route = tsp_dp.getRoute(graphForDP);
+        TSP_DP tsp_dp = new TSP_DP();
+
+        List<Integer> route = tsp_dp.getRoute(graph);
+
+        String direction;
+        direction = printRoute(matrix, route, start, end,order);
+        //end time measure
         long endTime = System.currentTimeMillis();
-
         long timePeriod = endTime - startTime;
-        logger.log(Level.INFO,"DP Runtime:"+timePeriod+ "  ms");
+        logger.log(Level.INFO, "DP Runtime:" + timePeriod + "  ms");
 
-         direction =printRoute(matrix, route, start, end);
 
-        showMap(order, route, start, end);
+
+        showMap(matrix, route, start, end);
         instruction.clear();
         instruction.appendText("DP approach\n"+direction);
         return direction;
     }
- */
 
-    private String DA() {
+    private String GA() {
+
         long startTime = System.currentTimeMillis();
         //int[][] graphforGA = order.getDistanceMatrix(map, start, end);
         TSP_GA tsp_ga = new TSP_GA(30, graph.length - 2, 1000, 0.8f, 0.9f);
@@ -115,12 +114,12 @@ public class MapController implements Initializable {
 
         long endTime = System.currentTimeMillis();
         long timePeriod = endTime - startTime;
-        logger.log(Level.INFO, "DA Runtime:" + timePeriod + "  ms");
-        route.add(route.size());
+        logger.log(Level.INFO, "GA Runtime:" + timePeriod + "  ms");
+
         showMap(matrix, route, start, end);
         direction = printRoute(matrix, route, start, end,order);
         instruction.clear();
-        instruction.appendText("DA approach\n" + direction);
+        instruction.appendText("GA approach\n" + direction);
         return direction;
     }
 
@@ -143,7 +142,7 @@ public class MapController implements Initializable {
         lastfrom[0] = start[0];
         lastfrom[1] = start[1];
         for (int i = 1; i < route.size(); i++){
-            subRoute = (List<int[]>) matrix[i - 1][i].getKey();
+            subRoute = (List<int[]>) matrix[route.get(i-1)][route.get(i)].getKey();
             int xx,yy;
             int[] from, to;
             int verticalMove=0;//verticalMove: 0 no vertical move, 1 go north, -1 go south.
@@ -261,10 +260,10 @@ public class MapController implements Initializable {
                 NN();
                 break;
             case "DP":
-                //DP();
+                DP();
                 break;
-            case "DA":
-                DA();
+            case "GA":
+                GA();
                 break;
             default:
                 logger.log(Level.INFO, "Algorithm is not selected.");
@@ -274,10 +273,7 @@ public class MapController implements Initializable {
     }
 
     private void preprocess() {
-        map = Warehouse.getproductLocationMap();
-        logger.log(Level.INFO, "get map");
-        OrderID=getQuantityOfAllOrders()-1;
-        logger.log(Level.INFO, "get orderID:"+OrderID);
+
         //---------getText--------------
         try {
             runtime = parseInt(runtime_TF.getText());
@@ -324,7 +320,7 @@ public class MapController implements Initializable {
         if (routed) {
             logger.log(Level.INFO, "Order complete. Update order status. OrderID:" + OrderID);
             updateOrderStatus(OrderID);
-            exportFile.exportTxt(Warehouse.getfilename(), "" + direction);
+            exportFile.exportTxt(Warehouse.getfilename(), "/nOrder:"+OrderID+"\n" + direction);
             viewCenter.gotoCreateOrder();
         }
     }
@@ -336,7 +332,7 @@ public class MapController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        algorithm.getItems().addAll("NN", "DP", "DA");
+        algorithm.getItems().addAll("NN", "DP", "GA");
         for(int i=0;i<22;i++){
             routePane.getChildren().addAll(drawMap.drawCoordinate(0,i+1,String.valueOf(i)));
         }
@@ -352,6 +348,11 @@ public class MapController implements Initializable {
         }
 
         //instruction.appendText(startpoint.getText());
+        //get map and orderID
+        map = Warehouse.getproductLocationMap();
+        logger.log(Level.INFO, "get map");
+        OrderID=getQuantityOfAllOrders()-1;
+        logger.log(Level.INFO, "get orderID:"+OrderID);
     }
 
     public void setApp(ViewCenter viewCenter) {
