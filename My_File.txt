@@ -1,0 +1,7 @@
+Start at location (0,0)
+	Go to north to (0,1)
+	Go to east to (2,1)
+Pick up product 1
+	Go to east to (33,1)
+	Go to south to (33,0)
+Done!

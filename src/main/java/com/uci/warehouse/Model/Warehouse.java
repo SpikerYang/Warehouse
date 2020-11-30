@@ -1,6 +1,7 @@
 package main.java.com.uci.warehouse.Model;
 
 import javafx.util.Pair;
+import main.java.com.uci.warehouse.Util.MyAlert;
 
 import java.io.*;
 
@@ -206,6 +207,7 @@ public class Warehouse {
     //change to static
     public static double[] getProductLocation(int productId) {
         if (!productLocationMap.containsKey(productId)) try {
+            MyAlert.sendErrorAlert("Product find error!", "The product is invalid and can not be found.");
             throw new Exception("No such Product!");
         } catch (Exception e) {
             e.printStackTrace();
@@ -371,7 +373,7 @@ public class Warehouse {
     /**
      * get shelve information from product imfor
      */
-    public void getShelveMap() {
+    public static void getShelveMap() {
         shelveMap = new HashMap<>();
         int id = 1;
         double[] location = new double[2];
@@ -392,6 +394,12 @@ public class Warehouse {
             }
         }
     }
+
+    public static Map<ArrayList<Integer>, Integer> returnShelveMap(){
+        getShelveMap();
+        return shelveMap;
+    }
+
 
 
 //==============================================================================================================================
