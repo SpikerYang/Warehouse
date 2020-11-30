@@ -199,7 +199,9 @@ public class RouteBFS {
         }
     }
 
-    public static Pair<ArrayList<int[]>,Integer>[][] routeDistanceMatrix(Order order, Map<Integer, double[]> map, int[] start, int[] end)  {
+    public static Pair<ArrayList<int[]>,Integer>[][] routeDistanceMatrix(Order order, Map<Integer, double[]> mapin, int[] start, int[] end)  {
+        Map<Integer, double[]> map = new HashMap<>();
+        map.putAll(mapin);
         RouteBFS routbfs =new RouteBFS(order);
         routbfs.getshelf(map);
         List<Integer> list = new ArrayList<>(order.getProducts().keySet());

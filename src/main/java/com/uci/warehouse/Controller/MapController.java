@@ -158,14 +158,14 @@ public class MapController implements Initializable {
                 }
                 if(verticalMove!=0){
                     if(verticalMove==1){
-                        drawMap.drawRoute(lastfrom[0],lastfrom[1]-1,from[0],from[1],0,color,gc);
+                        drawMap.drawRoute(lastfrom[0],lastfrom[1],from[0],from[1],0,color,gc);
 //                        drawMap.printIndLine(lastfrom[0],lastfrom[1]-1,from[0],from[1]);
 //                        for(int j=lastfrom[1]; j<from[1];j++){
 //                            if(routeMap[19-j][from[0]] == "   ") routeMap[19-j][from[0]] = printColor(code,"|  ");
 //                        }
 //                        routeMap[19 - from[1]][from[0]] = printColor(code,"^  ");
                     }else{
-                        drawMap.drawRoute(lastfrom[0],lastfrom[1]+1,from[0],from[1],1,color,gc);
+                        drawMap.drawRoute(lastfrom[0],lastfrom[1],from[0],from[1],1,color,gc);
 //                        drawMap.printIndLine(lastfrom[0],lastfrom[1]+1,from[0],from[1]);
 
 //                        for(int j=lastfrom[1]; j>from[1];j--){
