@@ -25,6 +25,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import main.java.com.uci.warehouse.Util.MyAlert;
 
+import static java.lang.Double.parseDouble;
 import static java.lang.Integer.parseInt;
 import static main.java.com.uci.warehouse.Model.Warehouse.*;
 
@@ -87,7 +88,7 @@ public class MapController implements Initializable {
         long startTime = System.currentTimeMillis();
         TSP_DP tsp_dp = new TSP_DP();
 
-        List<Integer> route = tsp_dp.getRoute(graph, 60000);
+        List<Integer> route = tsp_dp.getRoute(graph, runtime);
 
         String direction;
         direction = printRoute(matrix, route, start, end,order);
@@ -110,7 +111,7 @@ public class MapController implements Initializable {
         //int[][] graphforGA = order.getDistanceMatrix(map, start, end);
         TSP_GA tsp_ga = new TSP_GA(30, graph.length - 2, 1000, 0.8f, 0.9f);
         tsp_ga.init(graph);
-        List<Integer> route = tsp_ga.solve(60000);
+        List<Integer> route = tsp_ga.solve(runtime);
 
         long endTime = System.currentTimeMillis();
         long timePeriod = endTime - startTime;
@@ -250,12 +251,13 @@ public class MapController implements Initializable {
         getshelf(map);
         if (!isIllegalPosition(start) || !isIllegalPosition(end) || runtime <= 0) {
             instruction.clear();
-            instruction.appendText("ERROR! Illegeal input");
+            instruction.appendText("ERROR! Illegal input");
+            MyAlert.sendErrorAlert("Illegal Input","Illegal start, end or running item ");
             return;
         }
-        logger.log(Level.INFO, "Route and show on map");
-        logger.log(Level.INFO, "algorithm is "+algorithm.getItems().toString());
-        switch (algorithm.getValue().toString()) {
+
+        logger.log(Level.INFO, "algorithm is "+algorithm.getValue().toString());
+        try {switch (algorithm.getValue().toString()) {
             case "NN":
                 NN();
                 break;
@@ -269,6 +271,11 @@ public class MapController implements Initializable {
                 logger.log(Level.INFO, "Algorithm is not selected.");
                 return;
         }
+            logger.log(Level.INFO, "Route and show on map");
+        }catch(Exception e){
+            MyAlert.sendErrorAlert("Error","Illegal order or order no found");
+        }
+
         routed = true;
     }
 
@@ -276,10 +283,10 @@ public class MapController implements Initializable {
 
         //---------getText--------------
         try {
-            runtime = parseInt(runtime_TF.getText());
+            runtime = (int)(1000*parseDouble(runtime_TF.getText()));
         } catch (NumberFormatException e) {
             //viewCenter.gotoMap();
-            MyAlert.sendErrorAlert("Illegal Input","Illegal runing time");
+            MyAlert.sendErrorAlert("Illegal Input","Illegal running time");
 
         }
         try {
@@ -321,7 +328,7 @@ public class MapController implements Initializable {
             logger.log(Level.INFO, "Order complete. Update order status. OrderID:" + OrderID);
             updateOrderStatus(OrderID);
             exportFile.exportTxt(Warehouse.getfilename(), "/nOrder:"+OrderID+"\n" + direction);
-            viewCenter.gotoCreateOrder();
+            viewCenter.gotoMenu();
         }
     }
 
@@ -351,12 +358,13 @@ public class MapController implements Initializable {
         //get map and orderID
         map = Warehouse.getproductLocationMap();
         logger.log(Level.INFO, "get map");
-        OrderID=getQuantityOfAllOrders()-1;
-        logger.log(Level.INFO, "get orderID:"+OrderID);
+//        OrderID=getQuantityOfAllOrders()-1;
+//        logger.log(Level.INFO, "get orderID:"+OrderID);
     }
 
-    public void setApp(ViewCenter viewCenter) {
+    public void setApp(ViewCenter viewCenter, int orderID) {
         this.viewCenter = viewCenter;
-        //this.OrderID = OrderID;
+        this.OrderID = orderID;
+        logger.log(Level.INFO, "get orderID:"+OrderID);
     }
 }

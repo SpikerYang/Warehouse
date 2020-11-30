@@ -3,17 +3,22 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
-
 
 <AnchorPane prefHeight="700.0" prefWidth="860.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.java.com.uci.warehouse.Controller.LoadFileController">
    <children>
-      <TextField fx:id="OrderFileName" layoutX="220.0" layoutY="138.0" prefHeight="27.0" prefWidth="263.0" text="src/main/resources/qvBox-warehouse-orders-list-part01.txt" />
-      <TextField fx:id="locationFileName" layoutX="220.0" layoutY="187.0" prefHeight="26.0" prefWidth="269.0" text="src/main/resources/qvBox-warehouse-data-f20-v01.txt" />
-      <TextField fx:id="outputFileName" layoutX="220.0" layoutY="238.0" prefHeight="26.0" prefWidth="269.0" text="My_File" />
-      <Text layoutX="135.0" layoutY="205.0" strokeType="OUTSIDE" strokeWidth="0.0" text=" Location file" wrappingWidth="77.30468368530273" />
-      <Text layoutX="135.0" layoutY="157.0" strokeType="OUTSIDE" strokeWidth="0.0" text=" Order file" wrappingWidth="77.30468368530273" />
-      <Text layoutX="135.0" layoutY="255.0" strokeType="OUTSIDE" strokeWidth="0.0" text=" Output Path" wrappingWidth="77.30468368530273" />
-      <Button fx:id="LoadFIle_Button" layoutX="313.0" layoutY="287.0" onAction="#loadFileButtonClick" mnemonicParsing="false" text="ok" />
+      <TextField fx:id="OrderFileName" layoutX="338.0" layoutY="277.0" prefHeight="27.0" prefWidth="263.0" text="src/main/resources/qvBox-warehouse-orders-list-part01.txt" />
+      <TextField fx:id="locationFileName" layoutX="338.0" layoutY="326.0" prefHeight="26.0" prefWidth="269.0" text="src/main/resources/qvBox-warehouse-data-f20-v01.txt" />
+      <TextField fx:id="outputFileName" layoutX="338.0" layoutY="377.0" prefHeight="26.0" prefWidth="269.0" text="My_File" />
+      <Text layoutX="253.0" layoutY="344.0" strokeType="OUTSIDE" strokeWidth="0.0" text=" Location file" wrappingWidth="77.30468368530273" />
+      <Text layoutX="253.0" layoutY="296.0" strokeType="OUTSIDE" strokeWidth="0.0" text=" Order file" wrappingWidth="77.30468368530273" />
+      <Text layoutX="253.0" layoutY="394.0" strokeType="OUTSIDE" strokeWidth="0.0" text=" Output Path" wrappingWidth="77.30468368530273" />
+      <Button fx:id="LoadFIle_Button" layoutX="414.0" layoutY="425.0" mnemonicParsing="false" onAction="#loadFileButtonClick" text="ok" />
+      <Text layoutX="366.0" layoutY="182.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Load Files">
+         <font>
+            <Font size="30.0" />
+         </font>
+      </Text>
    </children>
 </AnchorPane>

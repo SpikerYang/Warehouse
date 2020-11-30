@@ -1,5 +1,6 @@
 package main.java.com.uci.warehouse.Controller;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.SelectionMode;
@@ -16,7 +17,7 @@ import java.util.*;
 import main.java.com.uci.warehouse.Model.*;
 
 public class OrderListController implements Initializable {
-    //TODO @qirui
+
     private static final Logger logger = Logger.getLogger(MapController.class.getName());
     private ViewCenter viewCenter;
 
@@ -31,6 +32,10 @@ public class OrderListController implements Initializable {
             logger.log(Level.WARNING, "something wrong.");
         }
 
+    }
+
+    public void backToMainMenuButtonClick() {
+        viewCenter.gotoMenu();
     }
 
     @Override

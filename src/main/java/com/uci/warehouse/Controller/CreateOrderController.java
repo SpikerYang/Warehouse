@@ -14,6 +14,8 @@ import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import static main.java.com.uci.warehouse.Model.Warehouse.getQuantityOfAllOrders;
+
 public class CreateOrderController implements Initializable {
     //TODO @Ziyi
     private static final Logger logger = Logger.getLogger(MapController.class.getName());
@@ -45,7 +47,7 @@ public class CreateOrderController implements Initializable {
             }
             int size = Integer.valueOf(oder_size);
             Warehouse.addOrderFromGUI(size,product_IDs);
-            viewCenter.gotoMap();
+            viewCenter.gotoMap(getQuantityOfAllOrders()-1);
         } else {
             logger.log(Level.WARNING, "something wrong.");
         }
