@@ -2,6 +2,7 @@ package main.java.com.uci.warehouse.Controller;
 
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.SelectionMode;
 import main.java.com.uci.warehouse.GUI.ViewCenter;
 
 import javafx.scene.control.ListView;
@@ -24,7 +25,8 @@ public class OrderListController implements Initializable {
     public void finishButtonClick(){
         if(true) {
             logger.log(Level.INFO, "User choose a order！ Go to Map page");
-            viewCenter.gotoMenu();
+            int orderChosen = orderList.getSelectionModel().getSelectedItem();
+            viewCenter.gotoMap(orderChosen);
         } else {
             logger.log(Level.WARNING, "something wrong.");
         }
@@ -37,6 +39,7 @@ public class OrderListController implements Initializable {
         for (Order order : orderlist) {
             orderList.getItems().add(order.getId());
         }
+        orderList.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
     }
 
     public void setApp(ViewCenter viewCenter){
