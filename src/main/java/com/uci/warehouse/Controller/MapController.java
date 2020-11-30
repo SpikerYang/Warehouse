@@ -258,7 +258,7 @@ public class MapController implements Initializable {
         if (!isIllegalPosition(start) || !isIllegalPosition(end) || runtime <= 0) {
             instruction.clear();
             instruction.appendText("ERROR! Illegal input");
-            MyAlert.sendErrorAlert("Illegal Input","Illegal start, end or running item ");
+            MyAlert.sendErrorAlert("Illegal Input","Illegal start, end or running item\n start and end need a blank to separate two coordinates");
             return;
         }
 
