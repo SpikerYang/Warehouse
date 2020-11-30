@@ -979,6 +979,25 @@ public class Warehouse {
                 exportFile.exportTxt(filename, "" + direction);
             }
         }
+        else if (algorithm_num == 4){
+            long startTime = System.currentTimeMillis();
+            Pair[][] matrix = RouteBFS.routeDistanceMatrix(order, productLocationMap, start, end);
+            int[][] graph = new int[matrix.length][matrix.length];
+            for (int i = 0; i < matrix.length; i++) {
+                for (int j = 0; j < matrix.length; j++) {
+                    graph[i][j] = (int) matrix[i][j].getValue();
+                }
+            }
+            System.out.print("Brute force approach\n");
+            //int[][] [] graph = order.getXYDistanceMatrix(productLocationMap,start,end);
+            TSP_BF tsp_bf = new TSP_BF(graph);
+            int res = tsp_bf.getMinDistance(graph);
+            //String direction =printRoute(order, route,start,end);
+            String direction;
+            long endTime = System.currentTimeMillis();
+            long timePeriod = endTime - startTime;
+            System.out.println("\nFor approach 4, this order takes time around  " + timePeriod + "  ms\n");
+        }
     }
 
     public static void loadLocationFromFile(String file) throws FileNotFoundException {
