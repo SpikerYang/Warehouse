@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane fx:id="login" prefHeight="700.0" prefWidth="860.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.java.com.uci.warehouse.Controller.LoginController">
+    <children>
+<!--        <BorderPane prefHeight="42.0" prefWidth="600">-->
+<!--           <children>-->
+<!--               <Label layoutX="99" layoutY="96" text="Username" />-->
+<!--               <Label layoutX="99" layoutY="146" text="password" />-->
+<!--               <TextField fx:id="login_username" layoutX="174" layoutY="91" promptText="Username" />-->
+<!--               <TextField fx:id="login_password" layoutX="174" layoutY="141" promptText="password" />-->
+<!--               <Button fx:id="login_button" layoutX="140" layoutY="206" mnemonicParsing="false" onAction="#loginButtonClick" text="Log In" />-->
+<!--           </children>-->
+<!--        </BorderPane>-->
+      <Text layoutX="233.0" layoutY="268.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Username:" wrappingWidth="86.21240234375" />
+      <Text layoutX="233.0" layoutY="319.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Password:" wrappingWidth="86.21240234375" />
+      <TextField fx:id="login_username" layoutX="359.0" layoutY="250.0" prefHeight="27.0" prefWidth="224.0" />
+      <TextField fx:id="login_password" layoutX="359.0" layoutY="301.0" prefHeight="27.0" prefWidth="224.0" />
+        <Button fx:id="login_button" layoutX="394.0" layoutY="381.0" mnemonicParsing="false" onAction="#loginButtonClick" prefHeight="27.0" prefWidth="72.0" text="log in" />
+      <Text layoutX="225.0" layoutY="151.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome to EasyWarehouse">
+         <font>
+            <Font size="34.0" />
+         </font>
+      </Text>
+      <Text layoutX="359.0" layoutY="551.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Created by Team RNG">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Text>
+
+    </children>
+
+</AnchorPane>

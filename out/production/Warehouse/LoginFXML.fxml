@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane fx:id="login" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.java.com.uci.warehouse.Controller.LoginController">
+    <children>
+<!--        <BorderPane prefHeight="42.0" prefWidth="600">-->
+<!--           <children>-->
+<!--               <Label layoutX="99" layoutY="96" text="Username" />-->
+<!--               <Label layoutX="99" layoutY="146" text="password" />-->
+<!--               <TextField fx:id="login_username" layoutX="174" layoutY="91" promptText="Username" />-->
+<!--               <TextField fx:id="login_password" layoutX="174" layoutY="141" promptText="password" />-->
+<!--               <Button fx:id="login_button" layoutX="140" layoutY="206" mnemonicParsing="false" onAction="#loginButtonClick" text="Log In" />-->
+<!--           </children>-->
+<!--        </BorderPane>-->
+      <Text layoutX="195.0" layoutY="208.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Username:" wrappingWidth="86.21240234375" />
+      <Text layoutX="195.0" layoutY="259.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Password:" wrappingWidth="86.21240234375" />
+      <TextField fx:id="login_username" layoutX="321.0" layoutY="190.0" prefHeight="27.0" prefWidth="224.0" />
+      <TextField fx:id="login_password" layoutX="321.0" layoutY="241.0" prefHeight="27.0" prefWidth="224.0" />
+        <Button fx:id="login_button" layoutX="283.0" layoutY="363.0" mnemonicParsing="false" onAction="#loginButtonClick" prefHeight="27.0" prefWidth="72.0" text="log in" />
+      <Button layoutX="478.0" layoutY="363.0" mnemonicParsing="false" text="register" />
+
+    </children>
+
+</AnchorPane>

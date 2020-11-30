@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.canvas.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.canvas.Canvas?>
+
+<AnchorPane fx:id="login" prefHeight="700.0" prefWidth="860.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.java.com.uci.warehouse.Controller.MapController">
+    <children>
+        <Pane fx:id="routePane" layoutX="20" layoutY="20" prefHeight="460" prefWidth="820" style="-fx-border-color: darkgrey">
+            <children>
+                <!--            <Circle fx:id="product" fill="#f50e0e" layoutX="155.0" layoutY="254.0" radius="4.0" stroke="#c91b1b" strokeType="INSIDE" style="visibility: visible" />-->
+                <Canvas fx:id="routeCanvas" height="460.0" width="820.0" />
+            </children></Pane>
+
+        <Button fx:id="map_return_button" layoutX="630.0" layoutY="621.0" mnemonicParsing="false" onAction="#returnButtonClick" prefHeight="27.0" prefWidth="126.0" text="Return" />
+      <VBox alignment="CENTER" layoutX="29.0" layoutY="519.0" prefHeight="142.0" prefWidth="273.0">
+         <children>
+            <HBox alignment="CENTER_LEFT" prefHeight="49.0" prefWidth="237.0" spacing="15.0">
+               <children>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Start" />
+                  <TextField fx:id="startpoint" prefHeight="27.0" prefWidth="60.0" promptText="0 0" text="0 0" />
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="End" />
+                  <TextField fx:id="endpoint" alignment="TOP_LEFT" prefHeight="27.0" prefWidth="60.0" promptText="33 0" text="33 0" />
+               </children>
+            </HBox>
+            <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="15.0">
+               <children>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Algorithm" />
+                  <ChoiceBox fx:id="algorithm" prefWidth="150.0" />
+               </children>
+            </HBox>
+            <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Runtime      " />
+                  <TextField fx:id="runtime_TF" alignment="CENTER" prefHeight="27.0" prefWidth="104.0" promptText="60" text="60" />
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="s" />
+               </children>
+            </HBox>
+            <Button mnemonicParsing="false" onAction="#RouteButtonClick" prefHeight="27.0" prefWidth="219.0" style="-fx-background-color: #fc9d03#fc9d03;" text="Route" />
+         </children>
+      </VBox>
+      <TextArea fx:id="instruction" layoutX="323.0" layoutY="533.0" prefHeight="115.0" prefWidth="248.0" />
+      <Text layoutX="323.0" layoutY="524.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Instruction" />
+      <Button layoutX="630.0" layoutY="533.0" mnemonicParsing="false" onAction="#completeButtonClick" prefHeight="27.0" prefWidth="126.0" text="Order Complete!" textFill="#f20000">
+         <font>
+            <Font name="Arial Bold" size="13.0" />
+         </font>
+      </Button>
+    </children>
+
+</AnchorPane>
