@@ -18,7 +18,7 @@ import java.util.*;
 import java.util.concurrent.atomic.AtomicInteger;
 
 /**
- * @Author spike
+ * @author spike
  * @Date: 2020-10-27 13:31
  */
 public class Warehouse {
