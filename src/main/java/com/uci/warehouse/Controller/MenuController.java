@@ -12,6 +12,7 @@ import javafx.scene.shape.Circle;
 import main.java.com.uci.warehouse.Draw.DrawMap;
 import main.java.com.uci.warehouse.GUI.ViewCenter;
 import main.java.com.uci.warehouse.Model.Warehouse;
+import main.java.com.uci.warehouse.Util.MyAlert;
 
 import java.net.URL;
 import java.util.ArrayList;
@@ -61,14 +62,17 @@ public class MenuController implements Initializable{
 
     public void findProductButtonClick(){
         logger.log(Level.INFO, "User input a id: ");
-        double[] location = Warehouse.getProductLocation(Integer.valueOf(product_id.getText()));
+        try {
+            double[] location = Warehouse.getProductLocation(Integer.valueOf(product_id.getText()));
 //        menuPane.getChildren().addAll(
 //                drawMap.drawProduct(location[0]+1, location[1]+1)
 //        );
 
-        GraphicsContext gc = mapCanvas.getGraphicsContext2D();
-        drawMap.drawProduct(location[0]+1, location[1]+1,gc);
-        System.out.println("The location is (" + location[0] + "," + location[1] + ")");
+            GraphicsContext gc = mapCanvas.getGraphicsContext2D();
+            drawMap.drawProduct(location[0]+1, location[1]+1,gc);
+        } catch (Exception e) {
+            MyAlert.sendErrorAlert("Error", "Invalid Input!");
+        }
     }
 
 

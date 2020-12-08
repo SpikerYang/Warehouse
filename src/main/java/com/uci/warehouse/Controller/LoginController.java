@@ -9,6 +9,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Line;
 import main.java.com.uci.warehouse.GUI.ViewCenter;
+import main.java.com.uci.warehouse.Util.MyAlert;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -40,6 +41,7 @@ public class LoginController implements Initializable{
             logger.log(Level.INFO, "Log in successful！ Go to Order page");
             viewCenter.gotoLoadFile();
         } else {
+            MyAlert.sendErrorAlert("Error", "Login failed!");
             logger.log(Level.WARNING, "The username or the password is wrong！");
         }
     }
