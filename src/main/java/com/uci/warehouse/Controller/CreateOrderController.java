@@ -6,6 +6,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.TextField;
 import main.java.com.uci.warehouse.Model.Warehouse;
 import main.java.com.uci.warehouse.GUI.ViewCenter;
+import main.java.com.uci.warehouse.Util.MyAlert;
 
 import java.net.URL;
 import java.util.ArrayList;
@@ -31,25 +32,24 @@ public class CreateOrderController implements Initializable {
 
     public void createNewOrderButtonClick(){
 
-        boolean input_correct = true;
         String oder_size = new_order_size.getText();
         String products_id = new_order_products.getText();
-        if(products_id==null)
-            input_correct =false;
-        //
-        if(input_correct) {
+        try {
             logger.log(Level.INFO, "Create new order successful！ Go to Map page");
             String[] IDs = products_id.split(" ");
             List<Integer> product_IDs = new ArrayList<>();
+            int size = Integer.valueOf(oder_size);
             for(String id:IDs){
+                Warehouse.getProductLocation(Integer.valueOf(id));
                 product_IDs.add(Integer.valueOf(id));
                 logger.log(Level.INFO, "Add new item to order, its id is: "+ id);
             }
-            int size = Integer.valueOf(oder_size);
+            if (product_IDs.size() != size) throw new Exception();
             Warehouse.addOrderFromGUI(size,product_IDs);
             viewCenter.gotoMap(getQuantityOfAllOrders()-1);
-        } else {
-            logger.log(Level.WARNING, "something wrong.");
+        } catch (Exception e) {
+            MyAlert.sendErrorAlert("Error", "Invalid input!");
+            e.printStackTrace();
         }
     }
     

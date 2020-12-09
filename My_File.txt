@@ -5,3 +5,25 @@ Pick up product 1
 	Go to east to (33,1)
 	Go to south to (33,0)
 Done!
+/nOrder:52
+Start at location (9,9)
+	Go to west to (5,9)
+	Go to north to (5,11)
+	Go to east to (8,11)
+Pick up product 328242
+Pick up product 303243
+	Go to east to (10,11)
+Pick up product 349267
+	Go to east to (12,11)
+Pick up product 225316
+	Go to east to (13,11)
+	Go to south to (13,9)
+	Go to west to (12,9)
+Pick up product 95075
+	Go to east to (13,9)
+	Go to south to (13,7)
+	Go to east to (22,7)
+	Go to south to (22,1)
+	Go to east to (33,1)
+	Go to south to (33,0)
+Done!
