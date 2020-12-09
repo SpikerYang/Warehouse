@@ -116,7 +116,7 @@ public class TSP_NN {
 
     private ArrayList<Integer> formatRoute(int a,int i){
         ArrayList<Integer> route = new ArrayList<>();
-        route.add(i);
+        route.add(minroute.get(i));
         for(int j=1;j<graph.length;j++){
             if(a==-1){
                 i=previous(i);
