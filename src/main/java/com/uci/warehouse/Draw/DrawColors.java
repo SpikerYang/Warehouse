@@ -13,8 +13,8 @@ public class DrawColors {
         colors.add(Color.BLUE);
         colors.add(Color.GREEN);
         colors.add(Color.PURPLE);
-        colors.add(Color.PINK);
-        colors.add(Color.LIGHTSKYBLUE);
+        colors.add(Color.DARKSLATEBLUE);
+        colors.add(Color.DARKORANGE);
         colors.add(Color.GOLD);
         colors.add(Color.BLACK);
         colors.add(Color.BISQUE);

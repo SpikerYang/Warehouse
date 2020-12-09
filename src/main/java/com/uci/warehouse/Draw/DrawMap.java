@@ -74,7 +74,7 @@ public class DrawMap {
 //        gc.setFont(Font.getDefault());
 //        gc.fillText("hello   world!", 15, 50);
 
-//        gc.setLineWidth(2);
+        //gc.setLineWidth(4);
         gc.setFill(drawColors.getColor((color%drawColors.getColorSize())));
         gc.setStroke(drawColors.getColor((color%drawColors.getColorSize())));
         gc.strokeLine(calCenterX(sx),calCenterY(sy),calCenterX(ex),calCenterY(ey));
